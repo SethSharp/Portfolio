@@ -7,6 +7,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            screens: {
+                "custom1": "845px"
+            },
             transitionDuration: {
                 '0': '0ms',
                 '2000': '2000ms',
