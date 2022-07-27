@@ -16,11 +16,12 @@ module.exports = {
             },
             // that is animation class
             animation: {
-                fade: 'fadeOut 0.5s ease-in-out',
+                fade: 'fadeOut 0.3s ease-in-out',
                 rectUp: 'rectUp 10s alternate infinite',
                 rectDown: 'rectDown 14s linear infinite',
+            }, flex: {
+                'cus': '1 1 auto'
             },
-
             // that is actual animation
             keyframes: theme => ({
                 fadeOut: {
