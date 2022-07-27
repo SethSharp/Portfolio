@@ -8,7 +8,8 @@ module.exports = {
     theme: {
         extend: {
             screens: {
-                "custom1": "845px"
+                "custom1": "845px",
+                "custom2": "960px",
             },
             transitionDuration: {
                 '0': '0ms',

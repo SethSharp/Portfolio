@@ -1,8 +1,9 @@
-@props(['caption' => 'Default Caption'])
+@props(['caption' => ''])
 @props(['image' => 'blank'])
 
 <div class="w-[12rem] h-[12rem] sm:w-[13rem] sm:h-[13rem]
-            m-10 p-8
+            m-4 p-8
+{{--            m-10 p-8--}}
 {{--            flex-cus--}}
             rounded-3xl
             shadow-black

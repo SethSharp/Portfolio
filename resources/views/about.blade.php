@@ -36,7 +36,5 @@
         <x-image-card caption="Some picture of something"></x-image-card>
     </div>
 
-
-
 </body>
 </html>
