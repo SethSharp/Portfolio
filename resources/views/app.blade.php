@@ -11,7 +11,7 @@
 {{--  Allows nav bar to snap to this  --}}
 
 {{--  Navbar  --}}
-<x-nav-bar></x-nav-bar>
+<x-nav-bar home="text-blue-800"></x-nav-bar>
 
 {{--sm:bg-yellow-200 md:bg-red-200 lg:bg-green-200--}}
 <div class="bg-gray-50 sm:h-1/5 mt-4 sm:mt-16 w-full">
@@ -41,14 +41,23 @@
                 <h1 class="text-gray-400 text-2xl"> Developer by day </h1>
                 <h1 class="text-gray-400 text-2xl"> Pizza Thrower by night</h1>
             </div>
-            <button class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4"> Hire me! </button>
+            <button class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
+                           transition ease-in-out delay-0
+                           hover:-translate-y-1 hover:scale-100 duration-50
+                           "> Hire me! </button>
 
             <div class="pt-14 pb-5">
                 <a class="pr-4" href="https://github.com/SethSharp">
-                    <img class="w-14 h-14 inline-block" src="/images/github.png" alt="git-hub-link">
+                    <img class="w-14 h-14 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 hover:scale-75 duration-50
+                                " src="/images/github.png" alt="git-hub-link">
                 </a>
                 <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
-                    <img class="w-14 h-14 inline-block" src="/images/linkedin.png" alt="git-hub-link">
+                    <img class="w-14 h-14 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 hover:scale-75 duration-50"
+                                src="/images/linkedin.png" alt="git-hub-link">
                 </a>
             </div>
         </div>
@@ -72,8 +81,8 @@
 
                 <img class="mt-10 md:mt-2
                             w-3/4 sm:w-full lg:w-5/6"
-                            src="/images/pfp.png" alt="profile-picture">
-
+                     src="/images/pfp.png"
+                     alt="profile-picture">
         </div>
     </div>
 
