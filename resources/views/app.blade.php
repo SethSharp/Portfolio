@@ -9,33 +9,15 @@
 
 <body class="mg-0 pd-0">
 {{--  Allows nav bar to snap to this  --}}
-<div class="h-4"></div>
-{{--  Navbar  --}}
-<div class="bg-gray-50 justify-items-center
-            grid
-            grid-rows-2 grid-cols-2
-            sm:grid-rows-1 sm:grid-flow-col
-            sm:float-right">
-    <h1 class="text-2xl text-center text-gray-800 border-2 p-2.5 border-transparent hover:border-2 hover:rounded-3xl hover:border-black hover:animate-fade"> Home </h1>
-    <h1 class="text-2xl text-center text-gray-800 border-2 p-2.5 border-transparent hover:border-2 hover:rounded-3xl hover:border-black hover:animate-fade"> About </h1>
-    <h1 class="text-2xl text-center text-gray-800 border-2 p-2.5 border-transparent hover:border-2 hover:rounded-3xl hover:border-black hover:animate-fade"> Projects </h1>
-    <h1 class="text-2xl text-center text-gray-800 border-2 p-2.5 border-transparent hover:border-2 hover:rounded-3xl hover:border-black hover:animate-fade"> Qualification </h1>
-</div>
 
-{{--    <div class="sm:flex flex-row bg-gray-500">--}}
-{{--        <div class="bg-red-500 sm:w-1/2 w-full sm:grow sm:basis-0 sm:flex sm:flex-col">--}}
-{{--            Intro--}}
-{{--        </div>--}}
-{{--        <div class=" bg-yellow-300 sm:w-1/2 w-full sm:grow sm:flex-col sm:basis-0">--}}
-{{--            Profile--}}
-{{--        </div>--}}
-{{--    </div>--}}
+{{--  Navbar  --}}
+<x-nav-bar></x-nav-bar>
 
 {{--sm:bg-yellow-200 md:bg-red-200 lg:bg-green-200--}}
-<div class="bg-gray-50 sm:h-4/4 mt-4 sm:mt-16 w-full">
-
+<div class="bg-gray-50 sm:h-1/5 mt-4 sm:mt-16 w-full">
     <div class="pl-6 pr-6
                 md:pl-14
+                z-10
                 custom1:flex flex-row">
 
         <div class="pl-2 pb-4 pt-16
@@ -43,7 +25,9 @@
                     w-full
                     custom1:w-5/12
                     custom1:flex
-                    custom1:flex-col">
+                    custom1:flex-col
+                    z-20
+                    bg-gray-50">
 
             <div class="">
                 <h1 class="text-6xl font-bold"> Hi! </h1>
@@ -68,10 +52,22 @@
                 </a>
             </div>
         </div>
-        {{--sm:flex-col sm:basis-0--}}
+
+        {{-- Rectangle stuff --}}
+{{--        <div class="bg-yellow-500 float-right mt-2">--}}
+{{--            --}}{{--  Top row  --}}
+{{--            <div class="w-1/4 h-6 bg-blue-300 rounded-3xl absolute -rotate-[60deg] mt-40 ml-10"> </div>--}}
+{{--            <div class="w-56 overflow-hidden h-6 bg-blue-400  rounded-3xl absolute -rotate-[60deg] mt-[24rem] ml-2"> </div>--}}
+{{--            --}}{{--  Second row  --}}
+{{--            <div class="w-1/5 h-6 bg-blue-600 opacity-10 rounded-3xl absolute -rotate-45 ml-36 mt-44"> </div>--}}
+{{--            --}}{{--  Third row  --}}
+{{--            <div class="w-1/3 h-6 bg-blue-600 opacity-20 rounded-3xl absolute -rotate-45 mt-40 ml-40 mt-44"> </div>--}}
+{{--        </div>--}}
+
         <div class="sm:w-full
                     custom1:w-7/12
                     w-full
+                    z-20
                     custom1:grow">
 
                 <img class="mt-10 md:mt-2
