@@ -15,6 +15,4 @@
              src="/images/{{$image}}.png"
              alt="about-picture">
     </div>
-
-    <caption> {{$caption}} </caption>
 </div>

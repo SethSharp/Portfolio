@@ -10,6 +10,7 @@ module.exports = {
             screens: {
                 "custom1": "845px",
                 "custom2": "960px",
+                "custom3": "979px"
             },
             transitionDuration: {
                 '0': '0ms',
