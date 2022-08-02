@@ -8,9 +8,7 @@
 </head>
 
 <body class="mg-0 pd-0">
-{{--  Allows nav bar to snap to this  --}}
 
-{{--  Navbar  --}}
 <x-nav-bar home="text-blue-800"></x-nav-bar>
 
 {{--sm:bg-yellow-200 md:bg-red-200 lg:bg-green-200--}}

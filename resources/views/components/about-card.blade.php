@@ -2,7 +2,7 @@
 @props(['content' => 'Default Content'])
 
 <div class="sm:w-[19rem] h-[20rem]
-            sm:m-10 mt-10
+            sm:m-10 mt-6
 {{--            flex-cus--}}
             p-10 pt-4
             rounded-3xl

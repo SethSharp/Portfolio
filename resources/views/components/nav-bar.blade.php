@@ -8,7 +8,10 @@
             -z-10 grid
             grid-rows-2 grid-cols-2
             sm:grid-rows-1 sm:grid-flow-col
-            sm:float-right">
+            sm:float-right
+            hidden
+            sm:flex
+            ">
     <h1 class="text-2xl text-center {{$home}} border-2 p-2.5 border-transparent hover:border-2 hover:rounded-3xl hover:border-black hover:animate-fade">
         <a href="/home"> Home </a>
     </h1>
@@ -21,4 +24,31 @@
     <h1 class="text-2xl text-center {{$projects}} border-2 p-2.5 border-transparent hover:border-2 hover:rounded-3xl hover:border-black hover:animate-fade">
         <a href="/projects"> Projects </a>
     </h1>
+</div>
+<div class="sm:hidden">
+    <div class="mx-10 my-4">
+        <div class="bg-gray-100 px-4 py-2 rounded" id="menu-btn">
+            <div class="h-2 my-2 w-16 bg-gray-200"></div>
+            <div class="h-2 my-2 w-16 bg-gray-200"></div>
+            <div class="h-2 my-2 w-16 bg-gray-200"></div>
+        </div>
+
+        <div class="bg-gray-100 hidden flex-col rounded mt-3 p-2 text-sm w-full" id="dropdown">
+            <a href="/home" class="text-2xl px-2 py-1 hover:bg-gray-200 rounded"> Home </a>
+            <a href="/about" class="text-2xl px-2 py-1 hover:bg-gray-200 rounded"> About </a>
+            <a href="/qualifications" class="text-2xl px-2 py-1 hover:bg-gray-200 rounded"> Qualifications </a>
+            <a href="/projects" class="text-2xl px-2 py-1 hover:bg-gray-200 rounded"> Projects </a>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', ()=> {
+            const menuBtn = document.querySelector('#menu-btn')
+            const dropdown = document.querySelector('#dropdown')
+            menuBtn.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden')
+                dropdown.classList.toggle('flex')
+            })
+        })
+    </script>
 </div>
