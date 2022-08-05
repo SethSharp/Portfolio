@@ -1,4 +1,3 @@
-@props(['caption' => ''])
 @props(['image' => 'blank'])
 
 <div class="w-[12rem] h-[12rem] sm:w-[13rem] sm:h-[13rem]

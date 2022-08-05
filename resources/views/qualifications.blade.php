@@ -21,8 +21,7 @@
                     rounded-3xl
                     shadow-black shadow-md
                     transition ease-in-out delay-200
-                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500
-                    ">
+                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
             <div>
                 <h1 class="text-2xl font-bold text-black"> Education </h1>
                 <ul class="p-6 list-disc">
@@ -63,8 +62,7 @@
                     rounded-3xl
                     shadow-black shadow-md
                     transition ease-in-out delay-200
-                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500
-                    ">
+                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
             <div>
                 <h1 class="text-2xl font-bold text-black"> Work </h1>
                 <ul class="p-6 list-disc">
@@ -86,7 +84,6 @@
                 </ul>
             </div>
         </div>
-
 
         <div class="h-auto w-auto
                     sm:m-10

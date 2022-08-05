@@ -79,7 +79,7 @@
 
                 <img class="mt-10 md:mt-2
                             w-3/4 sm:w-full lg:w-5/6"
-                     src="/images/pfp.png"
+                     src="/images/profile.png"
                      alt="profile-picture">
         </div>
     </div>
