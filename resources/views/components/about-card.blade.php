@@ -1,17 +1,15 @@
 @props(['title' => 'Default Title'])
 @props(['content' => 'Default Content'])
 
-<div class="sm:w-[19rem] h-[20rem]
-            sm:m-10 mt-6
-{{--            flex-cus--}}
+<div class="h-auto w-auto
+            sm:m-10
             p-10 pt-4
             rounded-3xl
-            shadow-black shadow-2xl
+            shadow-black shadow-md
             transition ease-in-out delay-200
-            hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500
-            ">
-    <div class="">
+            hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
+    <div>
         <h1 class="text-2xl font-bold text-black"> {{$title}} </h1>
-        <p class=""> {{$content}} </p>
+        <p class="w-60"> {{$content}} </p>
     </div>
 </div>
