@@ -24,7 +24,12 @@
         <x-image-card image="car"></x-image-card>
 
         <x-about-card title="My hobbies?"
-                      content="">
+                      content="With having so much going on with 2 jobs and uni.
+                                There isn't a whole lot of time to have a hobby.
+                                But when I do I love 4WDing and going camping with
+                                my mates. My favourite trip was to Fraser Island for a week.
+                                Explored the majority of the island with hardly any contact with
+                                the main land. Which is the main reason I like going remote.">
         </x-about-card>
 
         <x-image-card image="maheno"></x-image-card>
