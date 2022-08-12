@@ -66,14 +66,13 @@
 
             <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-0 relative overflow-hidden">
                 <img class="mt-10 md:mt-2
-                            absolute
-                            z-10
+                            relative
+                            z-20
                             w-3/4 sm:w-full lg:w-5/6"
                      src="/images/profileTrans.png"
                      alt="profile-picture">
 
-{{--                Upper rectangles--}}
-
+                {{--Upper rectangles--}}
                 <div class="w-1/2 h-6 absolute -top-1/4 ml-10 animate-rectDownFast">
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-30"></div>
                 </div>
@@ -83,7 +82,6 @@
                 <div class="w-1/2 h-6 absolute top-3/4 -ml-72 animate-rectUpMed">
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-60"></div>
                 </div>
-
 
                 {{--Lower rectangle--}}
                 <div class="w-1/4 h-6 absolute top-3/4 ml-64 animate-rectUpSlow">
