@@ -71,8 +71,6 @@
                             <li> Laravel Framework </li>
                             <li> TailwindCSS </li>
                             <li> SQL </li>
-                            <li> Design </li>
-                            <li> Working on big Git repo's </li>
                         </ul>
                     </li>
                     <li> Dominos (Feb 2021 - Present)

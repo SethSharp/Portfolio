@@ -19,8 +19,11 @@ module.exports = {
             // that is animation class
             animation: {
                 fade: 'fadeOut 0.3s ease-in-out',
-                rectUp: 'rectUp 10s alternate infinite',
-                rectDown: 'rectDown 14s linear infinite',
+                rectUpFast: 'ru 4s linear infinite',
+                rectUpMed: 'ru 6s linear infinite',
+                rectUpSlow: 'ru 10s linear infinite',
+                rectDownFast: 'rd 4s linear infinite',
+                rectDownSlow: 'rd 8s linear infinite',
             }, flex: {
                 'cus': '1 1 auto'
             },
@@ -29,34 +32,18 @@ module.exports = {
                 fadeOut: {
                     '0%': { border: "2px solid transparent" },
                     '100%': { border: "2px solid black" },
-                }, rectUp: {
+                }, ru: {
                     '0%': {
-                        marginLeft: "20px"
-                    }, '50%': {
-                        marginLeft: "65px",
-                        marginTop: "80px"
+                        transform: "translateX(0px)",
+                        transform: "translateY(0px)"
                     }, '100%': {
-                        marginLeft: "85px",
-                        marginTop: "40px"
+                        transform: "translate(500px, -600px)"
                     }
-                }, rectDown: {
+                }, rd: {
                     '0%': {
-                        marginLeft: "80px"
-                    }, '25%': {
-                        marginLeft: "20px",
-                        marginTop: "60px",
-                        width: "5rem"
-                    },'50%': {
-                        marginLeft: "-40px",
-                        marginTop: "120px",
-                        width: "10rem"
-                    }, '75%': {
-                        marginLeft: "-100px",
-                        marginTop: "180px",
-                        width: "15rem"
+                        transform: "translate(0px, 0px)"
                     }, '100%': {
-                        marginLeft: "-160px",
-                        marginTop: "240px"
+                        transform: "translate(-400px,500px)"
                     }
                 }
             }),

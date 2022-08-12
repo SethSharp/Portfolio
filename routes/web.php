@@ -17,20 +17,9 @@ Route::get("/", function() {
     return view("app");
 });
 
-Route::get('/home', function () {
-    return view('app');
+Route::controller(\App\Http\Controllers\App::class)->group(function () {
+    Route::get('/home', 'home');
+    Route::get('/about', 'about');
+    Route::get('/qualifications', 'qualifications');
+    Route::get('/projects', 'projects');
 });
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/projects', function () {
-    return view('projects');
-});
-
-Route::get('/qualifications', function () {
-    return view('qualifications');
-});
-
-
