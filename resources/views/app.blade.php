@@ -9,15 +9,15 @@
 
 <body class="mg-0 pd-0">
 
-    <x-nav-bar home="text-blue-800"></x-nav-bar>
+    <x-nav-bar home="text-black border-black"></x-nav-bar>
 
-    <div class=" sm:h-1/5  w-full">
-        <div class="pl-6 pr-6
+    <div class="w-full">
+        <div class="pl-3 sm:pl-4
                     md:pl-14 z-0
                     custom1:flex flex-row">
 
             {{-- Intro area --}}
-            <div class="pl-2 pb-4 pt-16
+            <div class="pl-2 pb-4 pt-8
                         md:pl-0 sm:pl-14
                         w-full
                         custom1:w-7/12
@@ -63,35 +63,36 @@
             </div>
 
             {{-- Profile image --}}
-
             <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-0 relative overflow-hidden">
-                <img class="mt-10 md:mt-2
-                            relative
-                            z-20
-                            w-3/4 sm:w-full lg:w-5/6"
-                     src="/images/profileTrans.png"
-                     alt="profile-picture">
+                <div class="h-full w-full">
+                    <img class="
+                                relative z-20
+                                w-auto h-auto"
+                         src="/images/profileTrans.png"
+                         alt="profile-picture">
+
+                </div>
 
                 {{--Upper rectangles--}}
-                <div class="w-1/2 h-6 absolute -top-1/4 ml-10 animate-rectDownFast">
+                <div class="w-1/2 h-6 absolute -top-1/4 ml-16 sm:ml-10 animate-rectDownFast">
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-30"></div>
                 </div>
-                <div class="w-1/4 h-6 absolute top-3/4 -ml-52 animate-rectUpSlow opacity-30">
+                <div class="w-1/4 h-6 absolute top-3/4 -ml-36 sm:-ml-52 animate-rectUpSlow opacity-30">
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-60"></div>
                 </div>
-                <div class="w-1/2 h-6 absolute top-3/4 -ml-72 animate-rectUpMed">
+                <div class="w-1/2 h-6 absolute top-3/4 -ml-80 animate-rectUpMed">
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-60"></div>
                 </div>
 
                 {{--Lower rectangle--}}
-                <div class="w-1/4 h-6 absolute top-3/4 ml-64 animate-rectUpSlow">
-                    <div class="w-full h-full bg-blue-700 rounded-3xl -rotate-[50deg]"></div>
+                <div class="w-1/4 h-6 absolute top-3/4 ml-44 sm:ml-64 animate-rectUpSlow">
+                    <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg]"></div>
                 </div>
-                <div class="w-2/3 h-6 absolute top-full ml-16 animate-rectUpFast">
-                    <div class="w-full h-full bg-blue-800 rounded-3xl -rotate-[50deg] opacity-30"></div>
+                <div class="w-2/3 h-6 absolute top-full ml-20 sm:ml-28 animate-rectUpFast">
+                    <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg] opacity-30"></div>
                 </div>
-                <div class="w-1/2 h-6 absolute top-1/4 right-0 -mr-64 animate-rectDownSlow">
-                    <div class="w-full h-full bg-blue-600 rounded-3xl -rotate-[50deg] opacity-75"></div>
+                <div class="w-1/2 h-6 absolute top-1/4 right-0 -mr-52 sm:-mr-64 animate-rectDownSlow">
+                    <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg] opacity-75"></div>
                 </div>
 
             </div>
@@ -99,11 +100,3 @@
     </div>
 </body>
 </html>
-
-
-{{--<div class="w-56 overflow-hidden h-6 bg-blue-400  rounded-3xl absolute -rotate-[60deg] mt-[24rem] ml-2"> </div>
-
-            <div class="w-1/5 h-6 bg-blue-600 opacity-10 rounded-3xl absolute -rotate-45 ml-36 mt-44"> </div>
-
-            <div class="w-1/3 h-6 bg-blue-600 opacity-20 rounded-3xl absolute -rotate-45 mt-40 ml-40 mt-44"> </div>
-        --}}
