@@ -49,8 +49,8 @@
                                   'YouTube Data API v3'],
                  'link' => 'YouHub',
                  'dur' => '2 months',
-                 'img_1' => 'blank.png',
-                 'img_2' => 'blank.png',
+                 'img_1' => '/YH/main.png',
+                 'img_2' => '/YH/videos.png',
     ]) @endcomponent
     @component('components.project',
                 ['title' => 'Blog Page',
