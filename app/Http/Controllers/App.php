@@ -19,4 +19,5 @@ class App extends Controller {
     public function qualifications() {
         return view('qualifications');
     }
+
 }

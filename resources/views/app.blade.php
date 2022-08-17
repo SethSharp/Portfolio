@@ -1,13 +1,51 @@
-<!doctype html>
-<html>
+@extends("layouts.main")
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-</head>
+@section("content")
+    <div id="drop-down"
+         class="hidden absolute z-20 flex justify-center w-full h-full
+                backdrop-blur-sm bg-white/30">
+        <div class="overflow-scroll overflow-y-hidden overflow-x-hidden
+                    fixed z-30 bg-white border mt-8 z-30
+                    w-1/3 h-auto
+                    rounded-3xl text-center
+                ">
+            <h1 class="font-medium text-2xl text-black pt-4"> Send me a message! </h1>
+            <div class="p-5">
+                <form method="POST" action="/home">
+                    @method('POST')
+                    @csrf
+                    <div class="mb-4">
+                        <label class="font-bold text-gray-800" for="name"> Name </label>
+                        <br>
+                        <input class="h-10 bg-white border border-2 border-gray-300 rounded py-4 px-3 mr-4 w-1/2
+                              text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="name"
+                               name="name" autofocus autocomplete="off">
+                    </div>
 
-<body class="mg-0 pd-0">
+                    <div class="mb-4">
+                        <label class="font-bold text-gray-800" for="name"> Subject </label>
+                        <br>
+                        <input class="h-10 bg-white border border-2 border-gray-300 rounded py-4 px-3 mr-4 w-1/2
+                              text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="name"
+                               name="name" autocomplete="off">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="font-bold text-gray-800" for="body"> Body: </label>
+                        <br>
+                        <textarea class="h-36 bg-white border border-2 border-gray-300 rounded py-4 px-3 mr-4 w-3/4
+                              text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="body"
+                                  name="body" autocomplete="off">  </textarea>
+                    </div>
+
+                    <button class="bg-green-500 text-white tracking-wide px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow">
+                        Send!
+                    </button>
+                </form>
+            </div>
+            <p id="close-btn" class="mb-6"> <u> close </u></p>
+        </div>
+    </div>
 
     <x-nav-bar home="text-black border-black"></x-nav-bar>
     <div class="h-20"></div>
@@ -37,12 +75,28 @@
                         <h1 class="text-gray-400 text-2xl"> Developer by day </h1>
                         <h1 class="text-gray-400 text-2xl"> Pizza Thrower by night</h1>
                     </div>
-                    <button class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
+                    <button id="contact-btn" class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
                                transition ease-in-out delay-0
                                p-1.5
                                hover:-translate-y-1 hover:scale-100 duration-50">
-                            Hire me!
+                        Hire me!
                     </button>
+
+
+
+                    <script>
+                        window.addEventListener('DOMContentLoaded', ()=> {
+                            const contactBtn = document.querySelector('#contact-btn')
+                            const contactCard = document.querySelector('#drop-down')
+                            const closeBtn = document.querySelector('#close-btn');
+                            contactBtn.addEventListener('click', () => {
+                                contactCard.classList.toggle('hidden');
+                            });
+                            closeBtn.addEventListener('click', () => {
+                                contactCard.classList.toggle('hidden');
+                            });
+                        })
+                    </script>
                 </div>
 
                 {{--Links--}}
@@ -98,5 +152,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+@stop
