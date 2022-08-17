@@ -10,8 +10,8 @@
 
 <body class="mg-0 pd-0">
     <x-nav-bar projects="text-black border-black" ></x-nav-bar>
-
-    <div class="mt-12 sm:mt-8 px-20 w-full">
+    <div class="h-6"></div>
+    <div class="mt-12 sm:mt-16 px-20 w-full">
         <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
         <h1 class="text-4xl font-bold text-amber-400 inline-block"> Projects! </h1>
     </div>

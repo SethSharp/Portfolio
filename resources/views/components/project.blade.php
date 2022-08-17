@@ -1,14 +1,15 @@
 
 
 <div class="bg-gray-50 custom2:flex flex-row w-full">
-    <div class="justify-center px-20 md:px-32 my-10 p-6">
+    <div class="justify-center px-12 md:px-32 my-10 p-6">
         <div class="custom2:flex custom2:flex-col">
             <div>
-                <h1 class="text-3xl font-bold text-blue-800 inline-block">
+                <h1 class="sm:ml-0 text-3xl font-bold text-blue-800 inline-block">
                     {{$title}}
-                    <a class="pr-4" href="https://github.com/SethSharp/{{$link}}">
-                        <img class="w-16 h-16 inline-block
-                                    " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
+                    <a class="sm:pr-4" href="https://github.com/SethSharp/{{$link}}">
+                        <img class="w-16 h-16 inline-block"
+                             src="/images/github_bgremoval.ai.png"
+                             alt="git-hub-link">
                     </a>
                 </h1>
                 <p class="text-bold pt-4 sm:p-6 font-medium">

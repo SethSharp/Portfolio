@@ -9,8 +9,8 @@
 
 <body class="mg-0 pd-0">
     <x-nav-bar qualifications="text-black border-black" ></x-nav-bar>
-
-    <div class="mt-12 sm:mt-8 px-12 sm:px-20 w-full">
+    <div class="h-6"></div>
+    <div class="mt-12 sm:mt-16 px-12 sm:px-20 w-full">
         <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
         <h1 class="text-4xl font-bold text-amber-400 inline-block"> Qualifications! </h1>
     </div>
@@ -29,24 +29,30 @@
                         <ul class="list-decimal pl-6">
                             <li class="">
                                 Frameworks
-                                <x-tag tag="Angular"></x-tag>
-                                <x-tag tag="Laravel"></x-tag>
-                                <x-tag tag="React"></x-tag>
-                                <x-tag tag="Ionic"></x-tag>
+                                <ul class="list-disc pl-6">
+                                    <li> Angular </li>
+                                    <li> Laravel </li>
+                                    <li> React </li>
+                                    <li> Ionic </li>
+                                </ul>
                             </li>
                             <li>
                                 Backend technologies
-                                <x-tag tag="NodeJS"></x-tag>
-                                <x-tag tag="ExpressJS"></x-tag>
+                                <ul class="list-disc pl-6">
+                                    <li> NodeJS </li>
+                                    <li> ExpressJS </li>
+                                </ul>
                             </li>
                             <li> Design </li>
                         </ul>
                     </li>
                     <li> Software Development
-                            <x-tag tag="C/C++"></x-tag>
-                            <x-tag tag="Python"></x-tag>
-                            <x-tag tag="JavaScript"></x-tag>
-                            <x-tag tag="PHP"></x-tag>
+                        <ul class="list-disc pl-6">
+                            <li> C/C++ </li>
+                            <li> JS </li>
+                            <li> Python </li>
+                            <li> PHP </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -107,7 +113,15 @@
                     <li> Dominos (Feb 2021 - Present)
                         <ul class="list-decimal pl-6">
                             <li> Delivery driver </li>
-                            <li> Shift runner </li>
+                            <li> End of night closes </li>
+                            <li> Ex-Shift runner </li>
+                            <li> Employee of Month September </li>
+                        </ul>
+                    </li>
+                    <li> Red Rooster (June 2016 - June 2020)
+                        <ul class="list-decimal pl-6">
+                            <li> Both opening and closing shifts </li>
+                            <li> Employee of Quarter 2017 </li>
                         </ul>
                     </li>
                 </ul>
@@ -142,7 +156,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li> Software Development
+                    <li> Majoring in Software Development
                         <ul class="list-decimal pl-6">
                             <li> C/C++ </li>
                             <li> Python </li>

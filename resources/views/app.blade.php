@@ -10,7 +10,7 @@
 <body class="mg-0 pd-0">
 
     <x-nav-bar home="text-black border-black"></x-nav-bar>
-
+    <div class="h-20"></div>
     <div class="w-full">
         <div class="pl-3 sm:pl-4
                     md:pl-14 z-0
