@@ -11,11 +11,8 @@
 <body class="mg-0 pd-0">
     <x-nav-bar projects="text-black border-black" ></x-nav-bar>
     <div class="h-6"></div>
-    <div class="mt-12 sm:mt-16 px-20 w-full">
-        <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
-        <h1 class="text-4xl font-bold text-amber-400 inline-block"> Projects! </h1>
-    </div>
-    <div class="w-full mt-5 py-5 px-28">
+    <x-title t_1="My" t_2="Projects"></x-title>
+    <div class="w-full sm:mt-5 py-3 sm:py-5 px-10 sm:px-28">
         @component('components.project',
                     ['title' => 'Time Recorder',
                      'desc' => '
@@ -46,6 +43,7 @@
                  'technology' => ['JS',
                                   'Facebook SDK',
                                   'Webpack',
+                                  'NodeJS',
                                   'YouTube Data API v3'],
                  'link' => 'YouHub',
                  'dur' => '2 months',
@@ -65,9 +63,9 @@
                                   'TailwindCSS',
                                   'Database Design'],
                  'link' => 'BlogPage',
-                 'dur' => '2 months',
-                 'img_1' => 'blank.png',
-                 'img_2' => 'blank.png',
+                 'dur' => '2 weeks',
+                 'img_1' => 'BP/home.jpg',
+                 'img_2' => 'BP/post.jpg',
     ]) @endcomponent
     @component('components.project',
                 ['title' => 'Aussie Sport Knowledge',

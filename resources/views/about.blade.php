@@ -12,14 +12,11 @@
 
     <x-nav-bar about="text-black border-black"></x-nav-bar>
     <div class="h-6"></div>
-    <div class="mt-12 sm:mt-16 px-20 w-full">
-        <h1 class="text-4xl font-bold text-black inline-block pr-2"> About </h1>
-        <h1 class="text-4xl font-bold text-amber-400 inline-block"> Me! </h1>
-    </div>
+    <x-title t_1="About" t_2="Me"></x-title>
     <div class="items-center flex flex-wrap justify-center w-full p-6">
         <div class="w-3/4 pt-2.5">
             <h1 class="text-2xl font-bold text-gray-400"> Who am I? </h1>
-            <div class="pl-4 sm:pl-14 pb-4 pt-2 sm:py-4 pb-8 flex flex-wrap">
+            <div class="pl-4 sm:pl-14 pb-8 flex flex-wrap">
                 <div class="flex flex-wrap">
                     <p class="w-full sm:w-1/2 my-auto">
                         G'day I'm Seth, well besides the typical, 'Hey I study Computer Science and
@@ -43,7 +40,7 @@
                 <br>
 
                 <div class="flex flex-wrap">
-                    <p class="w-full my-auto">
+                    <p class="w-full my-auto sm:pr-14">
                         I have been into technology since high school, where I created my first few apps
                         with XCode and uploaded a couple. Since then, I have dedicated my school subjects
                         towards a career in Software Development. Yes, I have looked back when I want to pull my
@@ -53,7 +50,7 @@
                 </div>
             </div>
 
-            <h1 class="text-2xl font-bold text-gray-500"> My Goals </h1>
+            <h1 class="text-2xl font-bold text-gray-500 pt-4"> My Goals </h1>
             <div class="pl-4 sm:pl-14 py-8 flex flex-wrap">
                 <div class="flex flex-wrap">
                     <p class="w-full my-auto">
@@ -67,8 +64,8 @@
                 </div>
             </div>
 
-            <h1 class="text-2xl font-bold text-gray-500"> My Hobbies </h1>
-            <div class="pl-4 sm:pl-14 py-8 flex flex-wrap">
+            <h1 class="text-2xl font-bold text-gray-500 pt-4"> My Hobbies </h1>
+            <div class="pl-4 sm:pl-14 py-4 flex flex-wrap">
                 <div class="flex flex-wrap">
                     <p class="w-full sm:w-1/2 my-auto">
                         With having so much going on with 2 jobs and uni.
@@ -92,7 +89,7 @@
                 </div>
             </div>
 
-            <h1 class="text-2xl font-bold text-gray-500"> The University Journey </h1>
+            <h1 class="text-2xl font-bold text-gray-500 pt-4"> The University Journey </h1>
             <div class="pl-4 sm:pl-14 py-8 flex flex-wrap">
                 <div class="flex flex-wrap">
                     <p class="w-full my-auto">
