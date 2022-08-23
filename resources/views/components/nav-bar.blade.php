@@ -3,7 +3,7 @@
 @props(['qualifications' => 'border-transparent'])
 @props(['projects' => 'border-transparent'])
 
-<div class="z-10 h-20 mb-4 w-full fixed float-right">
+<div class="z-30 h-20 mb-4 w-full fixed float-right">
     <div class="h-4"></div>
     <div class="justify-items-center
                 -z-10 grid
@@ -54,8 +54,8 @@
                 menuBtn.addEventListener('click', () => {
                     dropdown.classList.toggle('hidden')
                     dropdown.classList.toggle('flex')
-                })
-            })
+                });
+            });
         </script>
     </div>
 </div>
