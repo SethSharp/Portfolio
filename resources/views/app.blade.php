@@ -54,7 +54,7 @@
             <!-- Intro area -->
             <div class="pl-2 pt-8
                         md:pl-0 sm:pl-14
-                        w-full
+                        w-full z-10 relative
                         custom1:w-7/12
                         custom1:flex
                         custom1:flex-col">
@@ -119,7 +119,6 @@
                                 w-auto h-auto"
                          src="/images/profileTrans.png"
                          alt="profile-picture">
-
                 </div>
 
                 <!-- Upper rectangles -->
