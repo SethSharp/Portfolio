@@ -1,22 +1,58 @@
-<!doctype html>
-<html>
+@extends("layouts.main")
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-</head>
+@section("content")
+    <div id="drop-down"
+         class="hidden flex absolute z-20 justify-center w-full h-full
+                backdrop-blur-sm bg-white/30">
+        <div class="fixed z-30 bg-white border mt-8
+                    w-1/3 h-auto
+                    rounded-3xl text-center
+                ">
+            <h1 class="font-medium text-2xl text-black pt-4"> Send me a message! </h1>
+            <div class="p-5">
+                <form action="{{route('contact.email')}}" method="POST">
+                    @method('POST')
+                    @csrf
+                    <div class="mb-4">
+                        <label class="font-bold text-gray-800" for="name"> Name </label>
+                        <br>
+                        <input class="h-10 bg-white border-2 border-gray-300 rounded py-4 px-3 mr-4 w-1/2
+                              text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="name"
+                               name="name" autofocus autocomplete="off">
+                    </div>
 
-<body class="mg-0 pd-0">
+                    <div class="mb-4">
+                        <label class="font-bold text-gray-800" for="email"> Email </label>
+                        <br>
+                        <input class="h-10 bg-white border-2 border-gray-300 rounded py-4 px-3 mr-4 w-1/2
+                              text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="email"
+                               name="email" autocomplete="off">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="font-bold text-gray-800" for="message"> Message: </label>
+                        <br>
+                        <textarea class="h-36 bg-white border-2 border-gray-300 rounded py-4 px-3 mr-4 w-3/4
+                              text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="message"
+                                  name="message" autocomplete="off">  </textarea>
+                    </div>
+
+                    <button class="bg-green-500 text-white tracking-wide px-6 py-2 inline-block shadow-lg rounded hover:shadow">
+                        Send!
+                    </button>
+                </form>
+            </div>
+            <p id="close-btn" class="p-1"> <u> close </u></p>
+        </div>
+    </div>
 
     <x-nav-bar home="text-black border-black"></x-nav-bar>
-    <div class="h-20"></div>
     <div class="w-full">
-        <div class="pl-3 sm:pl-4
+        <div class="pl-3 sm:pl-4 pt-6
                     md:pl-14 z-0
                     custom1:flex flex-row">
             <!-- Intro area -->
-            <div class="pl-2 pb-4 pt-8
+            <div class="pl-2 pt-8
                         md:pl-0 sm:pl-14
                         w-full z-10 relative
                         custom1:w-7/12
@@ -36,12 +72,26 @@
                         <h1 class="text-gray-400 text-2xl"> Developer by day </h1>
                         <h1 class="text-gray-400 text-2xl"> Pizza Thrower by night</h1>
                     </div>
-                    <button class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
+                    <button id="contact-btn" class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
                                transition ease-in-out delay-0
                                p-1.5
                                hover:-translate-y-1 hover:scale-100 duration-50">
-                            Hire me!
+                        Hire me!
                     </button>
+
+                    <script>
+                        window.addEventListener('DOMContentLoaded', ()=> {
+                            const contactBtn = document.querySelector('#contact-btn')
+                            const contactCard = document.querySelector('#drop-down')
+                            const closeBtn = document.querySelector('#close-btn');
+                            contactBtn.addEventListener('click', () => {
+                                contactCard.classList.toggle('hidden');
+                            });
+                            closeBtn.addEventListener('click', () => {
+                                contactCard.classList.toggle('hidden');
+                            });
+                        })
+                    </script>
                 </div>
 
                 <!-- Links -->
@@ -63,8 +113,10 @@
 
             <!-- Profile image -->
             <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-0 relative overflow-hidden">
-                <div class="h-full w-full">
-                    <img class="invisible relative z-20 w-auto h-auto"
+                <div class="w-full">
+                    <img class="invisible
+                                relative z-20
+                                w-auto h-auto"
                          src="/images/profileTrans.png"
                          alt="profile-picture">
                 </div>
@@ -94,5 +146,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+@stop
