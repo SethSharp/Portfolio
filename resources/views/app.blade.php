@@ -15,15 +15,14 @@
         <div class="pl-3 sm:pl-4
                     md:pl-14 z-0
                     custom1:flex flex-row">
-
-            {{-- Intro area --}}
+            <!-- Intro area -->
             <div class="pl-2 pb-4 pt-8
                         md:pl-0 sm:pl-14
-                        w-full
+                        w-full z-10 relative
                         custom1:w-7/12
                         custom1:flex
                         custom1:flex-col">
-                {{--Intor text--}}
+                <!-- Intro text -->
                 <div class="pl-2">
                     <div class="">
                         <h1 class="text-6xl font-bold"> Hi! </h1>
@@ -45,7 +44,7 @@
                     </button>
                 </div>
 
-                {{--Links--}}
+                <!-- Links -->
                 <div class="pt-14 pb-5">
                     <a class="pr-4" href="https://github.com/SethSharp">
                         <img class="w-16 h-16 inline-block
@@ -62,18 +61,15 @@
                 </div>
             </div>
 
-            {{-- Profile image --}}
+            <!-- Profile image -->
             <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-0 relative overflow-hidden">
                 <div class="h-full w-full">
-                    <img class="
-                                relative z-20
-                                w-auto h-auto"
+                    <img class="invisible relative z-20 w-auto h-auto"
                          src="/images/profileTrans.png"
                          alt="profile-picture">
-
                 </div>
 
-                {{--Upper rectangles--}}
+                <!-- Upper rectangles -->
                 <div class="w-1/2 h-6 absolute -top-1/4 ml-16 sm:ml-10 animate-rectDownFast">
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-30"></div>
                 </div>
@@ -84,7 +80,7 @@
                     <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-60"></div>
                 </div>
 
-                {{--Lower rectangle--}}
+                <!-- Lower rectangle -->
                 <div class="w-1/4 h-6 absolute top-3/4 ml-44 sm:ml-64 animate-rectUpSlow">
                     <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg]"></div>
                 </div>
