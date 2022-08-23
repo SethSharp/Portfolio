@@ -10,34 +10,33 @@
 
 <body class="mg-0 pd-0">
 
-    <x-nav-bar about="text-black border-black"></x-nav-bar>
+    <x-navbar about="text-black border-black"></x-navbar>
     <div class="h-6"></div>
-    <x-title t_1="About" t_2="Me"> </x-title>
+    <x-title title1="About" title2="Me"> </x-title>
 
     <div class="pt-10 items-center flex flex-wrap justify-center w-full h-auto">
         <x-about-card
             title="Who am I?"
-            content="
+            content-1="
                 G'day I'm Seth, well besides the typical, 'Hey I study Computer Science and
                 love software', this is me. I'm currently living on the Gold Coast, studying and
                 working part-time at Dominos. As much as I love to study and work, I need my down time,
                 Friday night footy  (If i dont get called into work) is always a life saver and
                 playing games with my friends are my favourite ways to chill out after a big week."
-                content_2="
-                    I have been into technology since high school, where I created my first few apps
-                    with XCode and uploaded a couple. Since then, I have dedicated my school subjects
-                    towards a career in Software Development. Yes, I have looked back when I want to pull my
-                    hair out from the smallest of bugs, but it always changed my mind when I figured it out... finally
-                    and that's why I love it.
-                "
-            p_float_dir="float-left ml-3"
-            img_float_dir="float-right mr-3"
-            img_src="forest.png"
+            content-2="
+                I have been into technology since high school, where I created my first few apps
+                with XCode and uploaded a couple. Since then, I have dedicated my school subjects
+                towards a career in Software Development. Yes, I have looked back when I want to pull my
+                hair out from the smallest of bugs, but it always changed my mind when I figured it out... finally
+                and that's why I love it."
+            p-float-dir="float-left ml-3"
+            img-float-dir="float-right mr-3"
+            img-src="forest.png"
             >
         </x-about-card>
         <x-about-card
             title="My Goals"
-            content="
+            content-1="
                 My overall goal, coming fresh out of uni is to land a junior developer role.
                 My current area of interest is in the fullstack expertise. But if there
                 are opportunities in different areas, I won't hesitate to have a crack. Further down
@@ -50,7 +49,7 @@
         </x-about-card>
         <x-about-card
             title="My Hobbies"
-            content="
+            content-1="
                 With having so much going on with 2 jobs and uni.
                 There isn't a whole lot of time to have a hobby.
                 But when I do I love 4WDing and going camping with
@@ -59,13 +58,13 @@
                 was a week long Fraser Island trip I did with my friends. Hardly any signal
                 and nothing but remote camps, great feeds and memories.
             "
-            p_float_dir="float-left ml-3"
-            img_float_dir="float-right mr-3"
-            img_src="car.jpg"
+            p-float-dir="float-left ml-3"
+            img-float-dir="float-right mr-3"
+            img-src="car.jpg"
         ></x-about-card>
         <x-about-card
             title="My University Journey"
-            content="
+            content-1="
                 The past few years have been quite interesting and to put into a nutshell. I spent 4 weeks
                 in-person study in 2020 until covid hit and the rest of that year was studying from Griffiths
                 campus. Second year same story and saved a whole lot of money and studied from home.

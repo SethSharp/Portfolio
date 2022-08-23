@@ -10,7 +10,7 @@
 <body class="mg-0 pd-0">
     <x-nav-bar qualifications="text-black border-black" ></x-nav-bar>
     <div class="h-6"></div>
-    <x-title t_1="My" t_2="Qualifications"></x-title>
+    <x-title title1="My" title2="Qualifications"></x-title>
     <div class="items-center flex flex-wrap sm:flex justify-center w-full mt-5 px-12">
         <div class="h-auto w-auto
                     sm:m-10 my-5

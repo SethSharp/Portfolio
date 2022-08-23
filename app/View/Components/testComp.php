@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class about-card extends Component
+class testComp extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class about-card extends Component
      */
     public function render()
     {
-        return view('components.about-card');
+        return view('components.test-comp');
     }
 }

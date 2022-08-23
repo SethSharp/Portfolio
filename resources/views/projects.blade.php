@@ -11,7 +11,7 @@
 <body class="mg-0 pd-0">
     <x-nav-bar projects="text-black border-black" ></x-nav-bar>
     <div class="h-6"></div>
-    <x-title t_1="My" t_2="Projects"></x-title>
+    <x-title title1="My" title2="Projects"></x-title>
     <div class="w-full sm:mt-5 py-3 sm:py-5 px-10 sm:px-28">
         @component('components.project',
                     ['title' => 'Time Recorder',

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class imageCard extends Component
+class qualification extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class imageCard extends Component
      */
     public function render()
     {
-        return view('components.image-card');
+        return view('components.qualification');
     }
 }
