@@ -9,7 +9,7 @@
     }],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
+        "APP_DEBUG": "true",
         "APP_URL": "https://sethportfolio.com",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
