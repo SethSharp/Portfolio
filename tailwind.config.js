@@ -37,13 +37,13 @@ module.exports = {
                         transform: "translateX(0px)",
                         transform: "translateY(0px)"
                     }, '100%': {
-                        transform: "translate(500px, -600px)"
+                        transform: "translate(800px, -950px)"
                     }
                 }, rd: {
                     '0%': {
-                        transform: "translate(0px, 0px)"
+                        transform: "translate(100px, -100px)"
                     }, '100%': {
-                        transform: "translate(-400px,500px)"
+                        transform: "translate(-500px,600px)"
                     }
                 }
             }),

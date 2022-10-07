@@ -25,4 +25,5 @@ Route::controller(App::class)->group(function () {
     Route::get('/about', 'about');
     Route::get('/qualifications', 'qualifications');
     Route::get('/projects', 'projects');
+    Route::get('/wil', 'wil');
 });

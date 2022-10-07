@@ -2,8 +2,9 @@
 @props(['about' => 'border-transparent'])
 @props(['qualifications' => 'border-transparent'])
 @props(['projects' => 'border-transparent'])
+@props(['wil' => 'border-transparent'])
 
-<div class="z-30 h-20 mb-4 w-full fixed float-right">
+<div class="z-30 h-20 mb-4 w-full fixed float-right sm:pr-10">
     <div class="h-4"></div>
     <div class="justify-items-center
                 -z-10 grid
@@ -28,6 +29,10 @@
                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
             <a href="/projects"> Projects </a>
         </h1>
+        <h1 class="ml-0.5 text-xl font-bold text-center {{$wil}} border-2 p-2.5
+                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
+            <a href="/wil"> WIL </a>
+        </h1>
     </div>
     <div class="sm:hidden">
         <div class="mx-8">
@@ -44,6 +49,7 @@
                 <a href="/about" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$about}}"> About </a>
                 <a href="/qualifications" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}"> Qualifications </a>
                 <a href="/projects" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}"> Projects </a>
+                <a href="/wil" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$wil}}"> WIL </a>
             </div>
         </div>
 

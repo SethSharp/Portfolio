@@ -20,4 +20,7 @@ class App extends Controller {
         return view('qualifications');
     }
 
+    public function wil() {
+        return view('wil');
+    }
 }

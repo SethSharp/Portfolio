@@ -29,7 +29,7 @@
                             Email:
                             <input class="h-10 bg-white border-2 border-gray-300 rounded py-4 px-3 mr-4 w-1/2
                               text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="email"
-                               name="email" autocomplete="off">
+                               name="email" autocomplete="off" >
                         </label>
                         <br>
 
@@ -59,96 +59,70 @@
                     md:pl-14 z-0
                     custom1:flex flex-row">
             <!-- Intro area -->
-            <div class="pl-2 pt-8
-                        md:pl-0 sm:pl-14
+            <div class="pl-2 pt-32 md:pl-0 sm:pl-14
                         w-full z-0
-                        custom1:w-7/12
-                        custom1:flex
-                        custom1:flex-col">
+                        custom1:w-7/12 custom1:flex custom1:flex-col ">
                 <!-- Intro text -->
-                <div class="pl-2">
-                    <div class="">
+                <div class=" w-full">
+                    <div class=" w-auto lg:float-right pr-12">
                         <h1 class="text-6xl font-bold"> Hi! </h1>
-                    </div>
-                    <div class="">
-                        <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
-                        <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5">  Seth Sharp </h1>
-                    </div>
+                        <div class="">
+                            <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
+                            <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5">  Seth Sharp </h1>
+                        </div>
 
-                    <div class="pt-14">
-                        <h1 class="text-gray-400 text-2xl"> Developer by day </h1>
-                        <h1 class="text-gray-400 text-2xl"> Pizza Thrower by night</h1>
+                        <div class="pt-6 sm:pt-14">
+                            <h1 class="text-gray-400 text-2xl"> Developer by day </h1>
+                            <h1 class="text-gray-400 text-2xl"> Pizza Thrower by night</h1>
+                        </div>
+                        <button id="contact-btn" class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
+                                transition ease-in-out delay-0 p-1.5
+                                hover:-translate-y-1 hover:scale-100 duration-50">
+                            <a href="#contact"> Hire me! </a>
+                        </button>
                     </div>
-                    <button id="contact-btn" class="bg-blue-800 text-3xl text-white rounded-3xl w-48 mt-4
-                               transition ease-in-out delay-0
-                               p-1.5
-                               hover:-translate-y-1 hover:scale-100 duration-50">
-                        Hire me!
-                    </button>
-
-                    <script>
-                        window.addEventListener('DOMContentLoaded', ()=> {
-                            const contactBtn = document.querySelector('#contact-btn')
-                            const contactCard = document.querySelector('#drop-down')
-                            const closeBtn = document.querySelector('#close-btn');
-                            contactBtn.addEventListener('click', () => {
-                                contactCard.classList.toggle('hidden');
-                            });
-                            closeBtn.addEventListener('click', () => {
-                                contactCard.classList.toggle('hidden');
-                            });
-                        })
-                    </script>
-                </div>
-
-                <!-- Links -->
-                <div class="pt-14 pb-5">
-                    <a class="pr-4" href="https://github.com/SethSharp">
-                        <img class="w-16 h-16 inline-block
-                                    transition ease-in-out delay-0
-                                    hover:-translate-y-1 hover:scale-75 duration-50
-                                    " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
-                    </a>
-                    <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
-                        <img class="w-11 h-11 inline-block
-                                    transition ease-in-out delay-0
-                                    hover:-translate-y-1 hover:scale-75 duration-50"
-                                    src="/images/linkedInNew.png" alt="git-hub-link">
-                    </a>
                 </div>
             </div>
 
             <!-- Profile image -->
             <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-0 relative overflow-hidden">
                 <div class="w-full">
-                    <img class="relative z-20
-                                w-auto h-auto"
+                    <img class="z-20 relative w-auto h-auto"
                          src="/images/profileTrans.png"
                          alt="profile-picture">
                 </div>
+            </div>
+        </div>
+        <div>
+            <div class="text-center mt-8 w-full">
+                <h1 class="text-4xl font-bold text-black inline-block pr-2"> About </h1>
+                <h1 class="text-4xl font-bold text-amber-400 inline-block"> Me </h1>
+            </div>
+            <div class=" pt-8 flex justify-center">
 
-                <!-- Upper rectangles -->
-                <div class="w-1/2 h-6 absolute -top-1/4 ml-16 sm:ml-10 animate-rectDownFast">
-                    <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-30"></div>
+                <div class="text-center w-3/4 sm:w-1/3 leading-7">
+                    I am a computer science majoring in Software Development. Throughout this degrees I have learnt the basics of Computer Science, from programming, through to hardware and software components of a computer. Contributing to my degree I have learnt and successfully implemented new data structures, algorithms as well as design my own data structures and algorithms. On top of this I have learnt about different software development lifecycles and strategies for building project. Applied in both single projects and group projects. My current goals is to keep learning and applying what I have learned from uni in the field. As well as learning and collaborating with experienced developers. My future career goals, which my experience at Coding labs has influenced my thought process on. Is to become a highly experienced and knowledgeable developer at a company. With this knowledge I want to be able to share that with other new developers like my self (in the future). Surrounding myself with other experienced developers I found was highly impactful in how I want to walk down my developer journey.
                 </div>
-                <div class="w-1/4 h-6 absolute top-3/4 -ml-36 sm:-ml-52 animate-rectUpSlow opacity-30">
-                    <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-60"></div>
-                </div>
-                <div class="w-1/2 h-6 absolute top-3/4 -ml-80 animate-rectUpMed">
-                    <div class="w-full h-full bg-amber-400 rounded-3xl -rotate-[50deg] opacity-60"></div>
-                </div>
+            </div>
 
-                <!-- Lower rectangle -->
-                <div class="w-1/4 h-6 absolute top-3/4 ml-44 sm:ml-64 animate-rectUpSlow">
-                    <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg]"></div>
-                </div>
-                <div class="w-2/3 h-6 absolute top-full ml-20 sm:ml-28 animate-rectUpFast">
-                    <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg] opacity-30"></div>
-                </div>
-                <div class="w-1/2 h-6 absolute top-1/4 right-0 -mr-52 sm:-mr-64 animate-rectDownSlow">
-                    <div class="w-full h-full bg-blue-400 rounded-3xl -rotate-[50deg] opacity-75"></div>
-                </div>
+            <div class="text-center mt-8 w-full">
+                <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
+                <h1 class="text-4xl font-bold text-blue-800 inline-block"> Links </h1>
+            </div>
 
+            <div class="pt-4 pb-5 text-center" id="contact">
+                <a class="pr-4" href="https://github.com/SethSharp">
+                    <img class="w-16 h-16 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 hover:scale-75 duration-50
+                                " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
+                </a>
+                <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
+                    <img class="w-11 h-11 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 hover:scale-75 duration-50"
+                                src="/images/linkedInNew.png" alt="git-hub-link">
+                </a>
             </div>
         </div>
     </div>

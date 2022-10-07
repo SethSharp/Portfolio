@@ -16,9 +16,7 @@
                     sm:m-10 my-5
                     p-10 pt-4
                     rounded-3xl
-                    shadow-black shadow-md
-                    transition ease-in-out delay-200
-                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
+                    shadow-black shadow-md">
             <div>
                 <h1 class="text-2xl font-bold text-black"> Skills </h1>
                 <ul class="p-6 list-disc">
@@ -59,9 +57,7 @@
                     sm:m-10 my-5
                     p-10 pt-4
                     rounded-3xl
-                    shadow-black shadow-md
-                    transition ease-in-out delay-200
-                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
+                    shadow-black shadow-md">
             <div>
                 <h1 class="text-2xl font-bold text-black"> Attributes </h1>
                 <ul class="p-6 list-disc">
@@ -95,9 +91,7 @@
                     sm:m-10
                     p-10 pt-4 my-5
                     rounded-3xl
-                    shadow-black shadow-md
-                    transition ease-in-out delay-200
-                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
+                    shadow-black shadow-md">
             <div>
                 <h1 class="text-2xl font-bold text-black"> Work </h1>
                 <ul class="p-6 list-disc">
@@ -134,9 +128,7 @@
                     sm:m-10 my-5
                     p-10 pt-4
                     rounded-3xl
-                    shadow-black shadow-md
-                    transition ease-in-out delay-200
-                    hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-500">
+                    shadow-black shadow-md">
             <div>
                 <h1 class="text-2xl font-bold text-black"> Education </h1>
                 <ul class="p-6 list-disc">

@@ -35,19 +35,6 @@
             >
         </x-about-card>
         <x-about-card
-            title="My Goals"
-            content-1="
-                My overall goal, coming fresh out of uni is to land a junior developer role.
-                My current area of interest is in the fullstack expertise. But if there
-                are opportunities in different areas, I won't hesitate to have a crack. Further down
-                the track I do want to become a Senior Developer at a company and be able to coach young
-                players like myself in the future, I always had a soft spot for teaching and that would be
-                perfect.
-            "
-
-            >
-        </x-about-card>
-        <x-about-card
             title="My Hobbies"
             content-1="
                 With having so much going on with 2 jobs and uni.
@@ -56,14 +43,14 @@
                 my mates. I love doing this as it completely disconnects you from the world and
                 allows you to fully wind down and clear your mind. A perfect example of this
                 was a week long Fraser Island trip I did with my friends. Hardly any signal
-                and nothing but remote camps, great feeds and memories.
-            "
+                and nothing but remote camps, great feeds and memories."
             p-float-dir="float-left ml-3"
             img-float-dir="float-right mr-3"
             img-src="car.jpg"
         ></x-about-card>
+
         <x-about-card
-            title="My University Journey"
+            title="University Journey"
             content-1="
                 The past few years have been quite interesting and to put into a nutshell. I spent 4 weeks
                 in-person study in 2020 until covid hit and the rest of that year was studying from Griffiths
@@ -74,7 +61,12 @@
                 in this last year to find full-time work and complete the Griffiths WIL internship program.
                 I had been working towards getting a opportunity in this since before my degree started.
             "
+            p-float-dir="float-left ml-3"
+            img-float-dir="float-right mr-3"
+
         ></x-about-card>
+
+
     </div>
 </body>
 </html>
