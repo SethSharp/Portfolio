@@ -65,8 +65,6 @@
             img-float-dir="float-right mr-3"
 
         ></x-about-card>
-
-
     </div>
 </body>
 </html>

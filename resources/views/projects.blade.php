@@ -49,38 +49,38 @@
                  'dur' => '2 months',
                  'img_1' => '/YH/main.png',
                  'img_2' => '/YH/videos.png',
-    ]) @endcomponent
-    @component('components.project',
-                ['title' => 'Blog Page',
-                 'desc' => '
-                    This Blog Page was made as a project at the Coding Labs
-                    internship. This project showed me how useful Laravel is
-                    to integrate a database and make relationships,
-                    user authentication and authorisation and implementing all this
-                    in a MVC format.
-                 ',
-                 'technology' => ['Laravel',
-                                  'TailwindCSS',
-                                  'Database Design'],
-                 'link' => 'BlogPage',
-                 'dur' => '2 weeks',
-                 'img_1' => 'BP/home.jpg',
-                 'img_2' => 'BP/post.jpg',
-    ]) @endcomponent
-    @component('components.project',
-                ['title' => 'Aussie Sport Knowledge',
-                 'desc' => '
-                   This was another project from uni and introduced me to web frameworks.
-                   Originally this was an app I made with Xcode back in high-school, which was
-                   actually live for a year or so before it was too expensive to keep up.
-                 ',
-                 'technology' => ['Angular/Ionic',
-                                  'TypeScript'],
-                 'link' => 'Aussie-Sport-Knowledge',
-                 'dur' => '2 months',
-                 'img_1' => 'ASK/menu.png',
-                 'img_2' => 'ASK/game.png'
-    ]) @endcomponent
+        ]) @endcomponent
+        @component('components.project',
+                    ['title' => 'Blog Page',
+                     'desc' => '
+                        This Blog Page was made as a project at the Coding Labs
+                        internship. This project showed me how useful Laravel is
+                        to integrate a database and make relationships,
+                        user authentication and authorisation and implementing all this
+                        in a MVC format.
+                     ',
+                     'technology' => ['Laravel',
+                                      'TailwindCSS',
+                                      'Database Design'],
+                     'link' => 'BlogPage',
+                     'dur' => '2 weeks',
+                     'img_1' => 'BP/home.jpg',
+                     'img_2' => 'BP/post.jpg',
+        ]) @endcomponent
+        @component('components.project',
+                    ['title' => 'Aussie Sport Knowledge',
+                     'desc' => '
+                       This was another project from uni and introduced me to web frameworks.
+                       Originally this was an app I made with Xcode back in high-school, which was
+                       actually live for a year or so before it was too expensive to keep up.
+                     ',
+                     'technology' => ['Angular/Ionic',
+                                      'TypeScript'],
+                     'link' => 'Aussie-Sport-Knowledge',
+                     'dur' => '2 months',
+                     'img_1' => 'ASK/menu.png',
+                     'img_2' => 'ASK/game.png'
+        ]) @endcomponent
     </div>
 </body>
 </html>
