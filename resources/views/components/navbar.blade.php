@@ -17,44 +17,54 @@
                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
             <a href="/home"> Home </a>
         </h1>
-        <h1 class="ml-0.5 text-xl font-bold text-center {{$about}} border-2 p-2.5
+        <h1 class="ml-0.5 text-xl font-bold text-center {{$about}} mn border-2 p-2.5
                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
             <a href="/about"> About </a>
-        <h1/>
-        <h1 class="ml-0.5 text-xl font-bold text-center {{$qualifications}} border-2 p-2.5
+            <h1/>
+            <h1 class="ml-0.5 text-xl font-bold text-center {{$qualifications}} border-2 p-2.5
                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-            <a href="/qualifications"> Qualifications </a>
-        <h1/>
-        <h1 class="ml-0.5 text-xl font-bold text-center {{$projects}} border-2 p-2.5
+                <a href="/qualifications"> Qualifications </a>
+                <h1/>
+                <h1 class="ml-0.5 text-xl font-bold text-center {{$projects}} border-2 p-2.5
                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-            <a href="/projects"> Projects </a>
-        </h1>
-        <h1 class="ml-0.5 text-xl font-bold text-center {{$wil}} border-2 p-2.5
+                    <a href="/projects"> Projects </a>
+                </h1>
+                <h1 class="ml-0.5 text-xl font-bold text-center {{$wil}} border-2 p-2.5
                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-            <a href="/wil"> WIL </a>
-        </h1>
+                    <a href="/wil"> WIL </a>
+                </h1>
     </div>
     <div class="sm:hidden">
         <div class="mx-8">
             <div class="px-4 py-2 rounded float-right" id="menu-btn">
-                <div class="h-2 my-2 w-12 ml-3 bg-black rounded-lg"></div>
-                <div class="h-2 my-2 w-16 bg-black rounded-lg"></div>
-                <div class="h-2 my-2 w-12 ml-3 bg-black rounded-lg"></div>
+                <div class="h-2 my-2 w-12 ml-3 bg-gray-300 opacity-50 rounded-lg"></div>
+                <div class="h-2 my-2 w-16 bg-gray-300 opacity-50 rounded-lg"></div>
+                <div class="h-2 my-2 w-12 ml-3 bg-gray-300 opacity-50 rounded-lg"></div>
             </div>
 
             <div class="bg-white relative border border-black w-full hidden
                         flex-col rounded px-6 py-3 font-medium mt-24
                         text-center" id="dropdown">
-                <a href="/home" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}"> Home </a>
-                <a href="/about" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$about}}"> About </a>
-                <a href="/qualifications" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}"> Qualifications </a>
-                <a href="/projects" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}"> Projects </a>
-                <a href="/wil" class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$wil}}"> WIL </a>
+                <a href="/home"
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
+                    Home </a>
+                <a href="/about"
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$about}}">
+                    About </a>
+                <a href="/qualifications"
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">
+                    Qualifications </a>
+                <a href="/projects"
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}">
+                    Projects </a>
+                <a href="/wil"
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$wil}}">
+                    WIL </a>
             </div>
         </div>
 
         <script>
-            window.addEventListener('DOMContentLoaded', ()=> {
+            window.addEventListener('DOMContentLoaded', () => {
                 const menuBtn = document.querySelector('#menu-btn')
                 const dropdown = document.querySelector('#dropdown')
                 menuBtn.addEventListener('click', () => {
