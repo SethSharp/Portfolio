@@ -13,26 +13,31 @@
                 sm:float-right
                 hidden
                 sm:flex">
-        <h1 class="text-xl font-bold text-center border-2 {{$home}} p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-            <a href="/home"> Home </a>
-        </h1>
-        <h1 class="ml-0.5 text-xl font-bold text-center {{$about}} mn border-2 p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-            <a href="/about"> About </a>
-            <h1/>
-            <h1 class="ml-0.5 text-xl font-bold text-center {{$qualifications}} border-2 p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-                <a href="/qualifications"> Qualifications </a>
-                <h1/>
-                <h1 class="ml-0.5 text-xl font-bold text-center {{$projects}} border-2 p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-                    <a href="/projects"> Projects </a>
-                </h1>
-                <h1 class="ml-0.5 text-xl font-bold text-center {{$wil}} border-2 p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade">
-                    <a href="/wil"> WIL </a>
-                </h1>
+        <a class="text-xl font-bold text-center border-2 {{$home}} p-2.5
+                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+           href="/home">
+            Home
+        </a>
+        <a class="ml-0.5 text-xl font-bold text-center {{$about}} mn border-2 p-2.5
+                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+           href="/about">
+            About
+        </a>
+        <a class="ml-0.5 text-xl font-bold text-center {{$qualifications}} border-2 p-2.5
+                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+           href="/qualifications">
+            Qualifications
+        </a>
+        <a class="ml-0.5 text-xl font-bold text-center {{$projects}} border-2 p-2.5
+                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+           href="/projects">
+            Projects
+        </a>
+        <a class="ml-0.5 text-xl font-bold text-center {{$wil}} border-2 p-2.5
+                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+           href="/WIL">
+            WIL
+        </a>
     </div>
     <div class="sm:hidden">
         <div class="mx-8">
