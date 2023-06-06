@@ -14,94 +14,36 @@
 <div class="h-6"></div>
 <x-title title1="About" title2="Me"></x-title>
 
-<div class="pt-10 items-center flex flex-wrap justify-center w-full h-auto ">
-    
-    <div class="w-3/4 my-4 animate-fade">
-        <div class="w-full bg-red-100">
-            <div class="z-20 border border-black rounded-3xl mt-0.5 float-left ml-3 bg-white relative">
-                <h1 class="p-4 font-medium text-2xl"> Some title </h1>
-            </div>
+<div class="w-full h-full mt-10">
+    <div
+        class="my-10 ml-10 md:w-1/2 bg-gray-50 leading-7 rounded-3xl shadow-xl border-black transition duration-200 ease-in-out hover:-translate-y-1 ">
+        <div class="px-10 py-5 text-lg font-medium text-blue-800">
+            Some random title on the left
         </div>
-        <div class="z-10 relative bg-gray-200 border border-black rounded-3xl mt-8 w-full p-10">
-            Body
+        <div class="px-12 pb-5 text-md">
+            G'day I'm Seth, well besides the typical, 'Hey I study Computer Science and
+            love software', this is me. I'm currently living on the Gold Coast, studying and
+            working part-time at Dominos. As much as I love to study and work, I need my down time,
+            Friday night footy (If i dont get called into work) is always a life saver and
+            playing games with my friends are my favourite ways to chill out after a big week.
         </div>
     </div>
 
-    <x-about-card
-        title="Who am I?"
-        content-1="
-                    G'day I'm Seth, well besides the typical, 'Hey I study Computer Science and
-                    love software', this is me. I'm currently living on the Gold Coast, studying and
-                    working part-time at Dominos. As much as I love to study and work, I need my down time,
-                    Friday night footy  (If i dont get called into work) is always a life saver and
-                    playing games with my friends are my favourite ways to chill out after a big week."
-        content-2="
-                    I have been into technology since high school, where I created my first few apps
-                    with XCode and uploaded a couple. Since then, I have dedicated my school subjects
-                    towards a career in Software Development. Yes, I have looked back when I want to pull my
-                    hair out from the smallest of bugs, but it always changed my mind when I figured it out... finally
-                    and that's why I love it."
-        p-float-dir="float-left ml-3"
-        img-float-dir="float-right mr-3"
-        img-src="forest.png"
-    >
-    </x-about-card>
-    <x-about-card
-        class="js-show-on-scroll"
-        title="My Hobbies"
-        content-1="
-                    With having so much going on with 2 jobs and uni.
-                    There isn't a whole lot of time to have a hobby.
-                    But when I do I love 4WDing and going camping with
-                    my mates. I love doing this as it completely disconnects you from the world and
-                    allows you to fully wind down and clear your mind. A perfect example of this
-                    was a week long Fraser Island trip I did with my friends. Hardly any signal
-                    and nothing but remote camps, great feeds and memories."
-        p-float-dir="float-left ml-3"
-        img-float-dir="float-right mr-3"
-        img-src="car.jpg"
-    ></x-about-card>
+    <div
+        class="absolute right-0 mr-10 md:w-1/2 bg-gray-50 leading-7 rounded-3xl shadow-xl border-black transition duration-200 ease-in-out hover:-translate-y-1 ">
+        <div class="px-10 py-5 text-lg font-medium text-blue-800">
+            Some random title on the right
+        </div>
+        <div class="px-12 pb-5 text-md">
+            G'day I'm Seth, well besides the typical, 'Hey I study Computer Science and
+            love software', this is me. I'm currently living on the Gold Coast, studying and
+            working part-time at Dominos. As much as I love to study and work, I need my down time,
+            Friday night footy (If i dont get called into work) is always a life saver and
+            playing games with my friends are my favourite ways to chill out after a big week.
+        </div>
+    </div>
 
-    <x-about-card
-        class="js-show-on-scroll"
-        title="University Journey"
-        content-1="
-                    The past few years have been quite interesting and to put into a nutshell. I spent 4 weeks
-                    in-person study in 2020 until covid hit and the rest of that year was studying from Griffiths
-                    campus. Second year same story and saved a whole lot of money and studied from home.
-                    Although this may sound bad, I got a good opportunity out of it which was a job at Dominos.
-                    Which benefited me greatly with funding camping adventures and avoiding eating noodles for
-                    breakfast lunch and dinner for this year at uni. I knew I had to come down to the Gold Coast
-                    in this last year to find full-time work and complete the Griffiths WIL internship program.
-                    I had been working towards getting a opportunity in this since before my degree started.
-                "
-        p-float-dir="float-left ml-3"
-        img-float-dir="float-right mr-3"
-
-    ></x-about-card>
-
-
-    <script>
-        const callback = function (entries) {
-            entries.forEach((entry) => {
-                console.log(entry);
-
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("animate-fadeIn");
-                } else {
-                    entry.target.classList.remove("animate-fadeIn");
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(callback);
-
-        const targets = document.querySelectorAll(".js-show-on-scroll");
-        targets.forEach(function (target) {
-            target.classList.add("opacity-0");
-            observer.observe(target);
-        });
-    </script>
 </div>
+
 </body>
 </html>
