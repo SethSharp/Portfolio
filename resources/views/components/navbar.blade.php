@@ -1,8 +1,8 @@
-@props(['home' => 'border-transparent'])
-@props(['about' => 'border-transparent'])
-@props(['qualifications' => 'border-transparent'])
-@props(['projects' => 'border-transparent'])
-@props(['wil' => 'border-transparent'])
+@props(['home' => 'no-underline'])
+@props(['about' => 'no-underline'])
+@props(['qualifications' => 'no-underline'])
+@props(['projects' => 'no-underline'])
+@props(['wil' => 'no-underline'])
 
 <div class="z-30 h-20 mb-4 w-full fixed float-right sm:pr-10">
     <div class="h-4"></div>
@@ -13,29 +13,29 @@
                 sm:float-right
                 hidden
                 sm:flex">
-        <a class="text-xl font-bold text-center border-2 {{$home}} p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+        <a class="my-auto mx-auto text-xl font-bold text-center {{ $home }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/home">
             Home
         </a>
-        <a class="ml-0.5 text-xl font-bold text-center {{$about}} mn border-2 p-2.5
-                   rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+        <a class="my-auto mx-auto text-xl font-bold text-center {{ $about }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/about">
             About
         </a>
-        <a class="ml-0.5 text-xl font-bold text-center {{$qualifications}} border-2 p-2.5
-                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+        <a class="my-auto mx-auto text-xl font-bold text-center {{ $qualifications }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/qualifications">
             Qualifications
         </a>
-        <a class="ml-0.5 text-xl font-bold text-center {{$projects}} border-2 p-2.5
-                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
+        <a class="my-auto mx-auto text-xl font-bold text-center {{ $projects }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/projects">
             Projects
         </a>
-        <a class="ml-0.5 text-xl font-bold text-center {{$wil}} border-2 p-2.5
-                    rounded-3xl hover:bg-black hover:text-white hover:animate-fade"
-           href="/WIL">
+        <a class="my-auto mx-auto text-xl font-bold text-center {{ $wil }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+           href="/wil">
             WIL
         </a>
     </div>
@@ -47,7 +47,7 @@
                 <div class="h-2 my-2 w-12 ml-3 bg-gray-300 opacity-50 rounded-lg"></div>
             </div>
 
-            <div class="bg-white relative border border-black w-full hidden
+            <div class="bg-white relative shadow-2xl w-full hidden
                         flex-col rounded px-6 py-3 font-medium mt-24
                         text-center" id="dropdown">
                 <a href="/home"

@@ -29,7 +29,7 @@
             </div>
 
             <!-- Profile image -->
-            <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-20 relative">
+            <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-20 relative h-1/2">
                 <div class="w-full">
                     <img class="z-20 relative w-auto h-full"
                          src="/images/profileTrans.png"
