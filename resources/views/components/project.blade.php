@@ -26,8 +26,8 @@
                 </div>
                 <div class="custom2:grow">
                     <div class="items-center flex flex-wrap sm:flex justify-center">
-                        <x-image-card image="{{$img_1}}"></x-image-card>
-                        <x-image-card image="{{$img_2}}"></x-image-card>
+                        <x-card.image image="{{$img_1}}"></x-card.image>
+                        <x-card.image image="{{$img_2}}"></x-card.image>
                     </div>
                 </div>
             </div>
