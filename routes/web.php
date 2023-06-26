@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App;
 use App\Http\Controllers\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get("/", function() {
+Route::get("/", function () {
     return view("app");
 });
 
@@ -23,7 +24,7 @@ Route::post("/sendEmail", [ContactController::class, 'sendEmail'])->name("contac
 Route::controller(App::class)->group(function () {
     Route::get('/home', 'home');
     Route::get('/about', 'about');
-    Route::get('/qualifications', 'qualifications');
+    Route::get('/capabilities', 'capabilities');
     Route::get('/projects', 'projects');
     Route::get('/wil', 'wil');
 });

@@ -25,26 +25,21 @@
         </a>
         <a class="my-auto mx-auto text-xl font-bold text-center {{ $qualifications }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
-           href="/qualifications">
-            Qualifications
+           href="/capabilities">
+            Capabilities
         </a>
         <a class="my-auto mx-auto text-xl font-bold text-center {{ $projects }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/projects">
             Projects
         </a>
-        <a class="my-auto mx-auto text-xl font-bold text-center {{ $wil }} underline underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
-           href="/wil">
-            WIL
-        </a>
     </div>
     <div class="sm:hidden">
         <div class="mx-8">
             <div class="px-4 py-2 rounded float-right" id="menu-btn">
-                <div class="h-2 my-2 w-12 ml-3 bg-gray-300 opacity-50 rounded-lg"></div>
-                <div class="h-2 my-2 w-16 bg-gray-300 opacity-50 rounded-lg"></div>
-                <div class="h-2 my-2 w-12 ml-3 bg-gray-300 opacity-50 rounded-lg"></div>
+                <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
+                <div class="h-2 my-2 w-16 bg-gray-400 opacity-50 rounded-lg"></div>
+                <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
             </div>
 
             <div class="bg-white relative shadow-2xl w-full hidden
@@ -52,19 +47,20 @@
                         text-center" id="dropdown">
                 <a href="/home"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
-                    Home </a>
+                    Home
+                </a>
                 <a href="/about"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$about}}">
-                    About </a>
-                <a href="/qualifications"
+                    About
+                </a>
+                <a href="/capabilities"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">
-                    Qualifications </a>
+                    Capabilities
+                </a>
                 <a href="/projects"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}">
-                    Projects </a>
-                <a href="/wil"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$wil}}">
-                    WIL </a>
+                    Projects
+                </a>
             </div>
         </div>
 
