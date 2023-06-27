@@ -52,19 +52,24 @@
                         text-center" id="dropdown">
                 <a href="/home"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
-                    Home </a>
+                    Home
+                </a>
                 <a href="/about"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$about}}">
-                    About </a>
+                    About
+                </a>
                 <a href="/qualifications"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">
-                    Qualifications </a>
+                    Qualifications
+                </a>
                 <a href="/projects"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}">
-                    Projects </a>
+                    Projects
+                </a>
                 <a href="/wil"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$wil}}">
-                    WIL </a>
+                    WIL
+                </a>
             </div>
         </div>
 
