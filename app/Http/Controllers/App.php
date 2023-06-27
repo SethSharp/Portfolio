@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class App extends Controller {
-    public function home() {
+class App extends Controller
+{
+    public function about()
+    {
         return view('app');
     }
-    public function about() {
-        return view('about');
-    }
 
-    public function projects() {
+    public function projects()
+    {
         return view('projects');
     }
 
-    public function qualifications() {
+    public function qualifications()
+    {
         return view('qualifications');
     }
 
-    public function wil() {
+    public function wil()
+    {
         return view('wil');
     }
 }

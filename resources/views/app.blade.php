@@ -46,6 +46,7 @@
             <div class="flex flex-wrap justify-center">
                 <x-card.content-left
                     title="About Me Currently"
+                    src="maheno.png"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
                     process on. Is to become a highly experienced and knowledgeable developer at a company. With this
                     knowledge I want to be able to share that with other new developers like my self (in the future).
@@ -55,6 +56,7 @@
 
                 <x-card.content-right
                     title="About Me Currently"
+                    src="car.jpg"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
                     process on. Is to become a highly experienced and knowledgeable developer at a company. With this
                     knowledge I want to be able to share that with other new developers like my self (in the future).
@@ -73,13 +75,13 @@
                     <a class="pr-4" href="https://github.com/SethSharp">
                         <img class="w-16 h-16 inline-block
                                 transition ease-in-out delay-0
-                                hover:-translate-y-1 hover:scale-75 duration-50
+                                hover:-translate-y-1 duration-50
                                 " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
                     </a>
                     <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
                         <img class="w-11 h-11 inline-block
                                 transition ease-in-out delay-0
-                                hover:-translate-y-1 hover:scale-75 duration-50"
+                                hover:-translate-y-1 duration-50"
                              src="/images/linkedInNew.png" alt="git-hub-link">
                     </a>
                 </div>
