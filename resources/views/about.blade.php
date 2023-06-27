@@ -15,15 +15,6 @@
 <x-title title1="About" title2="Me"></x-title>
 
 <div class="w-full h-full mt-10">
-    <x-card.left-side-about
-        title="Some random title on the left"
-        content="Content left"
-    />
-
-    <x-card.right-side-about
-        title="Some random title on the right"
-        content="Content right"
-    />
 </div>
 
 </body>

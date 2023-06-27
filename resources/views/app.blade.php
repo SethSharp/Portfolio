@@ -4,7 +4,7 @@
     <x-nav-bar home="text-black border-black"></x-nav-bar>
     <div class="w-full">
         <div class="pl-3 sm:pl-4 pt-16
-                    md:pl-14 rel
+                    md:pl-14
                     custom1:flex flex-row">
             <!-- Intro area -->
             <div class="pl-2 pt-32 md:pl-0 sm:pl-14
@@ -37,48 +37,54 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="text-center mt-8 w-full">
-                <h1 class="text-4xl font-bold text-black inline-block pr-2"> About Me </h1>
-                <h1 class="text-4xl font-bold text-amber-400 inline-block"> Currently </h1>
-            </div>
-            <div class="pt-8 flex justify-center">
 
-                <div class="text-center w-3/4 sm:w-3/5 leading-9">
-                    I am a computer science majoring in Software Development. Throughout this degree I have learnt the
-                    basics of Computer Science, from programming, through to hardware and software components of a
-                    computer. Contributing to my degree I have learnt and successfully implemented new data structures,
-                    algorithms as well as design my own data structures and algorithms. On top of this I have learnt
-                    about different software development lifecycles and strategies for building projects, applied in
-                    both single projects and group projects. My current goals is to keep learning and applying what I
-                    have learned from uni into the field. As well as learning and collaborating with experienced
-                    developers. My future career goals, which my experience at Coding labs has influenced my thought
+        <div class="flex justify-center">
+            <hr class="my-10 w-4/5"/>
+        </div>
+
+        <div>
+            <div class="flex flex-wrap justify-center">
+                <x-card.content-left
+                    title="About Me Currently"
+                    content="My future career goals, which my experience at Coding labs has influenced my thought
                     process on. Is to become a highly experienced and knowledgeable developer at a company. With this
                     knowledge I want to be able to share that with other new developers like my self (in the future).
                     Surrounding myself with other experienced developers I found was highly impactful in how I want to
-                    walk down my developer journey.
+                    walk down my developer journey."
+                />
+
+                <x-card.content-right
+                    title="About Me Currently"
+                    content="My future career goals, which my experience at Coding labs has influenced my thought
+                    process on. Is to become a highly experienced and knowledgeable developer at a company. With this
+                    knowledge I want to be able to share that with other new developers like my self (in the future).
+                    Surrounding myself with other experienced developers I found was highly impactful in how I want to
+                    walk down my developer journey."
+                />
+            </div>
+
+            <div>
+                <div class="text-center mt-8 w-full">
+                    <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
+                    <h1 class="text-4xl font-bold text-blue-800 inline-block"> Links </h1>
                 </div>
-            </div>
 
-            <div class="text-center mt-8 w-full">
-                <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
-                <h1 class="text-4xl font-bold text-blue-800 inline-block"> Links </h1>
-            </div>
-
-            <div class="pt-4 pb-5 text-center" id="contact">
-                <a class="pr-4" href="https://github.com/SethSharp">
-                    <img class="w-16 h-16 inline-block
+                <div class="pt-4 pb-5 text-center" id="contact">
+                    <a class="pr-4" href="https://github.com/SethSharp">
+                        <img class="w-16 h-16 inline-block
                                 transition ease-in-out delay-0
                                 hover:-translate-y-1 hover:scale-75 duration-50
                                 " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
-                </a>
-                <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
-                    <img class="w-11 h-11 inline-block
+                    </a>
+                    <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
+                        <img class="w-11 h-11 inline-block
                                 transition ease-in-out delay-0
                                 hover:-translate-y-1 hover:scale-75 duration-50"
-                         src="/images/linkedInNew.png" alt="git-hub-link">
-                </a>
+                             src="/images/linkedInNew.png" alt="git-hub-link">
+                    </a>
+                </div>
             </div>
+
         </div>
     </div>
 @stop
