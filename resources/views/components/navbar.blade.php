@@ -16,7 +16,7 @@
         <a class="my-auto mx-auto text-xl font-bold text-center {{ $home }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/about">
-            Home
+            About
         </a>
         <a class="my-auto mx-auto text-xl font-bold text-center {{ $qualifications }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
@@ -42,7 +42,7 @@
                         text-center" id="dropdown">
                 <a href="/about"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
-                    Home
+                    About
                 </a>
                 <a href="/capabilities"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">
