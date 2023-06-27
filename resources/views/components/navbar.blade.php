@@ -15,13 +15,8 @@
                 sm:flex">
         <a class="my-auto mx-auto text-xl font-bold text-center {{ $home }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
-           href="/home">
-            Home
-        </a>
-        <a class="my-auto mx-auto text-xl font-bold text-center {{ $about }} underline underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
            href="/about">
-            About
+            Home
         </a>
         <a class="my-auto mx-auto text-xl font-bold text-center {{ $qualifications }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
@@ -45,13 +40,9 @@
             <div class="bg-white relative shadow-2xl w-full hidden
                         flex-col rounded px-6 py-3 font-medium mt-24
                         text-center" id="dropdown">
-                <a href="/home"
+                <a href="/about"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
                     Home
-                </a>
-                <a href="/about"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$about}}">
-                    About
                 </a>
                 <a href="/capabilities"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">

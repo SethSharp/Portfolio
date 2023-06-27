@@ -22,7 +22,6 @@ Route::get("/", function () {
 Route::post("/sendEmail", [ContactController::class, 'sendEmail'])->name("contact.email");
 
 Route::controller(App::class)->group(function () {
-    Route::get('/home', 'home');
     Route::get('/about', 'about');
     Route::get('/capabilities', 'capabilities');
     Route::get('/projects', 'projects');

@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 class App extends Controller
 {
-    public function home()
-    {
-        return view('app');
-    }
-
     public function about()
     {
-        return view('about');
+        return view('app');
     }
 
     public function projects()
