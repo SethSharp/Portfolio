@@ -11,123 +11,33 @@
 <x-nav-bar qualifications="text-black border-black"></x-nav-bar>
 <div class="h-6"></div>
 <x-title title1="My" title2="Qualifications"></x-title>
-<div class="items-center flex flex-wrap sm:flex justify-center w-full mt-5 px-12">
-    <div class="h-auto w-auto
-                    sm:m-10 my-5
-                    p-10 pt-4
-                    rounded-3xl
-                    shadow-black shadow-md">
-        <div>
-            <h1 class="text-2xl font-bold text-black"> Skills </h1>
-            <ul class="p-6 list-disc">
-                <li> Full Stack Web Development
-                    <ul class="list-decimal pl-6">
-                        <li class="">
-                            Frameworks
-                            <ul class="list-disc pl-6">
-                                <li> Angular</li>
-                                <li> Laravel</li>
-                                <li> React</li>
-                                <li> Ionic</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Backend technologies
-                            <ul class="list-disc pl-6">
-                                <li> NodeJS</li>
-                                <li> ExpressJS</li>
-                            </ul>
-                        </li>
-                        <li> Design</li>
-                    </ul>
-                </li>
-                <li> Software Development
-                    <ul class="list-disc pl-6">
-                        <li> C/C++</li>
-                        <li> JS</li>
-                        <li> Python</li>
-                        <li> PHP</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="h-auto w-auto
-                    sm:m-10
-                    p-10 pt-4 my-5
-                    rounded-3xl
-                    shadow-black shadow-md">
-        <div>
-            <h1 class="text-2xl font-bold text-black"> Work </h1>
-            <ul class="p-6 list-disc">
-                <li>
-                    <strong> Coding Labs Internship (July-Present) </strong>
-                    <ul class="list-decimal pl-6">
-                        <li> Laravel</li>
-                        <li> Database Design</li>
-                        <li> TailwindCSS</li>
-                        <li> Visual Mock-ups</li>
-                        <li> PHP</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong> Dominos (Feb 2021 - Present)</strong>
-                    <ul class="list-decimal pl-6">
-                        <li> Delivery driver</li>
-                        <li> End of night closes</li>
-                        <li> Ex-Shift runner</li>
-                        <li> Employee of Month September</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong> Red Rooster (June 2016 - June 2020)</strong>
-                    <ul class="list-decimal pl-6">
-                        <li> Both opening and closing shifts</li>
-                        <li> Employee of Quarter 2017</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="h-auto w-auto
-                    sm:m-10 my-5
-                    p-10 pt-4
-                    rounded-3xl
-                    shadow-black shadow-md">
-        <div>
-            <h1 class="text-2xl font-bold text-black"> Education </h1>
-            <ul class="p-6 list-disc">
-                <li>
-                    <strong> Bachelor of Computer Science: 2020-2023</strong>
-                    <ul class="list-decimal pl-6">
-                        <li> General
-                            <ul class="list-decimal pl-6">
-                                <li> Algorithms/Data structures</li>
-                                <li> Complex problem solving</li>
-                                <li> Full-stack development</li>
-                                <li> AI</li>
-                            </ul>
-                        </li>
-                        <li> Favourite/High performing subjects
-                            <ul class="list-decimal pl-6">
-                                <li> Interactive App Development (7)</li>
-                                <li> OOP(6)</li>
-                                <li> Computing and Advanced Algorithms (6)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong> Majoring in Software Development </strong>
-                    <ul class="list-decimal pl-6">
-                        <li> C/C++</li>
-                        <li> Python</li>
-                        <li> JavaScript</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+
+<div class="flex flex-wrap justify-center">
+    <x-card.content-left
+        title="Bachelor of Computer Science"
+        content="Lorem ipsum dolor s it amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc
+        ipsum luctus nunc, nec aliquet nisl nisl nec nisl. Donec auctor, nisl eget aliquam ultricies, nunc ipsum
+        Lorem ipsum dolor s it amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc
+        ipsum luctus nunc, nec aliquet nisl nisl nec nisl. Donec auctor, nisl eget aliquam ultricies, nunc ipsum"
+    />
+
+    <x-card.content-right
+        title="Current Experience in the field"
+        content="Lorem ipsum dolor s it amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc
+        ipsum luctus nunc, nec aliquet nisl nisl nec nisl. Donec auctor, nisl eget aliquam ultricies, nunc ipsum
+        Lorem ipsum dolor s it amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc
+        ipsum luctus nunc, nec aliquet nisl nisl nec nisl. Donec auctor, nisl eget aliquam ultricies, nunc ipsum"
+    />
+
+    <x-card.content-left
+        title="My Specialisation"
+        content="I am currently primarily focusing my attention in the web development"
+    />
+
+    <x-card.content-right
+        title="Future Areas of development"
+        content="Although Web development is my current area of focus, I am always open to other areas of development."
+    />
 </div>
 </body>
 </html>
