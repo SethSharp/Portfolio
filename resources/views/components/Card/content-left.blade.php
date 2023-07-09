@@ -1,4 +1,4 @@
-@props(['title' => 'Temporary Title', 'content' => 'blank', 'src' => 'blank.png'])
+@props(['title' => 'Temporary Title', 'content' => 'blank', 'src' => ''])
 
 <div class="w-3/4 my-10 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
     <div class="w-full md:w-1/2 rounded-r-3xl h-fit">
@@ -9,9 +9,11 @@
             {{ $content }}
         </div>
     </div>
-    <div class="w-full md:w-1/2 md:my-5 md:pl-6 md:p-2">
-        <img src="/images/{{$src}}"
-             class="h-80 w-full object-cover rounded-b-3xl md:rounded-b-none"/>
-    </div>
+    @if($src)
+        <div class="w-full md:w-1/2 md:my-5 md:pl-6 md:p-2">
+            <img src="/images/{{$src}}"
+                 class="h-80 w-full object-cover rounded-b-3xl md:rounded-b-none"/>
+        </div>
+    @endif
 </div>
 
