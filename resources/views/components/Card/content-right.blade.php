@@ -1,4 +1,4 @@
-@props(['title' => 'Temporary Title', 'content' => 'blank', 'src' => 'blank.png'])
+@props(['title' => '', 'content' => '', 'src' => 'blank.png'])
 
 <div class="w-3/4 my-10 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
     <div class="w-full md:w-1/2 md:my-5 md:pl-6 md:p-2">

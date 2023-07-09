@@ -3,11 +3,11 @@
 @section("content")
     <x-nav-bar home="text-black border-black"></x-nav-bar>
     <div class="w-full">
-        <div class="pl-3 sm:pl-4 pt-16
-                    md:pl-14
+        <div class="pl-3 sm:pl-4
+                    md:pl-14 w-3/4 m-auto
                     custom1:flex flex-row">
             <!-- Intro area -->
-            <div class="pl-2 pt-32 md:pl-0 sm:pl-14
+            <div class="pl-2 py-32 md:pl-0 sm:pl-14
                         w-full z-10 relative
                         custom1:w-7/12 custom1:flex custom1:flex-col ">
                 <!-- Intro text -->
@@ -29,10 +29,10 @@
             </div>
 
             <!-- Profile image -->
-            <div class="sm:w-full custom1:w-8/12 w-full custom1:grow z-20 relative h-1/2">
-                <div class="w-full">
-                    <img class="z-20 relative w-auto h-full"
-                         src="/images/profileTrans.png"
+            <div class=" w-full custom1:grow z-20 relative md:mt-24">
+                <div class="w-3/4 h-3/4 m-auto">
+                    <img class="z-20 relative w-auto h-full object-cover"
+                         src="/images/profile.png"
                          alt="profile-picture">
                 </div>
             </div>
@@ -56,7 +56,7 @@
 
                 <x-card.content-right
                     title="About Me Currently"
-                    src="car.jpg"
+                    src="harbour.png"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
                     process on. Is to become a highly experienced and knowledgeable developer at a company. With this
                     knowledge I want to be able to share that with other new developers like my self (in the future).
