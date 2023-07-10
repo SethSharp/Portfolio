@@ -23,7 +23,7 @@ Route::post("/sendEmail", [ContactController::class, 'sendEmail'])->name("contac
 
 Route::controller(App::class)->group(function () {
     Route::get('/about', 'about');
-    Route::get('/qualifications', 'qualifications');
+    Route::get('/capabilities', 'capabilities');
     Route::get('/projects', 'projects');
     Route::get('/wil', 'wil');
 });
