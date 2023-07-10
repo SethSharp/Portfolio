@@ -1,20 +1,19 @@
 @extends("layouts.main")
 
 @section("content")
+
     <x-nav-bar home="text-black border-black"></x-nav-bar>
+
     <div class="w-full">
-        <div class="pl-3 sm:pl-4
-                    md:pl-14 w-3/4 m-auto
-                    custom1:flex flex-row">
+        <div class="flex pt-32
+                    w-3/4 m-auto flex-col md:flex-row">
             <!-- Intro area -->
-            <div class="pl-2 py-32 md:pl-0 sm:pl-14
-                        w-full z-10 relative
-                        custom1:w-7/12 custom1:flex custom1:flex-col ">
+            <div class="w-full z-10 my-16">
                 <!-- Intro text -->
                 <div class="w-full">
-                    <div class=" w-auto lg:float-right pr-12">
+                    <div class="w-auto">
                         <h1 class="text-6xl font-bold"> G'day! </h1>
-                        <div class="">
+                        <div>
                             <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
                             <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5"> Seth
                                 Sharp </h1>
@@ -29,17 +28,14 @@
             </div>
 
             <!-- Profile image -->
-            <div class=" w-full custom1:grow z-20 relative md:mt-24">
-                <div class="w-3/4 h-3/4 m-auto">
-                    <img class="z-20 relative w-auto h-full object-cover"
-                         src="/images/profile.png"
-                         alt="profile-picture">
-                </div>
+            <div class="w-full z-20">
+                <img src="/images/profile.png"
+                     alt="profile-picture">
             </div>
         </div>
 
         <div class="flex justify-center">
-            <hr class="my-10 w-4/5"/>
+            <hr class="my-8 w-4/5"/>
         </div>
 
         <div>

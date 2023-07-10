@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title> Seths Online Portfolio </title>
+    <title> Seth's Online Portfolio </title>
 </head>
 
 <body class="mg-0 pd-0">

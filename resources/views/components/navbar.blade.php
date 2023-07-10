@@ -5,8 +5,8 @@
 @props(['wil' => 'no-underline'])
 
 <div class="z-30 h-20 mb-4 w-full fixed float-right sm:pr-10">
-    <div class="h-4"></div>
-    <div class="justify-items-center
+    <div class="h-full
+                inline-block align-middle
                 -z-10 grid
                 grid-rows-2 grid-cols-2
                 sm:grid-rows-1 sm:grid-flow-col
