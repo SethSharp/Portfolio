@@ -14,9 +14,9 @@ class App extends Controller
         return view('projects');
     }
 
-    public function qualifications()
+    public function capabilities()
     {
-        return view('qualifications');
+        return view('capabilities');
     }
 
     public function wil()
