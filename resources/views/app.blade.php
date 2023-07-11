@@ -6,31 +6,33 @@
 
     <div class="w-full">
         <div class="flex pt-32
-                    w-3/4 m-auto flex-col md:flex-row">
+                    h-3/4 w-3/4 m-auto flex-col md:flex-row">
             <!-- Intro area -->
             <div class="w-full z-10 my-16">
                 <!-- Intro text -->
-                <div class="w-full">
-                    <div class="w-auto">
-                        <h1 class="text-6xl font-bold"> G'day! </h1>
-                        <div>
-                            <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
-                            <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5"> Seth
-                                Sharp </h1>
-                        </div>
+                <div class="w-auto">
+                    <h1 class="text-6xl font-bold"> G'day! </h1>
+                    <div>
+                        <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
+                        <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5">
+                            Seth Sharp
+                        </h1>
+                    </div>
 
-                        <div class="pt-6 sm:pt-14">
-                            <h1 class="text-gray-400 text-2xl"> Developer and outdoor enthusiast... </h1>
-                            <h1 class="text-gray-400 text-2xl"> Weird match, right?</h1>
-                        </div>
+                    <div class="pt-6 sm:pt-14">
+                        <h1 class="text-gray-400 text-2xl"> Developer and outdoor enthusiast... </h1>
+                        <h1 class="text-gray-400 text-2xl"> Weird match, right?</h1>
                     </div>
                 </div>
             </div>
 
             <!-- Profile image -->
-            <div class="w-full z-20">
-                <img src="/images/profile.png"
-                     alt="profile-picture">
+            <div class="w-full z-20 flex justify-center">
+                <img
+                    class="h-full"
+                    src="/images/profile.png"
+                    alt="profile-picture"
+                >
             </div>
         </div>
 
@@ -40,7 +42,7 @@
 
         <div>
             <div class="flex flex-wrap justify-center">
-                <x-card.content-left
+                <x-card.content-right
                     title="About Me Currently"
                     src="maheno.png"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
@@ -50,7 +52,7 @@
                     walk down my developer journey."
                 />
 
-                <x-card.content-right
+                <x-card.content-left
                     title="About Me Currently"
                     src="harbour.png"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
