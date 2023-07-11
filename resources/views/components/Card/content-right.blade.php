@@ -1,4 +1,4 @@
-@props(['title' => '', 'content' => '', 'src' => 'blank.png'])
+@props(['title', 'content', 'src'])
 
 <div class="w-3/4 mb-5 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
     <div class="w-full md:w-1/2 inline-flex items-center">
