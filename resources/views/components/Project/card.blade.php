@@ -8,7 +8,7 @@
                     {{ $title }}
                     <a class="sm:pr-4" href="https://github.com/SethSharp/{{ $link }}">
                         <img class="w-16 h-16 inline-block"
-                             src="/images/github_bgremoval.ai.png"
+                             src="/images/github.png"
                              alt="git-hub-link">
                     </a>
                 </h1>
