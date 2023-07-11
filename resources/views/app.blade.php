@@ -12,7 +12,7 @@
                 <!-- Intro text -->
                 <div class="w-auto">
                     <h1 class="text-6xl font-bold"> G'day! </h1>
-                    <div>
+                    <div class="pt-2">
                         <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
                         <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5">
                             Seth Sharp
@@ -22,6 +22,21 @@
                     <div class="pt-6 sm:pt-14">
                         <h1 class="text-gray-400 text-2xl"> Developer and outdoor enthusiast... </h1>
                         <h1 class="text-gray-400 text-2xl"> Weird match, right?</h1>
+                    </div>
+
+                    <div class="pt-4 pb-5">
+                        <a class="pr-2" href="https://github.com/SethSharp">
+                            <img class="w-16 h-16 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 duration-50
+                                " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
+                        </a>
+                        <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
+                            <img class="w-11 h-11 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 duration-50"
+                                 src="/images/linkedInNew.png" alt="git-hub-link">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -62,29 +77,6 @@
                     walk down my developer journey."
                 />
             </div>
-
-            <div>
-                <div class="text-center mt-8 w-full">
-                    <h1 class="text-4xl font-bold text-black inline-block pr-2"> My </h1>
-                    <h1 class="text-4xl font-bold text-blue-800 inline-block"> Links </h1>
-                </div>
-
-                <div class="pt-4 pb-5 text-center" id="contact">
-                    <a class="pr-4" href="https://github.com/SethSharp">
-                        <img class="w-16 h-16 inline-block
-                                transition ease-in-out delay-0
-                                hover:-translate-y-1 duration-50
-                                " src="/images/github_bgremoval.ai.png" alt="git-hub-link">
-                    </a>
-                    <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
-                        <img class="w-11 h-11 inline-block
-                                transition ease-in-out delay-0
-                                hover:-translate-y-1 duration-50"
-                             src="/images/linkedInNew.png" alt="git-hub-link">
-                    </a>
-                </div>
-            </div>
-
         </div>
     </div>
 @stop
