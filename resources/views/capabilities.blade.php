@@ -9,8 +9,10 @@
 
 <body class="mg-0 pd-0">
 <x-nav-bar qualifications="text-black border-black"></x-nav-bar>
-<div class="h-6"></div>
-<x-title title1="My" title2="Qualifications"></x-title>
+
+<div class="mt-2 pt-1 md:mt-8 md:pt-4">
+    <x-title title1="My" title2="Capabilities"/>
+</div>
 
 <div class="flex flex-wrap justify-center">
 

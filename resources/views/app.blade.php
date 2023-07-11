@@ -5,7 +5,7 @@
     <x-nav-bar home="text-black border-black"></x-nav-bar>
 
     <div class="w-full">
-        <div class="md:flex mt-8 md:pt-24 w-3/4 m-auto">
+        <div class="md:flex mt-2 pt-1 mt-8 md:pt-24 w-3/4 m-auto">
             <!-- Intro area -->
             <div class="w-full md:w-1/2 z-10 my-16 flex flex-col">
                 <!-- Intro text -->
