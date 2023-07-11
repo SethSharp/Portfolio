@@ -5,7 +5,7 @@
     <x-nav-bar home="text-black border-black"></x-nav-bar>
 
     <div class="w-full">
-        <div class="flex pt-32
+        <div class="flex pt-32 h-3/4
                     w-3/4 m-auto flex-col md:flex-row">
             <!-- Intro area -->
             <div class="w-full z-10 my-16">
@@ -29,8 +29,11 @@
 
             <!-- Profile image -->
             <div class="w-full z-20">
-                <img src="/images/profile.png"
-                     alt="profile-picture">
+                <img
+                    class="h-full"
+                    src="/images/profile.png"
+                    alt="profile-picture"
+                >
             </div>
         </div>
 
@@ -40,7 +43,7 @@
 
         <div>
             <div class="flex flex-wrap justify-center">
-                <x-card.content-left
+                <x-card.content-right
                     title="About Me Currently"
                     src="maheno.png"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
@@ -50,7 +53,7 @@
                     walk down my developer journey."
                 />
 
-                <x-card.content-right
+                <x-card.content-left
                     title="About Me Currently"
                     src="harbour.png"
                     content="My future career goals, which my experience at Coding labs has influenced my thought
