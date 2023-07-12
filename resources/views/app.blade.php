@@ -7,7 +7,7 @@
     <div class="w-full">
         <div class="md:flex mt-2 pt-1 mt-8 md:pt-24 w-3/4 m-auto">
             <!-- Intro area -->
-            <div class="w-full md:w-1/2 z-10 my-16 flex flex-col">
+            <div class="w-full md:w-1/2 z-10 flex flex-col">
                 <!-- Intro text -->
                 <div class="w-auto">
                     <h1 class="text-6xl font-bold"> G'day! </h1>
@@ -51,7 +51,6 @@
                 >
             </div>
         </div>
-
 
         <div class="mt-16 md:mt-0">
             <div class="flex flex-wrap justify-center">

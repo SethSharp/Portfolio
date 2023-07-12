@@ -1,6 +1,6 @@
 @props(['title', 'src', 'caption'])
 
-<div class="w-3/4 mb-5 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
+<div class="w-3/4 mb-12 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
     <div class="w-full md:w-1/2 rounded-r-3xl flex flex-col">
         <div class="px-4 md:px-10 py-5 text-lg font-medium text-amber-400">
             {{ $title }}
