@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App;
-use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +17,6 @@ use App\Http\Controllers\ContactController;
 Route::get("/", function () {
     return view("app");
 });
-
-Route::post("/sendEmail", [ContactController::class, 'sendEmail'])->name("contact.email");
 
 Route::controller(App::class)->group(function () {
     Route::get('/about', 'about');
