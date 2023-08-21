@@ -13,6 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
@@ -25,6 +30,12 @@ jobs:
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Generate key
+        run: php artisan key:generate
 
       - name: Set up SSH agent
         run: |
@@ -42,6 +53,6 @@ jobs:
         run: |
           ssh-agent -k
           rm deploy_key
-          
+
       - name: Clear SSH key
         run: rm ~/.ssh/id_rsa
