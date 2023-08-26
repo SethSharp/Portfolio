@@ -43,10 +43,8 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_PUBLIC_IP }} 'cd /var/www/Portfolio && composer install --no-interaction --prefer-dist --optimize-autoloader && php artisan migrate --force && php artisan config:cache && php artisan route:cache'
 
-      - name: Clean up SSH agent
-        run: |
-          ssh-agent -k
-          rm deploy_key
+      - name: Kill existing SSH agent (if any)
+        run: ssh-agent -k
 
       - name: Clear SSH key
         run: rm ~/.ssh/id_rsa
