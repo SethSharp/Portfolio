@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\App;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,15 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", function () {
-    return view("app");
-});
-Route::controller(App::class)->group(function () {
-    Route::get('/about', 'about');
-    Route::get('/capabilities', 'capabilities');
-    Route::get('/projects', 'projects');
-    Route::get('/wil', 'wil');
-});
+Route::get('/', \App\Http\Controllers\Views\ShowHomeController::class)->name('home');
+Route::get('/about', \App\Http\Controllers\Views\ShowHomeController::class)->name('about');
+Route::get('/capabilities', \App\Http\Controllers\Views\ShowCapabiltiesController::class)->name('capabilities');
+Route::get('/projects', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
