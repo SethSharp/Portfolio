@@ -6,10 +6,8 @@ phases:
       php: 8.2  # Use the PHP version you need
       nodejs: 18  # Use the Node.js version you need
     commands:
-      - npm install  # Install Node.js dependencies
   build:
     commands:
-      - cp .env.example .env
   post_build:
     commands:
     # Additional post-build steps such as deploying to AWS Elastic Beanstalk or S3
