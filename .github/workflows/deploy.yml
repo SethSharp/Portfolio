@@ -1,4 +1,4 @@
-name: Deploy to EC
+name: Portfolio Deployment
 
 on:
   push:
@@ -13,35 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.EC2_PUBLIC_IP }} >> ~/.ssh/known_hosts
+      - name: Build ZIP Deployment Package
+        # CP env variables?...
+        run: zip -r deploy.zip ./
 
-      - name: Install PHP and dependencies
-        run: sudo apt-get update && sudo apt-get install php php-mbstring php-xml
-
-      - name: Install Composer dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
-
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
-      - name: Generate key
-        run: php artisan key:generate
-
-      - name: Set up SSH agent
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > deploy_key
-          chmod 600 deploy_key
-          eval "$(ssh-agent -s)"
-          ssh-add deploy_key
-
-      - name: Deploy to EC2
-        run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_PUBLIC_IP }} 'cd /var/www/Portfolio && composer install --no-interaction --prefer-dist --optimize-autoloader && php artisan migrate --force && php artisan config:cache && php artisan route:cache'
-
-      - name: Clear SSH key
-        run: rm ~/.ssh/id_rsa
+      - name: Deploy to Elastic Beanstalk
+        run: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: Laravel
+          environment_name: Portfolio-Github-Action
+          existing_bucket_name: elasticbeanstalk-us-east-1-290427685328
+          region: us-east-1
+          version_label: ${{ github.sha }}
+          deployment_package: deploy.zip
