@@ -13,6 +13,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: zip, sqlite3
+          coverage: none
+
+      - name: Restore caches
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache/files
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Clear Caches
+        run: |
+          php artisan view:clear
+          php artisan cache:clear
+          php artisan route:clear
+          php artisan config:clear
+
       - name: Build ZIP Deployment Package
         # CP env variables?...
         run: zip -r deploy.zip ./
