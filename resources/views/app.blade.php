@@ -54,15 +54,15 @@
 
         <div class="mt-16 md:mt-0">
             <div class="flex flex-wrap justify-center">
-                <x-card.right-content
-                    title="About Me Currently"
-                    src="4wd.png"
-                    caption="4WD track in Ormeau"
-                >
-                    I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs
-                    and working in a sub-team focusing on coding, infrastructure and incident reporting. Mainly focusing
-                    on using our preferred tech stacks to bring the best product we can to our clients.
-                </x-card.right-content>
+                {{--                <x-card.right-content--}}
+                {{--                    title="About Me Currently"--}}
+                {{--                    src="4wd.png"--}}
+                {{--                    caption="4WD track in Ormeau"--}}
+                {{--                >--}}
+                {{--                    I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs--}}
+                {{--                    and working in a sub-team focusing on coding, infrastructure and incident reporting. Mainly focusing--}}
+                {{--                    on using our preferred tech stacks to bring the best product we can to our clients.--}}
+                {{--                </x-card.right-content>--}}
 
                 <x-card.content-left
                     title="Aspirations"
