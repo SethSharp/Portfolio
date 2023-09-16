@@ -54,17 +54,17 @@
 
         <div class="mt-16 md:mt-0">
             <div class="flex flex-wrap justify-center">
-                {{--                <x-card.right-content--}}
-                {{--                    title="About Me Currently"--}}
-                {{--                    src="4wd.png"--}}
-                {{--                    caption="4WD track in Ormeau"--}}
-                {{--                >--}}
-                {{--                    I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs--}}
-                {{--                    and working in a sub-team focusing on coding, infrastructure and incident reporting. Mainly focusing--}}
-                {{--                    on using our preferred tech stacks to bring the best product we can to our clients.--}}
-                {{--                </x-card.right-content>--}}
+                <x-content.right
+                    title="About Me Currently"
+                    src="4wd.png"
+                    caption="4WD track in Ormeau"
+                >
+                    I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs
+                    and working in a sub-team focusing on coding, infrastructure and incident reporting. Mainly focusing
+                    on using our preferred tech stacks to bring the best product we can to our clients.
+                </x-content.right>
 
-                <x-card.content-left
+                <x-content.left
                     title="Aspirations"
                     src="harbour.png"
                     caption="Sydney Trip"
@@ -78,9 +78,9 @@
                     current position at Coding Labs and the journey going through my beginner stages as a developer
                     and hope to become experienced enough to lead other developers and coach/guide others who were in my
                     shoes.
-                </x-card.content-left>
+                </x-content.left>
 
-                <x-card.right-content
+                <x-content.right
                     title="Extra things about me"
                     src="lookout.png"
                     caption="Fraser Island - West Side"
@@ -88,7 +88,7 @@
                     In my spare time I enjoy the outdoors by going 4WDing on bush tracks and beautiful national
                     parks such as Fraser Island. As well camping and staying away from technology for as long as
                     possible.
-                </x-card.right-content>
+                </x-content.right>
             </div>
         </div>
     </div>
