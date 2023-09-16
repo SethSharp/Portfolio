@@ -54,16 +54,15 @@
 
         <div class="mt-16 md:mt-0">
             <div class="flex flex-wrap justify-center">
-                <x-card.content-right
+                <x-card.right-content
                     title="About Me Currently"
                     src="4wd.png"
                     caption="4WD track in Ormeau"
                 >
                     I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs
                     and working in a sub-team focusing on coding, infrastructure and incident reporting. Mainly focusing
-                    on
-                    using our preferred tech stacks to bring the best product we can to our clients.
-                </x-card.content-right>
+                    on using our preferred tech stacks to bring the best product we can to our clients.
+                </x-card.right-content>
 
                 <x-card.content-left
                     title="Aspirations"
@@ -81,15 +80,15 @@
                     shoes.
                 </x-card.content-left>
 
-                <x-card.content-right
+                <x-card.right-content
                     title="Extra things about me"
                     src="lookout.png"
-                    caption="Fraser Isalnd - West Side"
+                    caption="Fraser Island - West Side"
                 >
-                    In my spare time I enjoy the outdoors by going 4wding on bush tracks and beaufitul national
+                    In my spare time I enjoy the outdoors by going 4WDing on bush tracks and beautiful national
                     parks such as Fraser Island. As well camping and staying away from technology for as long as
                     possible.
-                </x-card.content-right>
+                </x-card.right-content>
             </div>
         </div>
     </div>
