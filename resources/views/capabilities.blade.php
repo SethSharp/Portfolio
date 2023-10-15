@@ -14,9 +14,9 @@
     <x-title title1="My" title2="Capabilities"/>
 </div>
 
-<div class="flex flex-wrap justify-center">
+<div class="flex flex-wrap justify-center mt-5">
 
-    <div class="w-3/4 my-10 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
+    <div class="w-3/4 my-10 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
         <div class="w-full rounded-r-3xl h-fit">
             <div class="px-4 md:px-10 py-3 text-lg font-medium text-amber-400">
                 Bachelor of Computer Science
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="w-3/4 my-10 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
+    <div class="w-3/4 my-5 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
         <div class="w-full rounded-r-3xl h-fit">
             <div class="px-4 md:px-10 py-3 text-lg font-medium text-blue-800">
                 Current Experience
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="w-3/4 my-10 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
+    <div class="w-3/4 my-5 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
         <div class="w-full md:w-1/2 rounded-r-3xl h-fit">
             <div class="px-4 md:px-10 py-5 text-lg font-medium text-blue-800">
                 Future Areas of Development
