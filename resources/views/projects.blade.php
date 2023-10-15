@@ -26,65 +26,7 @@
 </div>
 
 <div class="w-full sm:mt-5 sm:py-5 px-10 sm:px-28">
-    <div class="mx-auto shadow rounded-xl overflow-hidden p-4 bg-gray-50">
-        <h1 class="text-3xl font-medium mb-4"> Habit Tracker </h1>
-        <div class="w-full flex md:flex-wrap">
-            <div class="w-full md:w-1/2">
-                <img src="/images/projects/habit-tracker/dashboard.png"
-                     class="object-cover w-full h-80 shadow"/>
-            </div>
-            <div class="w-full md:w-1/2 p-2 leading-loose">
-                <p>
-                    Habit Tracker is a major project of mine focusing on implementing my skills on the VILT stack
-                    and testing new-found knowledge in AWS. This project is something that came from a small idea,
-                    with input from friends into a publicly available app ready for use.
-                </p>
-                <br>
-                <p>
-                    Habit Tracker implements the Laravel Framework, with a simplistic Vue front end paired nicely
-                    with Tailwind CSS with the modern monolith Inertia JS to connect everything together... with that
-                    what is this app all about?
-                </p>
-            </div>
-        </div>
-        <div class="w-full flex md:flex-wrap mt-6">
-            <div class="w-full md:w-1/2 p-2 leading-loose">
-                <p>
-                    Habit Tracker is fairly simple yet powerful, allowing you to track and remind you
-                    of habits or even just general things that occur regularly. You can create habits that
-                    will repeat on a given schedule you give; weekly (One day of each week), Daily (Multiple days of the
-                    week)
-                    or monthly (Once a month occurrence). With that you are given a week view of all your habits to help
-                    focus your concentration, but for a more broad overlook you can use the calendar to view habits for
-                    the month.
-                    Including filtering of the habits based on type and completion status.
-                </p>
-            </div>
-            <div class="w-full md:w-1/2">
-                <img src="/images/projects/habit-tracker/calendar.png"
-                     class="object-cover w-full h-80 shadow"/>
-            </div>
-        </div>
-        <div class="w-full flex md:flex-wrap mt-6">
-            <div class="w-full md:w-1/2">
-                <img src="/images/projects/habit-tracker/habits.png"
-                     class="object-cover w-full h-72 shadow"/>
-            </div>
-            <div class="w-full md:w-1/2 p-2 leading-loose">
-                <div class="py-auto">
-                    After a lot of experimenting and LOTS of research I was able to get a grip on AWS, first
-                    deploying
-                    this
-                    portfolio you are seeing on a EC2 instance, but this was very tedious and manual. So I wanted
-                    something different and
-                    more automated. Which led me onto the Elastic Beanstalk and GitHub Actions. After some
-                    configuration
-                    and research habit Tracker
-                    is fully running on this infrastructure as well as connected to an RDS
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-project.section/>
 
     {{--    <x-project.card--}}
     {{--        title="Time Recorder"--}}
