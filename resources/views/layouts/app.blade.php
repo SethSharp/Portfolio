@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="asset-url" content="{{ config('app.asset_url') }}">
 
+    <meta name="description"
+          content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
+
     <title>{{ config('app.name', 'Seth Sharp Portfolio') }}</title>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
