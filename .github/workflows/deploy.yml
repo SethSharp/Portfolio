@@ -36,10 +36,6 @@ jobs:
         run: |
           npm run build
 
-      - name: Echo URL to .env
-        if: github.ref == 'refs/heads/main'
-        run: echo "APP_URL=Seth-Sharp-Portfolio.ap-southeast-2.elasticbeanstalk.com" >> .env
-
       - name: Build ZIP Deployment Package
         if: github.ref == 'refs/heads/main'
         run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
