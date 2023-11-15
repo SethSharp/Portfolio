@@ -46,7 +46,7 @@
             <div class="w-full md:w-1/2 z-20 flex justify-center">
                 <img
                     class="h-3/4"
-                    src="/images/profile.png"
+                    src="/images/about/sydney.png"
                     alt="profile-picture"
                 >
             </div>
@@ -56,7 +56,7 @@
             <div class="flex flex-wrap justify-center">
                 <x-content.right
                     title="About Me Currently"
-                    src="4wd.png"
+                    src="about/4wd.png"
                     caption="4WD track in Ormeau"
                 >
                     I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs
@@ -66,7 +66,7 @@
 
                 <x-content.left
                     title="Aspirations"
-                    src="harbour.png"
+                    src="about/harbour.png"
                     caption="Sydney Trip"
                 >
                     After some time in the industry and finishing my degree, I have a few aspirations in mind, but one
@@ -82,7 +82,7 @@
 
                 <x-content.right
                     title="Extra things about me"
-                    src="lookout.png"
+                    src="about/lookout.png"
                     caption="Fraser Island - West Side"
                 >
                     In my spare time I enjoy the outdoors by going 4WDing on bush tracks and beautiful national
