@@ -24,12 +24,12 @@
                 </div>
             </div>
             <div class="mt-6">
-                <x-image.card image="/projects/habit-tracker/calendar.png"/>
+                <x-image.card alt="Calendar Image for HB" image="/projects/habit-tracker/calendar.png"/>
             </div>
         </div>
         <div class="sm:w-1/2 mx-auto mt-16 sm:mt-4">
             <div class="mx-6">
-                <x-image.card image="/projects/habit-tracker/dashboard.png"/>
+                <x-image.card alt="Dashboard Image for HB" image="/projects/habit-tracker/dashboard.png"/>
             </div>
             <div class="h-8"></div>
             <div class="mx-auto space-y-4 w-3/4">
@@ -55,12 +55,6 @@
                 configuration and research Habit Tracker is fully running on this infrastructure as well as connected to
                 an RDS
             </div>
-            {{--            <div class="mx-12 mt-2 flex">--}}
-            {{--                <a href="https://github.com/SethSharp/Habit-Tracker">--}}
-            {{--                    <img src="/images/github.png" class="w-20 h-20"/>--}}
-            {{--                </a>--}}
-            {{--                <span class="my-auto font-medium"> Checkout the repository </span>--}}
-            {{--            </div>--}}
         </div>
     </div>
 </div>

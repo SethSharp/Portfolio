@@ -10,9 +10,9 @@
             <div class="w-full md:w-1/2 z-10 flex flex-col">
                 <!-- Intro text -->
                 <div class="w-auto">
-                    <h1 class="text-6xl font-bold"> G'day! </h1>
+                    <h1 class="text-6xl font-bold text-gray-800"> G'day! </h1>
                     <div class="pt-2">
-                        <h1 class="text-6xl font-bold inline-block pr-2"> I'm </h1>
+                        <h1 class="text-6xl font-bold inline-block pr-2 text-gray-800"> I'm </h1>
                         <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5"> Seth Sharp </h1>
                     </div>
 
@@ -27,7 +27,8 @@
                                 class="w-16 h-16 inline-block
                                         transition ease-in-out delay-0
                                         hover:-translate-y-1 duration-50"
-                                src="/images/github.png" alt="git-hub-link"
+                                src="/images/github.png"
+                                alt="GitHub Image"
                             >
                         </a>
                         <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
@@ -35,7 +36,8 @@
                                 class="w-11 h-11 inline-block
                                         transition ease-in-out delay-0
                                         hover:-translate-y-1 duration-50"
-                                src="/images/linkedIn.png" alt="git-hub-link"
+                                src="/images/linkedIn.png"
+                                alt="LinkedIn Image"
                             >
                         </a>
                     </div>
@@ -47,7 +49,7 @@
                 <img
                     class="h-3/4"
                     src="/images/about/sydney.png"
-                    alt="profile-picture"
+                    alt="Main Profile Picture - Infront of the Sydney Opera House"
                 >
             </div>
         </div>
@@ -57,6 +59,7 @@
                 <x-content.right
                     title="About Me Currently"
                     src="about/4wd.png"
+                    alt="4WD track track with car coming down hill."
                     caption="4WD track in Ormeau"
                 >
                     I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs
@@ -67,6 +70,7 @@
                 <x-content.left
                     title="Aspirations"
                     src="about/harbour.png"
+                    alt="Standing under the Sydney Harbour Bridge."
                     caption="Sydney Trip"
                 >
                     After some time in the industry and finishing my degree, I have a few aspirations in mind, but one
@@ -83,6 +87,7 @@
                 <x-content.right
                     title="Extra things about me"
                     src="about/lookout.png"
+                    alt="Fraser Island West Side lookout on top of a massive dune."
                     caption="Fraser Island - West Side"
                 >
                     In my spare time I enjoy the outdoors by going 4WDing on bush tracks and beautiful national
