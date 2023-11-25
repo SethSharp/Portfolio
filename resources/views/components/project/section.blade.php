@@ -1,10 +1,12 @@
-<div class="my-4">
+<div class="my-12">
     <div class="mb-8">
         <span class="text-blue-800 font-medium text-lg"> VILT and AWS </span>
         <h1 class="text-4xl font-medium mt-2"> Habit Tracker </h1>
+        <a class="text-yellow-500" href="http://habittracker-uc-1.eba-ayudv8jf.ap-southeast-2.elasticbeanstalk.com">
+            Visit here! </a>
     </div>
-    <div class="sm:flex">
-        <div class="sm:w-1/2 text-md mt-4 text-gray-500 leading-loose">
+    <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
+        <div>
             <div>
                 Habit Tracker is a major project of mine focusing on implementing my skills on the VILT stack
                 and testing new-found knowledge in AWS. This project is something that came from a small idea,
@@ -27,8 +29,8 @@
                 <x-image.card alt="Calendar Image for HB" image="/projects/habit-tracker/calendar.png"/>
             </div>
         </div>
-        <div class="sm:w-1/2 mx-auto mt-16 sm:mt-4">
-            <div class="mx-6">
+        <div>
+            <div class="mt-6">
                 <x-image.card alt="Dashboard Image for HB" image="/projects/habit-tracker/dashboard.png"/>
             </div>
             <div class="h-8"></div>
@@ -46,7 +48,7 @@
                     <span class="my-auto ml-4 font-semi"> Push to Deploy </span>
                 </div>
             </div>
-            <div class="mx-12 mt-6 text-gray-500 leading-loose">
+            <div class="mt-6">
                 After a lot of experimenting and LOTS of research I was able to get a grip on AWS, first
                 deploying this portfolio you are seeing on a EC2 instance, but this was very tedious and manual. So I
                 wanted
