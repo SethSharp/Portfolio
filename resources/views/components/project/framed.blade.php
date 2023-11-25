@@ -35,13 +35,13 @@
                 </div>
 
             </div>
-            <div class="mt-6 w-3/4 mx-auto">
+            <div class="mt-6 mx-auto">
                 <x-image.card alt="Home Page" image="/projects/framed/contact.png"/>
             </div>
         </div>
 
         <div>
-            <div class="w-3/4 mx-auto mt-6">
+            <div class="mx-auto mt-6">
                 <x-image.card alt="Contact page" image="/projects/framed/home-page.png"/>
             </div>
             <div class="h-8"></div>
