@@ -1,6 +1,7 @@
 @props(['home' => 'no-underline'])
 @props(['about' => 'no-underline'])
 @props(['qualifications' => 'no-underline'])
+@props(['experience' => 'no-underline'])
 @props(['projects' => 'no-underline'])
 @props(['wil' => 'no-underline'])
 
@@ -19,6 +20,11 @@
                href="/about">
                 About
             </a>
+            <a class="my-auto mx-auto text-xl font-bold text-center {{ $experience }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+               href="/experience">
+                Experiences
+            </a>
             <a class="my-auto mx-auto text-xl font-bold text-center {{ $qualifications }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
                href="/capabilities">
@@ -26,8 +32,8 @@
             </a>
             <a class="my-auto mx-auto text-xl font-bold text-center {{ $projects }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
-               href="/projects">
-                Projects
+               href="/portfolio">
+                Portfolio
             </a>
         </div>
     </div>
