@@ -7,8 +7,7 @@
                 'content' => 'Applied to',
                 'target' => 'Coding Labs work placement',
                 'description' => 'This was handled via a partnership with Griffith University in my final trimester of university.',
-                'date' => 'August 2022',
-                'shortHandDate' => 'Aug 22',
+                'date' => 'Aug 22',
                 'icon' => 'BuildingIcon',
                 'iconBackground' => 'bg-gray-50',
            ],
@@ -16,8 +15,7 @@
                 'content' => '3 month placement',
                 'target' => 'learning Laravel, Tailwind and Blade',
                 'description' => 'First off we worked on a internal bootcamp course which took us over the basics of laravel, eloquent and blade. This had us working on a portfolio website which would be used in our work placement program at the Griffith, where we would reflect on our experience here. Toward the end fo the placement we worked on a new internal project which saw us getting thrown into Vue and learning on the spot. Vue would soon become my favourite to work with.',
-                'date' => 'September 2022',
-                'shortHandDate' => 'Sep 22',
+                'date' => 'Sep 22',
                 'icon' => 'PlacementIcon',
                 'iconBackground' => 'bg-gray-50',
            ],
@@ -25,8 +23,7 @@
                 'content' => 'Offered',
                 'target' => 'employment!',
                 'description' => 'Employment was offered on a 2 day basis, which soon become 4 day employment throughout 2023',
-                'date' => 'November 2022',
-                'shortHandDate' => 'Nov 22',
+                'date' => 'Nov 22',
                 'icon' => 'NewsPaperIcon',
                 'iconBackground' => 'bg-gray-50',
            ],
@@ -34,8 +31,7 @@
                 'content' => 'Full time hours & project owner',
                 'target' => 'of a internal project during Q4 2023',
                 'description' => 'This was a big point, where I was moved to 5 days of work and entrusted on a project as its owner for Q4.',
-                'date' => 'October 2023',
-                'shortHandDate' => 'Oct 22',
+                'date' => 'Oct 22',
                 'icon' => 'UserIcon',
                 'iconBackground' => 'bg-gray-50',
            ]
@@ -107,12 +103,8 @@
                                                     <p class="text-sm mt-4 text-gray-500">{{ $event['description'] }}</p>
                                                 @endif
                                             </div>
-                                            <div
-                                                class="hidden sm:flex whitespace-nowrap text-right text-sm text-gray-500">
+                                            <div class="whitespace-nowrap text-right text-sm text-gray-500">
                                                 {{ $event['date'] }}
-                                            </div>
-                                            <div class="sm:hidden whitespace-nowrap text-right text-sm text-gray-500">
-                                                {{ $event['shortHandDate'] }}
                                             </div>
                                         </div>
                                     </div>
