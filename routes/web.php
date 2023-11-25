@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\Views\ShowHomeController::class)->name('home');
 Route::get('/about', \App\Http\Controllers\Views\ShowHomeController::class)->name('about');
+Route::get('/experience', \App\Http\Controllers\Views\ShowExperienceController::class)->name('experience');
 Route::get('/capabilities', \App\Http\Controllers\Views\ShowCapabiltiesController::class)->name('capabilities');
-Route::get('/projects', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
+Route::get('/portfolio', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
 
 require __DIR__ . '/auth.php';
