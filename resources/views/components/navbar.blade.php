@@ -52,13 +52,17 @@
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
                     About
                 </a>
+                <a href="/experience"
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$experience}}">
+                    Experiences
+                </a>
                 <a href="/capabilities"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">
                     Capabilities
                 </a>
-                <a href="/projects"
+                <a href="/portfolio"
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}">
-                    Projects
+                    Portfolio
                 </a>
             </div>
         </div>

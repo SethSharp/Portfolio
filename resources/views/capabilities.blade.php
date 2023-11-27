@@ -26,28 +26,6 @@
         </div>
 
         <div class="w-3/4 my-5 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
-            <div class="w-full rounded-r-3xl h-fit">
-                <div class="px-4 md:px-10 py-3 text-lg font-medium text-blue-800">
-                    Current Experience
-                </div>
-                <div class="px-6 md:px-12 pb-5 leading-loose text-md md:text-md">
-                    My experience first started when I joined <b> <a class="underline"
-                                                                     href="https://codinglabs.com.au/">
-                            Coding Labs </a>
-                    </b>
-                    for a work placement opportunity during the second trimester of the 2023 year. I got introduced to
-                    the Laravel framework as well as the TALL stack. From this I was given an opportunity in <b>
-                        November of
-                        2022 </b> to become a
-                    <b> Graduate Software Developer</b>, which I gratefully accepted. Since then, I have been working on
-                    some
-                    awesome projects and learning heaps of new technology, programming concepts and collaborating in a
-                    team.
-                </div>
-            </div>
-        </div>
-
-        <div class="w-3/4 my-5 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
             <div class="w-full md:w-1/2 rounded-r-3xl h-fit">
                 <div class="px-4 md:px-10 py-5 text-lg font-medium text-blue-800">
                     Future Areas of Development
