@@ -31,7 +31,7 @@
                 'content' => 'Full time hours & project owner',
                 'target' => 'of a internal project during Q4 2023',
                 'description' => 'This was a big point, where I was moved to 5 days of work and entrusted on a project as its owner for Q4.',
-                'date' => 'Oct 22',
+                'date' => 'Oct 23',
                 'icon' => 'UserIcon',
                 'iconBackground' => 'bg-gray-50',
            ]

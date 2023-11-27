@@ -1,6 +1,6 @@
 <div class="my-12">
     <div class="mb-8">
-        <span class="text-blue-800 font-medium text-lg"> Client, AWS and VILT </span>
+        <span class="text-blue-800 font-medium text-lg"> Clientele, AWS, HTTPS/Domain config and VILT </span>
         <h1 class="text-4xl font-medium mt-2"> Framed Just For You </h1>
         <a class="text-yellow-500" href="https://www.framedjustforyou.com.au"> Visit here! </a>
     </div>
@@ -11,12 +11,12 @@
                     "Framed Just For You" marked a significant milestone in my career as it was my first
                     client-developer
                     project. The journey began with the decommissioning of the original site at the end of November
-                    2023.
+                    2023 and appointed the responsibility to create and manage the next one.
                 </div>
 
                 <div class="mt-14">
                     <div>
-                        The process involved a step-by-step approach to conceptualize the vision for the site—a more
+                        The process involved a step-by-step approach to conceptualize the vision for the site — a more
                         modern
                         design that effectively showcased the range of services offered by Framed Just For You.
                         Since
