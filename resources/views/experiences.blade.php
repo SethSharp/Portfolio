@@ -38,7 +38,8 @@
         ];
     @endphp
 
-    <x-nav-bar experience="text-black border-black"></x-nav-bar>
+    <x-nav-bar experience="text-black border-black" />
+
     <div class="w-full">
 
         <div class="mt-2 pt-1 md:mt-8 md:pt-4">
@@ -49,6 +50,7 @@
             <div class="grid lg:grid-cols-2">
                 <div class="leading-loose pr-4">
                     <h1 class="text-2xl font-medium"> Coding Labs</h1>
+
                     <p class="mt-3 text-gray-500">
                         Coding Labs is a Software Development studio based on the Gold Coast, working on bringing the
                         best products to market.
@@ -66,7 +68,8 @@
                         and bring it to commercialisation. This is a massive responsibility and have taken it with pride
                         and am dedicating a lot of time
                         and effort to ensure its success in its business market.
-                    </p>
+                    </p
+                    >
                 </div>
                 <div class="flow-root mt-6 lg:mt-0">
                     <ul role="list" class="-mb-8">
@@ -77,6 +80,7 @@
                                         @if($loop->index !== count($timeline) - 1) class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200"
                                         aria-hidden="true" @endif>
                                     </span>
+
                                     <div class="relative flex space-x-3">
                                         <div>
                                             <span
@@ -92,6 +96,7 @@
                                                 @endif
                                             </span>
                                         </div>
+
                                         <div class="flex min-w-0 flex-1 justify-between sm:space-x-4 pt-1.5">
                                             <div>
                                                 <p class="text-sm text-gray-500">
@@ -103,6 +108,7 @@
                                                     <p class="text-sm mt-4 text-gray-500">{{ $event['description'] }}</p>
                                                 @endif
                                             </div>
+
                                             <div class="whitespace-nowrap text-right text-sm text-gray-500">
                                                 {{ $event['date'] }}
                                             </div>

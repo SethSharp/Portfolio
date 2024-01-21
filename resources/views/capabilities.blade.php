@@ -1,13 +1,12 @@
 @extends("layouts.main")
 @section("content")
-    <x-nav-bar qualifications="text-black border-black"></x-nav-bar>
+    <x-nav-bar qualifications="text-black border-black" />
 
     <div class="mt-2 pt-1 md:mt-8 md:pt-4">
         <x-title title1="My" title2="Capabilities"/>
     </div>
 
     <div class="flex flex-wrap justify-center mt-5">
-
         <div class="w-3/4 my-10 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
             <div class="w-full rounded-r-3xl h-fit">
                 <div class="px-4 md:px-10 py-3 text-lg font-medium text-amber-400">
@@ -30,6 +29,7 @@
                 <div class="px-4 md:px-10 py-5 text-lg font-medium text-blue-800">
                     Future Areas of Development
                 </div>
+
                 <div class="px-6 md:px-12 pb-5 leading-loose text-md md:text-md">
                     Although I currently focus on Web Development I also have passion and a drive
                     to commit myself to other areas, such as; <b> AI</b>, <b> Block Chain Technology </b>
@@ -40,6 +40,7 @@
                 <div class="px-4 md:px-10 py-5 text-lg font-medium text-amber-400">
                     My Specialisation
                 </div>
+
                 <div class="px-6 md:px-12 pb-5 text-md">
                     During my time at <b> Coding Labs </b> I have developed a large skill set in <b> Web
                         Development </b>
