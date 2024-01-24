@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Blogs;
 
-use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use App\Http\Controllers\Controller;
 
 class ShowBlogsController extends Controller
 {
