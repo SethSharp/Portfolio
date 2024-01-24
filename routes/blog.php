@@ -5,6 +5,10 @@ use App\Http\Controllers\ProfileController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
+
+    Route::prefix('blogs')->name('blogs.')->group(function () {
+        Route::get('/', \App\Http\Controllers\Blogs\IndexBlogsController::class)->name('index');
+    });
 });
 
 Route::middleware('auth')->group(function () {
