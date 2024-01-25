@@ -1,15 +1,15 @@
 <?php
 
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/home', \App\Http\Controllers\Dashboard\ShowHomeController::class)->name('home');
+
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', \App\Http\Controllers\Auth\Profile\EditProfileController::class)->name('edit');
+        Route::patch('/', \App\Http\Controllers\Auth\Profile\UpdateProfileController::class)->name('update');
+        Route::delete('/', \App\Http\Controllers\Auth\Profile\DeleteProfileController::class)->name('destroy');
+    });
 });

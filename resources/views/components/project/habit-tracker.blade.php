@@ -31,7 +31,7 @@
         </div>
         <div>
             <div class="mt-6">
-                <x-image.card alt="Dashboard Image for HB" image="/projects/habit-tracker/dashboard.png"/>
+                <x-image.card alt="Home Image for HB" image="/projects/habit-tracker/dashboard.png"/>
             </div>
             <div class="h-8"></div>
             <div class="mx-auto space-y-4 w-3/4">
