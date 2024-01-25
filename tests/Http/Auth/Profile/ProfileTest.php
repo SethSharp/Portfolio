@@ -1,10 +1,9 @@
 <?php
 
-namespace Auth\Profile;
+namespace Tests\Http\Auth\Profile;
 
-use App\Domain\Iam\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Domain\Iam\Models\User;
 
 class ProfileTest extends TestCase
 {
