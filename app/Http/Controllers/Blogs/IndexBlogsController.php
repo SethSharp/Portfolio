@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Blogs;
 
-use App\Domain\Blog\Models\Blog;
 use Inertia\Inertia;
-use App\Http\Controllers\Controller;
 use Inertia\Response;
+use App\Domain\Blog\Models\Blog;
+use App\Http\Controllers\Controller;
 
 class IndexBlogsController extends Controller
 {
