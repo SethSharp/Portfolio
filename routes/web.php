@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use Illuminate\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +20,5 @@ Route::get('/experience', \App\Http\Controllers\Views\ShowExperienceController::
 Route::get('/capabilities', \App\Http\Controllers\Views\ShowCapabiltiesController::class)->name('capabilities');
 Route::get('/portfolio', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/blog.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/blog.php';
