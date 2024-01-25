@@ -7,8 +7,18 @@ jobs:
 
     runs-on: ubuntu-20.04
 
+    env:
+      DB_DATABASE: testing
+      DB_USER: root
+      DB_PASSWORD: root
+
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -26,8 +36,18 @@ jobs:
       - name: Install node dependencies
         run: npm i --force --legacy-peer-deps
 
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Format code
+        run: |
+          echo "running php-cs-fixer..."
+          vendor/bin/php-cs-fixer fix
+
       - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.production', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
       - name: Generate key
         run: php artisan key:generate
@@ -35,6 +55,16 @@ jobs:
       - name: Build frontend
         run: |
           npm run build
+
+      - name: Execute tests
+        env:
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: php artisan test
+
+      - name: Copy production .env
+        if: github.ref == 'refs/heads/main'
+        run: php -r "file_exists('.env') || copy('.env.production.example', '.env');"
 
       - name: Build ZIP Deployment Package
         if: github.ref == 'refs/heads/main'
