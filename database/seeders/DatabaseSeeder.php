@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\User;
+use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
+use App\Domain\Blog\Models\Blog;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -16,10 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@portfolio.test',
             'password' => Hash::make('123456')
+        ]);
+
+        Blog::factory()->create([
+            'author_id' => $admin->id
         ]);
     }
 }

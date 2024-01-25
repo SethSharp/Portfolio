@@ -19,6 +19,7 @@ Route::get('/about', \App\Http\Controllers\Views\ShowHomeController::class)->nam
 Route::get('/experience', \App\Http\Controllers\Views\ShowExperienceController::class)->name('experience');
 Route::get('/capabilities', \App\Http\Controllers\Views\ShowCapabiltiesController::class)->name('capabilities');
 Route::get('/portfolio', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
+Route::get('/blogs', \App\Http\Controllers\Views\ShowBlogsController::class)->name('blogs');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/blog.php';
