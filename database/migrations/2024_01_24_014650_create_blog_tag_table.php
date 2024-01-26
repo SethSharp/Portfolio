@@ -14,8 +14,8 @@ return new class() extends Migration {
     {
         Schema::create('blog_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tag_id');
             $table->foreignId('blog_id');
+            $table->foreignId('tag_id');
             $table->timestamps();
         });
     }

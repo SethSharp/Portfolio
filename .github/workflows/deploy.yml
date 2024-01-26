@@ -62,7 +62,7 @@ jobs:
           DB_PASSWORD: root
         run: php artisan test
 
-      - name: Notfify Slack
+      - name: Notify Slack
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
 

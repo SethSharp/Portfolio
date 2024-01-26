@@ -12,6 +12,7 @@ class Tag extends Model
 
     public function blogs(): BelongsToMany
     {
-        return $this->belongsToMany(Blog::class)->withTimestamps();
+        return $this->belongsToMany(Blog::class, 'blog_tag')
+            ->withTimestamps();
     }
 }

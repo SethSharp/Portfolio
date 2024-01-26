@@ -12,7 +12,7 @@ class IndexBlogsController extends Controller
     public function __invoke(): Response
     {
         return Inertia::render('Dashboard/Blogs/Index', [
-            'blogs' => Blog::all()
+            'blogs' => Blog::with(['tags', 'author'])->get()
         ]);
     }
 }

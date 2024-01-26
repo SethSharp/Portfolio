@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
 use App\Domain\Blog\Models\Blog;
@@ -9,11 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
         $admin = User::factory()->create([
@@ -22,8 +18,18 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        Blog::factory()->create([
+        $blog = Blog::factory()->create([
             'author_id' => $admin->id
         ]);
+
+        $tag1 = Tag::factory()->create([
+            'name' => 'Tutorial'
+        ]);
+
+        $tag2 = Tag::factory()->create([
+            'name' => 'AWS'
+        ]);
+
+        $blog->tags()->syncWithoutDetaching([$tag1->id, $tag2->id]);
     }
 }
