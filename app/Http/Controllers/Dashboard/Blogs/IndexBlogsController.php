@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Blogs;
+namespace App\Http\Controllers\Dashboard\Blogs;
 
-use Inertia\Inertia;
-use Inertia\Response;
 use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class IndexBlogsController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('Blogs/Index', [
+        return Inertia::render('Dashboard/Blogs/Index', [
             'blogs' => Blog::all()
         ]);
     }

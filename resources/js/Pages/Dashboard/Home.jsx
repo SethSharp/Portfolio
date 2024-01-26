@@ -9,7 +9,7 @@ export default function Home({ auth }) {
         >
             <Head title="Home" />
 
-            Logged in
+            This the home page of the blog dashboard. Soon To either be removed or show current activity within the site.
         </AuthenticatedLayout>
     );
 }

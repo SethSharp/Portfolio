@@ -8,6 +8,19 @@ import { Link } from '@inertiajs/react';
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
+    const links = [
+        {
+            name: 'Home',
+            href: route('dashboard.home'),
+            active: route().current('dashboard.home')
+        },
+        {
+            name: 'Blogs',
+            href: route('dashboard.blogs.index'),
+            active: route().current('dashboard.blogs.*')
+        },
+    ]
+
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-white border-b border-gray-100">
@@ -21,9 +34,11 @@ export default function Authenticated({ user, header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('home')} active={route().current('home')}>
-                                    Home
-                                </NavLink>
+                                {links.map((item, index) => (
+                                    <NavLink key={index} href={item.href} active={item.active}>
+                                        {item.name}
+                                    </NavLink>
+                                ))}
                             </div>
                         </div>
 
