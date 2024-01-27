@@ -1,4 +1,4 @@
-name: Prettify Code
+name: Apply Code Fixes
 
 on: [ push ]
 
