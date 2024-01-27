@@ -43,6 +43,9 @@ jobs:
 
       - name: Format code
         run: |
+          echo "running formatting"
+          npm run format
+
           echo "running php-cs-fixer..."
           vendor/bin/php-cs-fixer fix
 
