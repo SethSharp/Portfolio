@@ -41,14 +41,6 @@ jobs:
         with:
           node-version: 16
 
-      - name: Format code
-        run: |
-          echo "running formatting"
-          npm run format
-
-          echo "running php-cs-fixer..."
-          vendor/bin/php-cs-fixer fix
-
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
