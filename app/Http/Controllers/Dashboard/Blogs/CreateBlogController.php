@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
-use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Http\Controllers\Controller;
 
 class CreateBlogController extends Controller
 {
