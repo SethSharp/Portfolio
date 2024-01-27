@@ -8,6 +8,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::prefix('blogs')->name('blogs.')->group(function () {
             Route::get('/', \App\Http\Controllers\Dashboard\Blogs\IndexBlogsController::class)->name('index');
+            Route::get('/create', \App\Http\Controllers\Dashboard\Blogs\CreateBlogController::class)->name('create');
+            Route::get('/{blog}', \App\Http\Controllers\Dashboard\Blogs\ShowBlogController::class)->name('show');
+            Route::get('/{blog}/edit', \App\Http\Controllers\Dashboard\Blogs\EditBlogController::class)->name('edit');
+            Route::post('/store', \App\Http\Controllers\Dashboard\Blogs\StoreBlogController::class)->name('store');
+            Route::put('/{blog/update', \App\Http\Controllers\Dashboard\Blogs\UpdateBlogController::class)->name('update');
         });
     });
 
