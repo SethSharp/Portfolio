@@ -1,19 +1,17 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
-import {Head, useForm} from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
+import { Head, useForm } from "@inertiajs/react";
 
 export default function Index({ auth }) {
-
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
         remember: false,
     });
 
-      return (
+    return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Blog" />
-
-         Creating blog
+            Creating blog
         </AuthenticatedLayout>
-      );
+    );
 }
