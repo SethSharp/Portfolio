@@ -2,17 +2,21 @@
 
 namespace Database\Seeders;
 
+use App\Console\Commands\Bootstrap;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
 use App\Domain\Blog\Models\Blog;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $admin = User::factory()->create([
+        Artisan::call(Bootstrap::class);
+
+        $admin = User::factory()->admin()->create([
             'name' => 'Admin',
             'email' => 'admin@portfolio.test',
             'password' => Hash::make('123456')
@@ -31,5 +35,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $blog->tags()->syncWithoutDetaching([$tag1->id, $tag2->id]);
+
+        User::factory()->author()->create([
+            'name' => 'Admin',
+            'email' => 'admin@portfolio.test',
+            'password' => Hash::make('123456')
+        ]);
     }
 }

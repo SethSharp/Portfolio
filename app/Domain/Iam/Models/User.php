@@ -4,6 +4,7 @@ namespace App\Domain\Iam\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Domain\Blog\Models\Blog;
+use Codinglabs\Roles\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,6 +16,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
+    use HasRoles;
 
     protected $fillable = [
         'name',
@@ -30,6 +32,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_AUTHOR = 'author';
 
     public function blog(): HasMany
     {
