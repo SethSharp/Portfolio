@@ -3,8 +3,8 @@
 namespace App\Domain\Iam\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Domain\Blog\Models\Blog;
 use Codinglabs\Roles\HasRoles;
+use App\Domain\Blog\Models\Blog;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;

@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Console\Commands\Bootstrap;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
 use App\Domain\Blog\Models\Blog;
-use Illuminate\Support\Facades\Artisan;
+use App\Console\Commands\Bootstrap;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
