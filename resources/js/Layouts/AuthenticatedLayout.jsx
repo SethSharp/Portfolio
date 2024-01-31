@@ -4,8 +4,9 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+import Notification from "@/Components/Notification.jsx";
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({ user, header, children, success }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 

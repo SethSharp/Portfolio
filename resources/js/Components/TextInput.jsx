@@ -14,8 +14,8 @@ export default forwardRef(function TextInput(
     }, []);
 
     return (
-        <div className="my-1">
-            <InputLabel value={label} />
+        <div>
+            <InputLabel className="mb-2" value={label} />
 
             <input
                 {...props}
