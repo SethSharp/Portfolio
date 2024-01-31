@@ -18,8 +18,10 @@ return new class() extends Migration {
             $table->boolean('is_draft');
             $table->string('title');
             $table->string('slug');
-            $table->text('content');
-            $table->string('status');
+            $table->string('meta_title');
+            $table->string('meta_description');
+            $table->string('meta_tags');
+            $table->string('content');
             $table->timestamps();
         });
     }

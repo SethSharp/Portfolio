@@ -12,10 +12,6 @@ class Blog extends Model
 {
     use HasFactory;
 
-    const STATUS_DRAFT = 'draft';
-    const STATUS_PUBLISHED = 'published';
-    const STATUS_DELETED = 'deleted';
-
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');

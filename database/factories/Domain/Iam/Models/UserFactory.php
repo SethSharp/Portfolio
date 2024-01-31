@@ -22,7 +22,7 @@ class UserFactory extends Factory
         ];
     }
 
-    public function unverified()
+    public function unverified(): self
     {
         return $this->state(function (array $attributes) {
             return [
@@ -35,7 +35,7 @@ class UserFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
             $user->roles()->attach([
-                Role::whereName(User::ROLE_ADMIN)
+                Role::whereName(User::ROLE_ADMIN)->first()->id
             ]);
         });
     }
@@ -44,7 +44,7 @@ class UserFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
             $user->roles()->attach([
-                Role::whereName(User::ROLE_AUTHOR)
+                Role::whereName(User::ROLE_AUTHOR)->first()->id
             ]);
         });
     }

@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
         $blog->tags()->syncWithoutDetaching([$tag1->id, $tag2->id]);
 
         User::factory()->author()->create([
-            'name' => 'Admin',
-            'email' => 'admin@portfolio.test',
+            'name' => 'Author',
+            'email' => 'author@portfolio.test',
             'password' => Hash::make('123456')
         ]);
     }
