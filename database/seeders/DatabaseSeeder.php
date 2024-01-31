@@ -7,6 +7,7 @@ use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
 use App\Domain\Blog\Models\Blog;
 use App\Console\Commands\Bootstrap;
+use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Artisan;
 
@@ -41,5 +42,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'author@portfolio.test',
             'password' => Hash::make('123456')
         ]);
+
+        $this->command->info('Seeding complete.');
+        $this->command->info(Inspiring::quote());
     }
 }
