@@ -11,7 +11,7 @@ class IndexBlogsController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('Dashboard/Blogs/Index', [
+        return Inertia::render('Blogs/Index', [
             'blogs' => Blog::with(['tags', 'author'])->get()
         ]);
     }

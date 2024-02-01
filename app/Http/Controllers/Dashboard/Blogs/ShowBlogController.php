@@ -11,7 +11,7 @@ class ShowBlogController extends Controller
 {
     public function __invoke(Blog $blog): Response
     {
-        return Inertia::render('Dashboard/Blogs/Show', [
+        return Inertia::render('Blogs/Show', [
             'blog' => $blog
         ]);
     }

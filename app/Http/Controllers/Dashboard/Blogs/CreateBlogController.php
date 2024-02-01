@@ -10,6 +10,6 @@ class CreateBlogController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('Dashboard/Blogs/Create');
+        return Inertia::render('Blogs/Create');
     }
 }
