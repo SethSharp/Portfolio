@@ -1,14 +1,14 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
-import { Head, useForm } from "@inertiajs/react";
+import {Head, useForm} from "@inertiajs/react";
 import TextInput from "@/Components/TextInput.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
-import { Transition } from "@headlessui/react";
+import SelectBox from '@/Components/Form/SelectBox.jsx'
 import Form from "@/Components/Form/Form.jsx";
 import SecondaryButton from "@/Components/SecondaryButton.jsx";
 import ComponentWrapper from "@/Components/Form/ComponentWrapper.jsx";
 
-export default function Index({ auth }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+export default function Index({auth}) {
+    const {data, setData, post, processing, errors, reset} = useForm({
         title: "",
         slug: "",
         meta_title: "",
@@ -22,7 +22,8 @@ export default function Index({ auth }) {
 
         post(route("dashboard.blogs.store"), {
             preserveScroll: true,
-            onSuccess: () => {},
+            onSuccess: () => {
+            },
         });
     };
 
@@ -31,13 +32,14 @@ export default function Index({ auth }) {
 
         post(route("dashboard.blogs.store"), {
             preserveScroll: true,
-            onSuccess: () => {},
+            onSuccess: () => {
+            },
         });
     };
 
     return (
         <AuthenticatedLayout user={auth.user}>
-            <Head title="Blog" />
+            <Head title="Blog"/>
             <div>
                 <form className="w-3/4">
                     <Form>
@@ -69,6 +71,10 @@ export default function Index({ auth }) {
                                         setData("slug", e.target.value)
                                     }
                                 />
+                            </ComponentWrapper>
+
+                            <ComponentWrapper>
+                                <SelectBox label="Select a tag"/>
                             </ComponentWrapper>
 
                             <ComponentWrapper>
