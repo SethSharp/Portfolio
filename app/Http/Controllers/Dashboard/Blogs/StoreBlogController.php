@@ -11,7 +11,6 @@ class StoreBlogController extends Controller
 {
     public function __invoke(StoreBlogRequest $request, StoreBlogAction $storeBlogAction): RedirectResponse
     {
-        dd('storing');
         $blog = $storeBlogAction($request);
 
         $drafted = (bool)$request->input('draft');

@@ -1,3 +1,4 @@
+import axios from "axios";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import { Head, useForm } from "@inertiajs/react";
 import TextInput from "@/Components/TextInput.jsx";
@@ -6,9 +7,10 @@ import SelectBox from "@/Components/Form/SelectBox.jsx";
 import Form from "@/Components/Form/Form.jsx";
 import SecondaryButton from "@/Components/SecondaryButton.jsx";
 import ComponentWrapper from "@/Components/Form/ComponentWrapper.jsx";
+import { useEffect } from "react";
 
-export default function Index({ auth }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+export default function Index({ auth, errors }) {
+    const { data, setData, processing } = useForm({
         title: "",
         slug: "",
         meta_title: "",
@@ -17,22 +19,25 @@ export default function Index({ auth }) {
         content: "",
     });
 
+    useEffect(() => {
+        console.log(errors);
+    }, errors);
+
     const publish = (e) => {
         e.preventDefault();
 
-        post(route("dashboard.blogs.store"), {
-            preserveScroll: true,
-            onSuccess: () => {},
+        axios.post(route("dashboard.blogs.store"), data).catch((err) => {
+            console.log(err.response.data.errors);
         });
     };
 
     const draft = (e) => {
         e.preventDefault();
 
-        post(route("dashboard.blogs.store"), {
-            preserveScroll: true,
-            onSuccess: () => {},
-        });
+        // post(route("dashboard.blogs.store"), {
+        //     preserveScroll: true,
+        //     onSuccess: () => {},
+        // });
     };
 
     return (

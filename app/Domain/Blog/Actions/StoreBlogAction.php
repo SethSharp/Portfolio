@@ -14,7 +14,7 @@ class StoreBlogAction
             'title' => $storeBlogRequest->input('title'),
             'slug' => Str::slug($storeBlogRequest->input('slug')),
             'content' => $storeBlogRequest->input('content'),
-            'is_draft' => $storeBlogRequest->input('draft'),
+            'is_draft' => false
         ]);
     }
 }

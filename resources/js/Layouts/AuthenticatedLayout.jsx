@@ -6,7 +6,13 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import Notification from "@/Components/Notification.jsx";
 
-export default function Authenticated({ user, header, children, success }) {
+export default function Authenticated({
+    user,
+    header,
+    children,
+    errors,
+    test,
+}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
@@ -190,6 +196,7 @@ export default function Authenticated({ user, header, children, success }) {
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                             {children}
+                            {test}
                         </div>
                     </div>
                 </div>
