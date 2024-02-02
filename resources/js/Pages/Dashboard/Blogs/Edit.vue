@@ -1,6 +1,6 @@
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import CreateEditForm from "@/Components/Blogs/CreateEditForm.vue";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import CreateEditForm from '@/Components/Blogs/CreateEditForm.vue'
 
 defineProps({
     blog: {
@@ -8,7 +8,7 @@ defineProps({
         required: false,
         default: {},
     },
-});
+})
 </script>
 
 <template>

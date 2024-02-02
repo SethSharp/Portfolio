@@ -1,39 +1,37 @@
 <script setup>
-import Form from "@/Components/Form/Form.vue";
-import TextInput from "@/Components/Inputs/TextInput.vue";
-import FormElement from "@/Components/Form/FormElement.vue";
-import Checkbox from "@/Components/Inputs/Checkbox.vue";
-import TextArea from "@/Components/Inputs/TextArea.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
-import InputError from "@/Components/Inputs/InputError.vue";
-import { useForm } from "@inertiajs/vue3";
+import Form from '@/Components/Form/Form.vue'
+import TextInput from '@/Components/Inputs/TextInput.vue'
+import FormElement from '@/Components/Form/FormElement.vue'
+import Checkbox from '@/Components/Inputs/Checkbox.vue'
+import TextArea from '@/Components/Inputs/TextArea.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import InputError from '@/Components/Inputs/InputError.vue'
+import { useForm } from '@inertiajs/vue3'
 
 const props = defineProps({
     blog: {
         type: Object,
         default: {},
     },
-});
+})
 
 const form = useForm({
-    title: props.blog?.title ? props.blog.title : "",
-    slug: props.blog?.slug ? props.blog.slug : "",
-    meta_title: props.blog?.meta_title ? props.blog.meta_title : "",
-    meta_description: props.blog?.meta_description
-        ? props.blog.meta_description
-        : "",
-    meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : "",
-    content: props.blog?.content ? props.blog.content : "",
+    title: props.blog?.title ? props.blog.title : '',
+    slug: props.blog?.slug ? props.blog.slug : '',
+    meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
+    meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
+    meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
+    content: props.blog?.content ? props.blog.content : '',
     is_draft: props.blog?.is_draft ? props.blog.is_draft : false,
-});
+})
 
 const submit = () => {
     if (props.blog) {
-        form.put(route("dashboard.blogs.update", props.blog));
+        form.put(route('dashboard.blogs.update', props.blog))
     } else {
-        form.post(route("dashboard.blogs.store"));
+        form.post(route('dashboard.blogs.store'))
     }
-};
+}
 </script>
 
 <template>
@@ -55,10 +53,7 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <TextInput
-                v-model="form.meta_description"
-                label="Meta Description"
-            />
+            <TextInput v-model="form.meta_description" label="Meta Description" />
             <InputError :message="form.errors.meta_description" />
         </FormElement>
 
@@ -73,16 +68,10 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <Checkbox
-                v-model="form.is_draft"
-                :checked="form.is_draft"
-                label="Is Draft"
-            />
+            <Checkbox v-model="form.is_draft" :checked="form.is_draft" label="Is Draft" />
             <InputError :message="form.errors.is_draft" />
         </FormElement>
 
-        <PrimaryButton as="submit" @click.prevent="submit">
-            Publish
-        </PrimaryButton>
+        <PrimaryButton as="submit" @click.prevent="submit"> Publish </PrimaryButton>
     </Form>
 </template>

@@ -1,27 +1,27 @@
 <script setup>
-import { ref } from "vue";
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import Dropdown from "@/Components/Dropdowns/Dropdown.vue";
-import DropdownLink from "@/Components/Dropdowns/DropdownLink.vue";
-import NavLink from "@/Components/Links/NavLink.vue";
-import ResponsiveNavLink from "@/Components/Links/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/vue3";
-import Notifications from "@/Components/Notifications.vue";
+import { ref } from 'vue'
+import ApplicationLogo from '@/Components/ApplicationLogo.vue'
+import Dropdown from '@/Components/Dropdowns/Dropdown.vue'
+import DropdownLink from '@/Components/Dropdowns/DropdownLink.vue'
+import NavLink from '@/Components/Links/NavLink.vue'
+import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
+import { Link } from '@inertiajs/vue3'
+import Notifications from '@/Components/Notifications.vue'
 
-const showingNavigationDropdown = ref(false);
+const showingNavigationDropdown = ref(false)
 
 const links = [
     {
-        name: "Home",
-        href: route("dashboard.home"),
-        active: route().current("dashboard.home"),
+        name: 'Home',
+        href: route('dashboard.home'),
+        active: route().current('dashboard.home'),
     },
     {
-        name: "Blogs",
-        href: route("dashboard.blogs.index"),
-        active: route().current("dashboard.blogs.index"),
+        name: 'Blogs',
+        href: route('dashboard.blogs.index'),
+        active: route().current('dashboard.blogs.index'),
     },
-];
+]
 </script>
 
 <template>
@@ -42,9 +42,7 @@ const links = [
                             </div>
 
                             <!-- Navigation Links -->
-                            <div
-                                class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
-                            >
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
                                     v-for="link in links"
                                     :href="link.href"
@@ -84,9 +82,7 @@ const links = [
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink
-                                            :href="route('profile.edit')"
-                                        >
+                                        <DropdownLink :href="route('profile.edit')">
                                             Profile
                                         </DropdownLink>
                                         <DropdownLink
@@ -104,10 +100,7 @@ const links = [
                         <!-- Hamburger -->
                         <div class="-me-2 flex items-center sm:hidden">
                             <button
-                                @click="
-                                    showingNavigationDropdown =
-                                        !showingNavigationDropdown
-                                "
+                                @click="showingNavigationDropdown = !showingNavigationDropdown"
                                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                             >
                                 <svg
@@ -119,8 +112,7 @@ const links = [
                                     <path
                                         :class="{
                                             hidden: showingNavigationDropdown,
-                                            'inline-flex':
-                                                !showingNavigationDropdown,
+                                            'inline-flex': !showingNavigationDropdown,
                                         }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -130,8 +122,7 @@ const links = [
                                     <path
                                         :class="{
                                             hidden: !showingNavigationDropdown,
-                                            'inline-flex':
-                                                showingNavigationDropdown,
+                                            'inline-flex': showingNavigationDropdown,
                                         }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -176,11 +167,7 @@ const links = [
                             <ResponsiveNavLink :href="route('profile.edit')">
                                 Profile
                             </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                :href="route('logout')"
-                                method="post"
-                                as="button"
-                            >
+                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
                                 Log Out
                             </ResponsiveNavLink>
                         </div>
@@ -202,10 +189,7 @@ const links = [
                 </div>
             </main>
 
-            <Notifications
-                :errors="$page.props.errors"
-                :success="$page.props.success"
-            />
+            <Notifications :errors="$page.props.errors" :success="$page.props.success" />
         </div>
     </div>
 </template>

@@ -1,8 +1,8 @@
 <script setup>
-import { computed } from "vue";
-import InputLabel from "@/Components/Inputs/InputLabel.vue";
+import { computed } from 'vue'
+import InputLabel from '@/Components/Inputs/InputLabel.vue'
 
-const emit = defineEmits(["update:checked"]);
+const emit = defineEmits(['update:checked'])
 
 const props = defineProps({
     checked: {
@@ -14,19 +14,19 @@ const props = defineProps({
     },
     label: {
         type: String,
-        default: "",
+        default: '',
     },
-});
+})
 
 const proxyChecked = computed({
     get() {
-        return props.checked;
+        return props.checked
     },
 
     set(val) {
-        emit("update:checked", val);
+        emit('update:checked', val)
     },
-});
+})
 </script>
 
 <template>

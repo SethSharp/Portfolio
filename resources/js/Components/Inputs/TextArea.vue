@@ -1,28 +1,28 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import InputLabel from "@/Components/Inputs/InputLabel.vue";
+import { onMounted, ref } from 'vue'
+import InputLabel from '@/Components/Inputs/InputLabel.vue'
 
 defineProps({
     label: {
         type: String,
-        default: "",
+        default: '',
     },
-});
+})
 
 const model = defineModel({
     type: String,
     required: true,
-});
+})
 
-const input = ref(null);
+const input = ref(null)
 
 onMounted(() => {
-    if (input.value.hasAttribute("autofocus")) {
-        input.value.focus();
+    if (input.value.hasAttribute('autofocus')) {
+        input.value.focus()
     }
-});
+})
 
-defineExpose({ focus: () => input.value.focus() });
+defineExpose({ focus: () => input.value.focus() })
 </script>
 
 <template>
