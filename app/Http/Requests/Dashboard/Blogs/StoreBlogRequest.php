@@ -10,8 +10,7 @@ class StoreBlogRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
-        //        return auth()->user()->can('create', Blog::class);
+        return $this->user()->can('store', Blog::class);
     }
 
     public function rules(): array
