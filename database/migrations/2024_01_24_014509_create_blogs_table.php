@@ -18,11 +18,12 @@ return new class() extends Migration {
             $table->boolean('is_draft');
             $table->string('title');
             $table->string('slug');
-            $table->string('meta_title');
-            $table->string('meta_description');
-            $table->string('meta_tags');
+            $table->string('meta_title')->default('');
+            $table->string('meta_description')->default('');
+            $table->string('meta_tags')->default('');
             $table->string('content');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 };

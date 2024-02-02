@@ -6,8 +6,22 @@ import DropdownLink from "@/Components/Dropdowns/DropdownLink.vue";
 import NavLink from "@/Components/Links/NavLink.vue";
 import ResponsiveNavLink from "@/Components/Links/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/vue3";
+import Notifications from "@/Components/Notifications.vue";
 
 const showingNavigationDropdown = ref(false);
+
+const links = [
+    {
+        name: "Home",
+        href: route("dashboard.home"),
+        active: route().current("dashboard.home"),
+    },
+    {
+        name: "Blogs",
+        href: route("dashboard.blogs.index"),
+        active: route().current("dashboard.blogs.index"),
+    },
+];
 </script>
 
 <template>
@@ -32,10 +46,11 @@ const showingNavigationDropdown = ref(false);
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                             >
                                 <NavLink
-                                    :href="route('dashboard.home')"
-                                    :active="route().current('dashboard.home')"
+                                    v-for="link in links"
+                                    :href="link.href"
+                                    :active="link.active"
                                 >
-                                    Dashboard
+                                    {{ link.name }}
                                 </NavLink>
                             </div>
                         </div>
@@ -182,8 +197,15 @@ const showingNavigationDropdown = ref(false);
 
             <!-- Page Content -->
             <main>
-                <slot />
+                <div class="bg-white rounded-xl m-6 p-12">
+                    <slot />
+                </div>
             </main>
+
+            <Notifications
+                :errors="$page.props.errors"
+                :success="$page.props.success"
+            />
         </div>
     </div>
 </template>

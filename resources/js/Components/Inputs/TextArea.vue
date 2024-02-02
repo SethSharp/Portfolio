@@ -29,7 +29,7 @@ defineExpose({ focus: () => input.value.focus() });
     <div>
         <InputLabel :value="label" />
 
-        <input
+        <textarea
             type="text"
             class="w-full focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
             v-model="model"

@@ -13,8 +13,8 @@ class StoreBlogController extends Controller
     {
         $blog = $storeBlogAction($request);
 
-        $drafted = (bool)$request->input('draft');
+        $drafted = (bool)$request->input('is_draft');
 
-        return redirect()->back()->with('success', $blog . ' has successfully been ' . $drafted ? 'drafted' : 'published' . '!');
+        return redirect()->back()->with('success', $blog->title . ' successfully ' . ($drafted ? 'drafted' : 'published'));
     }
 }
