@@ -9,12 +9,14 @@ use App\Http\Requests\Dashboard\Blogs\StoreBlogRequest;
 
 class StoreBlogController extends Controller
 {
-    public function __invoke(StoreBlogRequest $request, StoreBlogAction $storeBlogAction): RedirectResponse
+    public function __invoke(StoreBlogRequest $storeBlogRequest, StoreBlogAction $storeBlogAction): RedirectResponse
     {
-        $blog = $storeBlogAction($request);
+        $blog = $storeBlogAction($storeBlogRequest);
 
-        $drafted = (bool)$request->input('is_draft');
+        $drafted = (bool)$storeBlogRequest->input('is_draft');
 
-        return redirect()->back()->with('success', $blog->title . ' successfully ' . ($drafted ? 'drafted' : 'published'));
+        return redirect()
+            ->route('dashboard.blogs.index')
+            ->with('success', $blog->title . ' successfully ' . ($drafted ? 'drafted' : 'published'));
     }
 }

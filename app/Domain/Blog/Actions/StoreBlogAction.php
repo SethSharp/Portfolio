@@ -8,7 +8,7 @@ use App\Http\Requests\Dashboard\Blogs\StoreBlogRequest;
 
 class StoreBlogAction
 {
-    public function __invoke(StoreBlogRequest $storeBlogRequest, bool $isDraft = false): Blog
+    public function __invoke(StoreBlogRequest $storeBlogRequest): Blog
     {
         $storeBlogRequest['slug'] = Str::slug($storeBlogRequest->input('slug'));
 

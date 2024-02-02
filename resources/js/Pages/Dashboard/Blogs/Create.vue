@@ -1,78 +1,11 @@
 <script setup>
-import Form from "@/Components/Form/Form.vue";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { useForm } from "@inertiajs/vue3";
-import TextInput from "@/Components/Inputs/TextInput.vue";
-import FormElement from "@/Components/Form/FormElement.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
-import TextArea from "@/Components/Inputs/TextArea.vue";
-import InputError from "@/Components/Inputs/InputError.vue";
-import Checkbox from "@/Components/Inputs/Checkbox.vue";
-
-const form = useForm({
-    title: "",
-    slug: "",
-    meta_title: "",
-    meta_description: "",
-    meta_tags: "",
-    content: "",
-    is_draft: false,
-});
-
-const submit = () => {
-    form.post(route("dashboard.blogs.store"));
-};
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import CreateEditForm from "@/Components/Blogs/CreateEditForm.vue";
 </script>
 
 <template>
     <AuthenticatedLayout>
-        <Form>
-            <FormElement>
-                <TextInput v-model="form.title" autofocus label="Title" />
-
-                <InputError :message="form.errors.title" />
-            </FormElement>
-
-            <FormElement>
-                <TextInput v-model="form.slug" label="Slug" />
-                <InputError :message="form.errors.slug" />
-            </FormElement>
-
-            <FormElement>
-                <TextInput v-model="form.meta_title" label="Meta Title" />
-                <InputError :message="form.errors.meta_title" />
-            </FormElement>
-
-            <FormElement>
-                <TextInput
-                    v-model="form.meta_description"
-                    label="Meta Description"
-                />
-                <InputError :message="form.errors.meta_description" />
-            </FormElement>
-
-            <FormElement>
-                <TextInput v-model="form.meta_tags" label="Meta Tags" />
-                <InputError :message="form.errors.meta_tags" />
-            </FormElement>
-
-            <FormElement>
-                <TextArea v-model="form.content" label="Content" />
-                <InputError :message="form.errors.content" />
-            </FormElement>
-
-            <FormElement>
-                <Checkbox
-                    v-model="form.is_draft"
-                    :checked="form.is_draft"
-                    label="Is Draft"
-                />
-                <InputError :message="form.errors.is_draft" />
-            </FormElement>
-
-            <PrimaryButton as="submit" @click.prevent="submit">
-                Publish
-            </PrimaryButton>
-        </Form>
+        <CreateEditForm />
     </AuthenticatedLayout>
 </template>
