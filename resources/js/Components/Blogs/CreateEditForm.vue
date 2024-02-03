@@ -72,6 +72,6 @@ const submit = () => {
             <InputError :message="form.errors.is_draft" />
         </FormElement>
 
-        <PrimaryButton as="submit" @click.prevent="submit"> Publish </PrimaryButton>
+        <PrimaryButton as="submit" @click.prevent="submit"> Publish</PrimaryButton>
     </Form>
 </template>

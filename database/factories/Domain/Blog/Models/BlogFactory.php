@@ -24,7 +24,7 @@ class BlogFactory extends Factory
             'meta_title' => fake()->text(20),
             'meta_description' => fake()->text(100),
             'meta_tags' => fake()->text(10),
-            'content' => fake()->text(),
+            'content' => fake()->text(400),
         ];
     }
 }

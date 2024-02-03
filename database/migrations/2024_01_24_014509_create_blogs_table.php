@@ -21,7 +21,7 @@ return new class() extends Migration {
             $table->string('meta_title')->default('');
             $table->string('meta_description')->default('');
             $table->string('meta_tags')->default('');
-            $table->string('content');
+            $table->text('content');
             $table->timestamps();
             $table->softDeletes();
         });
