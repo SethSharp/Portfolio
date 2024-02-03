@@ -1,1 +1,8 @@
-<?php
+@extends("layouts.main")
+
+@section('partOne', 'Blog')
+@section('partTwo', $blog->title)
+
+@section("content")
+    {{ $blog->content }}
+@endsection

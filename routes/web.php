@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Views\Blogs\IndexBlogsController;
+use App\Http\Controllers\Views\Blogs\ShowBlogController;
 use App\Http\Controllers\Views\ShowCapabiltiesController;
 use App\Http\Controllers\Views\ShowExperienceController;
 use App\Http\Controllers\Views\ShowHomeController;
@@ -27,6 +28,7 @@ Route::get('/portfolio', ShowProjectsController::class)->name('projects');
 
 Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', IndexBlogsController::class)->name('index');
+    Route::get('/{blog:slug}', ShowBlogController::class)->name('show');
 });
 
 require __DIR__ . '/auth.php';
