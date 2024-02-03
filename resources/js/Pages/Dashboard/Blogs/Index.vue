@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-    <AuthenticatedLayout>
+    <AuthenticatedLayout title="Blogs">
         <div class="flex justify-end">
             <Link
                 class="bg-primary-500 rounded-xl p-2 text-white font-medium"

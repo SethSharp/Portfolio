@@ -39,7 +39,6 @@ const form = useForm({
 })
 
 const submit = () => {
-    console.log(form)
     if (props.blog) {
         form.put(route('dashboard.blogs.update', props.blog))
     } else {

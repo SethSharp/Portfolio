@@ -16,16 +16,7 @@ return new class() extends Migration {
             $table->id();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('tags');
     }
 };

@@ -5,8 +5,15 @@ import Dropdown from '@/Components/Dropdowns/Dropdown.vue'
 import DropdownLink from '@/Components/Dropdowns/DropdownLink.vue'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
-import { Link } from '@inertiajs/vue3'
+import { Head, Link } from '@inertiajs/vue3'
 import Notifications from '@/Components/Notifications.vue'
+
+defineProps({
+    title: {
+        type: String,
+        default: '',
+    },
+})
 
 const showingNavigationDropdown = ref(false)
 
@@ -21,10 +28,17 @@ const links = [
         href: route('dashboard.blogs.index'),
         active: route().current('dashboard.blogs.*'),
     },
+    {
+        name: 'Tags',
+        href: route('dashboard.tags.index'),
+        active: route().current('dashboard.tags.*'),
+    },
 ]
 </script>
 
 <template>
+    <Head :title="title" />
+
     <div>
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
