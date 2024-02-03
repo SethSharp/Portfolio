@@ -25,4 +25,9 @@ class BlogPolicy
     {
         return $blog->author_id === $user->id;
     }
+
+    public function view(User $user): bool
+    {
+        return $user->hasRole(User::ROLE_AUTHOR);
+    }
 }

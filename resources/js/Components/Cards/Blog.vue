@@ -21,7 +21,7 @@ defineProps({
         </div>
 
         <div
-            class="absolute inset-0 flex w-full h-full bg-black bg-opacity-50 opacity-0 transition group-hover:opacity-100"
+            class="absolute inset-0 flex w-full h-full bg-black bg-opacity-25 opacity-0 transition group-hover:opacity-100"
         >
             <div class="w-full h-full flex-wrap gap-y-2">
                 <div class="text-center bg-white hover:bg-gray-100 transition p-4 m-4 rounded-lg">

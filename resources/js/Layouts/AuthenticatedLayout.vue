@@ -19,7 +19,7 @@ const links = [
     {
         name: 'Blogs',
         href: route('dashboard.blogs.index'),
-        active: route().current('dashboard.blogs.index'),
+        active: route().current('dashboard.blogs.*'),
     },
 ]
 </script>
