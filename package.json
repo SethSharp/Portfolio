@@ -25,6 +25,10 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
+        "@tiptap/extension-bubble-menu": "^2.2.1",
+        "@tiptap/pm": "^2.2.1",
+        "@tiptap/starter-kit": "^2.2.1",
+        "@tiptap/vue-3": "^2.2.1",
         "clean-install": "^1.0.0"
     }
 }

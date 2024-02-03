@@ -8,6 +8,8 @@ import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import Editor from '@/Components/Editor/Editor.vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps({
     blog: {
@@ -27,6 +29,8 @@ const tagOptions = props.tags.map((tag) => {
     }
 })
 
+const content = ref(props.blog?.content ? props.blog.content : 'This is default')
+
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
@@ -34,11 +38,12 @@ const form = useForm({
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
     meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
-    content: props.blog?.content ? props.blog.content : '',
+    content: content.value,
     is_draft: props.blog?.is_draft ? props.blog.is_draft : false,
 })
 
 const submit = () => {
+    console.log(form.content)
     if (props.blog) {
         form.put(route('dashboard.blogs.update', props.blog))
     } else {
@@ -80,7 +85,7 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <TextArea v-model="form.content" label="Content" />
+            <Editor v-model="content" />
             <InputError :message="form.errors.content" />
         </FormElement>
 
