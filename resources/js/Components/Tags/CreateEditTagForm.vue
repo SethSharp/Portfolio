@@ -59,15 +59,15 @@ const restoreTag = () => {
         </FormElement>
 
         <div class="gap-x-2 flex">
-            <DangerButton v-if="tag && !tag.deleted_at" @click.prevent="removeTag">
-                Delete</DangerButton
-            >
+            <DangerButton v-if="tag && !tag?.deleted_at" @click.prevent="removeTag">
+                Delete
+            </DangerButton>
 
-            <PrimaryButton v-if="tag.deleted_at" @click.prevent="restoreTag">
+            <PrimaryButton v-if="tag?.deleted_at" @click.prevent="restoreTag">
                 Restore
             </PrimaryButton>
 
-            <PrimaryButton v-if="!tag.deleted_at" @click.prevent="submit"> Save</PrimaryButton>
+            <PrimaryButton v-if="!tag?.deleted_at" @click.prevent="submit"> Save</PrimaryButton>
         </div>
     </Form>
 </template>

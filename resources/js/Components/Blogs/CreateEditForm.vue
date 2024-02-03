@@ -30,7 +30,7 @@ const tagOptions = props.tags.map((tag) => {
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
-    tags: [],
+    tags: props.blog?.tags ? props.blog.tags : [],
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
     meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
@@ -89,6 +89,8 @@ const submit = () => {
             <InputError :message="form.errors.is_draft" />
         </FormElement>
 
-        <PrimaryButton as="submit" @click.prevent="submit"> Publish</PrimaryButton>
+        <PrimaryButton as="submit" @click.prevent="submit">
+            {{ blog ? 'Update' : 'Save' }}
+        </PrimaryButton>
     </Form>
 </template>

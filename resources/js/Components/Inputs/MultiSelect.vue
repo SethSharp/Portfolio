@@ -5,6 +5,10 @@ import { ChevronUpDownIcon, CheckIcon } from '@heroicons/vue/16/solid/index.js'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 
 const props = defineProps({
+    modelValue: {
+        type: Array,
+        default: null,
+    },
     options: {
         type: Array,
         required: true,
@@ -17,7 +21,7 @@ const props = defineProps({
 
 const emits = defineEmits(['update:modelValue'])
 
-const selectedOptions = ref([])
+const selectedOptions = ref(props.modelValue ? props.modelValue : [])
 
 watch(selectedOptions, (newVal) => {
     if (newVal) {
