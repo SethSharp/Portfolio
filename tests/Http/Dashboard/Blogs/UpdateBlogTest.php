@@ -7,12 +7,25 @@ use App\Domain\Iam\Models\User;
 use Tests\TestCase;
 use function Symfony\Component\Translation\t;
 
-class StoreBlogTest extends TestCase
+class UpdateBlogTest extends TestCase
 {
+    protected Blog $blog;
+    protected User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->author()->create();
+        $this->blog = Blog::factory()->create([
+            'author_id' => $this->user->id
+        ]);
+    }
+
     /** @test */
     public function must_be_authenticated()
     {
-        $this->postJson(route('dashboard.blogs.store'))
+        $this->putJson(route('dashboard.blogs.update', $this->blog))
             ->assertStatus(401);
     }
 
@@ -20,7 +33,15 @@ class StoreBlogTest extends TestCase
     public function must_have_author_role()
     {
         $this->actingAs(User::factory()->create())
-            ->postJson(route('dashboard.blogs.store'))
+            ->putJson(route('dashboard.blogs.update', $this->blog))
+            ->assertForbidden();
+    }
+
+    /** @test */
+    public function must_be_the_author()
+    {
+        $this->actingAs(User::factory()->author()->create())
+            ->putJson(route('dashboard.blogs.update', $this->blog))
             ->assertForbidden();
     }
 
@@ -28,7 +49,7 @@ class StoreBlogTest extends TestCase
     public function fields_are_required()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.blogs.store'))
+            ->putJson(route('dashboard.blogs.update', $this->blog))
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
@@ -42,7 +63,7 @@ class StoreBlogTest extends TestCase
     public function fields_must_be_a_string()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.blogs.store'), [
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 1234,
                 'slug' => 1234,
                 'content' => 1234,
@@ -64,7 +85,7 @@ class StoreBlogTest extends TestCase
         ]);
 
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.blogs.store'), [
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'slug' => 'some-slug',
                 'content' => 'test'
@@ -77,10 +98,23 @@ class StoreBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_store_as_author()
+    public function unique_fields_ignore_current_blog()
     {
-        $this->actingAs($user = User::factory()->author()->create())
-            ->postJson(route('dashboard.blogs.store'), [
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => $this->blog->title,
+                'slug' => $this->blog->slug,
+                'content' => 'new content',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+    }
+
+    /** @test */
+    public function can_update_as_owner()
+    {
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'slug' => 'some-slug',
                 'meta_title' => 'some title',
@@ -92,7 +126,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'author_id' => $user->id,
+            'author_id' => $this->user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'some title',
@@ -103,10 +137,10 @@ class StoreBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_store_as_admin()
+    public function can_update_as_admin()
     {
         $this->actingAs($user = User::factory()->admin()->create())
-            ->postJson(route('dashboard.blogs.store'), [
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'slug' => 'some-slug',
                 'meta_title' => 'some title',
@@ -118,7 +152,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'author_id' => $user->id,
+            'author_id' => $this->user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'some title',
@@ -129,10 +163,10 @@ class StoreBlogTest extends TestCase
     }
 
     /** @test */
-    public function if_is_draft_is_provided_blog_is_stored_as_draft()
+    public function if_is_draft_is_provided_blog_is_updated_as_draft()
     {
-        $this->actingAs($user = User::factory()->author()->create())
-            ->postJson(route('dashboard.blogs.store'), [
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'slug' => 'some-slug',
                 'meta_title' => 'some title',
@@ -144,7 +178,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'author_id' => $user->id,
+            'author_id' => $this->user->id,
             'is_draft' => 1,
             'title' => 'Some Title',
             'slug' => 'some-slug',

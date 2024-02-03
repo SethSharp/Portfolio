@@ -1,8 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import Blog from '@/Components/Cards/Blog.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 defineProps({
     blogs: Array,

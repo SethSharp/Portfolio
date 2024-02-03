@@ -10,7 +10,7 @@ class UpdateBlogRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('update', Blog::class);
+        return $this->user()->can('update', [Blog::class, $this->route('blog')]);
     }
 
     public function rules(): array
