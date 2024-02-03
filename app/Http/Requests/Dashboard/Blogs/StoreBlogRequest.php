@@ -26,13 +26,21 @@ class StoreBlogRequest extends FormRequest
                 'string',
                 Rule::unique(Blog::class, 'slug'),
             ],
+            'tags' => [
+                'required',
+                'array',
+                'exclude',
+            ],
             'meta_title' => [
+                'nullable',
                 'string',
             ],
             'meta_tags' => [
+                'nullable',
                 'string',
             ],
             'meta_description' => [
+                'nullable',
                 'string',
             ],
             'content' => [

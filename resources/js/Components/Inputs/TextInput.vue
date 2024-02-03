@@ -35,7 +35,7 @@ defineExpose({ focus: () => input.value.focus() })
 
         <input
             :type="type"
-            class="w-full focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+            class="w-full !border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
             v-model="model"
             ref="input"
         />

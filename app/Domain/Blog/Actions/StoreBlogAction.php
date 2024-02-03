@@ -12,9 +12,15 @@ class StoreBlogAction
     {
         $storeBlogRequest['slug'] = Str::slug($storeBlogRequest->input('slug'));
 
-        return Blog::create([
+        $tags = collect($storeBlogRequest->input('tags'))->pluck('id');
+
+        $blog = Blog::create([
             'author_id' => auth()->user()->id,
             ...$storeBlogRequest->validated(),
         ]);
+
+        $blog->tags()->sync($tags);
+
+        return $blog;
     }
 }

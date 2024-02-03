@@ -12,9 +12,13 @@ class UpdateBlogAction
     {
         $updateBlogRequest['slug'] = Str::slug($updateBlogRequest->input('slug'));
 
+        $tags = collect($updateBlogRequest->input('tags'))->pluck('id');
+
         $blog->update([
             ...$updateBlogRequest->validated(),
         ]);
+
+        $blog->tags()->sync($tags);
 
         return $blog;
     }

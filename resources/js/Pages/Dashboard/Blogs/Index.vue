@@ -19,7 +19,7 @@ defineProps({
             </Link>
         </div>
 
-        <div class="grid grid-cols-5 gap-y-4 gap-x-4 mt-6">
+        <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6">
             <Blog v-for="blog in blogs" :blog="blog" />
         </div>
     </AuthenticatedLayout>
