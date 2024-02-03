@@ -2,10 +2,9 @@
 
 namespace App\Domain\Blog\Actions;
 
-use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
-use App\Http\Requests\Dashboard\Blogs\StoreBlogRequest;
+use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 
 class UpdateBlogAction
 {

@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\Auth\Profile\DeleteProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\ShowHomeController;
 use App\Http\Controllers\Auth\Profile\EditProfileController;
-use App\Http\Controllers\Auth\Profile\UpdateProfileController;
-use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
 use App\Http\Controllers\Dashboard\Blogs\EditBlogController;
-use App\Http\Controllers\Dashboard\Blogs\IndexBlogsController;
 use App\Http\Controllers\Dashboard\Blogs\ShowBlogController;
 use App\Http\Controllers\Dashboard\Blogs\StoreBlogController;
+use App\Http\Controllers\Auth\Profile\DeleteProfileController;
+use App\Http\Controllers\Auth\Profile\UpdateProfileController;
+use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
+use App\Http\Controllers\Dashboard\Blogs\IndexBlogsController;
 use App\Http\Controllers\Dashboard\Blogs\UpdateBlogController;
-use App\Http\Controllers\Dashboard\ShowHomeController;
-use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {

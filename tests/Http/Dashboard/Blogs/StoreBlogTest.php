@@ -2,10 +2,9 @@
 
 namespace Dashboard\Blogs;
 
-use App\Domain\Blog\Models\Blog;
-use App\Domain\Iam\Models\User;
 use Tests\TestCase;
-use function Symfony\Component\Translation\t;
+use App\Domain\Iam\Models\User;
+use App\Domain\Blog\Models\Blog;
 
 class StoreBlogTest extends TestCase
 {
