@@ -4,7 +4,6 @@ namespace Dashboard\Blogs;
 
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
 
 class IndexBlogsTest extends TestCase
 {
