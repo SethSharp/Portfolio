@@ -1,7 +1,7 @@
 <script setup>
 import StarterKit from '@tiptap/starter-kit'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
-import { ref, watch } from 'vue'
+import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
 
 const props = defineProps({
     modelValue: {
@@ -21,5 +21,9 @@ const editor = useEditor({
 </script>
 
 <template>
-    <EditorContent :editor="editor" />
+    <div class="border shadow rounded-2xl border-gray-200 p-3">
+        <BubbleMenu :editor="editor" />
+
+        <EditorContent :editor="editor" />
+    </div>
 </template>
