@@ -37,6 +37,18 @@ const removeTag = () => {
         onSuccess: () => emits('close'),
     })
 }
+
+const restoreTag = () => {
+    router.put(
+        route('dashboard.tags.restore'),
+        {
+            tag_id: props.tag,
+        },
+        {
+            onSuccess: () => emits('close'),
+        }
+    )
+}
 </script>
 
 <template>
@@ -47,8 +59,15 @@ const removeTag = () => {
         </FormElement>
 
         <div class="gap-x-2 flex">
-            <DangerButton v-if="tag" @click.prevent="removeTag"> Delete</DangerButton>
-            <PrimaryButton @click.prevent="submit"> Save</PrimaryButton>
+            <DangerButton v-if="tag && !tag.deleted_at" @click.prevent="removeTag">
+                Delete</DangerButton
+            >
+
+            <PrimaryButton v-if="tag.deleted_at" @click.prevent="restoreTag">
+                Restore
+            </PrimaryButton>
+
+            <PrimaryButton v-if="!tag.deleted_at" @click.prevent="submit"> Save</PrimaryButton>
         </div>
     </Form>
 </template>

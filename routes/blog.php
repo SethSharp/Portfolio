@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\Tags\IndexTagsController;
 use App\Http\Controllers\Dashboard\Tags\UpdateTagController;
 use App\Http\Controllers\Dashboard\Blogs\StoreBlogController;
 use App\Http\Controllers\Dashboard\Tags\DestroyTagController;
+use App\Http\Controllers\Dashboard\Tags\RestoreTagController;
 use App\Http\Controllers\Auth\Profile\DeleteProfileController;
 use App\Http\Controllers\Auth\Profile\UpdateProfileController;
 use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/store', StoreTagController::class)->name('store');
             Route::put('/{tag}/update', UpdateTagController::class)->name('update');
             Route::delete('/{tag}/destroy', DestroyTagController::class)->name('destroy');
+            Route::put('/restore', RestoreTagController::class)->name('restore');
         });
     });
 

@@ -14,7 +14,7 @@ class IndexTagsController extends Controller
         $this->authorize('view', Tag::class);
 
         return Inertia::render('Dashboard/Tags/Index', [
-            'tags' => Tag::all()
+            'tags' => Tag::withTrashed()->get()
         ]);
     }
 }

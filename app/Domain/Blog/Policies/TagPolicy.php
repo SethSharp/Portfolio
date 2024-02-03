@@ -20,6 +20,11 @@ class TagPolicy
         return $user->hasRole(User::ROLE_ADMIN);
     }
 
+    public function restore(User $user): bool
+    {
+        return $user->hasRole(User::ROLE_AUTHOR);
+    }
+
     public function store(User $user): bool
     {
         return $user->hasRole(User::ROLE_AUTHOR);
