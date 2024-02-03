@@ -29,7 +29,7 @@ defineProps({
             <BubbleButton
                 @click="editor.chain().focus().toggleStrike().run()"
                 :class="{ 'bg-gray-300': editor.isActive('strike') }"
-                class="line-through rounded-r-xl"
+                class="line-through"
             >
                 strike
             </BubbleButton>

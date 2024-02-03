@@ -43,13 +43,16 @@ const form = useForm({
 })
 
 const submit = () => {
-    console.log(form.content)
     if (props.blog) {
         form.put(route('dashboard.blogs.update', props.blog))
     } else {
         form.post(route('dashboard.blogs.store'))
     }
 }
+
+watch(content, (newValue) => {
+    console.log(newValue)
+})
 </script>
 
 <template>
