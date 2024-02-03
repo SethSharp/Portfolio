@@ -23,7 +23,7 @@ const editor = useEditor({
     extensions: [StarterKit, Document, OrderedList, ListItem, Paragraph, Text],
     editorProps: {
         attributes: {
-            class: 'prose dark:prose-invert bg-red-50 p-6 prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
+            class: 'prose dark:prose-invert border-2 border-gray-200 rounded-lg p-6 prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
         },
     },
     onUpdate: () => {
@@ -35,8 +35,6 @@ const editor = useEditor({
 <template>
     <div>
         <BubbleMenu :editor="editor" />
-
-        <ComponentMenu :editor="editor" />
 
         <div class="border-gray-400">
             <EditorContent :editor="editor" />

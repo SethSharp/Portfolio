@@ -9,7 +9,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import Editor from '@/Components/Editor/Editor.vue'
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 const props = defineProps({
     blog: {
@@ -29,7 +29,7 @@ const tagOptions = props.tags.map((tag) => {
     }
 })
 
-const content = ref(props.blog?.content ? props.blog.content : 'This is default')
+const content = ref('')
 
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
@@ -38,7 +38,7 @@ const form = useForm({
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
     meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
-    content: content.value,
+    content: props.blog?.content ? props.blog.content : '',
     is_draft: props.blog?.is_draft ? props.blog.is_draft : false,
 })
 
@@ -50,9 +50,17 @@ const submit = () => {
     }
 }
 
-watch(content, (newValue) => {
-    console.log(newValue)
-})
+// watch(content, (newValue) => {
+//     console.log(newValue)
+//     console.log(content.value)
+// })
+//
+// onMounted(() => {
+//     if (props.blog) {
+//         content.value = props.blog.content
+//         form.content = content.value
+//     }
+// })
 </script>
 
 <template>
@@ -88,7 +96,7 @@ watch(content, (newValue) => {
         </FormElement>
 
         <FormElement>
-            <Editor v-model="content" />
+            <Editor v-model="form.content" />
             <InputError :message="form.errors.content" />
         </FormElement>
 

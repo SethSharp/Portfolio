@@ -15,8 +15,10 @@ defineProps({
         <div class="p-4 h-full">
             <Link :href="route('dashboard.blogs.edit', blog)">
                 <h1 class="font-bold text-xl">{{ blog.title }}</h1>
+
                 <h1 class="font-bold text-md">{{ blog.author.name }}</h1>
-                <p>{{ blog.content.substr(0, 150) + '...' }}</p>
+
+                <div v-html="blog.content.substr(0, 150)" />
             </Link>
         </div>
 
@@ -34,10 +36,7 @@ defineProps({
                 </div>
 
                 <div class="text-center bg-white hover:bg-gray-100 transition p-4 m-4 rounded-lg">
-                    <Link
-                        :href="route('dashboard.blogs.edit', blog)"
-                        class="text-center w-full !bg-red-50"
-                    >
+                    <Link :href="route('blogs.show', blog)" class="text-center w-full !bg-red-50">
                         <EyeIcon class="w-6 h-6 mx-auto" />
                     </Link>
                 </div>

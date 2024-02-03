@@ -32,12 +32,15 @@ class UpdateBlogRequest extends FormRequest
                 'exclude'
             ],
             'meta_title' => [
+                'nullable',
                 'string',
             ],
             'meta_tags' => [
+                'nullable',
                 'string',
             ],
             'meta_description' => [
+                'nullable',
                 'string',
             ],
             'content' => [
