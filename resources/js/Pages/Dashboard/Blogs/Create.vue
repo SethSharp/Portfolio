@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-    <AuthenticatedLayout>
+    <AuthenticatedLayout title="Create Blog">
         <CreateEditForm :tags="tags" />
     </AuthenticatedLayout>
 </template>

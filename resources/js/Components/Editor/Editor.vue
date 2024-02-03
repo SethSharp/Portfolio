@@ -6,9 +6,10 @@ import ListItem from '@tiptap/extension-list-item'
 import Document from '@tiptap/extension-document'
 import { Paragraph } from '@tiptap/extension-paragraph'
 import OrderedList from '@tiptap/extension-ordered-list'
-
-import ComponentMenu from '@/Components/Editor/ComponentMenu.vue'
 import { Text } from '@tiptap/extension-text'
+import { Underline } from '@tiptap/extension-underline'
+import Link from '@tiptap/extension-link'
+import { TextAlign } from '@tiptap/extension-text-align'
 
 const props = defineProps({
     modelValue: {
@@ -20,10 +21,28 @@ const emits = defineEmits(['update:modelValue'])
 
 const editor = useEditor({
     content: props.modelValue,
-    extensions: [StarterKit, Document, OrderedList, ListItem, Paragraph, Text],
+    extensions: [
+        StarterKit,
+        Document,
+        OrderedList,
+        ListItem,
+        Paragraph.configure({
+            HTMLAttributes: {
+                class: 'h-6 bg-red-50',
+            },
+        }),
+        Text,
+        Underline,
+        Link.configure({
+            openOnClick: false,
+        }),
+        TextAlign.configure({
+            types: ['heading', 'paragraph'],
+        }),
+    ],
     editorProps: {
         attributes: {
-            class: 'prose dark:prose-invert border-2 border-gray-200 rounded-lg p-6 prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
+            class: 'prose dark:prose-invert border-2 border-gray-200 rounded-lg p-6 prose-sm sm:prose-base lg:prose-lg xl:prose-2xl focus:outline-none',
         },
     },
     onUpdate: () => {

@@ -49,18 +49,6 @@ const submit = () => {
         form.post(route('dashboard.blogs.store'))
     }
 }
-
-// watch(content, (newValue) => {
-//     console.log(newValue)
-//     console.log(content.value)
-// })
-//
-// onMounted(() => {
-//     if (props.blog) {
-//         content.value = props.blog.content
-//         form.content = content.value
-//     }
-// })
 </script>
 
 <template>
