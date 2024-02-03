@@ -1,11 +1,9 @@
 @extends("layouts.main")
+
+@section('partOne', 'My')
+@section('partTwo', 'Capabilities')
+
 @section("content")
-    <x-nav-bar qualifications="text-black border-black" />
-
-    <div class="mt-2 pt-1 md:mt-8 md:pt-4">
-        <x-title title1="My" title2="Capabilities"/>
-    </div>
-
     <div class="flex flex-wrap justify-center mt-5">
         <div class="w-3/4 my-10 py-8 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
             <div class="w-full rounded-r-3xl h-fit">

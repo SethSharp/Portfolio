@@ -1,6 +1,9 @@
 @extends("layouts.main")
-@section("content")
 
+@section('partOne', 'My')
+@section('partTwo', 'Experiences')
+
+@section("content")
     @php
         $timeline = [
             [
@@ -38,15 +41,8 @@
         ];
     @endphp
 
-    <x-nav-bar experience="text-black border-black" />
-
-    <div class="w-full">
-
-        <div class="mt-2 pt-1 md:mt-8 md:pt-4">
-            <x-title title1="My" title2="Experiences"/>
-        </div>
-
-        <div class="md:flex mt-2 pt-1 mt-8 md:pt-24 w-3/4 m-auto">
+    <div>
+        <div class="mt-4">
             <div class="grid lg:grid-cols-2">
                 <div class="leading-loose pr-4">
                     <h1 class="text-2xl font-medium"> Coding Labs</h1>
