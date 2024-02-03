@@ -18,9 +18,9 @@ return new class() extends Migration {
             $table->boolean('is_draft');
             $table->string('title');
             $table->string('slug');
-            $table->string('meta_title')->default('');
-            $table->string('meta_description')->default('');
-            $table->string('meta_tags')->default('');
+            $table->string('meta_title')->nullable()->default('');
+            $table->string('meta_description')->nullable()->default('');
+            $table->string('meta_tags')->nullable()->default('');
             $table->text('content');
             $table->timestamps();
             $table->softDeletes();

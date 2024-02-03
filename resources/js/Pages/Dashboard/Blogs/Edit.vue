@@ -8,11 +8,16 @@ defineProps({
         required: false,
         default: {},
     },
+    tags: {
+        type: Array,
+        required: true,
+        default: [],
+    },
 })
 </script>
 
 <template>
     <AuthenticatedLayout>
-        <CreateEditForm :blog="blog" />
+        <CreateEditForm :blog="blog" :tags="tags" />
     </AuthenticatedLayout>
 </template>
