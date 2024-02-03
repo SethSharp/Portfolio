@@ -18,10 +18,13 @@ class BlogFactory extends Factory
 
         return [
             'author_id' => User::factory()->create()->id,
+            'is_draft' => false,
             'title' => $name,
             'slug' => $slug,
-            'content' => fake()->text(),
-            'status' => Blog::STATUS_DRAFT
+            'meta_title' => fake()->text(20),
+            'meta_description' => fake()->text(100),
+            'meta_tags' => fake()->text(10),
+            'content' => fake()->text(400),
         ];
     }
 }

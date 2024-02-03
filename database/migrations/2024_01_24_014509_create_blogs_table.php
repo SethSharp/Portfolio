@@ -15,11 +15,15 @@ return new class() extends Migration {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('author_id');
+            $table->boolean('is_draft');
             $table->string('title');
             $table->string('slug');
+            $table->string('meta_title')->default('');
+            $table->string('meta_description')->default('');
+            $table->string('meta_tags')->default('');
             $table->text('content');
-            $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 };
