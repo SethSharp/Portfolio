@@ -1,5 +1,3 @@
-@extends("layouts.main")
-
 @section('partOne', 'Blog')
 @section('partTwo', $blog->title)
 

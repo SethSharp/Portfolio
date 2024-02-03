@@ -5,9 +5,12 @@
     <title> Seth Sharp - Online Portfolio </title>
     <meta name="description"
           content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
+
+    @livewireStyles
 </head>
 
 <body class="mg-0 pd-0">
+@livewireScripts
 <main>
     <x-nav-bar/>
 
