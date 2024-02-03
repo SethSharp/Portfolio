@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Views\Blogs\IndexBlogsController;
+use App\Http\Controllers\Views\ShowCapabiltiesController;
+use App\Http\Controllers\Views\ShowExperienceController;
+use App\Http\Controllers\Views\ShowHomeController;
+use App\Http\Controllers\Views\ShowProjectsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 
@@ -14,12 +19,15 @@ use Illuminate\Foundation\Application;
 |
 */
 
-Route::get('/', \App\Http\Controllers\Views\ShowHomeController::class)->name('home');
-Route::get('/about', \App\Http\Controllers\Views\ShowHomeController::class)->name('about');
-Route::get('/experience', \App\Http\Controllers\Views\ShowExperienceController::class)->name('experience');
-Route::get('/capabilities', \App\Http\Controllers\Views\ShowCapabiltiesController::class)->name('capabilities');
-Route::get('/portfolio', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
-Route::get('/blogs', \App\Http\Controllers\Views\ShowBlogsController::class)->name('blogs');
+Route::get('/', ShowHomeController::class)->name('home');
+Route::get('/about', ShowHomeController::class)->name('about');
+Route::get('/experience', ShowExperienceController::class)->name('experience');
+Route::get('/capabilities', ShowCapabiltiesController::class)->name('capabilities');
+Route::get('/portfolio', ShowProjectsController::class)->name('projects');
+
+Route::prefix('blogs')->name('blogs.')->group(function () {
+    Route::get('/', IndexBlogsController::class)->name('index');
+});
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/blog.php';

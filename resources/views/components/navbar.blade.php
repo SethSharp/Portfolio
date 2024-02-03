@@ -5,7 +5,7 @@
 @props(['projects' => 'no-underline'])
 @props(['wil' => 'no-underline'])
 
-<div class="z-30 h-20 mb-4 w-full fixed float-right sm:pr-10">
+<div class="z-30 h-20 mb-4 w-full float-right sm:pr-10">
     <div class="h-full
                 inline-block align-middle
                 -z-10 grid
@@ -14,7 +14,7 @@
                 sm:float-right
                 hidden
                 sm:flex">
-        <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2">
+        <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2 my-auto">
             <a class="my-auto mx-auto text-xl font-bold text-center {{ $home }} underline underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
                href="/about">
@@ -34,6 +34,11 @@
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
                href="/portfolio">
                 Portfolio
+            </a>
+            <a class="my-auto mx-auto text-xl font-bold text-center {{ $projects }} underline underline-offset-4 p-2.5
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+               href="/blogs">
+                Blogs
             </a>
         </div>
     </div>
