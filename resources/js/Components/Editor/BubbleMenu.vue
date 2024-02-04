@@ -1,12 +1,13 @@
 <script setup>
 import { BubbleMenu } from '@tiptap/vue-3'
-import BubbleButton from '@/Components/Editor/Other/BubbleButton.vue'
+import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
 import {
     Bars3BottomLeftIcon,
     Bars3BottomRightIcon,
     Bars3Icon,
     Bars3CenterLeftIcon,
     Bars4Icon,
+    CodeBracketIcon,
 } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
@@ -32,91 +33,117 @@ const setLink = () => {
 </script>
 
 <template>
-    <BubbleMenu v-if="editor" :editor="editor">
-        <div class="rounded-xl w-fit">
-            <BubbleButton
-                @click="editor.chain().focus().toggleBold().run()"
-                :active="editor.isActive('bold')"
-                class="font-bold rounded-l-xl"
-            >
-                bold
-            </BubbleButton>
-
-            <BubbleButton
-                @click="editor.chain().focus().toggleItalic().run()"
-                :active="editor.isActive('italic')"
-                class="italic"
-            >
-                italic
-            </BubbleButton>
-
-            <BubbleButton
-                @click="editor.chain().focus().toggleUnderline().run()"
-                :active="editor.isActive('underline')"
-                class="underline"
-            >
-                U
-            </BubbleButton>
-
-            <BubbleButton
-                v-if="!editor.isActive('link')"
-                @click="setLink"
-                :active="editor.isActive('link')"
-                class="underline"
-            >
-                Link
-            </BubbleButton>
-
-            <BubbleButton
-                v-if="editor.isActive('link')"
-                @click="editor.chain().focus().unsetLink().run()"
-                :active="editor.isActive('link')"
-                class="underline"
-            >
-                Unlink
-            </BubbleButton>
-
-            <BubbleButton>
-                <button
-                    @click="editor.chain().focus().setTextAlign('left').run()"
-                    :active="editor.isActive({ textAlign: 'left' })"
+    <div class="w-full bg-red-50">
+        <BubbleMenu v-if="editor" :editor="editor">
+            <div class="isolate inline-flex rounded-md shadow-sm">
+                <BubbleButton
+                    @click="editor.chain().focus().toggleBold().run()"
+                    :active="editor.isActive('bold')"
+                    class="font-bold rounded-l-xl"
                 >
-                    <Bars3BottomLeftIcon class="w-4 h-4" />
-                </button>
-            </BubbleButton>
+                    bold
+                </BubbleButton>
 
-            <BubbleButton
-                @click="editor.chain().focus().setTextAlign('center').run()"
-                :active="editor.isActive({ textAlign: 'center' })"
-            >
-                <Bars3Icon class="w-4 h-4" />
-            </BubbleButton>
+                <BubbleButton
+                    @click="editor.chain().focus().toggleItalic().run()"
+                    :active="editor.isActive('italic')"
+                    class="italic"
+                >
+                    italic
+                </BubbleButton>
 
-            <BubbleButton
-                @click="editor.chain().focus().setTextAlign('right').run()"
-                :active="editor.isActive({ textAlign: 'right' })"
-            >
-                <Bars3BottomRightIcon class="w-4 h-4" />
-            </BubbleButton>
+                <BubbleButton
+                    @click="editor.chain().focus().toggleUnderline().run()"
+                    :active="editor.isActive('underline')"
+                    class="underline"
+                >
+                    Unerline
+                </BubbleButton>
 
-            <BubbleButton
-                @click="editor.chain().focus().setTextAlign('justify').run()"
-                :active="editor.isActive({ textAlign: 'justify' })"
-            >
-                <Bars3CenterLeftIcon class="w-4 h-4" />
-            </BubbleButton>
+                <BubbleButton
+                    v-if="!editor.isActive('link')"
+                    @click="
+                        !editor.isActive('link')
+                            ? setLink()
+                            : editor.chain().focus().unsetLink().run()
+                    "
+                    :active="editor.isActive('link')"
+                    class="underline"
+                >
+                    Link
+                </BubbleButton>
 
-            <BubbleButton @click="editor.chain().focus().unsetTextAlign().run()">
-                <Bars4Icon class="w-4 h-4" />
-            </BubbleButton>
+                <BubbleButton>
+                    <button
+                        @click="editor.chain().focus().setTextAlign('left').run()"
+                        :active="editor.isActive({ textAlign: 'left' })"
+                    >
+                        <Bars3BottomLeftIcon class="w-4 h-4" />
+                    </button>
+                </BubbleButton>
 
-            <BubbleButton
-                @click="editor.chain().focus().toggleStrike().run()"
-                :active="editor.isActive('strike')"
-                class="line-through rounded-r-xl"
-            >
-                strike
-            </BubbleButton>
-        </div>
-    </BubbleMenu>
+                <BubbleButton
+                    @click="editor.chain().focus().setTextAlign('center').run()"
+                    :active="editor.isActive({ textAlign: 'center' })"
+                >
+                    <Bars3Icon class="w-4 h-4" />
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().setTextAlign('right').run()"
+                    :active="editor.isActive({ textAlign: 'right' })"
+                >
+                    <Bars3BottomRightIcon class="w-4 h-4" />
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().setTextAlign('justify').run()"
+                    :active="editor.isActive({ textAlign: 'justify' })"
+                >
+                    <Bars3CenterLeftIcon class="w-4 h-4" />
+                </BubbleButton>
+
+                <BubbleButton @click="editor.chain().focus().unsetTextAlign().run()">
+                    <Bars4Icon class="w-4 h-4" />
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().toggleStrike().run()"
+                    :active="editor.isActive('strike')"
+                    class="line-through"
+                >
+                    strike
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+                    :active="editor.isActive('heading', { level: 1 })"
+                >
+                    H1
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+                    :active="editor.isActive('heading', { level: 2 })"
+                >
+                    H2
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+                    :active="editor.isActive('heading', { level: 3 })"
+                >
+                    H3
+                </BubbleButton>
+
+                <BubbleButton
+                    @click="editor.chain().focus().toggleCode().run()"
+                    :active="editor.isActive('code')"
+                    class="rounded-r-xl"
+                >
+                    <CodeBracketIcon class="w-6 h-6" />
+                </BubbleButton>
+            </div>
+        </BubbleMenu>
+    </div>
 </template>
