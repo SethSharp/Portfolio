@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Dashboard\StoreFileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\ShowHomeController;
+use App\Http\Controllers\Dashboard\StoreFileController;
 use App\Http\Controllers\Dashboard\Tags\StoreTagController;
 use App\Http\Controllers\Auth\Profile\EditProfileController;
 use App\Http\Controllers\Dashboard\Blogs\EditBlogController;
