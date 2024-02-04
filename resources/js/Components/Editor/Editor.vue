@@ -28,7 +28,7 @@ const editor = useEditor({
         ListItem,
         Paragraph.configure({
             HTMLAttributes: {
-                class: 'h-6 bg-red-50',
+                class: 'h-6',
             },
         }),
         Text,
