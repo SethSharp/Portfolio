@@ -19,7 +19,7 @@ class StoreFileAction
             ? 'testing/'
             : 'production';
 
-        $path = $file->hashName(path: $dir + 'categories');
+        $path = $file->hashName(path: $dir . 'categories');
 
         Storage::disk(config('filesystems.default'))
             ->put($path, $img, 'public');
