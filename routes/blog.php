@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\ShowHomeController;
-use App\Http\Controllers\Dashboard\StoreFileController;
+
 use App\Http\Controllers\Dashboard\Tags\StoreTagController;
 use App\Http\Controllers\Auth\Profile\EditProfileController;
 use App\Http\Controllers\Dashboard\Blogs\EditBlogController;
@@ -22,7 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/home', ShowHomeController::class)->name('home');
 
-        Route::post('/file/store', StoreFileController::class)->name('file.store');
+        Route::get('/file/create', \App\Http\Controllers\Dashboard\Files\CreateFileController::class)->name('files.create');
+        Route::post('/file/store', \App\Http\Controllers\Dashboard\Files\StoreFileController::class)->name('files.store');
 
         Route::prefix('blogs')->name('blogs.')->group(function () {
             Route::get('/', IndexBlogsController::class)->name('index');

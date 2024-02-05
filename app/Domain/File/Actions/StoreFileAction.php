@@ -17,17 +17,16 @@ class StoreFileAction
 
         $dir = app()->environment('local')
             ? 'testing/'
-            : 'production';
+            : 'production/';
 
         $path = $file->hashName(path: $dir . 'categories');
 
-        Storage::disk(config('filesystems.default'))
-            ->put($path, $img, 'public');
+        Storage::disk('s3')
+            ->put($path, $img, 'public-read');
 
         return File::create([
-            'path' => app()->environment('local')
-                ? $path
-                : Storage::url($path)
+            'blog_id' => 1,
+            'path' => Storage::disk('s3')->url($path),
         ]);
     }
 }
