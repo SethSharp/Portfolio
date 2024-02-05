@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Files;
 
-use App\Http\Controllers\Controller;
-use App\Domain\File\Actions\StoreFileAction;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Http\Controllers\Controller;
+use App\Domain\File\Actions\StoreFileAction;
 
 class CreateFileController extends Controller
 {

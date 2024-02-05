@@ -1,9 +1,9 @@
 <script setup>
-import {useForm} from '@inertiajs/vue3'
-import {ref} from 'vue'
+import { useForm } from '@inertiajs/vue3'
+import { ref } from 'vue'
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 const emits = defineEmits(['close'])
 
@@ -34,7 +34,7 @@ const handleError = (errs) => {
 
 <template>
     <AuthenticatedLayout>
-        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']"/>
+        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']" />
 
         <PrimaryButton type="submit" @click.prevent="submit"> Submit</PrimaryButton>
     </AuthenticatedLayout>

@@ -1,6 +1,6 @@
 <script setup>
-import {computed} from 'vue'
-import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
+import { computed } from 'vue'
+import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 
 const props = defineProps({
@@ -35,7 +35,7 @@ const fileUpload = () => {
 
 <template>
     <div class="flex items-center space-x-2">
-        <img :src="newImage ?? currentImage" class="h-24 w-24 rounded-xl"/>
+        <img :src="newImage ?? currentImage" class="h-24 w-24 rounded-xl" />
 
         <input
             id="file-upload"
@@ -48,5 +48,5 @@ const fileUpload = () => {
 
         <SecondaryButton type="button" @click="fileUpload"> Upload</SecondaryButton>
     </div>
-    <InputError :message="error"/>
+    <InputError :message="error" />
 </template>
