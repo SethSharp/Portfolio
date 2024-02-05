@@ -1,24 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\ShowHomeController;
+use App\Http\Controllers\Auth\Profile\EditProfileController;
+use App\Http\Controllers\Dashboard\Blogs\EditBlogController;
+use App\Http\Controllers\Dashboard\Blogs\ShowBlogController;
+use App\Http\Controllers\Dashboard\Blogs\StoreBlogController;
+use App\Http\Controllers\Auth\Profile\DeleteProfileController;
+use App\Http\Controllers\Auth\Profile\UpdateProfileController;
+use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
+use App\Http\Controllers\Dashboard\Blogs\IndexBlogsController;
+use App\Http\Controllers\Dashboard\Blogs\UpdateBlogController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::get('/home', \App\Http\Controllers\Dashboard\ShowHomeController::class)->name('home');
+        Route::get('/home', ShowHomeController::class)->name('home');
 
         Route::prefix('blogs')->name('blogs.')->group(function () {
-            Route::get('/', \App\Http\Controllers\Dashboard\Blogs\IndexBlogsController::class)->name('index');
-            Route::get('/create', \App\Http\Controllers\Dashboard\Blogs\CreateBlogController::class)->name('create');
-            Route::get('/{blog}', \App\Http\Controllers\Dashboard\Blogs\ShowBlogController::class)->name('show');
-            Route::get('/{blog}/edit', \App\Http\Controllers\Dashboard\Blogs\EditBlogController::class)->name('edit');
-            Route::post('/store', \App\Http\Controllers\Dashboard\Blogs\StoreBlogController::class)->name('store');
-            Route::put('/{blog/update', \App\Http\Controllers\Dashboard\Blogs\UpdateBlogController::class)->name('update');
+            Route::get('/', IndexBlogsController::class)->name('index');
+            Route::get('/create', CreateBlogController::class)->name('create');
+            Route::get('/{blog}', ShowBlogController::class)->name('show');
+            Route::get('/{blog}/edit', EditBlogController::class)->name('edit');
+            Route::post('/store', StoreBlogController::class)->name('store');
+            Route::put('/{blog}/update', UpdateBlogController::class)->name('update');
         });
     });
 
     Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', \App\Http\Controllers\Auth\Profile\EditProfileController::class)->name('edit');
-        Route::patch('/', \App\Http\Controllers\Auth\Profile\UpdateProfileController::class)->name('update');
-        Route::delete('/', \App\Http\Controllers\Auth\Profile\DeleteProfileController::class)->name('destroy');
+        Route::get('/', EditProfileController::class)->name('edit');
+        Route::patch('/', UpdateProfileController::class)->name('update');
+        Route::delete('/', DeleteProfileController::class)->name('destroy');
     });
 });

@@ -10,11 +10,11 @@ class StoreBlogAction
 {
     public function __invoke(StoreBlogRequest $storeBlogRequest): Blog
     {
+        $storeBlogRequest['slug'] = Str::slug($storeBlogRequest->input('slug'));
+
         return Blog::create([
-            'title' => $storeBlogRequest->input('title'),
-            'slug' => Str::slug($storeBlogRequest->input('slug')),
-            'content' => $storeBlogRequest->input('content'),
-            'is_draft' => false
+            'author_id' => auth()->user()->id,
+            ...$storeBlogRequest->validated(),
         ]);
     }
 }

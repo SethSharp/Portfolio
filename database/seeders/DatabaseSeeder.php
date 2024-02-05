@@ -23,19 +23,17 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        $blog = Blog::factory()->create([
+        $blog = Blog::factory()->count(10)->create([
             'author_id' => $admin->id
         ]);
 
-        $tag1 = Tag::factory()->create([
+        Tag::factory()->create([
             'name' => 'Tutorial'
         ]);
 
-        $tag2 = Tag::factory()->create([
+        Tag::factory()->create([
             'name' => 'AWS'
         ]);
-
-        $blog->tags()->syncWithoutDetaching([$tag1->id, $tag2->id]);
 
         User::factory()->author()->create([
             'name' => 'Author',

@@ -11,7 +11,7 @@ class EditBlogController extends Controller
 {
     public function __invoke(Blog $blog): Response
     {
-        return Inertia::render('Blogs/Edit', [
+        return Inertia::render('Dashboard/Blogs/Edit', [
             'blog' => $blog
         ]);
     }

@@ -11,7 +11,9 @@ class IndexBlogsController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('Blogs/Index', [
+        $this->authorize('view', Blog::class);
+
+        return Inertia::render('Dashboard/Blogs/Index', [
             'blogs' => Blog::with(['tags', 'author'])->get()
         ]);
     }
