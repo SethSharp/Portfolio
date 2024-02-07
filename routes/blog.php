@@ -31,6 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/{blog}', ShowBlogController::class)->name('show');
             Route::get('/{blog}/edit', EditBlogController::class)->name('edit');
             Route::post('/store', StoreBlogController::class)->name('store');
+            Route::post('/store/image', \App\Http\Controllers\Dashboard\Blogs\StoreBlogImageController::class)->name('blog.store');
             Route::put('/{blog}/update', UpdateBlogController::class)->name('update');
         });
 

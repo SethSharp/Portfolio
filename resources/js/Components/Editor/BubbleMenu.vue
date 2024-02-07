@@ -1,5 +1,5 @@
 <script setup>
-import { BubbleMenu } from '@tiptap/vue-3'
+import {BubbleMenu} from '@tiptap/vue-3'
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
 import {
     Bars3BottomLeftIcon,
@@ -28,7 +28,7 @@ const setLink = () => {
         props.editor.chain().focus().extendMarkRange('link').unsetLink().run()
     }
 
-    props.editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+    props.editor.chain().focus().extendMarkRange('link').setLink({href: url}).run()
 }
 </script>
 
@@ -57,7 +57,7 @@ const setLink = () => {
                     :active="editor.isActive('underline')"
                     class="underline"
                 >
-                    Unerline
+                    Underline
                 </BubbleButton>
 
                 <BubbleButton
@@ -78,7 +78,7 @@ const setLink = () => {
                         @click="editor.chain().focus().setTextAlign('left').run()"
                         :active="editor.isActive({ textAlign: 'left' })"
                     >
-                        <Bars3BottomLeftIcon class="w-4 h-4" />
+                        <Bars3BottomLeftIcon class="w-4 h-4"/>
                     </button>
                 </BubbleButton>
 
@@ -86,25 +86,25 @@ const setLink = () => {
                     @click="editor.chain().focus().setTextAlign('center').run()"
                     :active="editor.isActive({ textAlign: 'center' })"
                 >
-                    <Bars3Icon class="w-4 h-4" />
+                    <Bars3Icon class="w-4 h-4"/>
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().setTextAlign('right').run()"
                     :active="editor.isActive({ textAlign: 'right' })"
                 >
-                    <Bars3BottomRightIcon class="w-4 h-4" />
+                    <Bars3BottomRightIcon class="w-4 h-4"/>
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().setTextAlign('justify').run()"
                     :active="editor.isActive({ textAlign: 'justify' })"
                 >
-                    <Bars3CenterLeftIcon class="w-4 h-4" />
+                    <Bars3CenterLeftIcon class="w-4 h-4"/>
                 </BubbleButton>
 
                 <BubbleButton @click="editor.chain().focus().unsetTextAlign().run()">
-                    <Bars4Icon class="w-4 h-4" />
+                    <Bars4Icon class="w-4 h-4"/>
                 </BubbleButton>
 
                 <BubbleButton
@@ -141,7 +141,7 @@ const setLink = () => {
                     :active="editor.isActive('code')"
                     class="rounded-r-xl"
                 >
-                    <CodeBracketIcon class="w-6 h-6" />
+                    <CodeBracketIcon class="w-6 h-6"/>
                 </BubbleButton>
             </div>
         </BubbleMenu>

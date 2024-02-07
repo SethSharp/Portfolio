@@ -20,7 +20,7 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.post(route('dashboard.files.store'), {
+    form.post(route('dashboard.blogs.image.store'), {
         onError: (errors) => handleError(errors),
         onSuccess: () => handleSuccess(),
     })
