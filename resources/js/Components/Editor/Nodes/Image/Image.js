@@ -1,52 +1,52 @@
 import { Node } from '@tiptap/core'
-import { VueNodeViewRenderer, mergeAttributes } from "@tiptap/vue-3"
-import View from "./View.vue"
+import { VueNodeViewRenderer, mergeAttributes } from '@tiptap/vue-3'
+import View from './View.vue'
 
 export default Node.create({
-  name: 'Image',
+    name: 'Image',
 
-  group: 'block',
+    group: 'block',
 
-  atomic: true,
+    atomic: true,
 
-  draggable: true,
+    draggable: true,
 
-  addAttributes() {
-    return {
-      src: {
-        default: null,
-      },
-      alt: {
-        default: null,
-      },
-      href: {
-        default: null,
-      },
-      height: {
-        default: 'full',
-      },
-      fit: {
-        default: 'none',
-      },
-      target: {
-        default: '_self',
-      }
-    }
-  },
+    addAttributes() {
+        return {
+            src: {
+                default: null,
+            },
+            alt: {
+                default: null,
+            },
+            href: {
+                default: null,
+            },
+            height: {
+                default: 'full',
+            },
+            fit: {
+                default: 'none',
+            },
+            target: {
+                default: '_self',
+            },
+        }
+    },
 
-  parseHTML() {
-    return [
-      {
-        tag: 'tt-image',
-      },
-    ]
-  },
+    parseHTML() {
+        return [
+            {
+                tag: 'tt-image',
+            },
+        ]
+    },
 
-  renderHTML({ HTMLAttributes }) {
-    return ['tt-image', mergeAttributes(HTMLAttributes)]
-  },
+    renderHTML({ HTMLAttributes }) {
+        return ['tt-image', mergeAttributes(HTMLAttributes)]
+    },
 
-  addNodeView() {
-    return VueNodeViewRenderer(View)
-  }
+    addNodeView() {
+        return VueNodeViewRenderer(View)
+    },
 })
