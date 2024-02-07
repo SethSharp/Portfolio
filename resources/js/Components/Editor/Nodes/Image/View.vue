@@ -5,12 +5,12 @@ export default {
 </script>
 
 <script setup>
-import {ref} from "vue";
-import {NodeViewWrapper, nodeViewProps} from "@tiptap/vue-3"
-import {PhotoIcon, XMarkIcon} from "@heroicons/vue/24/solid"
-import EditableNode from "../../Components/EditableNodeWrapper.vue"
-import EditImage from "@/Components/Editor/Components/Modals/EditImage.vue";
-import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
+import { ref } from 'vue'
+import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
+import { PhotoIcon, XMarkIcon } from '@heroicons/vue/24/solid'
+import EditableNode from '../../Components/EditableNodeWrapper.vue'
+import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
+import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 
 const props = defineProps({
     ...nodeViewProps,
@@ -23,9 +23,7 @@ const open = ref(false)
     <NodeViewWrapper>
         <EditableNode v-bind="props">
             <template #tools>
-                <EditImage
-                    :open="open"
-                />
+                <EditImage :open="open" />
             </template>
 
             <template #content>
@@ -45,14 +43,12 @@ const open = ref(false)
                             </div>
 
                             <div v-else class="flex flex-col justify-center items-center mt-2">
-                                <PhotoIcon class="w-12 h-12 text-gray-300"/>
-                                <p class="mt-1 text-sm text-gray-300">
-                                    Select or upload an image
-                                </p>
+                                <PhotoIcon class="w-12 h-12 text-gray-300" />
+                                <p class="mt-1 text-sm text-gray-300">Select or upload an image</p>
                             </div>
 
                             <div class="flex justify-center p-2">
-                                <SecondaryButton @click="open=true">
+                                <SecondaryButton @click="open = true">
                                     Upload an Image
                                 </SecondaryButton>
                             </div>

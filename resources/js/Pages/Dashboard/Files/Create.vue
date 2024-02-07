@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-import {useForm} from '@inertiajs/vue3'
+import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
@@ -34,7 +34,7 @@ const handleError = (errs) => {
 
 <template>
     <AuthenticatedLayout>
-        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']"/>
+        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']" />
 
         <PrimaryButton type="submit" @click.prevent="submit"> Submit</PrimaryButton>
     </AuthenticatedLayout>

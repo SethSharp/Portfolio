@@ -13,7 +13,7 @@ class StoreFileController extends Controller
         $file = $action($request->file('file'));
 
         return [
-            'path' => 'https://portfoliotesting.s3.ap-southeast-2.amazonaws.com/testing/categories/pNCrkKF5ZsY5U6jwuivOQHZJ2xD8IhjglP7xq5yu.png' //$file->path
+            'path' => 'https://portfoliotesting.s3.ap-southeast-2.amazonaws.com/testing/categories/pNCrkKF5ZsY5U6jwuivOQHZJ2xD8IhjglP7xq5yu.png' // $file->path
         ];
     }
 }
