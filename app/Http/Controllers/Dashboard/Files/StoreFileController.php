@@ -11,9 +11,9 @@ class StoreFileController extends Controller
     public function __invoke(StoreFileRequest $request, StoreFileAction $action): array
     {
         $file = $action($request->file('file'));
-        dd($file);
+
         return [
-            'url' => 'some-url-to-the-image'
+            'path' => 'https://portfoliotesting.s3.ap-southeast-2.amazonaws.com/testing/categories/pNCrkKF5ZsY5U6jwuivOQHZJ2xD8IhjglP7xq5yu.png' //$file->path
         ];
     }
 }

@@ -11,9 +11,7 @@ class StoreFileAction
 {
     public function __invoke(UploadedFile $file): File
     {
-        $img = Image::make($file)
-            ->fit(300)
-            ->encode();
+        $img = Image::make($file)->encode();
 
         $dir = app()->environment('local')
             ? 'testing/'

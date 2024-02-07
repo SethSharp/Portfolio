@@ -1,6 +1,6 @@
 <script setup>
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
-import { ListBulletIcon } from '@heroicons/vue/16/solid/index.js'
+import {ListBulletIcon, PhotoIcon} from '@heroicons/vue/16/solid/index.js'
 
 defineProps({
     editor: Object,
@@ -14,7 +14,14 @@ defineProps({
             :active="editor.isActive('orderedList')"
             class="rounded-md"
         >
-            <ListBulletIcon class="w-6 h-6 text-black" />
+            <ListBulletIcon class="w-6 h-6 text-black"/>
+        </BubbleButton>
+
+        <BubbleButton
+            @click.prevent="editor.chain().focus().insertContent('<tt-image></tt-image>').run()"
+            class="rounded-md"
+        >
+            <PhotoIcon class="w-6 h-6 text-black"/>
         </BubbleButton>
     </div>
 </template>

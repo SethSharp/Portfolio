@@ -1,9 +1,14 @@
 <script setup>
-import {ref} from 'vue'
-import {useForm} from '@inertiajs/vue3'
-import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import Modal from "@/Components/Modal.vue";
+import ImageUpload from "@/Components/Inputs/ImageUpload.vue";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
+import {ref} from "vue";
+import {useForm} from "@inertiajs/vue3";
+
+const props = defineProps({
+    modelValue: String,
+    open: Boolean
+})
 
 const emits = defineEmits(['close'])
 
@@ -33,9 +38,9 @@ const handleError = (errs) => {
 </script>
 
 <template>
-    <AuthenticatedLayout>
+    <Modal :open="open">
         <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']"/>
 
         <PrimaryButton type="submit" @click.prevent="submit"> Submit</PrimaryButton>
-    </AuthenticatedLayout>
+    </Modal>
 </template>
