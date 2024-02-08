@@ -2,14 +2,14 @@
 import Modal from '@/Components/Modal.vue'
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import {ref} from 'vue'
-import {router, useForm} from '@inertiajs/vue3'
-import axios from "axios";
+import { ref } from 'vue'
+import { router, useForm } from '@inertiajs/vue3'
+import axios from 'axios'
 
 const props = defineProps({
     modelValue: {
         type: String,
-        required: false
+        required: false,
     },
     open: Boolean,
 })
@@ -24,10 +24,13 @@ const form = useForm({
 })
 
 const submit = () => {
-    const formData = new FormData();
-    formData.append('file', form.file);
+    const formData = new FormData()
+    formData.append('file', form.file)
 
-    axios.post(route('dashboard.blogs.image.store'), formData).then((res) => handleSuccess(res)).catch((err) => console.log(err))
+    axios
+        .post(route('dashboard.blogs.image.store'), formData)
+        .then((res) => handleSuccess(res))
+        .catch((err) => console.log(err))
 }
 
 const handleSuccess = (res) => {
@@ -43,7 +46,7 @@ const handleError = (errs) => {
 
 <template>
     <Modal :open="open" @close="emits('close')">
-        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']"/>
+        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']" />
 
         <PrimaryButton type="submit" @click.prevent="submit"> Submit</PrimaryButton>
     </Modal>

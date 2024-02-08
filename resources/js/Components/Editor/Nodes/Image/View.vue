@@ -5,9 +5,9 @@ export default {
 </script>
 
 <script setup>
-import {ref, watch, computed} from 'vue'
-import {NodeViewWrapper, nodeViewProps} from '@tiptap/vue-3'
-import {PhotoIcon, XMarkIcon} from '@heroicons/vue/24/solid'
+import { ref, watch, computed } from 'vue'
+import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
+import { PhotoIcon, XMarkIcon } from '@heroicons/vue/24/solid'
 import EditableNode from '../../Components/EditableNodeWrapper.vue'
 import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
 import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
@@ -37,7 +37,7 @@ let newSrc = computed({
     <NodeViewWrapper>
         <EditableNode v-bind="props">
             <template #tools>
-                <EditImage @close="open = false" :open="open" v-model="src"/>
+                <EditImage @close="open = false" :open="open" v-model="src" />
             </template>
 
             <template #content>
@@ -52,12 +52,12 @@ let newSrc = computed({
                                         x
                                     </button>
 
-                                    <img :src="src"/>
+                                    <img :src="src" />
                                 </div>
                             </div>
 
                             <div v-else class="flex flex-col justify-center items-center mt-2">
-                                <PhotoIcon class="w-12 h-12 text-gray-300"/>
+                                <PhotoIcon class="w-12 h-12 text-gray-300" />
                                 <p class="mt-1 text-sm text-gray-300">Select or upload an image</p>
                             </div>
 
