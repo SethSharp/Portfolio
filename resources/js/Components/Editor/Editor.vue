@@ -37,7 +37,7 @@ const editor = useEditor({
         Link.configure({
             openOnClick: false,
             HTMLAttributes: {
-                class: 'text-blue-600 font-medium cursor-pointer',
+                style: 'color: blue',
             },
         }),
         ListItem,
