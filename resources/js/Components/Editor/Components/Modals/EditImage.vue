@@ -114,7 +114,7 @@ watch(
                 v-model="computedHeight"
             />
         </div>
-        
+
         <PrimaryButton type="submit" @click.prevent="submit"> Save</PrimaryButton>
     </Modal>
 </template>
