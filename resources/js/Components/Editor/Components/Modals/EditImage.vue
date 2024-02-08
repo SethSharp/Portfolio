@@ -13,38 +13,17 @@ const props = defineProps({
     modelValue: {
         type: [String, null],
     },
-    href: {
-        required: true,
-    },
     alt: {
         required: true,
     },
     height: {
         required: true,
     },
-    fit: {
-        required: true,
-    },
-    target: {
-        required: true,
-    },
 })
 
-const emits = defineEmits([
-    'update:href',
-    'update:alt',
-    'update:height',
-    'update:fit',
-    'update:target',
-])
+const emits = defineEmits(['update:alt', 'update:height'])
 
-const {
-    href: computedHref,
-    alt: computedAlt,
-    height: computedHeight,
-    fit: computedFit,
-    target: computedTarget,
-} = useVModels(props, emits)
+const { alt: computedAlt, height: computedHeight, fit: computedFit } = useVModels(props, emits)
 
 const path = ''
 const errors = ref({})
@@ -94,11 +73,6 @@ watch(
         <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']" />
 
         <div>
-            <label for="href">Link</label>
-            <TextInput v-model="computedHref" description="Link to somewhere" />
-        </div>
-
-        <div>
             <label for="alt"> Alt</label>
             <TextInput v-model="computedAlt" />
         </div>
@@ -140,18 +114,7 @@ watch(
                 v-model="computedHeight"
             />
         </div>
-
-        <div>
-            <label for="fit"> Image fit</label>
-            <select v-model="computedFit">
-                <option value="none" selected>None</option>
-                <option value="contain">Contain</option>
-                <option value="cover">Cover</option>
-                <option value="fill">Fill</option>
-                <option value="scale-down">Scale down</option>
-            </select>
-        </div>
-
+        
         <PrimaryButton type="submit" @click.prevent="submit"> Save</PrimaryButton>
     </Modal>
 </template>

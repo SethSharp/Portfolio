@@ -19,17 +19,8 @@ export default Node.create({
             alt: {
                 default: null,
             },
-            href: {
-                default: null,
-            },
             height: {
                 default: 'full',
-            },
-            fit: {
-                default: 'none',
-            },
-            target: {
-                default: '_self',
             },
         }
     },

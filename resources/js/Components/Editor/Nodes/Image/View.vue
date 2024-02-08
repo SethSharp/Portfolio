@@ -19,7 +19,7 @@ const props = defineProps({
 
 const open = ref(false)
 
-let { src, href, alt, height, fit, target } = breakdownNodeViewProps(props)
+let { src, alt, height } = breakdownNodeViewProps(props)
 </script>
 
 <template>
@@ -30,11 +30,8 @@ let { src, href, alt, height, fit, target } = breakdownNodeViewProps(props)
                     @close="open = false"
                     :open="open"
                     v-model="src"
-                    v-model:href="href"
                     v-model:alt="alt"
                     v-model:height="height"
-                    v-model:fit="fit"
-                    v-model:target="target"
                 />
             </template>
 
