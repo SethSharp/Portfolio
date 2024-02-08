@@ -5,39 +5,37 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref } from 'vue'
 import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
 import { PhotoIcon, XMarkIcon } from '@heroicons/vue/24/solid'
 import EditableNode from '../../Components/EditableNodeWrapper.vue'
 import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
 import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+import breakdownNodeViewProps from '@/Helpers/breakdownNodeViewProps'
 
 const props = defineProps({
     ...nodeViewProps,
 })
 
 const open = ref(false)
-const src = ref(props.node.attrs.src)
 
-watch(src, (newVal) => {
-    newSrc.value = newVal
-})
-
-let newSrc = computed({
-    get: () => props.node.attrs[src],
-    set: (value) => {
-        props.updateAttributes({
-            [src]: value,
-        })
-    },
-})
+let { src, href, alt, height, fit, target } = breakdownNodeViewProps(props)
 </script>
 
 <template>
     <NodeViewWrapper>
         <EditableNode v-bind="props">
             <template #tools>
-                <EditImage @close="open = false" :open="open" v-model="src" />
+                <EditImage
+                    @close="open = false"
+                    :open="open"
+                    v-model="src"
+                    v-model:href="href"
+                    v-model:alt="alt"
+                    v-model:height="height"
+                    v-model:fit="fit"
+                    v-model:target="target"
+                />
             </template>
 
             <template #content>
@@ -48,6 +46,7 @@ let newSrc = computed({
                                 <div class="relative shadow w-full">
                                     <button
                                         class="absolute -right-3 top-4 bg-white shadow text-red-400 hover:bg-white hover:text-red-500 hover:shadow rounded-full"
+                                        @click="src = null"
                                     >
                                         x
                                     </button>

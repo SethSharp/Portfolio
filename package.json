@@ -39,6 +39,7 @@
         "@tiptap/pm": "^2.2.1",
         "@tiptap/starter-kit": "^2.2.1",
         "@tiptap/vue-3": "^2.2.1",
+        "@vueuse/core": "^10.7.2",
         "clean-install": "^1.0.0"
     }
 }
