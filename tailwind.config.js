@@ -1,19 +1,34 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-import colors from "tailwindcss/colors.js";
+const defaultTheme = require('tailwindcss/defaultTheme')
+import colors from 'tailwindcss/colors.js'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
-        "./storage/framework/views/*.php",
-        "./resources/views/**/*.blade.php",
-        "./resources/js/**/*.vue",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.vue',
+    ],
+
+    safelist: [
+        'grid-cols-1',
+        'grid-cols-2',
+        'grid-cols-3',
+        'grid-cols-4',
+        'grid-cols-5',
+        'grid-cols-6',
+
+        //md
+        'md:grid-cols-3',
+        'md:grid-cols-4',
+        'md:grid-cols-5',
+        'md:grid-cols-6',
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 primary: {
@@ -31,5 +46,5 @@ module.exports = {
         },
     },
 
-    plugins: [require("@tailwindcss/forms")],
-};
+    plugins: [require('@tailwindcss/forms')],
+}

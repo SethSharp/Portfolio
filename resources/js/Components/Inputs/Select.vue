@@ -11,6 +11,10 @@ defineProps({
         type: String,
         default: 'text',
     },
+    options: {
+        type: Array,
+        default: [],
+    },
 })
 
 const model = defineModel({
@@ -19,25 +23,20 @@ const model = defineModel({
 })
 
 const input = ref(null)
-
-onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
-        input.value.focus()
-    }
-})
-
-defineExpose({ focus: () => input.value.focus() })
 </script>
 
 <template>
     <div>
         <InputLabel :value="label" />
 
-        <input
+        <select
             :type="type"
-            class="w-full !border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
             v-model="model"
-            ref="input"
-        />
+            class="w-full !border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+        >
+            <option v-for="option in options" :value="option.value">
+                {{ option.label }}
+            </option>
+        </select>
     </div>
 </template>

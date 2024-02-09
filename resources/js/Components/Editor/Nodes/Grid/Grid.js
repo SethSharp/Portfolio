@@ -18,10 +18,10 @@ export default Node.create({
             cols: {
                 default: 3,
             },
-            spacing: {
+            gap: {
                 default: 2,
             },
-            mobileCols: {
+            mobileColumns: {
                 default: 1,
             },
         }

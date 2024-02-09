@@ -14,6 +14,7 @@ import Toolbar from '@/Components/Editor/Toolbar.vue'
 import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
 import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
 import Image from '@/Components/Editor/Nodes/Image/Image.js'
+import Grid from '@/Components/Editor/Nodes/Grid/Grid.js'
 
 const props = defineProps({
     modelValue: {
@@ -57,6 +58,7 @@ const editor = useEditor({
         Text,
         Underline,
         Image,
+        Grid,
     ],
     editorProps: {
         attributes: {

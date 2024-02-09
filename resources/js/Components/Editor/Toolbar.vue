@@ -1,10 +1,18 @@
 <script setup>
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
-import { ListBulletIcon, PhotoIcon } from '@heroicons/vue/16/solid/index.js'
+import { ListBulletIcon, PhotoIcon, TableCellsIcon } from '@heroicons/vue/16/solid/index.js'
 
-defineProps({
+const props = defineProps({
     editor: Object,
 })
+
+const insertGrid = () => {
+    props.editor
+        .chain()
+        .focus()
+        .insertContent('<tt-grid><div>One</div><div>Two</div><div>Three</div></tt-grid>')
+        .run()
+}
 </script>
 
 <template>
@@ -22,6 +30,10 @@ defineProps({
             class="rounded-md"
         >
             <PhotoIcon class="w-6 h-6 text-black" />
+        </BubbleButton>
+
+        <BubbleButton @click.prevent="insertGrid()" class="rounded-md">
+            <TableCellsIcon class="w-6 h-6 text-black" />
         </BubbleButton>
     </div>
 </template>
