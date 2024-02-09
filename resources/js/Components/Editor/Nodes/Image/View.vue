@@ -19,17 +19,21 @@ const props = defineProps({
 
 const open = ref(false)
 
-let { src, alt, height } = breakdownNodeViewProps(props)
+let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
+console.log(blogId)
 </script>
 
 <template>
     <NodeViewWrapper>
         <EditableNode v-bind="props">
             <template #tools>
+                <button @click="open = true">Edit</button>
                 <EditImage
                     @close="open = false"
                     :open="open"
                     v-model="src"
+                    v-model:fileId="fileId"
+                    v-model:blogId="blogId"
                     v-model:alt="alt"
                     v-model:height="height"
                 />
@@ -55,12 +59,6 @@ let { src, alt, height } = breakdownNodeViewProps(props)
                             <div v-else class="flex flex-col justify-center items-center mt-2">
                                 <PhotoIcon class="w-12 h-12 text-gray-300" />
                                 <p class="mt-1 text-sm text-gray-300">Select or upload an image</p>
-                            </div>
-
-                            <div class="flex justify-center p-2">
-                                <SecondaryButton @click="open = true">
-                                    Upload an Image
-                                </SecondaryButton>
                             </div>
                         </div>
                     </div>

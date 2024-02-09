@@ -13,6 +13,12 @@ export default Node.create({
 
     addAttributes() {
         return {
+            fileId: {
+                default: null,
+            },
+            blogId: {
+                default: null,
+            },
             src: {
                 default: null,
             },

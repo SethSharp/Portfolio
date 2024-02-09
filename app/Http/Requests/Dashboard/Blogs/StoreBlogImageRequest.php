@@ -16,6 +16,8 @@ class StoreBlogImageRequest extends FormRequest
     {
         return [
             'file' => 'required|image|max:2000',
+            'fileId' => 'nullable|string',
+            'blogId' => 'nullable|string',
         ];
     }
 }
