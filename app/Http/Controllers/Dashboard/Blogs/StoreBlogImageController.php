@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Dashboard\Blogs;
 
 use App\Domain\File\Models\File;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Domain\File\Actions\StoreFileAction;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
-use Illuminate\Support\Facades\DB;
 
 class StoreBlogImageController extends Controller
 {
