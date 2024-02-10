@@ -25,6 +25,21 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
+        "@tiptap/extension-bubble-menu": "^2.2.1",
+        "@tiptap/extension-code": "^2.2.1",
+        "@tiptap/extension-document": "^2.2.1",
+        "@tiptap/extension-heading": "^2.2.1",
+        "@tiptap/extension-link": "^2.2.1",
+        "@tiptap/extension-list-item": "^2.2.1",
+        "@tiptap/extension-ordered-list": "^2.2.1",
+        "@tiptap/extension-paragraph": "^2.2.1",
+        "@tiptap/extension-text": "^2.2.1",
+        "@tiptap/extension-text-align": "^2.2.1",
+        "@tiptap/extension-underline": "^2.2.1",
+        "@tiptap/pm": "^2.2.1",
+        "@tiptap/starter-kit": "^2.2.1",
+        "@tiptap/vue-3": "^2.2.1",
+        "@vueuse/core": "^10.7.2",
         "clean-install": "^1.0.0"
     }
 }

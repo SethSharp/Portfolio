@@ -9,13 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "aws/aws-sdk-php": "^3.298",
         "codinglabsau/laravel-roles": "^2.4",
         "codinglabsau/php-styles": "dev-main",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.8",
+        "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.12",
         "tightenco/ziggy": "^1.0"
     },

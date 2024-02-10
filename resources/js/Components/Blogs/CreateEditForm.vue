@@ -8,6 +8,8 @@ import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import Editor from '@/Components/Editor/Editor.vue'
+import { onMounted, ref, watch } from 'vue'
 
 const props = defineProps({
     blog: {
@@ -26,6 +28,8 @@ const tagOptions = props.tags.map((tag) => {
         name: tag.name,
     }
 })
+
+const content = ref('')
 
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
@@ -80,7 +84,7 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <TextArea v-model="form.content" label="Content" />
+            <Editor v-model="form.content" />
             <InputError :message="form.errors.content" />
         </FormElement>
 

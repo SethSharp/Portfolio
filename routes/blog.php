@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\ShowHomeController;
+
 use App\Http\Controllers\Dashboard\Tags\StoreTagController;
 use App\Http\Controllers\Auth\Profile\EditProfileController;
 use App\Http\Controllers\Dashboard\Blogs\EditBlogController;
@@ -21,12 +22,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/home', ShowHomeController::class)->name('home');
 
+        Route::get('/file/create', \App\Http\Controllers\Dashboard\Files\CreateFileController::class)->name('files.create');
+        Route::post('/file/store', \App\Http\Controllers\Dashboard\Files\StoreFileController::class)->name('files.store');
+
         Route::prefix('blogs')->name('blogs.')->group(function () {
             Route::get('/', IndexBlogsController::class)->name('index');
             Route::get('/create', CreateBlogController::class)->name('create');
             Route::get('/{blog}', ShowBlogController::class)->name('show');
             Route::get('/{blog}/edit', EditBlogController::class)->name('edit');
             Route::post('/store', StoreBlogController::class)->name('store');
+            Route::post('/store/image', \App\Http\Controllers\Dashboard\Blogs\StoreBlogImageController::class)->name('image.store');
             Route::put('/{blog}/update', UpdateBlogController::class)->name('update');
         });
 
