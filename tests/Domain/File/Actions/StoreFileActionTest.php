@@ -12,12 +12,12 @@ class StoreFileActionTest extends TestCase
     /** @test */
     public function can_store_file()
     {
-        Storage::fake();
+        Storage::fake('s3');
 
         $file = UploadedFile::fake()->image('file.jpg');
 
         app(StoreFileAction::class)($file);
 
-        Storage::assertExists($file->hashName('testing/blogs'));
+        Storage::disk('s3')->assertExists($file->hashName('testing/blogs'));
     }
 }

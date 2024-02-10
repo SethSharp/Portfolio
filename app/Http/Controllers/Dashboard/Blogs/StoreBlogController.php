@@ -16,7 +16,7 @@ class StoreBlogController extends Controller
         $drafted = (bool)$storeBlogRequest->input('is_draft');
 
         return redirect()
-            ->back()
+            ->route('dashboard.blogs.index')
             ->with('success', $blog->title . ' successfully ' . ($drafted ? 'drafted' : 'published'));
     }
 }

@@ -41,7 +41,6 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                     <div class="flex w-full justify-center">
                         <div class="flex-col w-full">
                             <div v-if="src" class="flex mb-4 w-full">
-                                {{ src }}
                                 <img :src="src" />
                             </div>
 

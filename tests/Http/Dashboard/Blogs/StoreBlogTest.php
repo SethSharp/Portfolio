@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
+use App\Domain\File\Models\File;
 
 class StoreBlogTest extends TestCase
 {
@@ -251,6 +252,80 @@ class StoreBlogTest extends TestCase
         $this->assertDatabaseHas('blog_tag', [
             'blog_id' => $blog->id,
             'tag_id' => $tag->id,
+        ]);
+    }
+
+    /** @test */
+    public function will_replace_blog_id_in_content()
+    {
+        $tag = Tag::factory()->create();
+
+        $this->actingAs($user = User::factory()->author()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'tags' => [
+                    [
+                        'id' => $tag->id,
+                        'name' => $tag->name
+                    ]
+                ],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => '<tt-image blogid="null"> </tt-image>',
+                'is_draft' => true
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $blog = Blog::first();
+
+        $this->assertDatabaseHas('blogs', [
+            'author_id' => $user->id,
+            'is_draft' => 1,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => "<tt-image blogid=\"$blog->id\"> </tt-image>"
+        ]);
+    }
+
+    /** @test */
+    public function any_files_without_blog_id_will_be_assigned_recently_created_one()
+    {
+        File::create([
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $tag = Tag::factory()->create();
+
+        $this->actingAs($user = User::factory()->author()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'tags' => [
+                    [
+                        'id' => $tag->id,
+                        'name' => $tag->name
+                    ]
+                ],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => '<tt-image blogid="null"> </tt-image>',
+                'is_draft' => true
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $blog = Blog::first();
+
+        $this->assertDatabaseHas('files', [
+            'blog_id' => $blog->id,
+            'path' => 'some-path',
+            'url' => 'some-url'
         ]);
     }
 }

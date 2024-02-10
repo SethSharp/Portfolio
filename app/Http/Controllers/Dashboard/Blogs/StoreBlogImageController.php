@@ -5,19 +5,17 @@ namespace App\Http\Controllers\Dashboard\Blogs;
 use App\Domain\File\Models\File;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Domain\File\Actions\StoreFileAction;
 use App\Domain\File\Actions\DestroyFileAction;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
-use Illuminate\Support\Facades\Storage;
 
 class StoreBlogImageController extends Controller
 {
     public function __invoke(StoreBlogImageRequest $request, StoreFileAction $action): JsonResponse
     {
         $path = $action($request->file('file'));
-        $url = app()->environment('local')
-            ? $path
-            : Storage::url($path);
+        $url = Storage::disk('s3')->url($path);
 
         $fileId = intval($request->input('fileId'));
         $blogId = intval($request->input('blogId')) ?: null;

@@ -9,13 +9,11 @@ class StoreFileAction
 {
     public function __invoke(UploadedFile $file): string
     {
-        $structure = app()->environment('local') ? 'testing/' : 'production/';
+        $structure = app()->environment('testing') || app()->environment('local')
+            ? 'testing/' : 'production/';
 
         $dir = $structure . 'blogs';
 
-        return Storage::disk(app()->environment('local')
-            ? 'public'
-            : config('filesystems.default'))
-            ->put($dir, $file);
+        return Storage::disk('s3')->put($dir, $file);
     }
 }
