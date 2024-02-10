@@ -12,9 +12,8 @@ import OrderedList from '@tiptap/extension-ordered-list'
 import { TextAlign } from '@tiptap/extension-text-align'
 import Toolbar from '@/Components/Editor/Toolbar.vue'
 import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
-import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
 import Image from '@/Components/Editor/Nodes/Image/Image.js'
-import Grid from '@/Components/Editor/Nodes/Grid/Grid.js'
+import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
 
 const props = defineProps({
     modelValue: {
@@ -58,7 +57,6 @@ const editor = useEditor({
         Text,
         Underline,
         Image,
-        Grid,
     ],
     editorProps: {
         attributes: {

@@ -21,7 +21,7 @@
         </div>
 
         <div class="mt-8 prose">
-            {!! $blog->content !!}
+            {!! $content !!}
         </div>
     </div>
 @endsection

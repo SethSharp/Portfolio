@@ -6,10 +6,15 @@ use App\Support\Editor\Node;
 
 class Image extends Node
 {
-    protected string $tag = 'image';
+    protected static string $tag = 'image';
 
     public static function buildHtmlTag(): string
     {
-        return self::$tag . self::$prefix;
+        return self::$prefix . '-' . self::$tag;
+    }
+
+    public static function getReplaceTag(): string
+    {
+        return 'img';
     }
 }

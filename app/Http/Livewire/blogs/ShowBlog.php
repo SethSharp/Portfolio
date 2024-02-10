@@ -17,7 +17,8 @@ class ShowBlog extends Component
     public function render()
     {
         return view('livewire.blogs.show-blog', [
-            'blog' => $this->blog
+            'blog' => $this->blog,
+            'content' => $this->blog->getContent()
         ])
             ->layout('layouts.main');
     }
