@@ -2,8 +2,6 @@
 
 namespace App\Domain\File\Actions;
 
-use App\Domain\File\Models\File;
-use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -25,6 +23,6 @@ class StoreFileAction
         Storage::disk('s3')
             ->put($path, $img, 'public-read');
 
-        return 'new path now';//$path;
+        return 'new path now';// $path;
     }
 }

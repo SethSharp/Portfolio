@@ -2,11 +2,8 @@
 
 namespace App\Domain\File\Actions;
 
-use App\Domain\File\Models\File;
-use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
 use Exception;
-use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
+use App\Domain\File\Models\File;
 use Illuminate\Support\Facades\Storage;
 
 class DestroyFileAction
