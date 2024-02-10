@@ -2,11 +2,11 @@
 
 namespace Tests\Domain\Blog\Models;
 
+use Tests\TestCase;
+use Mockery\MockInterface;
 use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
-use Mockery\MockInterface;
-use Tests\TestCase;
 
 class BlogTest extends TestCase
 {
