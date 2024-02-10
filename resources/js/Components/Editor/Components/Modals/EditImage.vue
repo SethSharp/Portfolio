@@ -35,20 +35,12 @@ const {
 
 const path = ''
 const errors = ref({})
+const file = ref(null)
 
-const form = useForm({
-    file: null,
-})
-
-const submit = () => {
+const storeImage = () => {
     const formData = new FormData()
-    formData.append('file', form.file)
+    formData.append('file', file.value)
     formData.append('fileId', computedFileId.value)
-
-    // router.post(route('dashboard.blogs.image.store'), formData, {
-    //     onSuccess: (res) => handleSuccess(res),
-    //     onError: (err) => console.log(err),
-    // })
 
     axios
         .post(route('dashboard.blogs.image.store'), formData)
@@ -62,10 +54,8 @@ const submit = () => {
 }
 
 const handleSuccess = (res) => {
-    console.log(res)
     emits('update:modelValue', res.data.path)
     emits('update:fileId', res.data.fileId)
-    emits('close')
 }
 
 const handleError = (errs) => {
@@ -87,11 +77,15 @@ watch(
         }
     }
 )
+
+watch(file, (val) => {
+    storeImage()
+})
 </script>
 
 <template>
     <Modal :open="open" @close="emits('close')">
-        <ImageUpload v-model="form.file" :current-image="path" :error="errors['file']" />
+        <ImageUpload v-model="file" :current-image="path" :error="errors['file']" />
 
         <div>
             <label for="alt"> Alt</label>
@@ -136,6 +130,6 @@ watch(
             />
         </div>
 
-        <PrimaryButton type="submit" @click.prevent="submit"> Save</PrimaryButton>
+        <PrimaryButton as="button" @click.prevent="emits('close')"> Save</PrimaryButton>
     </Modal>
 </template>

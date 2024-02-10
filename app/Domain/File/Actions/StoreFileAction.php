@@ -13,8 +13,6 @@ class StoreFileAction
 
         $dir = $structure . 'blogs/images';
 
-        $path = Storage::disk('s3')->put($dir, $file);
-
-        return Storage::disk('s3')->url($path);
+        return Storage::disk('s3')->put($dir, $file);
     }
 }

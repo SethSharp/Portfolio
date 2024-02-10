@@ -8,12 +8,15 @@ use App\Http\Controllers\Controller;
 use App\Domain\File\Actions\StoreFileAction;
 use App\Domain\File\Actions\DestroyFileAction;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
+use Illuminate\Support\Facades\Storage;
 
 class StoreBlogImageController extends Controller
 {
     public function __invoke(StoreBlogImageRequest $request, StoreFileAction $action): JsonResponse
     {
         $path = $action($request->file('file'));
+        $url = Storage::disk('s3')->url($path);
+
         $fileId = intval($request->input('fileId'));
         $blogId = intval($request->input('blogId')) ?: null;
 
@@ -24,7 +27,8 @@ class StoreBlogImageController extends Controller
 
             if ($deleted) {
                 $file->update([
-                    'path' => $path
+                    'path' => $path,
+                    'url' => $url,
                 ]);
             } else {
                 return response()->json([
@@ -34,14 +38,15 @@ class StoreBlogImageController extends Controller
         } else {
             $file = File::create([
                 'blog_id' => null,
-                'path' => $path
+                'path' => $path,
+                'url' => $url,
             ]);
         }
 
         return response()->json([
             'fileId' => $file->id,
             'blogId' => $blogId,
-            'path' => $path
+            'path' => $url
         ]);
     }
 }
