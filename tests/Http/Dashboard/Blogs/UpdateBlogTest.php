@@ -422,6 +422,6 @@ class UpdateBlogTest extends TestCase
     /** @test */
     public function content_is_cache_is_updated()
     {
-
+        $this->markTestSkipped();
     }
 }

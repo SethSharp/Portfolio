@@ -380,6 +380,6 @@ class StoreBlogTest extends TestCase
     /** @test */
     public function content_is_cached()
     {
-
+        $this->markTestSkipped();
     }
 }
