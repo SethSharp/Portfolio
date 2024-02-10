@@ -21,6 +21,10 @@ class StoreBlogAction
 
         $blog->tags()->sync($tags);
 
-        return app(CleanBlogContentAction::class)($blog);
+        $blog = app(CleanBlogContentAction::class)($blog);
+
+        $blog->render();
+
+        return $blog;
     }
 }

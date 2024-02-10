@@ -2,6 +2,8 @@
 
 namespace App\Domain\Blog\Actions;
 
+use App\Support\Cache\CacheKeys;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
@@ -20,6 +22,12 @@ class UpdateBlogAction
 
         $blog->tags()->sync($tags);
 
-        return app(CleanBlogContentAction::class)($blog);
+        $blog = app(CleanBlogContentAction::class)($blog);
+
+        Cache::forget(CacheKeys::renderedBlogContent($blog));
+
+        $blog->render();
+
+        return $blog;
     }
 }

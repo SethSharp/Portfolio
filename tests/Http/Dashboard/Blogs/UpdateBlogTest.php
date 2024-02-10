@@ -418,4 +418,10 @@ class UpdateBlogTest extends TestCase
             'url' => 'some-url'
         ]);
     }
+
+    /** @test */
+    public function content_is_cache_is_updated()
+    {
+
+    }
 }

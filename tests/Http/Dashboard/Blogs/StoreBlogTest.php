@@ -376,4 +376,10 @@ class StoreBlogTest extends TestCase
             'url' => 'some-url'
         ]);
     }
+
+    /** @test */
+    public function content_is_cached()
+    {
+
+    }
 }

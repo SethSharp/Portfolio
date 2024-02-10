@@ -4,11 +4,14 @@ namespace App\Domain\Blog\Models;
 
 use App\Domain\Blog\Nodes\EditorNodes;
 use App\Domain\Iam\Models\User;
+use App\Support\Cache\CacheKeys;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Cache;
+use const Sodium\CRYPTO_AEAD_CHACHA20POLY1305_ABYTES;
 
 class Blog extends Model
 {
@@ -31,9 +34,10 @@ class Blog extends Model
     public function getContent(): string
     {
         // check if cache exists and hasn't been cleared
-        // if not return cache
+        if (Cache::has(CacheKeys::renderedBlogContent($this))) {
+            return Cache::get(CacheKeys::renderedBlogContent($this));
+        }
 
-        // else
         return $this->render();
     }
 
@@ -50,8 +54,15 @@ class Blog extends Model
         return $this->cacheResult($result);
     }
 
+    public function cacheBlog(): string
+    {
+        return $this->cacheResult($this->content);
+    }
+
     private function cacheResult(string $content): string
     {
-        return $content;
+        return Cache::rememberForever(CacheKeys::renderedBlogContent($this), function () use ($content) {
+            return $content;
+        });
     }
 }
