@@ -7,11 +7,10 @@ export default {
 <script setup>
 import { ref } from 'vue'
 import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
-import { PhotoIcon, XMarkIcon } from '@heroicons/vue/24/solid'
+import { PhotoIcon } from '@heroicons/vue/24/solid'
 import EditableNode from '../../Components/EditableNodeWrapper.vue'
-import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
-import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 import breakdownNodeViewProps from '@/Helpers/breakdownNodeViewProps'
+import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
 
 const props = defineProps({
     ...nodeViewProps,
@@ -42,6 +41,7 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                     <div class="flex w-full justify-center">
                         <div class="flex-col w-full">
                             <div v-if="src" class="flex mb-4 w-full">
+                                {{ src }}
                                 <img :src="src" />
                             </div>
 

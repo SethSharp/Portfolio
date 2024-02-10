@@ -11,8 +11,11 @@ class StoreFileAction
     {
         $structure = app()->environment('local') ? 'testing/' : 'production/';
 
-        $dir = $structure . 'blogs/images';
+        $dir = $structure . 'blogs';
 
-        return Storage::disk('s3')->put($dir, $file);
+        return Storage::disk(app()->environment('local')
+            ? 'public'
+            : config('filesystems.default'))
+            ->put($dir, $file);
     }
 }

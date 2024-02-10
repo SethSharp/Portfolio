@@ -15,7 +15,9 @@ class StoreBlogImageController extends Controller
     public function __invoke(StoreBlogImageRequest $request, StoreFileAction $action): JsonResponse
     {
         $path = $action($request->file('file'));
-        $url = Storage::disk('s3')->url($path);
+        $url = app()->environment('local')
+            ? $path
+            : Storage::url($path);
 
         $fileId = intval($request->input('fileId'));
         $blogId = intval($request->input('blogId')) ?: null;
