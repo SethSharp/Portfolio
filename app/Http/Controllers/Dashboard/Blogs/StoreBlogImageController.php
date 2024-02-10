@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Dashboard\Blogs;
 use App\Domain\File\Models\File;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Domain\File\Actions\StoreFileAction;
 use App\Domain\File\Actions\DestroyFileAction;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
-use Illuminate\Support\Facades\Storage;
 
 class StoreBlogImageController extends Controller
 {
