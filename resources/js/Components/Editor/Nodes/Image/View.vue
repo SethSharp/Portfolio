@@ -42,16 +42,7 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                     <div class="flex w-full justify-center">
                         <div class="flex-col w-full">
                             <div v-if="src" class="flex mb-4 w-full">
-                                <div class="relative shadow w-full">
-                                    <button
-                                        class="absolute -right-3 top-4 bg-white shadow text-red-400 hover:bg-white hover:text-red-500 hover:shadow rounded-full"
-                                        @click="src = null"
-                                    >
-                                        x
-                                    </button>
-
-                                    <img :src="src" />
-                                </div>
+                                <img :src="src" />
                             </div>
 
                             <div v-else class="flex flex-col justify-center items-center mt-2">

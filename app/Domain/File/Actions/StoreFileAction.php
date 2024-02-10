@@ -3,26 +3,18 @@
 namespace App\Domain\File\Actions;
 
 use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class StoreFileAction
 {
     public function __invoke(UploadedFile $file): string
     {
-        // 1. Store the image in our s3 bucket
+        $structure = app()->environment('local') ? 'testing/' : 'production/';
 
-        $img = Image::make($file)->encode();
+        $dir = $structure . 'blogs/images';
 
-        $dir = app()->environment('local')
-            ? 'testing/'
-            : 'production/';
+        $path = Storage::disk('s3')->put($dir, $file);
 
-        $path = $file->hashName(path: $dir . 'categories');
-
-        Storage::disk('s3')
-            ->put($path, $img, 'public-read');
-
-        return 'new path now';// $path;
+        return Storage::disk('s3')->url($path);
     }
 }
