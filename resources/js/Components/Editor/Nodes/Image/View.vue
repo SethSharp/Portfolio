@@ -20,7 +20,6 @@ const props = defineProps({
 const open = ref(false)
 
 let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
-console.log(blogId)
 </script>
 
 <template>
@@ -33,7 +32,6 @@ console.log(blogId)
                     :open="open"
                     v-model="src"
                     v-model:fileId="fileId"
-                    v-model:blogId="blogId"
                     v-model:alt="alt"
                     v-model:height="height"
                 />

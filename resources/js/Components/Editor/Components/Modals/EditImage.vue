@@ -16,9 +16,6 @@ const props = defineProps({
     fileId: {
         required: true,
     },
-    blogId: {
-        required: true,
-    },
     alt: {
         required: true,
     },
@@ -27,11 +24,10 @@ const props = defineProps({
     },
 })
 
-const emits = defineEmits(['update:fileId', 'update:blogId', 'update:alt', 'update:height'])
+const emits = defineEmits(['update:fileId', 'update:alt', 'update:height'])
 
 const {
     fileId: computedFileId,
-    blogId: computedBlogId,
     alt: computedAlt,
     height: computedHeight,
     fit: computedFit,
@@ -48,19 +44,27 @@ const submit = () => {
     const formData = new FormData()
     formData.append('file', form.file)
     formData.append('fileId', computedFileId.value)
-    formData.append('blogId', computedBlogId.value)
 
-    router.post(route('dashboard.blogs.image.store'), formData, {
-        onSuccess: (res) => handleSuccess(res),
-        onError: (err) => console.log(err),
-    })
+    // router.post(route('dashboard.blogs.image.store'), formData, {
+    //     onSuccess: (res) => handleSuccess(res),
+    //     onError: (err) => console.log(err),
+    // })
+
+    axios
+        .post(route('dashboard.blogs.image.store'), formData)
+        .then((res) => {
+            console.log(res)
+            handleSuccess(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
 
 const handleSuccess = (res) => {
     console.log(res)
     emits('update:modelValue', res.data.path)
     emits('update:fileId', res.data.fileId)
-    emits('update:blogId', res.data.blogId)
     emits('close')
 }
 

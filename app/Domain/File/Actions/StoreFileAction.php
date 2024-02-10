@@ -14,17 +14,17 @@ class StoreFileAction
     {
         // 1. Store the image in our s3 bucket
 
-//        $img = Image::make($file)->encode();
-//
-//        $dir = app()->environment('local')
-//            ? 'testing/'
-//            : 'production/';
-//
-//        $path = $file->hashName(path: $dir . 'categories');
-//
-//        Storage::disk('s3')
-//            ->put($path, $img, 'public-read');
+        $img = Image::make($file)->encode();
 
-        return 'some-path';//$path;
+        $dir = app()->environment('local')
+            ? 'testing/'
+            : 'production/';
+
+        $path = $file->hashName(path: $dir . 'categories');
+
+        Storage::disk('s3')
+            ->put($path, $img, 'public-read');
+
+        return 'new path now';//$path;
     }
 }

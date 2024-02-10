@@ -17,7 +17,7 @@ export default Node.create({
                 default: null,
             },
             blogId: {
-                default: null,
+                default: 'null',
             },
             src: {
                 default: null,

@@ -2,39 +2,41 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
+use App\Domain\File\Actions\DestroyFileAction;
 use App\Domain\File\Models\File;
+use http\Env\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Domain\File\Actions\StoreFileAction;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
-use Illuminate\Support\Facades\DB;
 
 class StoreBlogImageController extends Controller
 {
     public function __invoke(StoreBlogImageRequest $request, StoreFileAction $action): JsonResponse
     {
         $path = $action($request->file('file'));
-        $file = null;
+        $fileId = intval($request->input('fileId'));
+        $blogId = intval($request->input('blogId')) ?: null;
 
-        // 2. Determine if this image is a temporary image
-        $blogId = intval($request->input('blogId')) ?: DB::table('blogs')->max('id') + 1;
-
-
-        // this case we are: Editing an image
-        if ($fileId = $request->input('fileId') !== "null") {
+        if ($fileId) {
             $file = File::whereId($fileId)->first();
 
-            $file->update([
-                'temporary_path' => $path
-            ]);
-        } else {
-            // in store blog we search for files like this which do not have a blog id
-            // blog_id will be updated
+            $deleted = app(DestroyFileAction::class)($file);
 
+            if ($deleted) {
+                $file->update([
+                    'path' => $path
+                ]);
+            } else {
+                return response()->json([
+                    'failed' => $deleted
+                ]);
+            }
+        } else {
             $file = File::create([
-                'blog_id' => $blogId,
-                'path' => $path,
-                'temporary_path' => null
+                'blog_id' => null,
+                'path' => $path
             ]);
         }
 
