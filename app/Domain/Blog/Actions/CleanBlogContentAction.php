@@ -2,11 +2,9 @@
 
 namespace App\Domain\Blog\Actions;
 
-use App\Domain\File\Actions\DestroyFileAction;
-use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
-use App\Http\Requests\Dashboard\Blogs\StoreBlogRequest;
+use App\Domain\File\Actions\DestroyFileAction;
 
 class CleanBlogContentAction
 {
