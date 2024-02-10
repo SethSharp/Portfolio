@@ -295,7 +295,7 @@ class StoreBlogTest extends TestCase
     /** @test */
     public function any_files_without_blog_id_will_be_assigned_recently_created_one()
     {
-        File::create([
+        $file = File::create([
             'path' => 'some-path',
             'url' => 'some-url'
         ]);
@@ -315,7 +315,7 @@ class StoreBlogTest extends TestCase
                 'meta_title' => 'some title',
                 'meta_tags' => 'some tag',
                 'meta_description' => 'some description',
-                'content' => '<tt-image blogid="null"> </tt-image>',
+                'content' => "<tt-image fileid=\"$file->id\" blogid=\"null\"> </tt-image>",
                 'is_draft' => true
             ])
             ->assertRedirect(route('dashboard.blogs.index'));
@@ -324,6 +324,54 @@ class StoreBlogTest extends TestCase
 
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+    }
+
+    /** @test */
+    public function captures_all_unused_files_and_deletes_them()
+    {
+        $file = File::create([
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $anotherFile = File::create([
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $tag = Tag::factory()->create();
+
+        $this->actingAs($user = User::factory()->author()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'tags' => [
+                    [
+                        'id' => $tag->id,
+                        'name' => $tag->name
+                    ]
+                ],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => "<tt-image fileid=\"$file->id\" blogid='null'> </tt-image> <tt-image fileid=\"$file->id\" blogid='null'> </tt-image>",
+                'is_draft' => true
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $blog = Blog::first();
+
+        $this->assertDatabaseHas('files', [
+            'blog_id' => $blog->id,
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $this->assertDatabaseMissing('files', [
+            'blog_id' => $anotherFile->id,
             'path' => 'some-path',
             'url' => 'some-url'
         ]);
