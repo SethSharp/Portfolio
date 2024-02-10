@@ -2,8 +2,8 @@
 
 namespace App\Domain\Blog\Models;
 
-use App\Domain\Blog\Nodes\EditorNodes;
 use App\Domain\Iam\Models\User;
+use App\Domain\Blog\Nodes\EditorNodes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
