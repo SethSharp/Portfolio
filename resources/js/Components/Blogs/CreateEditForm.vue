@@ -74,7 +74,11 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.meta_description" label="Meta Description" />
+            <TextInput
+                v-model="form.meta_description"
+                label="Meta Description"
+                description="What users will see in google or in the portfolio to see what each blog entails."
+            />
             <InputError :message="form.errors.meta_description" />
         </FormElement>
 

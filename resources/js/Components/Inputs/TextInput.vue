@@ -7,6 +7,10 @@ defineProps({
         type: String,
         default: '',
     },
+    description: {
+        type: String,
+        default: '',
+    },
     type: {
         type: String,
         default: 'text',
@@ -39,5 +43,7 @@ defineExpose({ focus: () => input.value.focus() })
             v-model="model"
             ref="input"
         />
+
+        <span class="text-gray-400 text-sm"> {{ description }} </span>
     </div>
 </template>
