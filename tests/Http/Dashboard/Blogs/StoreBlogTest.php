@@ -2,6 +2,8 @@
 
 namespace Dashboard\Blogs;
 
+use App\Support\Cache\CacheKeys;
+use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
@@ -380,6 +382,39 @@ class StoreBlogTest extends TestCase
     /** @test */
     public function content_is_cached()
     {
-        $this->markTestSkipped();
+        $file = File::create([
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $tag = Tag::factory()->create();
+
+        $this->actingAs($user = User::factory()->author()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'tags' => [
+                    [
+                        'id' => $tag->id,
+                        'name' => $tag->name
+                    ]
+                ],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => "<tt-image fileid=\"$file->id\" blogid='null'> </tt-image>",
+                'is_draft' => true
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $blog = Blog::first();
+
+        $this->assertDatabaseHas('files', [
+            'blog_id' => $blog->id,
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $this->assertEquals("<img fileid=\"$file->id\" blogid='null'> </img>", Cache::get(CacheKeys::renderedBlogContent($blog)));
     }
 }

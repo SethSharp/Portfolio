@@ -2,6 +2,8 @@
 
 namespace Dashboard\Blogs;
 
+use App\Support\Cache\CacheKeys;
+use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
@@ -420,8 +422,35 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function content_is_cache_is_updated()
+    public function content_in_cache_is_updated()
     {
-        $this->markTestSkipped();
+        $file = File::create([
+            'path' => 'some-path',
+            'url' => 'some-url'
+        ]);
+
+        $tag = Tag::factory()->create();
+
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'tags' => [
+                    [
+                        'id' => $tag->id,
+                        'name' => $tag->name
+                    ]
+                ],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => "<tt-image fileid=\"$file->id\" blogid='null'> </tt-image>",
+                'is_draft' => true
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $blog = Blog::first();
+
+        $this->assertEquals("<img fileid=\"$file->id\" blogid='null'> </img>", Cache::get(CacheKeys::renderedBlogContent($blog)));
     }
 }
