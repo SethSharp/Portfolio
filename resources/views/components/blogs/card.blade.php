@@ -5,7 +5,7 @@
     <div class="bg-gray-50 h-3/4 w-full">
         <div class="p-3 text-lg font-medium text-left"> {{ substr($blog->title, 0, 100) }} </div>
 
-        <div class="px-6 text-md text-left"> {{ $blog->meta_description }} </div>
+        <div class="px-6 text-md text-left text-gray-500"> {{ $blog->meta_description }} </div>
     </div>
 
     <div class="h-1/4 w-full">
