@@ -11,7 +11,10 @@ class IndexBlogsController extends Controller
     public function __invoke(): View
     {
         return view('blogs.index', [
-            'blogs' => Blog::all()
+            'blogs' => Blog::all()->map(function (Blog $blog) {
+                $blog->published_at = $blog->created_at->diffForHumans();
+                return $blog;
+            })
         ]);
     }
 }

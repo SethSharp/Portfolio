@@ -22,6 +22,7 @@ return new class() extends Migration {
             $table->string('meta_description')->nullable()->default('');
             $table->string('meta_tags')->nullable()->default('');
             $table->text('content');
+            $table->string('blurb');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,7 +13,7 @@ class BlogFactory extends Factory
 
     public function definition()
     {
-        $name = fake()->name();
+        $name = fake()->words(8, true);
         $slug = Str::slug($name);
 
         return [
@@ -25,6 +25,7 @@ class BlogFactory extends Factory
             'meta_description' => fake()->text(100),
             'meta_tags' => fake()->text(10),
             'content' => fake()->text(400),
+            'blurb' => fake()->text(),
         ];
     }
 }
