@@ -2,13 +2,13 @@
 
 namespace Dashboard\Blogs;
 
-use App\Support\Cache\CacheKeys;
-use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
+use App\Support\Cache\CacheKeys;
+use Illuminate\Support\Facades\Cache;
 
 class UpdateBlogTest extends TestCase
 {
