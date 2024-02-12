@@ -6,10 +6,12 @@ namespace App\Domain\Iam\Models;
 use Codinglabs\Roles\HasRoles;
 use App\Domain\Blog\Models\Blog;
 use Laravel\Sanctum\HasApiTokens;
+use App\Domain\Blog\Models\Comment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -39,5 +41,11 @@ class User extends Authenticatable
     public function blog(): HasMany
     {
         return $this->hasMany(Blog::class);
+    }
+
+    public function comments(): BelongsToMany
+    {
+        return $this->belongsToMany(Comment::class, 'comments')
+            ->withTimestamps();
     }
 }

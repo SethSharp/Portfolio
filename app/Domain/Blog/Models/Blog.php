@@ -4,6 +4,7 @@ namespace App\Domain\Blog\Models;
 
 use App\Domain\Iam\Models\User;
 use App\Support\Cache\CacheKeys;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 use App\Domain\Blog\Nodes\EditorNodes;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,12 @@ class Blog extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function comments(): BelongsToMany
+    {
+        return $this->belongsToMany(Comment::class, 'blog_comment', 'blog_id', 'comment_id')
+            ->withTimestamps();
     }
 
     public function tags(): BelongsToMany

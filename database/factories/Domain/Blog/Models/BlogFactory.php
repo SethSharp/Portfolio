@@ -2,6 +2,8 @@
 
 namespace Database\Factories\Domain\Blog\Models;
 
+use App\Domain\Blog\Models\Comment;
+use Closure;
 use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
@@ -26,5 +28,14 @@ class BlogFactory extends Factory
             'meta_tags' => fake()->text(10),
             'content' => fake()->text(400),
         ];
+    }
+
+    public function configure(): self
+    {
+        return $this->afterCreating(function ($blog) {
+            $comments = Comment::factory()->count(10)->create()->pluck('id');
+
+            $blog->comments()->attach($comments);
+        });
     }
 }
