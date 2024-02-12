@@ -2,11 +2,10 @@
 
 namespace Database\Factories\Domain\Blog\Models;
 
-use App\Domain\Blog\Models\Comment;
-use Closure;
 use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
+use App\Domain\Blog\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlogFactory extends Factory

@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\blogs\comments;
 
-use Illuminate\View\View;
 use Livewire\Component;
+use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Comment;
 

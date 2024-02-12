@@ -4,7 +4,6 @@ namespace App\Domain\Blog\Models;
 
 use App\Domain\Iam\Models\User;
 use App\Support\Cache\CacheKeys;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 use App\Domain\Blog\Nodes\EditorNodes;
 use Illuminate\Database\Eloquent\Model;
