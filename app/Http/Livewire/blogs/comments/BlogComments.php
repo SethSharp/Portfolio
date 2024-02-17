@@ -11,7 +11,7 @@ class BlogComments extends Component
 {
     public Blog $blog;
 
-    public $comment;
+    public $comment = '';
     public $comments;
     public bool $showRegisterModal = false;
 
@@ -25,7 +25,14 @@ class BlogComments extends Component
     public function mount(Blog $blog): void
     {
         $this->blog = $blog;
-        $this->comments = $blog->comments()->get();
+        $this->comments = $blog->comments()
+            ->with('user')
+            ->get()
+            ->each(function (Comment $comment) {
+                $comment->posted = $comment->created_at->diffForHumans();
+
+                return $comment;
+            });
     }
 
     public function save(): void
@@ -39,11 +46,14 @@ class BlogComments extends Component
 
         $this->validate();
 
-        Comment::create([
-            'blog_id' => $this->blog->id,
+        $comment = Comment::create([
             'user_id' => auth()->user()->id,
             'comment' => $this->comment
         ]);
+
+        $this->blog->comments()->attach($comment);
+
+        $this->comments->push($comment);
     }
 
     public function render(): View

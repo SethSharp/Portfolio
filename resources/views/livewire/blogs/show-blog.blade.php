@@ -33,7 +33,10 @@
 
         <div class="mt-8">
             <span class="text-gray-400 text-xl"> Comments</span>
-            <livewire:blogs.comments.blog-comments :blog="$blog"/>
+
+            <div class="mt-4">
+                <livewire:blogs.comments.blog-comments :blog="$blog"/>
+            </div>
         </div>
     </div>
 @endsection

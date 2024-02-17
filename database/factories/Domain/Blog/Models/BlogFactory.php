@@ -32,7 +32,7 @@ class BlogFactory extends Factory
     public function configure(): self
     {
         return $this->afterCreating(function ($blog) {
-            $comments = Comment::factory()->count(10)->create()->pluck('id');
+            $comments = Comment::factory()->count(3)->create()->pluck('id');
 
             $blog->comments()->attach($comments);
         });
