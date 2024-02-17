@@ -35,7 +35,7 @@ class BlogComments extends Component
             });
     }
 
-    public function save(): void
+    public function save()
     {
         if (is_null(auth()->user())) {
             // add front end error here and maybe pop up a modal to register?
@@ -43,6 +43,8 @@ class BlogComments extends Component
 
             return;
         }
+
+        $this->showRegisterModal = true;
 
         $this->validate();
 
