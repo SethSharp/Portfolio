@@ -11,12 +11,19 @@
 @endpush
 
 @section("content")
-    <div class="w-3/4 mx-auto">
+    <div class="sm:w-3/4 mx-auto">
         <div class="flex-wrap">
             <div class="text-5xl font-bold"> {{ $blog->title }}</div>
 
             <div class="mt-2 text-gray-400 font-medium text-lg">
                 Published by {{ $blog->author->name  }} {{ $blog->created_at->diffForHumans() }}
+            </div>
+
+            <div class="flex gap-x-4 mt-2">
+                @foreach($blog->tags as $tag)
+                    <span
+                        class="rounded-lg border-gray-300 border-2 bg-gray-100 text-md p-1 font-monot-"> {{ $tag->name }} </span>
+                @endforeach
             </div>
         </div>
 
