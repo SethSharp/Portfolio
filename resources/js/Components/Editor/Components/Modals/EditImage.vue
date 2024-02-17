@@ -58,26 +58,6 @@ const handleSuccess = (res) => {
     emits('update:fileId', res.data.fileId)
 }
 
-const handleError = (errs) => {
-    for (const key in errs) {
-        errors.value[key] = errs[key]
-    }
-}
-
-const heightControl = ref(props.height === 'full' ? 'full' : 'custom')
-const heightControlOptions = ['full', 'custom']
-
-watch(
-    () => heightControl.value,
-    (value) => {
-        if (value === 'full') {
-            computedHeight.value = 'full'
-        } else {
-            computedHeight.value = 450
-        }
-    }
-)
-
 watch(file, (val) => {
     storeImage()
 })
@@ -94,32 +74,7 @@ watch(file, (val) => {
 
         <div>
             <label for="height"> Height</label>
-            <div class="flex flex-col space-y-1">
-                <label>
-                    <input
-                        class="mr-2"
-                        type="radio"
-                        name="heightControl"
-                        v-model="heightControl"
-                        value="full"
-                    />
-                    Full
-                </label>
-
-                <label>
-                    <input
-                        class="mr-2"
-                        type="radio"
-                        name="heightControl"
-                        v-model="heightControl"
-                        value="custom"
-                    />
-                    Custom
-                </label>
-            </div>
-
             <input
-                v-if="heightControl === 'custom'"
                 type="number"
                 class="mt-2"
                 step="1"

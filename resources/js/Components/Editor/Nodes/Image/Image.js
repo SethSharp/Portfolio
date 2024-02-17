@@ -26,7 +26,7 @@ export default Node.create({
                 default: null,
             },
             height: {
-                default: 'full',
+                default: '200px',
             },
         }
     },

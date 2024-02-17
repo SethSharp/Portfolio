@@ -41,7 +41,7 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                     <div class="flex w-full justify-center">
                         <div class="flex-col w-full">
                             <div v-if="src" class="flex mb-4 w-full">
-                                <img :src="src" />
+                                <img :src="src" :alt="alt" :style="{ height: `${height}px` }" />
                             </div>
 
                             <div v-else class="flex flex-col justify-center items-center mt-2">

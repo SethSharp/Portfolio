@@ -22,13 +22,15 @@ class CleanBlogContentAction
 
         $newContent = str_replace('blogid="null"', 'blogid="' . $blog->id . '"', $content);
 
+        // Replace height attribute with style attribute
+        $newContent = preg_replace('/height="(\d+)"/', 'style="height: $1px"', $newContent);
+
         $blog->update([
             'content' => $newContent
         ]);
 
         // Sometimes a file may be deleted within the editor, this finds all the file ids and ensures they are all exist
         // otherwise delete the unused ones (s3 and entry)
-
         $matches = [];
         preg_match_all('/fileid="([^"]+)"/', $blog->content, $matches);
 
