@@ -38,6 +38,12 @@
                 Blogs
             </a>
         </div>
+
+        @auth()
+            <div class="my-auto font-medium">
+                <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
+            </div>
+        @endauth
     </div>
     <div class="sm:hidden">
         <div class="mx-8">

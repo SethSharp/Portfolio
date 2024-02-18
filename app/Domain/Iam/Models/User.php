@@ -5,6 +5,7 @@ namespace App\Domain\Iam\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Codinglabs\Roles\HasRoles;
 use App\Domain\Blog\Models\Blog;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Sanctum\HasApiTokens;
 use App\Domain\Blog\Models\Comment;
 use Illuminate\Notifications\Notifiable;
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
