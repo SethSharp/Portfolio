@@ -1,5 +1,7 @@
 <div>
-    <div class="bg-gray-100 px-4 py-0.5 rounded-lg">
+    <span class="text-gray-400 text-xl"> Comments ({{ count($comments) }})</span>
+
+    <div class="bg-gray-100 mt-4 px-4 py-0.5 rounded-lg">
         @foreach($comments as $comment)
             <div class="bg-white p-4 my-4 rounded-lg">
                 <span class="font-bold"> {{ $comment->user->name }}</span>
@@ -9,11 +11,7 @@
                 </div>
 
                 <span class="text-gray-400 text-sm">
-                    @if($comment->posted)
-                        {{ $comment->posted }}
-                    @else
-                        Now
-                    @endif
+                    {{ $comment->created_at->diffForHumans() }}
                 </span>
             </div>
         @endforeach
@@ -35,7 +33,7 @@
                 </x-button.primary>
             </div>
 
-            @error('comment') <span class="comment">{{ $message }}</span> @enderror
+            @error('comment') <span class="text-red-500">{{ $message }}</span> @enderror
         </form>
     </div>
 

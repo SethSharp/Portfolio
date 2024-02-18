@@ -21,7 +21,7 @@ class BlogComments extends Component
     protected function rules(): array
     {
         return [
-            'comment' => ['required', 'string', 'max:999'],
+            'comment' => ['required', 'string', 'min:5', 'max:999'],
         ];
     }
 
@@ -49,8 +49,6 @@ class BlogComments extends Component
             return;
         }
 
-        $this->showRegisterModal = true;
-
         $this->validate();
 
         $comment = Comment::create([
@@ -61,6 +59,8 @@ class BlogComments extends Component
         $this->blog->comments()->attach($comment);
 
         $this->comments->push($comment);
+
+        $this->comment = '';
     }
 
     public function render(): View

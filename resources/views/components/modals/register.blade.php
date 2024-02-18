@@ -19,11 +19,18 @@
                 <h2 class="text-2xl font-bold mb-4">You need to register an account to comment</h2>
                 <p>
                     This is an easy process and allows the comments within these blogs
-                    to be mor elikely to be actualy people.
+                    to be more likely to be actual people.
                 </p>
 
-                <!-- Close button -->
-                <button @click="closeModal()" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded">Close</button>
+                <div class=" mt-5">
+                    <x-button.secondary @click="closeModal()">
+                        Close
+                    </x-button.secondary>
+
+                    <a href="{{route('register')}}" class="p-2 bg-primary-500 text-white rounded">
+                        Register
+                    </a>
+                </div>
             </div>
         </div>
     </div>
