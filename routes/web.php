@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Livewire\blogs\ShowBlog;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowProjectsController;
+use App\Http\Controllers\Views\Blogs\ShowBlogController;
 use App\Http\Controllers\Views\ShowExperienceController;
 use App\Http\Controllers\Views\ShowCapabiltiesController;
 use App\Http\Controllers\Views\Blogs\IndexBlogsController;
@@ -28,7 +28,7 @@ Route::get('/portfolio', ShowProjectsController::class)->name('projects');
 
 Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', IndexBlogsController::class)->name('index');
-    Route::get('/{blog:slug}', ShowBlog::class)->name('show');
+    Route::get('/{blog:slug}', ShowBlogController::class)->name('show');
 });
 
 require __DIR__ . '/auth.php';

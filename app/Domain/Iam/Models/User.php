@@ -50,4 +50,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Comment::class, 'comments')
             ->withTimestamps();
     }
+
+    public function likedBlogs(): BelongsToMany
+    {
+        return $this->belongsToMany(Blog::class, 'blog_likes', 'user_id', 'blog_id');
+    }
 }

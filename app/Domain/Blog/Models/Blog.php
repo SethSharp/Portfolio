@@ -30,6 +30,11 @@ class Blog extends Model
             ->withTimestamps();
     }
 
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'blog_likes', 'blog_id', 'user_id');
+    }
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'blog_tag')
