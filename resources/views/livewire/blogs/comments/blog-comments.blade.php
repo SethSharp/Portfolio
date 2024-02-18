@@ -19,17 +19,25 @@
         @endforeach
     </div>
 
-    {{ $showRegisterModal }}
-    {{ $showRegisterModal === 1 ? 'true' : 'false' }}
-
     <div class="w-full mt-6">
         <form wire:submit.prevent="save">
-            <input type="text" wire:ignore wire:model.lazy="comment">
-            @error('comment') <span class="comment">{{ $message }}</span> @enderror
+            <div class="flex gap-x-4">
+                <input
+                    type="text"
+                    class="p-2 w-full rounded-xl text-gray-500"
+                    placeholder="Make a comment..."
+                    wire:model.lazy="comment"
+                    wire:ignore
+                >
 
-            <button type="submit">Save</button>
+                <x-button.primary type="submit">
+                    Comment
+                </x-button.primary>
+            </div>
+
+            @error('comment') <span class="comment">{{ $message }}</span> @enderror
         </form>
     </div>
 
-    <x-modals.register open="{{$showRegisterModal}}"/>
+    <x-modals.register/>
 </div>

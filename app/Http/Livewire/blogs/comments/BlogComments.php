@@ -15,6 +15,9 @@ class BlogComments extends Component
     public $comments;
     public bool $showRegisterModal = false;
 
+    protected $listeners = ['refreshComponent' => '$refresh'];
+
+
     protected function rules(): array
     {
         return [
@@ -40,6 +43,8 @@ class BlogComments extends Component
         if (is_null(auth()->user())) {
             // add front end error here and maybe pop up a modal to register?
             $this->showRegisterModal = true;
+
+            $this->emitSelf('refreshComponent');
 
             return;
         }
