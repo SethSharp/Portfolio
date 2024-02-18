@@ -12,8 +12,6 @@ class StoreFileAction
         $structure = app()->environment('testing') || app()->environment('local')
             ? 'testing/' : 'production/';
 
-        $dir = $structure . 'blogs';
-
-        return Storage::disk('s3')->put($dir, $file);
+        return Storage::disk('s3')->put($structure . 'blogs', $file);
     }
 }
