@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.1",
         "aws/aws-sdk-php": "^3.298",
         "codinglabsau/laravel-roles": "^2.4",
         "codinglabsau/php-styles": "dev-main",
