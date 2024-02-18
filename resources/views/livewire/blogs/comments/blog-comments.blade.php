@@ -4,7 +4,7 @@
     <div class="bg-gray-100 mt-4 px-4 py-0.5 rounded-lg">
         @foreach($comments as $comment)
             <div class="bg-white p-4 my-4 rounded-lg">
-                <span class="font-bold"> {{ $comment->user->name }}</span>
+                <span class="font-bold"> {{ $comment->user?->name }}</span>
 
                 <div class="">
                     {{ $comment->comment }}
