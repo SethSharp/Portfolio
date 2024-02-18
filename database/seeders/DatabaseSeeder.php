@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        $blog = Blog::factory()->count(10)->create([
+        Blog::factory()->count(10)->create([
             'author_id' => $admin->id
         ]);
 

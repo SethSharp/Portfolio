@@ -5,6 +5,7 @@ namespace Database\Factories\Domain\Blog\Models;
 use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
+use App\Domain\Blog\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlogFactory extends Factory
@@ -26,5 +27,14 @@ class BlogFactory extends Factory
             'meta_tags' => fake()->text(10),
             'content' => fake()->text(400),
         ];
+    }
+
+    public function configure(): self
+    {
+        return $this->afterCreating(function ($blog) {
+            $comments = Comment::factory()->count(3)->create()->pluck('id');
+
+            $blog->comments()->attach($comments);
+        });
     }
 }

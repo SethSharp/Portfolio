@@ -27,8 +27,14 @@
             </div>
         </div>
 
-        <div class="mt-8 prose">
+        <div class="mt-8 prose min-h-[400px]">
             {!! $content !!}
+        </div>
+
+        <div class="mt-8">
+            <div class="mt-4">
+                <livewire:blogs.comments.blog-comments :blog="$blog"/>
+            </div>
         </div>
     </div>
 @endsection

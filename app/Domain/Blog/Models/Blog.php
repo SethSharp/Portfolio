@@ -24,6 +24,12 @@ class Blog extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function comments(): BelongsToMany
+    {
+        return $this->belongsToMany(Comment::class, 'blog_comment', 'blog_id', 'comment_id')
+            ->withTimestamps();
+    }
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'blog_tag')

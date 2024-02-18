@@ -38,6 +38,12 @@
                 Blogs
             </a>
         </div>
+
+        @auth()
+            <div class="my-auto font-medium">
+                <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
+            </div>
+        @endauth
     </div>
     <div class="sm:hidden">
         <div class="mx-8">
@@ -74,6 +80,12 @@
                    class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">
                     Blogs
                 </a>
+
+                @auth()
+                    <div class="my-auto font-medium">
+                        <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
+                    </div>
+                @endauth
             </div>
         </div>
 
