@@ -11,7 +11,8 @@
         }
     }"
 >
-    <div x-show="showModal" x-cloak class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50">
+    <div x-show="showModal" @click="closeModal()" x-cloak
+         class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50">
         <div class="flex items-center justify-center min-h-screen">
             <div class="bg-white w-1/2 p-6 rounded shadow-lg">
                 <!-- Modal content goes here -->
