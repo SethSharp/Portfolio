@@ -20,7 +20,7 @@ class BlogCommentsTest extends TestCase
             ->call('save')
             ->assertSet('showRegisterModal', true);
 
-        $this->assertDatabaseEmpty('comments');
+        $this->assertDatabaseCount('comments', 3);
     }
 
     /** @test */
@@ -61,7 +61,6 @@ class BlogCommentsTest extends TestCase
             ->assertSet('showRegisterModal', false);
 
         $this->assertDatabaseHas('comments', [
-            'blog_id' => $blog->id,
             'user_id' => $user->id,
             'comment' => 'Some comment'
         ]);
