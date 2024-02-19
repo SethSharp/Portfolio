@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import Dropdown from '@/Components/Dropdowns/Dropdown.vue'
 import DropdownLink from '@/Components/Dropdowns/DropdownLink.vue'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
-import { Head, Link } from '@inertiajs/vue3'
+import {Head, Link} from '@inertiajs/vue3'
 import Notifications from '@/Components/Notifications.vue'
 
 defineProps({
@@ -32,7 +32,7 @@ const links = [
 </script>
 
 <template>
-    <Head :title="title" />
+    <Head :title="title"/>
 
     <div>
         <div class="min-h-screen bg-gray-100">
@@ -43,7 +43,7 @@ const links = [
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard.home')">
+                                <Link :href="route('dashboard.blogs.index')">
                                     <ApplicationLogo
                                         class="block h-9 w-auto fill-current text-gray-800"
                                     />
@@ -154,8 +154,8 @@ const links = [
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            :href="route('dashboard.home')"
-                            :active="route().current('dashboard.home')"
+                            :href="route('dashboard.blogs.index')"
+                            :active="route().current('dashboard.blogs.*')"
                         >
                             Dashboard
                         </ResponsiveNavLink>
@@ -187,18 +187,18 @@ const links = [
             <!-- Page Heading -->
             <header class="bg-white shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
+                    <slot name="header"/>
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
                 <div class="bg-white rounded-xl m-6 p-12">
-                    <slot />
+                    <slot/>
                 </div>
             </main>
 
-            <Notifications :errors="$page.props.errors" :success="$page.props.success" />
+            <Notifications :errors="$page.props.errors" :success="$page.props.success"/>
         </div>
     </div>
 </template>

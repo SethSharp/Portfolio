@@ -18,6 +18,7 @@ class UpdateBlogAction
 
         $blog->update([
             ...$updateBlogRequest->validated(),
+            'published_at' => null
         ]);
 
         $blog->tags()->sync($tags);

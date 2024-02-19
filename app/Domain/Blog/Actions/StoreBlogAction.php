@@ -17,6 +17,7 @@ class StoreBlogAction
         $blog = Blog::create([
             'author_id' => auth()->user()->id,
             ...$storeBlogRequest->validated(),
+            'published_at' => null
         ]);
 
         $blog->tags()->sync($tags);

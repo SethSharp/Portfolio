@@ -17,7 +17,7 @@
             </div>
 
             <div class="flex justify-end font-medium text-gray-400">
-                <span class="mr-4 my-3"> {{$blog->published_at}} </span>
+                <span class="mr-4 my-3"> {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }} </span>
             </div>
         </div>
     </div>

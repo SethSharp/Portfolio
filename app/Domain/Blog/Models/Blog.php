@@ -21,7 +21,8 @@ class Blog extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'is_draft' => 'bool'
+        'is_draft' => 'bool',
+        'published_at' => 'timestamp'
     ];
 
     public function author(): BelongsTo

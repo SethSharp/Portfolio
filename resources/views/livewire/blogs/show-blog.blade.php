@@ -16,7 +16,8 @@
 
         <div class="mt-2 text-gray-400 font-medium text-lg">
             @if($blog->published_at)
-                Published by {{ $blog->author->name  }} {{ $blog->published_at->diffForHumans() }}
+                Published
+                by {{ $blog->author->name  }} {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }}
             @else
                 This blog is in a draft status
             @endif

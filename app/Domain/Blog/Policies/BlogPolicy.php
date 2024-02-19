@@ -7,7 +7,7 @@ use App\Domain\Blog\Models\Blog;
 
 class BlogPolicy
 {
-    public function before(User $user): ?bool
+    public function before(User $user, string $ability): ?bool
     {
         if ($user->hasRole(User::ROLE_ADMIN)) {
             return true;
@@ -29,10 +29,5 @@ class BlogPolicy
     public function view(User $user): bool
     {
         return $user->hasRole(User::ROLE_AUTHOR);
-    }
-
-    public function viewPublic(User $user, Blog $blog): bool
-    {
-        return ! $blog->isDraft();
     }
 }
