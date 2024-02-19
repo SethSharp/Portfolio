@@ -20,7 +20,7 @@ class ShowBlogTest extends TestCase
     /** @test */
     public function admin_can_view_blog_if_is_draft()
     {
-        $blog = Blog::factory()->create();
+        $blog = Blog::factory()->draft()->create();
 
         $this->actingAs(User::factory()->admin()->create())
             ->get(route('blogs.show', $blog))

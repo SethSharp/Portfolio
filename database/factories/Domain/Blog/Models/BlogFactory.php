@@ -26,6 +26,7 @@ class BlogFactory extends Factory
             'meta_description' => fake()->text(100),
             'meta_tags' => fake()->text(10),
             'content' => fake()->text(400),
+            'published_at' => now()
         ];
     }
 
@@ -40,10 +41,10 @@ class BlogFactory extends Factory
 
     public function draft(): self
     {
-        return $this->state(function (array $attributes) {
-            return [
-                'is_draft' => true,
-            ];
+        return $this->afterCreating(function ($blog) {
+            $blog->update([
+                'is_draft' => true
+            ]);
         });
     }
 }
