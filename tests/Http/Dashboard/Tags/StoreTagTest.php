@@ -5,6 +5,7 @@ namespace Dashboard\Tags;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
+use App\Providers\RouteServiceProvider;
 
 class StoreTagTest extends TestCase
 {
@@ -20,7 +21,7 @@ class StoreTagTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
             ->postJson(route('dashboard.tags.store'))
-            ->assertForbidden();
+            ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
     /** @test */

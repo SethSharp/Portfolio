@@ -7,6 +7,7 @@ use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
 use App\Domain\Blog\Nodes\EditorNodes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,6 +19,10 @@ class Blog extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'is_draft' => 'bool'
+    ];
 
     public function author(): BelongsTo
     {
@@ -39,6 +44,11 @@ class Blog extends Model
     {
         return $this->belongsToMany(Tag::class, 'blog_tag')
             ->withTimestamps();
+    }
+
+    public function scopeIsPublished(Builder $query): Builder
+    {
+        return $query->where('is_draft', false);
     }
 
     public function getContent(): string
@@ -74,5 +84,10 @@ class Blog extends Model
         return Cache::rememberForever(CacheKeys::renderedBlogContent($this), function () use ($content) {
             return $content;
         });
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->is_draft;
     }
 }

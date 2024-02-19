@@ -37,4 +37,13 @@ class BlogFactory extends Factory
             $blog->comments()->attach($comments);
         });
     }
+
+    public function draft(): self
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_draft' => true,
+            ];
+        });
+    }
 }

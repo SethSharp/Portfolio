@@ -5,6 +5,7 @@ namespace Dashboard\Tags;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
+use App\Providers\RouteServiceProvider;
 
 class RestoreTagTest extends TestCase
 {
@@ -35,7 +36,7 @@ class RestoreTagTest extends TestCase
             ->putJson(route('dashboard.tags.restore'), [
                 'tag_id' => $this->tag->id
             ])
-            ->assertForbidden();
+            ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
     /** @test */

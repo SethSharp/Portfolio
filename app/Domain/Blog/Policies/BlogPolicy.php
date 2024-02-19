@@ -30,4 +30,9 @@ class BlogPolicy
     {
         return $user->hasRole(User::ROLE_AUTHOR);
     }
+
+    public function viewPublic(User $user, Blog $blog): bool
+    {
+        return ! $blog->isDraft();
+    }
 }

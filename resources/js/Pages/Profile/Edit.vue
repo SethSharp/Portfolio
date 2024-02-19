@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3'
-import GuestLayout from '@/Layouts/GuestLayout.vue'
+import ProfileLayout from '@/Layouts/ProfileLayout.vue'
 import DeleteUserForm from './Partials/DeleteUserForm.vue'
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue'
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue'
@@ -18,7 +18,7 @@ defineProps({
 <template>
     <Head title="Profile" />
 
-    <GuestLayout>
+    <ProfileLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>
         </template>
@@ -51,5 +51,5 @@ defineProps({
                 </Link>
             </div>
         </div>
-    </GuestLayout>
+    </ProfileLayout>
 </template>

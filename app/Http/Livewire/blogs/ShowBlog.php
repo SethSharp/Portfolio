@@ -14,7 +14,7 @@ class ShowBlog extends Component
     public bool $isLiked = false;
     public bool $showRegisterModal = false;
 
-    public function mount(Blog $blog)
+    public function mount(Blog $blog): void
     {
         $this->blog = $blog;
 
@@ -27,7 +27,7 @@ class ShowBlog extends Component
 
     public function like(): void
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             $this->showRegisterModal = true;
 
             return;

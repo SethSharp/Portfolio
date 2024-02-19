@@ -28,6 +28,12 @@ class UpdateBlogAction
 
         $blog->render();
 
+        if (! $blog->isDraft()) {
+            $blog->update([
+                'published_at' => now()
+            ]);
+        }
+
         return $blog;
     }
 }

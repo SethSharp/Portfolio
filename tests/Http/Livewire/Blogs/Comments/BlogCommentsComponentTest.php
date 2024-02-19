@@ -9,7 +9,7 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Http\Livewire\blogs\comments\BlogComments;
 
-class BlogCommentsTest extends TestCase
+class BlogCommentsComponentTest extends TestCase
 {
     /** @test */
     public function cannot_comment_if_not_authenticated()

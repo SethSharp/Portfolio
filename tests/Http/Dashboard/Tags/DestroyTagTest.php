@@ -5,6 +5,7 @@ namespace Dashboard\Tags;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
+use App\Providers\RouteServiceProvider;
 
 class DestroyTagTest extends TestCase
 {
@@ -29,7 +30,7 @@ class DestroyTagTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
             ->deleteJson(route('dashboard.tags.destroy', $this->tag))
-            ->assertForbidden();
+            ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
     /** @test */

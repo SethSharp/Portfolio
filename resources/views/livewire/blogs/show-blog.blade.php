@@ -15,7 +15,11 @@
         <div class="text-5xl font-bold"> {{ $blog->title }}</div>
 
         <div class="mt-2 text-gray-400 font-medium text-lg">
-            Published by {{ $blog->author->name  }} {{ $blog->created_at->diffForHumans() }}
+            @if($blog->published_at)
+                Published by {{ $blog->author->name  }} {{ $blog->published_at->diffForHumans() }}
+            @else
+                This blog is in a draft status
+            @endif
         </div>
 
         <button type="button" wire:click="like"

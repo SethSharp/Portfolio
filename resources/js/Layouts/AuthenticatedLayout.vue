@@ -19,11 +19,6 @@ const showingNavigationDropdown = ref(false)
 
 const links = [
     {
-        name: 'Home',
-        href: route('dashboard.home'),
-        active: route().current('dashboard.home'),
-    },
-    {
         name: 'Blogs',
         href: route('dashboard.blogs.index'),
         active: route().current('dashboard.blogs.*'),

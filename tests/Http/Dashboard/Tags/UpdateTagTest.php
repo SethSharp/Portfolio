@@ -5,6 +5,7 @@ namespace Dashboard\Tags;
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
+use App\Providers\RouteServiceProvider;
 
 class UpdateTagTest extends TestCase
 {
@@ -29,7 +30,7 @@ class UpdateTagTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
             ->putJson(route('dashboard.tags.update', $this->tag))
-            ->assertForbidden();
+            ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
     /** @test */

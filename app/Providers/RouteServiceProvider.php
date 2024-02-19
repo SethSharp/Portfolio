@@ -11,13 +11,21 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * The path to the "home" route for your application.
+     * The path to the "blog" route.
      *
-     * Typically, users are redirected here after authentication.
+     * Users with the admin/author role are redirected here
      *
      * @var string
      */
-    public const HOME = '/dashboard/home';
+    public const DASHBOARD_BLOGS = '/dashboard/blogs';
+
+    /**
+     * The path to the "blog" route in the public directory.
+     *
+     * Users are redirected here if they do not have the admin/author role
+     *
+     * @var string
+     */
     public const BLOG = '/blogs';
 
     /**

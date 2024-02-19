@@ -9,6 +9,7 @@ use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
+use App\Providers\RouteServiceProvider;
 
 class UpdateBlogTest extends TestCase
 {
@@ -37,7 +38,7 @@ class UpdateBlogTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog))
-            ->assertForbidden();
+            ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
     /** @test */
@@ -253,7 +254,44 @@ class UpdateBlogTest extends TestCase
             'meta_title' => 'some title',
             'meta_tags' => 'some tag',
             'meta_description' => 'some description',
-            'content' => 'some content here'
+            'content' => 'some content here',
+            'published_at' => null
+        ]);
+    }
+
+    /** @test */
+    public function published_at_is_set_when_blog_is_not_a_draft()
+    {
+        $tag = Tag::factory()->create();
+
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'tags' => [
+                    [
+                        'id' => $tag->id,
+                        'name' => $tag->name
+                    ]
+                ],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'author_id' => $this->user->id,
+            'is_draft' => 0,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here',
+            'published_at' => now()
         ]);
     }
 

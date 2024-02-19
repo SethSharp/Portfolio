@@ -10,6 +10,8 @@ class ShowBlogController extends Controller
 {
     public function __invoke(Blog $blog): View
     {
+        $this->authorize('viewPublic', [Blog::class, $blog]);
+
         return view('blogs.show', [
             'blog' => $blog
         ]);
