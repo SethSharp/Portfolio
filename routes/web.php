@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\Views\ShowHomeController;
+use App\Http\Controllers\Views\ShowProjectsController;
+use App\Http\Controllers\Views\Blogs\ShowBlogController;
+use App\Http\Controllers\Views\ShowExperienceController;
+use App\Http\Controllers\Views\ShowCapabiltiesController;
+use App\Http\Controllers\Views\Blogs\IndexBlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -8,13 +15,21 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::get('/', \App\Http\Controllers\Views\ShowHomeController::class)->name('home');
-Route::get('/about', \App\Http\Controllers\Views\ShowHomeController::class)->name('about');
-Route::get('/experience', \App\Http\Controllers\Views\ShowExperienceController::class)->name('experience');
-Route::get('/capabilities', \App\Http\Controllers\Views\ShowCapabiltiesController::class)->name('capabilities');
-Route::get('/portfolio', \App\Http\Controllers\Views\ShowProjectsController::class)->name('projects');
+Route::get('/', ShowHomeController::class)->name('home');
+Route::get('/about', ShowHomeController::class)->name('about');
+Route::get('/experience', ShowExperienceController::class)->name('experience');
+Route::get('/capabilities', ShowCapabiltiesController::class)->name('capabilities');
+Route::get('/portfolio', ShowProjectsController::class)->name('projects');
+
+Route::prefix('blogs')->name('blogs.')->group(function () {
+    Route::get('/', IndexBlogsController::class)->name('index');
+    Route::get('/{blog:slug}', ShowBlogController::class)->name('show');
+});
+
+require __DIR__ . '/auth.php';
+require __DIR__ . '/blog.php';

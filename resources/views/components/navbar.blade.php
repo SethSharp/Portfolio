@@ -1,11 +1,4 @@
-@props(['home' => 'no-underline'])
-@props(['about' => 'no-underline'])
-@props(['qualifications' => 'no-underline'])
-@props(['experience' => 'no-underline'])
-@props(['projects' => 'no-underline'])
-@props(['wil' => 'no-underline'])
-
-<div class="z-30 h-20 mb-4 w-full fixed float-right sm:pr-10">
+<div class="z-30 h-20 mb-4 w-full float-right sm:pr-10">
     <div class="h-full
                 inline-block align-middle
                 -z-10 grid
@@ -14,28 +7,43 @@
                 sm:float-right
                 hidden
                 sm:flex">
-        <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2">
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ $home }} underline underline-offset-4 p-2.5
+        <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2 my-auto">
+            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('/') ? 'underline' : '' }}  underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
-               href="/about">
+               href="/">
                 About
             </a>
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ $experience }} underline underline-offset-4 p-2.5
+
+            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('experience') ? 'underline' : '' }} underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
                href="/experience">
                 Experiences
             </a>
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ $qualifications }} underline underline-offset-4 p-2.5
+
+            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('capabilities') ? 'underline' : '' }} underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
                href="/capabilities">
                 Capabilities
             </a>
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ $projects }} underline underline-offset-4 p-2.5
+
+            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('portfolio') ? 'underline' : '' }} underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
                href="/portfolio">
                 Portfolio
             </a>
+
+            {{--                        <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5--}}
+            {{--                               rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"--}}
+            {{--                           href="/blogs">--}}
+            {{--                            Blogs--}}
+            {{--                        </a>--}}
         </div>
+
+        @auth()
+            <div class="my-auto font-medium">
+                <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
+            </div>
+        @endauth
     </div>
     <div class="sm:hidden">
         <div class="mx-8">
@@ -49,21 +57,35 @@
                         flex-col rounded px-6 py-3 font-medium mt-24
                         text-center" id="dropdown">
                 <a href="/about"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$home}}">
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('/') ? 'underline' : '' }}">
                     About
                 </a>
+
                 <a href="/experience"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$experience}}">
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('experience') ? 'underline' : '' }}">
                     Experiences
                 </a>
+
                 <a href="/capabilities"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$qualifications}}">
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('capabilities') ? 'underline' : '' }}">
                     Capabilities
                 </a>
+
                 <a href="/portfolio"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{$projects}}">
+                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('portfolio') ? 'underline' : '' }}">
                     Portfolio
                 </a>
+
+                {{--                <a href="/blogs"--}}
+                {{--                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">--}}
+                {{--                    Blogs--}}
+                {{--                </a>--}}
+
+                @auth()
+                    <div class="my-auto font-medium">
+                        <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
+                    </div>
+                @endauth
             </div>
         </div>
 
