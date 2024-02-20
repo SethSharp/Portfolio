@@ -60,6 +60,9 @@ jobs:
       - name: Remove Previous .env
         run: rm -f .env
 
+      - name: Copy standard .env
+        run: php -r "file_exists('.env') || copy('.env.production', '.env');"
+
       - name: Production Optimisations
         if: github.ref == 'refs/heads/main'
         run: |
