@@ -60,10 +60,6 @@ jobs:
       - name: Remove Previous .env
         run: rm -f .env
 
-      - name: Copy production .env
-        if: github.ref == 'refs/heads/main'
-        run: php -r "file_exists('.env') || copy('.env.production', '.env');"
-
       - name: Production Optimisations
         if: github.ref == 'refs/heads/main'
         run: |
@@ -74,6 +70,8 @@ jobs:
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
         run: |
+          echo "APP_URL=https://www.sethsharpportfolio.com" >> .env
+          echo "ASSET_URL=https://www.sethsharpportfolio.com" >> .env
           echo "DB_HOST=${{ secrets.DB_HOST}}" >> .env
           echo "DB_DATABASE=${{ secrets.DB_DATABASE}}" >> .env
           echo "DB_USERNAME=${{ secrets.DB_USERNAME}}" >> .env
