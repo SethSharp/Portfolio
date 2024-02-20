@@ -20,8 +20,6 @@ use App\Http\Controllers\Views\Blogs\IndexBlogsController;
 |
 */
 
-URL::forceScheme('https');
-
 Route::get('/', ShowHomeController::class)->name('home');
 Route::get('/about', ShowHomeController::class)->name('about');
 Route::get('/experience', ShowExperienceController::class)->name('experience');
