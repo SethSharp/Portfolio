@@ -61,6 +61,13 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: php -r "file_exists('.env') || copy('.env.production.example', '.env');"
 
+      - name: Production Optimisations
+        if: github.ref == 'refs/heads/main'
+        run: |
+          php artisan route:cache
+          php artisan view:cache
+          php artisan config:cache
+
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
         run: |

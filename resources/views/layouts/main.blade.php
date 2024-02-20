@@ -8,8 +8,8 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 
-    @vite('resources/css/app.css')
-    
+    @vite('resources/js/app.js')
+
     @livewireStyles
 </head>
 
