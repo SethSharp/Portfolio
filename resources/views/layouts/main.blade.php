@@ -8,13 +8,15 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 
-    @vite('resources/js/app.js')
+    @vite('resources/css/app.css')
 
-    @livewireStyles
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
+
+    @routes
 </head>
 
 <body class="mg-0 pd-0">
-@livewireScripts
 <main>
     <x-nav-bar/>
 
