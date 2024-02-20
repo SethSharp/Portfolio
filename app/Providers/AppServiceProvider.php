@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // see if this is required in prod for vue
-        //        if (app()->environment('production')) {
-        //            URL::forceScheme('https');
-        //        }
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
