@@ -3,6 +3,9 @@
 sudo su
 cd /var/app/current
 
+echo 'Giving permission to storage'
+sudo chmod -R 775 storage
+
 echo 'Running migrations'
 php artisan migrate:fresh --force
 
