@@ -32,11 +32,11 @@
                 Portfolio
             </a>
 
-            {{--                        <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5--}}
-            {{--                               rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"--}}
-            {{--                           href="/blogs">--}}
-            {{--                            Blogs--}}
-            {{--                        </a>--}}
+            {{--            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5--}}
+            {{--                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"--}}
+            {{--               href="/blogs">--}}
+            {{--                Blogs--}}
+            {{--            </a>--}}
         </div>
 
         @auth()
