@@ -41,8 +41,13 @@ jobs:
         with:
           node-version: 16
 
-      - name: Copy .env
+      - name: Copy standard .env
+        if: github.ref != 'refs/heads/main'
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Copy production .env
+        if: github.ref == 'refs/heads/main'
+        run: php -r "file_exists('.env') || copy('.env.production', '.env');"
 
       - name: Generate key
         run: php artisan key:generate
@@ -56,10 +61,6 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
         run: php artisan test
-
-      - name: Copy production .env
-        if: github.ref == 'refs/heads/main'
-        run: php -r "file_exists('.env') || copy('.env.production.example', '.env');"
 
       - name: Production Optimisations
         if: github.ref == 'refs/heads/main'
