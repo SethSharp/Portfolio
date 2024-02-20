@@ -10,5 +10,4 @@ php artisan view:clear
 php artisan route:clear
 php artisan config:cache
 
-# Run npm run build
 npm run build
