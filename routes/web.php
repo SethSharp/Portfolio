@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowProjectsController;
 use App\Http\Controllers\Views\Blogs\ShowBlogController;
@@ -19,6 +19,8 @@ use App\Http\Controllers\Views\Blogs\IndexBlogsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+URL::forceScheme('https');
 
 Route::get('/', ShowHomeController::class)->name('home');
 Route::get('/about', ShowHomeController::class)->name('about');
