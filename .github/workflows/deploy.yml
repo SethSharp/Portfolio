@@ -67,6 +67,7 @@ jobs:
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
         run: |
+          echo "APP_ENV=production" >> .env
           echo "APP_URL=https://www.sethsharpportfolio.com" >> .env
           echo "ASSET_URL=https://www.sethsharpportfolio.com" >> .env
           echo "DB_HOST=${{ secrets.DB_HOST}}" >> .env
