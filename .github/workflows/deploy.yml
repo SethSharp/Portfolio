@@ -57,6 +57,11 @@ jobs:
           DB_PASSWORD: root
         run: php artisan test
 
+      - name: Remove Previous .env
+        run: |
+          rm -f .env
+          echo file_exists('.env')
+
       - name: Production Optimisations
         if: github.ref == 'refs/heads/main'
         run: |
