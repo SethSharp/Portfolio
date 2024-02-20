@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowProjectsController;
