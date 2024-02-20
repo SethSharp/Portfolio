@@ -32,11 +32,11 @@
                 Portfolio
             </a>
 
-            {{--            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5--}}
-            {{--                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"--}}
-            {{--               href="/blogs">--}}
-            {{--                Blogs--}}
-            {{--            </a>--}}
+            {{--                        <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5--}}
+            {{--                               rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"--}}
+            {{--                           href="/blogs">--}}
+            {{--                            Blogs--}}
+            {{--                        </a>--}}
         </div>
 
         @auth()
@@ -76,10 +76,10 @@
                     Portfolio
                 </a>
 
-                <a href="/blogs"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">
-                    Blogs
-                </a>
+                {{--                <a href="/blogs"--}}
+                {{--                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">--}}
+                {{--                    Blogs--}}
+                {{--                </a>--}}
 
                 @auth()
                     <div class="my-auto font-medium">
