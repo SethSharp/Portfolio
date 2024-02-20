@@ -61,6 +61,14 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: php -r "file_exists('.env') || copy('.env.production.example', '.env');"
 
+      - name: Echo information to .env
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "DB_HOST=${{ secrets.DB_HOST}}" >> .env
+          echo "DB_DATABASE=${{ secrets.DB_DATABASE}}" >> .env
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME}}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD}}" >> .env
+
       - name: Build ZIP Deployment Package
         if: github.ref == 'refs/heads/main'
         run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
