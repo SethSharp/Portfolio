@@ -57,6 +57,9 @@ jobs:
           DB_PASSWORD: root
         run: php artisan test
 
+      - name: Remove existing .env
+        run: rm -f .env
+        
       - name: Copy production .env
         if: github.ref == 'refs/heads/main'
         run: php -r "file_exists('.env') || copy('.env.production.example', '.env');"
