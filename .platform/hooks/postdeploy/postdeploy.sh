@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /var/app/current
+
 echo 'Running migrations'
 php artisan migrate:fresh --force
 
