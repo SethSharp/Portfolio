@@ -1,7 +1,6 @@
 #!/bin/bash
 
-sudo su
-cd /var/app/current
+cd /var/www/html
 
 echo 'Giving permission to storage'
 sudo chmod -R 775 storage
