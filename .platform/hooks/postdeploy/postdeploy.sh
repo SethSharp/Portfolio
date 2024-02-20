@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo su
 cd /var/app/current
 
 echo 'Running migrations'
