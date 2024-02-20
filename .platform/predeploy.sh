@@ -11,3 +11,4 @@ php artisan route:clear
 php artisan config:cache
 
 npm run build
+npm run dev
