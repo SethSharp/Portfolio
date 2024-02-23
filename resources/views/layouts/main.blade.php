@@ -31,7 +31,7 @@
         </h1>
     </div>
 
-    <div class="md:flex w-3/4 m-auto mt-8">
+    <div class="md:flex w-full mx-6 sm:w-3/4 sm:mx-auto mt-8">
         @yield("content")
     </div>
 </main>

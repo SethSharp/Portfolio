@@ -10,7 +10,7 @@
     @endif
 @endpush
 
-<div class="sm:w-3/4 mx-auto">
+<div class="w-full sm:w-3/4 mx-auto">
     <div class="flex-wrap">
         <div class="text-5xl font-bold"> {{ $blog->title }}</div>
 
@@ -42,9 +42,7 @@
     </div>
 
     <div class="mt-8">
-        <div class="mt-4">
-            <livewire:blogs.comments.blog-comments :blog="$blog"/>
-        </div>
+        <livewire:blogs.comments.blog-comments :blog="$blog"/>
     </div>
 
     <x-modals.register/>
