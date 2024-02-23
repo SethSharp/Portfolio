@@ -36,4 +36,6 @@
             @error('comment') <span class="text-red-500">{{ $message }}</span> @enderror
         </form>
     </div>
+
+    <x-modals.register/>
 </div>

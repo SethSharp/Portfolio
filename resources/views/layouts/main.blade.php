@@ -22,7 +22,7 @@
 <main>
     <x-nav-bar/>
 
-    <div class="ml-4 sm:ml-16 w-full">
+    <div class="ml-4 sm:ml-16">
         <h1 class="text-4xl font-bold text-black inline-block pr-2">
             @yield('partOne')
         </h1>
@@ -31,7 +31,7 @@
         </h1>
     </div>
 
-    <div class="md:flex w-full mx-6 sm:w-3/4 sm:mx-auto mt-8">
+    <div class="md:flex w-3/4 mx-auto mt-8">
         @yield("content")
     </div>
 </main>

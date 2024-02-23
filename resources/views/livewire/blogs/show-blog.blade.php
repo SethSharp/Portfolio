@@ -10,7 +10,7 @@
     @endif
 @endpush
 
-<div class="w-full sm:w-3/4 mx-auto">
+<div class="sm:w-3/4 mx-auto">
     <div class="flex-wrap">
         <div class="text-5xl font-bold"> {{ $blog->title }}</div>
 

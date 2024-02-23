@@ -20,17 +20,20 @@
                 </p>
 
                 <div class=" mt-5 flex gap-x-4">
-                    <x-button.secondary @click="closeModal()">
+                    <button @click="closeModal()"
+                            class="bg-white text-secondary-600 border-2 border-transparent hover:border-secondary-600 transition rounded-lg p-2">
                         Close
-                    </x-button.secondary>
+                    </button>
 
-                    <a href="{{route('register')}}" class="p-2 bg-primary-500 text-white rounded">
+                    <a href="{{route('register')}}"
+                       class="bg-primary-600 hover:bg-primary-400 text-white transition rounded-lg p-2">
                         Register
                     </a>
 
-                    <span class="my-auto text-gray-400"> or </span>
+                    <span class="my-auto text-secondary-400"> or </span>
 
-                    <a href="{{route('login')}}" class="p-2 bg-primary-500 text-white rounded">
+                    <a href="{{route('login')}}"
+                       class="text-primary-600 border-2 border-primary-600 hover:border-transparent hover:text-primary-400 transition rounded-lg p-2">
                         Login
                     </a>
                 </div>
