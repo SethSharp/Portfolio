@@ -2,14 +2,11 @@
 import { computed } from 'vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 
-const emit = defineEmits(['update:checked'])
+const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
-    checked: {
-        type: [Array, Boolean],
-        required: true,
-    },
-    value: {
+    modelValue: {
+        type: Boolean,
         default: null,
     },
     label: {
@@ -20,11 +17,12 @@ const props = defineProps({
 
 const proxyChecked = computed({
     get() {
-        return props.checked
+        return props.modelValue
     },
 
     set(val) {
-        emit('update:checked', val)
+        console.log(val)
+        emit('update:modelValue', val)
     },
 })
 </script>
@@ -35,7 +33,7 @@ const proxyChecked = computed({
 
         <input
             type="checkbox"
-            :value="value"
+            :value="modelValue"
             v-model="proxyChecked"
             class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
         />

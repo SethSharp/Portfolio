@@ -93,7 +93,7 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <Checkbox v-model="form.is_draft" :checked="form.is_draft" label="Is Draft" />
+            <Checkbox v-model="form.is_draft" label="Is Draft" />
             <InputError :message="form.errors.is_draft" />
         </FormElement>
 

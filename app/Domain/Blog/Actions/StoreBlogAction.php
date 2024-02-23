@@ -26,7 +26,7 @@ class StoreBlogAction
 
         $blog->render();
 
-        if (! $blog->isDraft()) {
+        if (!$blog->isDraft()) {
             $blog->update([
                 'published_at' => now()
             ]);
