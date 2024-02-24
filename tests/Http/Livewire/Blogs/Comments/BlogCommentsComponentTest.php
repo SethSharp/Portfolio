@@ -16,6 +16,8 @@ class BlogCommentsComponentTest extends TestCase
     /** @test */
     public function cannot_comment_if_not_authenticated()
     {
+        Notification::fake();
+        
         $blog = Blog::factory()->create();
 
         Livewire::test(BlogCommentsComponent::class, ['blog' => $blog])
@@ -28,6 +30,8 @@ class BlogCommentsComponentTest extends TestCase
     /** @test */
     public function comment_is_required()
     {
+        Notification::fake();
+
         $blog = Blog::factory()->create();
 
         Livewire::actingAs(User::factory()->create())
@@ -55,6 +59,8 @@ class BlogCommentsComponentTest extends TestCase
     /** @test */
     public function comment_is_must_not_exceed_1000_characters()
     {
+        Notification::fake();
+
         $blog = Blog::factory()->create();
 
         Livewire::actingAs(User::factory()->create())
@@ -68,6 +74,8 @@ class BlogCommentsComponentTest extends TestCase
     /** @test */
     public function can_comment_if_authenticated()
     {
+        Notification::fake();
+
         $blog = Blog::factory()->create();
 
         Livewire::actingAs($user = User::factory()->create())
