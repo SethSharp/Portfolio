@@ -15,7 +15,7 @@ class StoreBlogImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|image|max:2000',
+            'file' => 'required|file',
             'fileId' => 'nullable|string',
             'blogId' => 'nullable|string',
         ];
