@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Views;
 
-use App\Domain\Blog\Models\Blog;
 use Illuminate\View\View;
+use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
 
 class ShowSitemapController extends Controller

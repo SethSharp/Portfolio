@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Views\ShowSitemapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
+use App\Http\Controllers\Views\ShowSitemapController;
 use App\Http\Controllers\Views\ShowProjectsController;
 use App\Http\Controllers\Views\Blogs\ShowBlogController;
 use App\Http\Controllers\Views\ShowExperienceController;
