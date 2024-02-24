@@ -75,6 +75,7 @@ jobs:
           echo "MAIL_PORT=587" >> .env
           echo "MAIL_ENCRYPTION=tls" >> .env
           echo "MAIL_FROM_ADDRESS=noreply@sethsharpportfolio.com" >> .env
+          echo "MAIL_FROM_NAME=Seth" >> .env
 
       - name: Build ZIP Deployment Package
         if: github.ref == 'refs/heads/main'
