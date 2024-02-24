@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\blogs\comments;
 
+use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
+use App\Domain\Feedback\Notifications\SendUserFeedbackNotification;
 use Livewire\Component;
 use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Comment;
 
-class BlogComments extends Component
+class BlogCommentsComponent extends Component
 {
     public Blog $blog;
 
@@ -55,6 +57,8 @@ class BlogComments extends Component
         ]);
 
         $this->blog->comments()->attach($comment);
+
+        auth()->user()->notify(new NotifySlackOfCommentNotification($comment, $this->blog));
 
         $this->comments->push($comment);
 

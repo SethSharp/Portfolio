@@ -6,7 +6,7 @@ use Livewire\Component;
 use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
 
-class ShowBlog extends Component
+class ShowBlogComponent extends Component
 {
     public Blog $blog;
 
@@ -27,7 +27,7 @@ class ShowBlog extends Component
 
     public function like(): void
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             $this->showRegisterModal = true;
 
             return;

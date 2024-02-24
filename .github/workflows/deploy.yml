@@ -69,6 +69,8 @@ jobs:
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD}}" >> .env
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}" >> .env
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
+          echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
+          echo "SLACK_BOT_USER_OAUTH_TOKEN=product-portfolio" >> .env
 
       - name: Build ZIP Deployment Package
         if: github.ref == 'refs/heads/main'

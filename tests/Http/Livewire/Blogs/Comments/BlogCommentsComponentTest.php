@@ -2,12 +2,14 @@
 
 namespace Tests\Http\Livewire\Blogs\Comments;
 
+use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Livewire\Livewire;
 use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
-use App\Http\Livewire\blogs\comments\BlogComments;
+use App\Http\Livewire\blogs\comments\BlogCommentsComponent;
 
 class BlogCommentsComponentTest extends TestCase
 {
@@ -16,7 +18,7 @@ class BlogCommentsComponentTest extends TestCase
     {
         $blog = Blog::factory()->create();
 
-        Livewire::test(BlogComments::class, ['blog' => $blog])
+        Livewire::test(BlogCommentsComponent::class, ['blog' => $blog])
             ->call('save')
             ->assertSet('showRegisterModal', true);
 
@@ -29,11 +31,25 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs(User::factory()->create())
-            ->test(BlogComments::class, ['blog' => $blog])
+            ->test(BlogCommentsComponent::class, ['blog' => $blog])
             ->set('comment')
             ->call('save')
             ->assertSet('showRegisterModal', false)
             ->assertHasErrors(['comment']);
+    }
+
+    /** @test */
+    public function does_not_send_slack_notification_if_not_authenticated()
+    {
+        Notification::fake();
+
+        $blog = Blog::factory()->create();
+
+        Livewire::test(BlogCommentsComponent::class, ['blog' => $blog])
+            ->call('save')
+            ->assertSet('showRegisterModal', true);
+
+        Notification::assertNothingSent();
     }
 
     /** @test */
@@ -42,7 +58,7 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs(User::factory()->create())
-            ->test(BlogComments::class, ['blog' => $blog])
+            ->test(BlogCommentsComponent::class, ['blog' => $blog])
             ->set('comment', Str::random(1000))
             ->call('save')
             ->assertSet('showRegisterModal', false)
@@ -55,7 +71,7 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs($user = User::factory()->create())
-            ->test(BlogComments::class, ['blog' => $blog])
+            ->test(BlogCommentsComponent::class, ['blog' => $blog])
             ->set('comment', 'Some comment')
             ->call('save')
             ->assertSet('showRegisterModal', false);
@@ -64,5 +80,26 @@ class BlogCommentsComponentTest extends TestCase
             'user_id' => $user->id,
             'comment' => 'Some comment'
         ]);
+    }
+
+    /** @test */
+    public function sends_slack_notification_if_validation_passes()
+    {
+        Notification::fake();
+
+        $blog = Blog::factory()->create();
+
+        Livewire::actingAs($user = User::factory()->create())
+            ->test(BlogCommentsComponent::class, ['blog' => $blog])
+            ->set('comment', 'Some comment')
+            ->call('save')
+            ->assertSet('showRegisterModal', false);
+
+        $this->assertDatabaseHas('comments', [
+            'user_id' => $user->id,
+            'comment' => 'Some comment'
+        ]);
+
+        Notification::assertSentTo($user, NotifySlackOfCommentNotification::class);
     }
 }
