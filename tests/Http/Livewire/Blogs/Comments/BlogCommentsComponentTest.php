@@ -2,14 +2,14 @@
 
 namespace Tests\Http\Livewire\Blogs\Comments;
 
-use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Livewire\Livewire;
 use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Livewire\blogs\comments\BlogCommentsComponent;
+use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogCommentsComponentTest extends TestCase
 {

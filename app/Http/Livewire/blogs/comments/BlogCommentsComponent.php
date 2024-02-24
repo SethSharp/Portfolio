@@ -2,12 +2,11 @@
 
 namespace App\Http\Livewire\blogs\comments;
 
-use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
-use App\Domain\Feedback\Notifications\SendUserFeedbackNotification;
 use Livewire\Component;
 use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Comment;
+use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogCommentsComponent extends Component
 {

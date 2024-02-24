@@ -4,7 +4,6 @@ namespace App\Domain\Blog\Notifications;
 
 use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Comment;
-use App\Domain\Workspace\Models\Workspace;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Slack\SlackMessage;
 use Illuminate\Notifications\Slack\BlockKit\Blocks\ActionsBlock;
@@ -15,8 +14,7 @@ class NotifySlackOfCommentNotification extends Notification
     public function __construct(
         public Comment $comment,
         public Blog    $blog
-    )
-    {
+    ) {
     }
 
     public function via($notifiable): array
