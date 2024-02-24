@@ -6,7 +6,7 @@
         <div class="p-3 text-lg font-medium text-left"> {{ substr($blog->title, 0, 75) }} </div>
 
         <p class="px-6 text-md text-left text-gray-500">
-            {{ substr($blog->meta_description, 0, 140) . '...' }}
+            {{ substr($blog->meta_description, 0, 100) . '...' }}
         </p>
     </div>
 

@@ -1,7 +1,7 @@
 @props(['title', 'src', 'caption', 'alt'=>''])
 
-<div class="w-3/4 mb-12 bg-gray-50 leading-loose shadow-xl rounded-3xl md:flex">
-    <div class="w-full md:w-1/2 inline-flex items-center">
+<div class="sm:w-3/4 mb-12 bg-gray-50 leading-loose shadow-xl rounded-3xl lg:flex">
+    <div class="w-full lg:w-1/2 inline-flex items-center">
         <div class="inline-block w-full relative">
             <img
                 src="/images/{{$src}}"
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full md:w-1/2 rounded-r-3xl">
+    <div class="w-full lg:w-1/2 rounded-r-3xl">
         <div class="px-4 md:px-10 py-5 text-lg font-medium text-blue-800">
             {{ $title }}
         </div>
