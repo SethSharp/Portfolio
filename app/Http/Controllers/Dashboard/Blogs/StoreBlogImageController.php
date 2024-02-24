@@ -23,17 +23,19 @@ class StoreBlogImageController extends Controller
         if ($fileId) {
             $file = File::whereId($fileId)->first();
 
-            $deleted = app(DestroyFileAction::class)($file);
+            if ($file) {
+                $deleted = app(DestroyFileAction::class)($file);
 
-            if ($deleted) {
-                $file->update([
-                    'path' => $path,
-                    'url' => $url,
-                ]);
-            } else {
-                return response()->json([
-                    'failed' => $deleted
-                ]);
+                if ($deleted) {
+                    $file->update([
+                        'path' => $path,
+                        'url' => $url,
+                    ]);
+                } else {
+                    return response()->json([
+                        'failed' => $deleted
+                    ]);
+                }
             }
         } else {
             $file = File::create([
