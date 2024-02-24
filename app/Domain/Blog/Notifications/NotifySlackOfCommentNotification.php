@@ -14,7 +14,8 @@ class NotifySlackOfCommentNotification extends Notification
     public function __construct(
         public Comment $comment,
         public Blog    $blog
-    ) {
+    )
+    {
     }
 
     public function via($notifiable): array
@@ -24,7 +25,6 @@ class NotifySlackOfCommentNotification extends Notification
 
     public function toSlack(object $notifiable): SlackMessage
     {
-
         return (new SlackMessage())
             ->text('New comment on your blog!')
             ->headerBlock('New comment on your blog - ' . $this->blog->title)
