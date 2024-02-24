@@ -12,12 +12,6 @@ class StoreFileAction
         $structure = app()->environment('testing') || app()->environment('local')
             ? 'testing/' : 'production/';
 
-        $filename = uniqid() . '_' . $file->getClientOriginalName();
-
-        $path = $structure . 'blogs/' . $filename;
-
-        Storage::disk('s3')->put($path, file_get_contents($file));
-
-        return $path;
+        return Storage::disk('s3')->put($structure . 'blogs', $file);
     }
 }
