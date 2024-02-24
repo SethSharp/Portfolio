@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Domain\Iam\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\ValidationException;
 
 class RegisteredUserController extends Controller
@@ -48,6 +47,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::BLOG);
+        return redirect('/verify-email');
     }
 }
