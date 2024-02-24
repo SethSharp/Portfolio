@@ -2,6 +2,7 @@
 
 namespace App\Domain\File\Actions;
 
+use League\Flysystem\Visibility;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +17,7 @@ class StoreFileAction
 
         $path = $structure . 'blogs/' . $filename;
 
-        Storage::disk('s3')->put($path, file_get_contents($file));
+        Storage::disk('s3')->put($path, file_get_contents($file), Visibility::PUBLIC);
 
         return $path;
     }
