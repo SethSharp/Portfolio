@@ -2,12 +2,11 @@
 
 namespace Tests\Http\Auth;
 
-use App\Domain\Iam\Models\User;
-use Illuminate\Auth\Notifications\VerifyEmail;
 use Tests\TestCase;
+use App\Domain\Iam\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Auth\Notifications\VerifyEmail;
 
 class RegistrationTest extends TestCase
 {
