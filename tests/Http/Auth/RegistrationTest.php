@@ -2,6 +2,8 @@
 
 namespace Tests\Http\Auth;
 
+use App\Domain\Iam\Models\User;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Tests\TestCase;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Notification;
@@ -44,6 +46,8 @@ class RegistrationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::BLOG);
 
-        Notification::assertSentOnDemand(SendEmailVerificationNotification::class);
+        $user = User::first();
+
+        Notification::assertSentTo($user, VerifyEmail::class);
     }
 }
