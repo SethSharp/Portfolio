@@ -7,11 +7,6 @@ jobs:
 
     runs-on: ubuntu-20.04
 
-    env:
-      DB_DATABASE: testing
-      DB_USER: root
-      DB_PASSWORD: root
-
     steps:
       - uses: actions/checkout@v3
 
