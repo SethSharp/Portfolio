@@ -4,6 +4,8 @@ namespace Tests\Http\Auth;
 
 use Tests\TestCase;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 
 class RegistrationTest extends TestCase
 {
@@ -25,5 +27,23 @@ class RegistrationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::BLOG);
+    }
+
+    /** @test */
+    public function sends_verification_email()
+    {
+        Notification::fake();
+
+        $response = $this->post('/register', [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(RouteServiceProvider::BLOG);
+
+        Notification::assertSentOnDemand(SendEmailVerificationNotification::class);
     }
 }

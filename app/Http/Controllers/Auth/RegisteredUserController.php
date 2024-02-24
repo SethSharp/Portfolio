@@ -10,8 +10,8 @@ use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Domain\Iam\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\ValidationException;
 
