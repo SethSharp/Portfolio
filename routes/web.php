@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Views\ShowSitemapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowProjectsController;
@@ -24,6 +25,7 @@ Route::get('/about', ShowHomeController::class)->name('about');
 Route::get('/experience', ShowExperienceController::class)->name('experience');
 Route::get('/capabilities', ShowCapabiltiesController::class)->name('capabilities');
 Route::get('/portfolio', ShowProjectsController::class)->name('projects');
+Route::get('/sitemap', ShowSitemapController::class)->name('sitemap');
 
 Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', IndexBlogsController::class)->name('index');

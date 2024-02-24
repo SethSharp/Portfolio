@@ -9,31 +9,31 @@
                 sm:flex">
         <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2 my-auto">
             <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('/') ? 'underline' : '' }}  underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
                href="/">
                 About
             </a>
 
             <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('experience') ? 'underline' : '' }} underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
                href="/experience">
                 Experiences
             </a>
 
             <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('capabilities') ? 'underline' : '' }} underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
                href="/capabilities">
                 Capabilities
             </a>
 
             <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('portfolio') ? 'underline' : '' }} underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"
+                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
                href="/portfolio">
                 Portfolio
             </a>
 
             {{--            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5--}}
-            {{--                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400"--}}
+            {{--                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"--}}
             {{--               href="/blogs">--}}
             {{--                Blogs--}}
             {{--            </a>--}}
@@ -45,9 +45,10 @@
             </div>
         @endauth
     </div>
+
     <div class="sm:hidden">
         <div class="mx-8">
-            <div class="rounded float-right" id="menu-btn">
+            <div class="rounded float-right mt-6" id="menu-btn">
                 <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
                 <div class="h-2 my-2 w-16 bg-gray-400 opacity-50 rounded-lg"></div>
                 <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>

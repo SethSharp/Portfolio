@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Views\Blogs;
+namespace App\Http\Controllers\Views;
 
-use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
-class IndexBlogsController extends Controller
+class ShowSitemapController extends Controller
 {
     public function __invoke(): View
     {
-        return view('blogs.index', [
+        return view('sitemap', [
             'blogs' => Blog::published()->get()
         ]);
     }

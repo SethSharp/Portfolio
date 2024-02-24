@@ -48,7 +48,7 @@ class Blog extends Model
             ->withTimestamps();
     }
 
-    public function scopeIsPublished(Builder $query): Builder
+    public function scopePublished(Builder $query): Builder
     {
         return $query->where('is_draft', false);
     }
