@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use Illuminate\Support\Facades\Notification;
-use App\Http\Livewire\blogs\comments\BlogCommentsComponent;
+use App\Http\Livewire\blogs\comments\BlogComments;
 use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogCommentsComponentTest extends TestCase
@@ -17,10 +17,10 @@ class BlogCommentsComponentTest extends TestCase
     public function cannot_comment_if_not_authenticated()
     {
         Notification::fake();
-        
+
         $blog = Blog::factory()->create();
 
-        Livewire::test(BlogCommentsComponent::class, ['blog' => $blog])
+        Livewire::test(BlogComments::class, ['blog' => $blog])
             ->call('save')
             ->assertSet('showRegisterModal', true);
 
@@ -35,7 +35,7 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs(User::factory()->create())
-            ->test(BlogCommentsComponent::class, ['blog' => $blog])
+            ->test(BlogComments::class, ['blog' => $blog])
             ->set('comment')
             ->call('save')
             ->assertSet('showRegisterModal', false)
@@ -49,7 +49,7 @@ class BlogCommentsComponentTest extends TestCase
 
         $blog = Blog::factory()->create();
 
-        Livewire::test(BlogCommentsComponent::class, ['blog' => $blog])
+        Livewire::test(BlogComments::class, ['blog' => $blog])
             ->call('save')
             ->assertSet('showRegisterModal', true);
 
@@ -64,7 +64,7 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs(User::factory()->create())
-            ->test(BlogCommentsComponent::class, ['blog' => $blog])
+            ->test(BlogComments::class, ['blog' => $blog])
             ->set('comment', Str::random(1000))
             ->call('save')
             ->assertSet('showRegisterModal', false)
@@ -79,7 +79,7 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs($user = User::factory()->create())
-            ->test(BlogCommentsComponent::class, ['blog' => $blog])
+            ->test(BlogComments::class, ['blog' => $blog])
             ->set('comment', 'Some comment')
             ->call('save')
             ->assertSet('showRegisterModal', false);
@@ -98,7 +98,7 @@ class BlogCommentsComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs($user = User::factory()->create())
-            ->test(BlogCommentsComponent::class, ['blog' => $blog])
+            ->test(BlogComments::class, ['blog' => $blog])
             ->set('comment', 'Some comment')
             ->call('save')
             ->assertSet('showRegisterModal', false);

@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Livewire\Livewire;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
-use App\Http\Livewire\blogs\ShowBlogComponent;
+use App\Http\Livewire\blogs\ShowBlog;
 
 class ShowBlogComponentTest extends TestCase
 {
@@ -15,7 +15,7 @@ class ShowBlogComponentTest extends TestCase
     {
         $blog = Blog::factory()->create();
 
-        Livewire::test(ShowBlogComponent::class, ['blog' => $blog])
+        Livewire::test(ShowBlog::class, ['blog' => $blog])
             ->assertOk()
             ->call('like')
             ->assertSet('isLiked', false)
@@ -33,7 +33,7 @@ class ShowBlogComponentTest extends TestCase
         ]);
 
         Livewire::actingAs($user)
-            ->test(ShowBlogComponent::class, ['blog' => $blog])
+            ->test(ShowBlog::class, ['blog' => $blog])
             ->assertOk()
             ->assertSet('blogLikes', 1);
     }
@@ -45,7 +45,7 @@ class ShowBlogComponentTest extends TestCase
         $blog = Blog::factory()->create();
 
         Livewire::actingAs($user)
-            ->test(ShowBlogComponent::class, ['blog' => $blog])
+            ->test(ShowBlog::class, ['blog' => $blog])
             ->assertOk()
             ->call('like')
             ->assertSet('isLiked', true)
@@ -67,7 +67,7 @@ class ShowBlogComponentTest extends TestCase
         ]);
 
         Livewire::actingAs($user)
-            ->test(ShowBlogComponent::class, ['blog' => $blog])
+            ->test(ShowBlog::class, ['blog' => $blog])
             ->assertOk()
             ->assertSet('isLiked', true)
             ->assertSet('blogLikes', 1)

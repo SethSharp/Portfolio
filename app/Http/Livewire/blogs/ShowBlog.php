@@ -6,7 +6,7 @@ use Livewire\Component;
 use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
 
-class ShowBlogComponent extends Component
+class ShowBlog extends Component
 {
     public Blog $blog;
 

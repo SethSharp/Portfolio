@@ -8,7 +8,7 @@ use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Comment;
 use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
-class BlogCommentsComponent extends Component
+class BlogComments extends Component
 {
     public Blog $blog;
 
