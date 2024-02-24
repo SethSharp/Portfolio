@@ -52,6 +52,9 @@ jobs:
           npm run build
 
       - name: Execute tests
+        env:
+          DB_USERNAME: root
+          DB_PASSWORD: root
         run: php artisan test
 
       - name: Echo information to .env
