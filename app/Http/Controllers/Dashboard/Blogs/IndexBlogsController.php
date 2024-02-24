@@ -14,7 +14,7 @@ class IndexBlogsController extends Controller
         $this->authorize('view', Blog::class);
 
         return Inertia::render('Dashboard/Blogs/Index', [
-            'blogs' => Blog::with(['tags', 'author'])->get()
+            'blogs' => Blog::with(['tags', 'author'])->orderByDesc('created_at')->get()
         ]);
     }
 }

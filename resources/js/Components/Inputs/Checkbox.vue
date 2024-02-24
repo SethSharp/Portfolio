@@ -21,7 +21,6 @@ const proxyChecked = computed({
     },
 
     set(val) {
-        console.log(val)
         emit('update:modelValue', val)
     },
 })

@@ -45,7 +45,6 @@ const storeImage = () => {
     axios
         .post(route('dashboard.blogs.image.store'), formData)
         .then((res) => {
-            console.log(res)
             handleSuccess(res)
         })
         .catch((err) => {
