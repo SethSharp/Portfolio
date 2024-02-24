@@ -46,7 +46,7 @@ class StoreBlogImageTest extends TestCase
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
-                'file' => 'The file must be an image'
+                'file' => 'The file must be a file.'
             ]);
     }
 
