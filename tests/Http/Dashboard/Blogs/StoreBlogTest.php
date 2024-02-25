@@ -37,7 +37,6 @@ class StoreBlogTest extends TestCase
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
                 'slug' => 'The slug field is required.',
-                'tags' => 'The tags field is required.',
                 'content' => 'The content field is required.',
                 'is_draft' => 'The is draft field is required.',
             ]);

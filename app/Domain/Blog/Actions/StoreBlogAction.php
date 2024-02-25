@@ -12,15 +12,17 @@ class StoreBlogAction
     {
         $storeBlogRequest['slug'] = Str::slug($storeBlogRequest->input('slug'));
 
-        $tags = collect($storeBlogRequest->input('tags'))->pluck('id');
-
         $blog = Blog::create([
             'author_id' => auth()->user()->id,
             ...$storeBlogRequest->validated(),
             'published_at' => null
         ]);
 
-        $blog->tags()->sync($tags);
+        if ($storeBlogRequest->input('tags')) {
+            $tags = collect($storeBlogRequest->input('tags'))->pluck('id');
+
+            $blog->tags()->sync($tags);
+        }
 
         $blog = app(CleanBlogContentAction::class)($blog);
 

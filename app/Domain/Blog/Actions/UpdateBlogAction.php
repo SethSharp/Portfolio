@@ -14,14 +14,16 @@ class UpdateBlogAction
     {
         $updateBlogRequest['slug'] = Str::slug($updateBlogRequest->input('slug'));
 
-        $tags = collect($updateBlogRequest->input('tags'))->pluck('id');
-
         $blog->update([
             ...$updateBlogRequest->validated(),
             'published_at' => null
         ]);
 
-        $blog->tags()->sync($tags);
+        if ($updateBlogRequest->input('tags')) {
+            $tags = collect($updateBlogRequest->input('tags'))->pluck('id');
+
+            $blog->tags()->sync($tags);
+        }
 
         $blog = app(CleanBlogContentAction::class)($blog);
 
@@ -29,7 +31,7 @@ class UpdateBlogAction
 
         $blog->render();
 
-        if (! $blog->isDraft()) {
+        if (!$blog->isDraft()) {
             $blog->update([
                 'published_at' => now()
             ]);

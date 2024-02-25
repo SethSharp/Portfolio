@@ -27,7 +27,6 @@ class UpdateBlogRequest extends FormRequest
                 Rule::unique(Blog::class, 'slug')->ignore($this->route('blog')->id),
             ],
             'tags' => [
-                'required',
                 'array',
                 'exclude'
             ],

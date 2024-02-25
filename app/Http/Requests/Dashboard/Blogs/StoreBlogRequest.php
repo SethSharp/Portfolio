@@ -27,7 +27,6 @@ class StoreBlogRequest extends FormRequest
                 Rule::unique(Blog::class, 'slug'),
             ],
             'tags' => [
-                'required',
                 'array',
                 'exclude',
             ],
