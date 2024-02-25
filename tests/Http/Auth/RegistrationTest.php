@@ -4,7 +4,6 @@ namespace Tests\Http\Auth;
 
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\VerifyEmail;
 
@@ -27,7 +26,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::BLOG);
+        $response->assertRedirect('/verify-email');
     }
 
     /** @test */
@@ -43,7 +42,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::BLOG);
+        $response->assertRedirect('/verify-email');
 
         $user = User::first();
 

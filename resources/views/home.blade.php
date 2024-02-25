@@ -1,16 +1,20 @@
+@props(['blog' => null])
+
 @extends("layouts.main")
 
 @section("content")
     <div class="z-10">
-        <div class="w-full">
-            <a href="/blogs" class="w-3/4 mx-auto">
-                <div
-                    class="w-full p-4 border-2 border-blue-400 bg-blue-100 rounded-xl text-blue-600"
-                >
-                    New blog added!
-                </div>
-            </a>
-        </div>
+        @if($blog)
+            <div class="w-full">
+                <a href="{{ route('blogs.show', $blog)  }}" class="w-3/4 mx-auto">
+                    <div
+                        class="w-full p-4 border-2 border-blue-400 bg-blue-100 rounded-xl text-blue-600"
+                    >
+                        New blog added!
+                    </div>
+                </a>
+            </div>
+        @endif
 
         <div class="w-full md:flex mt-12">
             <div class="w-full md:w-1/2 z-20 justify-center">
