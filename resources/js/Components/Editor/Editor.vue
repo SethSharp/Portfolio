@@ -5,8 +5,8 @@ import StarterKit from '@tiptap/starter-kit'
 import { Text } from '@tiptap/extension-text'
 import Document from '@tiptap/extension-document'
 import ListItem from '@tiptap/extension-list-item'
-import { Paragraph } from '@tiptap/extension-paragraph'
 import { Underline } from '@tiptap/extension-underline'
+import { HardBreak } from '@tiptap/extension-hard-break'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import OrderedList from '@tiptap/extension-ordered-list'
 import { TextAlign } from '@tiptap/extension-text-align'
@@ -37,7 +37,7 @@ const editor = useEditor({
         Link.configure({
             openOnClick: false,
             HTMLAttributes: {
-                style: 'color: blue',
+                style: 'color: black; text-decoration: underline black',
             },
         }),
         ListItem,
@@ -49,14 +49,10 @@ const editor = useEditor({
                 class: 'list-decimal ml-6',
             },
         }),
-        Paragraph.configure({
-            HTMLAttributes: {
-                class: 'h-6',
-            },
-        }),
         Text,
         Underline,
         Image,
+        HardBreak,
     ],
     editorProps: {
         attributes: {
@@ -76,7 +72,11 @@ const editor = useEditor({
         </div>
 
         <Toolbar :editor="editor" />
+
         <div class="mt-4">
+            <div class="text-gray-500">
+                To add a hard break: `Ctr` + `Enter` on windows or `Cmd` + `Enter` on mac
+            </div>
             <EditorContent :editor="editor" />
         </div>
     </div>
