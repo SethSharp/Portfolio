@@ -46,7 +46,7 @@
         @endauth
     </div>
 
-    <div class="sm:hidden">
+    <div class="sm:hidden z-50">
         <div class="mx-8">
             <div class="rounded float-right mt-6" id="menu-btn">
                 <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>

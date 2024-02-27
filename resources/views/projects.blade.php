@@ -5,8 +5,12 @@
 
 @section("content")
     <div>
-        <x-project.habit-tracker/>
+        <x-body.enter-wrapper>
+            <x-project.habit-tracker/>
+        </x-body.enter-wrapper>
 
-        <x-project.framed/>
+        <x-body.wrapper>
+            <x-project.framed/>
+        </x-body.wrapper>
     </div>
 @stop

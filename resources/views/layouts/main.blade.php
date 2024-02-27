@@ -6,6 +6,7 @@
     <meta name="description"
           content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
 
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 
     @vite('resources/css/app.css')
@@ -34,6 +35,8 @@
     <div class="md:flex w-3/4 mx-auto mt-8">
         @yield("content")
     </div>
+
+    <footer class="bg-white h-20"></footer>
 </main>
 </body>
 
