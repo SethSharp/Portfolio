@@ -57,7 +57,7 @@ class BlogCommentsComponentTest extends TestCase
     }
 
     /** @test */
-    public function comment_is_must_not_exceed_1000_characters()
+    public function comment_must_not_exceed_1000_characters()
     {
         Notification::fake();
 
@@ -78,7 +78,7 @@ class BlogCommentsComponentTest extends TestCase
 
         $blog = Blog::factory()->create();
 
-        Livewire::actingAs($user = User::factory()->create())
+        Livewire::actingAs($user = User::factory()->unverified()->create())
             ->test(BlogComments::class, ['blog' => $blog])
             ->set('comment', 'Some comment')
             ->call('save')

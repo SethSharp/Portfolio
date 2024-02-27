@@ -27,7 +27,10 @@ class ShowBlog extends Component
 
     public function like(): void
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
+            // sets the intended url so when the user registers or logs in - redirects to here
+            session(['url.intended' => route('blogs.show', $this->blog)]);
+
             $this->showRegisterModal = true;
 
             return;

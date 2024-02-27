@@ -71,11 +71,12 @@ jobs:
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
           echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
           echo "SLACK_CHANNEL_COMMENTS='#product-portfolio'" >> .env
-          echo "MAIL_MAILER=ses" >> .env
-          echo "MAIL_PORT=587" >> .env
-          echo "MAIL_ENCRYPTION=tls" >> .env
-          echo "MAIL_FROM_ADDRESS=noreply@sethsharpportfolio.com" >> .env
-          echo "MAIL_FROM_NAME=Seth" >> .env
+      #          Temporarily disabled for now
+      #          echo "MAIL_MAILER=ses" >> .env
+      #          echo "MAIL_PORT=587" >> .env
+      #          echo "MAIL_ENCRYPTION=tls" >> .env
+      #          echo "MAIL_FROM_ADDRESS=noreply@sethsharpportfolio.com" >> .env
+      #          echo "MAIL_FROM_NAME=Seth" >> .env
 
       - name: Build ZIP Deployment Package
         if: github.ref == 'refs/heads/main'

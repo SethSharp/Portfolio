@@ -16,8 +16,6 @@ class BlogComments extends Component
     public $comments;
     public bool $showRegisterModal = false;
 
-    protected $listeners = ['refreshComponent' => '$refresh'];
-
     protected function rules(): array
     {
         return [
@@ -40,10 +38,11 @@ class BlogComments extends Component
 
     public function save(): void
     {
-        if (!auth()->check()) {
-            $this->showRegisterModal = true;
+        if (! auth()->check()) {
+            // sets the intended url so when the user registers or logs in - redirects to here
+            session(['url.intended' => route('blogs.show', $this->blog)]);
 
-            $this->emitSelf('refreshComponent');
+            $this->showRegisterModal = true;
 
             return;
         }
