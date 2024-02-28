@@ -42,32 +42,38 @@
 
     <div class="sm:hidden">
         <div class="mx-8">
-            <div class="rounded float-right mt-6" id="menu-btn">
-                <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
-                <div class="h-2 my-2 w-16 bg-gray-400 opacity-50 rounded-lg"></div>
-                <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
+            <div class="flex mt-4">
+                <div class="my-auto text-3xl text-gray-400">
+                    Seth Sharp
+                </div>
+
+                <div class="rounded ml-auto hover:bg-gray-300 transition p-1 cursor-pointer" id="menu-btn">
+                    <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
+                    <div class="h-2 my-2 w-16 bg-gray-400 opacity-50 rounded-lg"></div>
+                    <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
+                </div>
             </div>
 
             <div class="bg-white z-50 relative shadow-2xl w-full hidden
-                        flex-col rounded px-6 py-3 font-medium mt-24
+                        flex-col rounded px-6 py-3 font-medium mt-4
                         text-center" id="dropdown">
                 <a href="/about"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('/') ? 'underline' : '' }}">
+                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('/') ? 'underline' : '' }}">
                     About
                 </a>
 
                 <a href="/portfolio"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('portfolio') ? 'underline' : '' }}">
+                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('portfolio') ? 'underline' : '' }}">
                     Portfolio
                 </a>
 
                 <a href="/experience"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('experience') ? 'underline' : '' }}">
+                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('experience') ? 'underline' : '' }}">
                     Experiences
                 </a>
 
                 <a href="/blogs"
-                   class="border hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">
+                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">
                     Blogs
                 </a>
 
