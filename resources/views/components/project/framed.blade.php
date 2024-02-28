@@ -11,7 +11,7 @@
                     "Framed Just For You" marked a significant milestone in my career as it was my first
                     client-developer
                     project. The journey began with the decommissioning of the original site at the end of November
-                    2023 and appointed the responsibility to create and manage the next one.
+                    2023 and I was appointed the responsibility to create and manage the next one.
                 </div>
 
                 <div class="mt-14">

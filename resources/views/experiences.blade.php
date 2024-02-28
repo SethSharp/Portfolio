@@ -37,6 +37,14 @@
                 'date' => 'Oct 23',
                 'icon' => 'UserIcon',
                 'iconBackground' => 'bg-gray-50',
+           ],
+           [
+                'content' => 'Continued Development on',
+                'target' => 'Internal Projects',
+                'description' => '',
+                'date' => 'Feb 24',
+                'icon' => 'GroupUserIcon',
+                'iconBackground' => 'bg-gray-50',
            ]
         ];
     @endphp
@@ -92,6 +100,8 @@
                                                     <x-icons.newspaper/>
                                                 @elseif($event['icon'] === 'UserIcon')
                                                     <x-icons.user/>
+                                                @elseif($event['icon'] === 'GroupUserIcon')
+                                                    <x-icons.group-user/>
                                                 @endif
                                             </span>
                                             </div>
