@@ -1,8 +1,8 @@
-<div class="my-12">
+<div>
     <div class="mb-8">
-        <span class="text-blue-800 font-medium text-lg"> Clientele, AWS, HTTPS/Domain config and VILT </span>
-        <h1 class="text-4xl font-medium mt-2"> Framed Just For You </h1>
-        <a class="text-yellow-500" href="https://www.framedjustforyou.com.au"> Visit here! </a>
+        <h1 class="text-4xl font-medium mt-2 hover:underline">
+            <a href="https://www.framedjustforyou.com.au"> Framed Just For You</a>
+        </h1>
     </div>
     <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
         <div>
@@ -11,7 +11,7 @@
                     "Framed Just For You" marked a significant milestone in my career as it was my first
                     client-developer
                     project. The journey began with the decommissioning of the original site at the end of November
-                    2023 and appointed the responsibility to create and manage the next one.
+                    2023 and I was appointed the responsibility to create and manage the next one.
                 </div>
 
                 <div class="mt-14">
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="mt-6">
-                The next step is embarking on the development of an online store, this is a significant step and
+                Down the road we will be embarking on the development of an online store, this is a significant step and
                 will
                 provide a rich
                 learning experience in areas such as secure payment management, integration with stripe, and the
