@@ -1,7 +1,7 @@
 <div class="my-12">
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2 hover:underline">
-            <a href="http://habittracker-uc-1.eba-ayudv8jf.ap-southeast-2.elasticbeanstalk.com">
+        <h1 class="text-4xl font-medium mt-2">
+            <a href="http://habittracker-uc-1.eba-ayudv8jf.ap-southeast-2.elasticbeanstalk.com" class="hover:underline">
                 Habit Tracker
             </a>
         </h1>
