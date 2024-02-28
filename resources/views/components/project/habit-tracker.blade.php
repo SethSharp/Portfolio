@@ -1,11 +1,10 @@
 <div class="my-12">
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2">
+        <h1 class="text-4xl font-medium mt-2 hover:underline">
             <a href="http://habittracker-uc-1.eba-ayudv8jf.ap-southeast-2.elasticbeanstalk.com">
                 Habit Tracker
             </a>
         </h1>
-        <span class="text-blue-800 font-medium text-lg"> VILT and AWS </span>
     </div>
     <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
         <div>

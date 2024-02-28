@@ -64,7 +64,7 @@
         </x-body.enter-wrapper>
 
         <div class="mt-16 md:mt-0">
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap space-y-12">
                 <x-content.left
                     title="About Me Currently"
                     src="about/4wd.png"

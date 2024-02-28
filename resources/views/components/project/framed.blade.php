@@ -1,9 +1,8 @@
 <div>
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2">
+        <h1 class="text-4xl font-medium mt-2 hover:underline">
             <a href="https://www.framedjustforyou.com.au"> Framed Just For You</a>
         </h1>
-        <span class="text-blue-800 font-medium text-lg"> Clientele, AWS, HTTPS/Domain config and VILT </span>
     </div>
     <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
         <div>
@@ -61,7 +60,7 @@
                 </div>
             </div>
             <div class="mt-6">
-                The next step is embarking on the development of an online store, this is a significant step and
+                Down the road we will be embarking on the development of an online store, this is a significant step and
                 will
                 provide a rich
                 learning experience in areas such as secure payment management, integration with stripe, and the
