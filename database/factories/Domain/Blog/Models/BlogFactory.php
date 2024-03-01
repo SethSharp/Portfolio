@@ -47,4 +47,13 @@ class BlogFactory extends Factory
             ]);
         });
     }
+
+    public function published(): self
+    {
+        return $this->afterCreating(function ($blog) {
+            $blog->update([
+                'is_draft' => false
+            ]);
+        });
+    }
 }

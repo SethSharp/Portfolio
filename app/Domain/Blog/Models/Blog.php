@@ -53,6 +53,11 @@ class Blog extends Model
         return $query->where('is_draft', false);
     }
 
+    public function scopeNotPublished(Builder $query): Builder
+    {
+        return $query->where('is_draft', true);
+    }
+
     public function getContent(): string
     {
         // check if cache exists and hasn't been cleared

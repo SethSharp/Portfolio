@@ -14,11 +14,13 @@ defineProps({
     <div class="group bg-gray-100 rounded-3xl relative w-auto h-64 overflow-hidden">
         <div class="p-4 h-full">
             <Link :href="route('dashboard.blogs.edit', blog)">
-                <h1 class="font-bold text-xl">{{ blog.title }}</h1>
+                <h1 class="font-bold text-lg">{{ blog.title }}</h1>
 
-                <h1 class="font-bold text-md">{{ blog.author.name }}</h1>
+                <h1 class="text-md text-gray-600 font-medium">{{ blog.author.name }}</h1>
 
-                <div v-html="blog.content.substr(0, 150)" />
+                <div class="text-gray-400">
+                    {{ blog?.meta_description?.substring(1, 50) }}
+                </div>
             </Link>
         </div>
 
