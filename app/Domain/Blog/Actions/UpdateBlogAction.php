@@ -21,7 +21,6 @@ class UpdateBlogAction
         $blog->update([
             ...$updateBlogRequest->validated(),
             'slug' => $slug,
-            'published_at' => null
         ]);
 
         if ($updateBlogRequest->input('tags')) {
@@ -36,10 +35,18 @@ class UpdateBlogAction
 
         $blog->render();
 
-        if (!$blog->isDraft()) {
-            $blog->update([
-                'published_at' => now()
-            ]);
+        if ($updateBlogRequest->has('is_draft')) {
+            if ($updateBlogRequest->input('is_draft')) {
+                $blog->update([
+                    'published_at' => null
+                ]);
+            } else {
+                if (!$blog->published_at) {
+                    $blog->update([
+                        'published_at' => now()
+                    ]);
+                }
+            }
         }
 
         return $blog;

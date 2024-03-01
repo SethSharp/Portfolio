@@ -284,7 +284,7 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function if_is_draft_is_provided_blog_is_updated_as_draft()
+    public function if_is_draft_is_provided_blog_is_updated_as_draft_and_published_at_is_reset()
     {
         $tag = Tag::factory()->create();
 
@@ -320,20 +320,17 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function published_at_is_set_when_blog_is_not_a_draft()
+    public function can_published_a_draft_blog()
     {
-        $tag = Tag::factory()->create();
+        $this->blog->update([
+            'is_draft' => false,
+            'published_at' => null
+        ]);
 
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'slug' => 'some-slug',
-                'tags' => [
-                    [
-                        'id' => $tag->id,
-                        'name' => $tag->name
-                    ]
-                ],
                 'meta_title' => 'Some title',
                 'meta_description' => 'Some description',
                 'meta_tags' => 'Some tags',
@@ -352,6 +349,41 @@ class UpdateBlogTest extends TestCase
             'meta_tags' => 'Some tags',
             'content' => 'some content here',
             'published_at' => now()
+        ]);
+    }
+
+    /** @test */
+    public function published_at_is_not_reset_if_blog_is_updated()
+    {
+        $user = User::factory()->author()->create();
+
+        $blog = Blog::factory()->published()->create([
+            'author_id' => $user->id,
+            'published_at' => now()->subDay()
+        ]);
+
+        $this->actingAs($user)
+            ->putJson(route('dashboard.blogs.update', $blog), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'author_id' => $user->id,
+            'is_draft' => 0,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'Some tags',
+            'content' => 'some content here',
+            'published_at' => now()->subDay()
         ]);
     }
 
