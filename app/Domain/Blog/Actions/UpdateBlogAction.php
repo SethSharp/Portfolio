@@ -12,10 +12,15 @@ class UpdateBlogAction
 {
     public function __invoke(Blog $blog, UpdateBlogRequest $updateBlogRequest): Blog
     {
-        $updateBlogRequest['slug'] = Str::slug($updateBlogRequest->input('slug'));
+        if ($updateBlogRequest->has('slug')) {
+            $slug = Str::slug($updateBlogRequest->input('slug'));
+        } else {
+            $slug = Str::slug($updateBlogRequest->input('title'));
+        }
 
         $blog->update([
             ...$updateBlogRequest->validated(),
+            'slug' => $slug,
             'published_at' => null
         ]);
 

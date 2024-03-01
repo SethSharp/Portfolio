@@ -57,9 +57,41 @@ class UpdateBlogTest extends TestCase
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
-                'slug' => 'The slug field is required.',
-                'content' => 'The content field is required.',
                 'is_draft' => 'The is draft field is required.',
+            ]);
+    }
+
+    /** @test */
+    public function fields_are_required_when_blog_is_a_draft()
+    {
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'is_draft' => true
+            ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'title' => 'The title field is required.',
+            ])
+            ->assertJsonMissingValidationErrors([
+                'content' => 'The content field is required.'
+            ]);
+    }
+
+    /** @test */
+    public function fields_are_required_when_blog_is_not_a_draft()
+    {
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'is_draft' => false,
+                'meta_title' => null
+            ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'title' => 'The title field is required.',
+                'content' => 'The content field is required when is draft is false.',
+                'meta_title' => 'The meta title field is required when is draft is false.',
+                'meta_description' => 'The meta description field is required when is draft is false.',
+                'meta_tags' => 'The meta tags field is required when is draft is false.'
             ]);
     }
 
@@ -149,9 +181,38 @@ class UpdateBlogTest extends TestCase
                     ]
                 ],
                 'content' => 'new content',
+                'is_draft' => false,
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'some tags'
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+    }
+
+    /** @test */
+    public function if_slug_is_not_provided_title_is_slugified()
+    {
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
                 'is_draft' => false
             ])
             ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-title',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
     }
 
     /** @test */
@@ -169,9 +230,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'some tags',
                 'content' => 'some content here',
                 'is_draft' => false
             ])
@@ -181,9 +242,9 @@ class UpdateBlogTest extends TestCase
             'author_id' => $this->user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
-            'meta_title' => 'some title',
-            'meta_tags' => 'some tag',
-            'meta_description' => 'some description',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'some tags',
             'content' => 'some content here'
         ]);
     }
@@ -203,9 +264,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => 'some content here',
                 'is_draft' => false
             ])
@@ -215,9 +276,9 @@ class UpdateBlogTest extends TestCase
             'author_id' => $this->user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
-            'meta_title' => 'some title',
-            'meta_tags' => 'some tag',
-            'meta_description' => 'some description',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'Some tags',
             'content' => 'some content here'
         ]);
     }
@@ -237,9 +298,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => 'some content here',
                 'is_draft' => true
             ])
@@ -250,9 +311,9 @@ class UpdateBlogTest extends TestCase
             'is_draft' => 1,
             'title' => 'Some Title',
             'slug' => 'some-slug',
-            'meta_title' => 'some title',
-            'meta_tags' => 'some tag',
-            'meta_description' => 'some description',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'Some tags',
             'content' => 'some content here',
             'published_at' => null
         ]);
@@ -273,9 +334,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => 'some content here',
                 'is_draft' => false
             ])
@@ -286,9 +347,9 @@ class UpdateBlogTest extends TestCase
             'is_draft' => 0,
             'title' => 'Some Title',
             'slug' => 'some-slug',
-            'meta_title' => 'some title',
-            'meta_tags' => 'some tag',
-            'meta_description' => 'some description',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'Some tags',
             'content' => 'some content here',
             'published_at' => now()
         ]);
@@ -309,9 +370,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => 'some content here',
                 'is_draft' => true
             ])
@@ -322,9 +383,9 @@ class UpdateBlogTest extends TestCase
             'is_draft' => 1,
             'title' => 'Some Title',
             'slug' => 'some-slug',
-            'meta_title' => 'some title',
-            'meta_tags' => 'some tag',
-            'meta_description' => 'some description',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'Some tags',
             'content' => 'some content here'
         ]);
 
@@ -351,9 +412,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => '<tt-image blogid="null"> </tt-image>',
                 'is_draft' => true
             ])
@@ -366,9 +427,9 @@ class UpdateBlogTest extends TestCase
             'is_draft' => 1,
             'title' => 'Some Title',
             'slug' => 'some-slug',
-            'meta_title' => 'some title',
-            'meta_tags' => 'some tag',
-            'meta_description' => 'some description',
+            'meta_title' => 'Some title',
+            'meta_description' => 'Some description',
+            'meta_tags' => 'Some tags',
             'content' => "<tt-image blogid=\"$blog->id\"> </tt-image>"
         ]);
     }
@@ -393,9 +454,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => "<tt-image fileid=\"$file->id\" blogid=\"null\"> </tt-image>",
                 'is_draft' => true
             ])
@@ -435,9 +496,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => "<tt-image fileid=\"$file->id\" blogid='null'> </tt-image> <tt-image fileid=\"$file->id\" blogid='null'> </tt-image>",
                 'is_draft' => true
             ])
@@ -478,9 +539,9 @@ class UpdateBlogTest extends TestCase
                         'name' => $tag->name
                     ]
                 ],
-                'meta_title' => 'some title',
-                'meta_tags' => 'some tag',
-                'meta_description' => 'some description',
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
                 'content' => "<tt-image fileid=\"$file->id\" blogid='null'> </tt-image>",
                 'is_draft' => true
             ])
