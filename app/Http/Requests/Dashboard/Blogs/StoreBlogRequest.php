@@ -22,7 +22,7 @@ class StoreBlogRequest extends FormRequest
                 Rule::unique(Blog::class, 'title'),
             ],
             'slug' => [
-                'required',
+                'nullable',
                 'string',
                 Rule::unique(Blog::class, 'slug'),
             ],
@@ -32,18 +32,21 @@ class StoreBlogRequest extends FormRequest
             ],
             'meta_title' => [
                 'nullable',
-                'string',
-            ],
-            'meta_tags' => [
-                'nullable',
+                'required_if:is_draft,false',
                 'string',
             ],
             'meta_description' => [
                 'nullable',
+                'required_if:is_draft,false',
+                'string',
+            ],
+            'meta_tags' => [
+                'nullable',
+                'required_if:is_draft,false',
                 'string',
             ],
             'content' => [
-                'required',
+                'required_if:is_draft,false',
                 'string',
             ],
             'is_draft' => [

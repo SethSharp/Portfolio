@@ -22,28 +22,31 @@ class UpdateBlogRequest extends FormRequest
                 Rule::unique(Blog::class, 'title')->ignore($this->route('blog')->id),
             ],
             'slug' => [
-                'required',
+                'nullable',
                 'string',
                 Rule::unique(Blog::class, 'slug')->ignore($this->route('blog')->id),
             ],
             'tags' => [
                 'array',
-                'exclude'
+                'exclude',
             ],
             'meta_title' => [
                 'nullable',
+                'required_if:is_draft,false',
                 'string',
             ],
             'meta_tags' => [
                 'nullable',
+                'required_if:is_draft,false',
                 'string',
             ],
             'meta_description' => [
                 'nullable',
+                'required_if:is_draft,false',
                 'string',
             ],
             'content' => [
-                'required',
+                'required_if:is_draft,false',
                 'string',
             ],
             'is_draft' => [

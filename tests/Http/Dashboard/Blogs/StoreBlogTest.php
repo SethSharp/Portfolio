@@ -36,9 +36,40 @@ class StoreBlogTest extends TestCase
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
-                'slug' => 'The slug field is required.',
-                'content' => 'The content field is required.',
                 'is_draft' => 'The is draft field is required.',
+            ]);
+    }
+
+    /** @test */
+    public function fields_are_required_when_blog_is_a_draft()
+    {
+        $this->actingAs(User::factory()->admin()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'is_draft' => true,
+            ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'title' => 'The title field is required.',
+            ])
+            ->assertJsonMissingValidationErrors([
+                'content' => 'The content field is required.'
+            ]);
+    }
+
+    /** @test */
+    public function fields_are_required_when_blog_is_not_a_draft()
+    {
+        $this->actingAs(User::factory()->admin()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'is_draft' => false,
+            ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'title' => 'The title field is required.',
+                'content' => 'The content field is required when is draft is false.',
+                'meta_title' => 'The meta title field is required when is draft is false.',
+                'meta_description' => 'The meta description field is required when is draft is false.',
+                'meta_tags' => 'The meta tags field is required when is draft is false.'
             ]);
     }
 
@@ -110,6 +141,32 @@ class StoreBlogTest extends TestCase
                 'title' => 'The title has already been taken.',
                 'slug' => 'The slug has already been taken.',
             ]);
+    }
+
+    /** @test */
+    public function if_slug_is_not_provided_title_is_slugified()
+    {
+        $this->actingAs($user = User::factory()->author()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'author_id' => $user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-title',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
     }
 
     /** @test */

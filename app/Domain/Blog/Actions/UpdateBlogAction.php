@@ -12,11 +12,15 @@ class UpdateBlogAction
 {
     public function __invoke(Blog $blog, UpdateBlogRequest $updateBlogRequest): Blog
     {
-        $updateBlogRequest['slug'] = Str::slug($updateBlogRequest->input('slug'));
+        if ($updateBlogRequest->has('slug')) {
+            $slug = Str::slug($updateBlogRequest->input('slug'));
+        } else {
+            $slug = Str::slug($updateBlogRequest->input('title'));
+        }
 
         $blog->update([
             ...$updateBlogRequest->validated(),
-            'published_at' => null
+            'slug' => $slug,
         ]);
 
         if ($updateBlogRequest->input('tags')) {
@@ -31,10 +35,18 @@ class UpdateBlogAction
 
         $blog->render();
 
-        if (!$blog->isDraft()) {
-            $blog->update([
-                'published_at' => now()
-            ]);
+        if ($updateBlogRequest->has('is_draft')) {
+            if ($updateBlogRequest->input('is_draft')) {
+                $blog->update([
+                    'published_at' => null
+                ]);
+            } else {
+                if (!$blog->published_at) {
+                    $blog->update([
+                        'published_at' => now()
+                    ]);
+                }
+            }
         }
 
         return $blog;
