@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
-use App\Domain\Blog\Models\Series;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Blog\Models\Blog;
+use App\Domain\Blog\Models\Series;
 use App\Http\Controllers\Controller;
 
 class EditBlogController extends Controller
