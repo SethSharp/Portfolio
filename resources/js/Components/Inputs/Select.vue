@@ -18,7 +18,7 @@ defineProps({
 })
 
 const model = defineModel({
-    type: [String, Number],
+    type: [null, String, Number],
     required: true,
 })
 

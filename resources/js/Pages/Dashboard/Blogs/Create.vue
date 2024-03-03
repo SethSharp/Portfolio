@@ -3,6 +3,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditForm from '@/Components/Blogs/CreateEditForm.vue'
 
 defineProps({
+    series: {
+        type: Array,
+        required: true,
+    },
     tags: {
         type: Array,
         required: true,
@@ -12,6 +16,6 @@ defineProps({
 
 <template>
     <AuthenticatedLayout title="Create Blog">
-        <CreateEditForm :tags="tags" />
+        <CreateEditForm :tags="tags" :series="series" />
     </AuthenticatedLayout>
 </template>

@@ -2,24 +2,35 @@
 import { useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Checkbox from '@/Components/Inputs/Checkbox.vue'
-import TextArea from '@/Components/Inputs/TextArea.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import Editor from '@/Components/Editor/Editor.vue'
-import { onMounted, ref, watch } from 'vue'
+import { ref } from 'vue'
+import Select from '@/Components/Inputs/Select.vue'
 
 const props = defineProps({
     blog: {
         type: Object,
         default: null,
     },
+    series: {
+        type: Array,
+        required: true,
+    },
     tags: {
         type: Array,
         required: true,
     },
+})
+
+const seriesOptions = props.series.map((series) => {
+    return {
+        value: series.id,
+        label: series.title,
+    }
 })
 
 const tagOptions = props.tags.map((tag) => {
@@ -34,6 +45,7 @@ const content = ref('')
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
+    series: props.blogs?.series ? props.series.id : null,
     tags: props.blog?.tags ? props.blog.tags : [],
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
@@ -56,6 +68,11 @@ const submit = () => {
         <FormElement>
             <TextInput v-model="form.title" autofocus label="Title" />
             <InputError :message="form.errors.title" />
+        </FormElement>
+
+        <FormElement>
+            <Select v-model="form.series" :options="seriesOptions" label="Series" />
+            <InputError :message="form.errors.series" />
         </FormElement>
 
         <FormElement>
