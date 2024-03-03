@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Domain\Blog\Models\Series;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
@@ -23,9 +24,13 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        Blog::factory()->count(10)->create([
+        $series = Series::factory()->create();
+
+        $blogs = Blog::factory()->count(10)->create([
             'author_id' => $admin->id
         ]);
+
+        $series->blogs()->attach($blogs->take(4)->pluck('id')->toArray());
 
         Tag::factory()->create([
             'name' => 'Tutorial'
