@@ -9,7 +9,7 @@ class UpdateSeriesRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('update', Series::class);
+        return $this->user()->can('manage', Series::class);
     }
 
     public function rules(): array

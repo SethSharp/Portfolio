@@ -10,6 +10,8 @@ class Series extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    
     public function blogs(): BelongsToMany
     {
         return $this->belongsToMany(Blog::class)

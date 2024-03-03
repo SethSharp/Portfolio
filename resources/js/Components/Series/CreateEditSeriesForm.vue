@@ -6,6 +6,7 @@ import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
+import TextArea from '@/Components/Inputs/TextArea.vue'
 
 const props = defineProps({
     series: {
@@ -35,6 +36,7 @@ const submit = () => {
 
 const destroySeries = () => {
     router.delete(route('dashboard.series.destroy', props.series), {
+        onBefore: () => confirm('Are you sure you want to permanently delete this series?'),
         onSuccess: () => emits('close'),
     })
 }
@@ -48,7 +50,7 @@ const destroySeries = () => {
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.description" label="Description" />
+            <TextArea v-model="form.description" label="Description" />
             <InputError :message="form.errors.description" />
         </FormElement>
 

@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Dashboard\Series;
 
-use App\Domain\Blog\Models\Tag;
+use App\Domain\Blog\Models\Series;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Dashboard\Series\DestroySeriesRequest;
 
 class DestroySeriesController extends Controller
 {
-    public function __invoke(Tag $tag): RedirectResponse
+    public function __invoke(Series $series, DestroySeriesRequest $destroySeriesRequest): RedirectResponse
     {
-        $this->authorize('destroy', Tag::class);
+        $this->authorize('manage', Series::class);
 
-        $tag->delete();
+        $series->delete();
 
         return redirect()
-            ->route('dashboard.tags.index')
-            ->with('success', 'Tag successfully deleted.');
+            ->route('dashboard.series.index')
+            ->with('success', 'Series successfully deleted.');
     }
 }
