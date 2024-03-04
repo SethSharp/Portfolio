@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from "vue";
-import {useForm, router} from '@inertiajs/vue3'
+import { ref } from 'vue'
+import { useForm, router } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
@@ -55,7 +55,7 @@ const findBlogs = (search) => {
 
 const removeBlog = (blog) => {
     if (confirm('Are you sure to want to remove the blog from this series?')) {
-        form.blogs = form.blogs.filter(formBlog => formBlog.id !== blog.id)
+        form.blogs = form.blogs.filter((formBlog) => formBlog.id !== blog.id)
     }
 }
 </script>
@@ -63,13 +63,13 @@ const removeBlog = (blog) => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Name"/>
-            <InputError :message="form.errors.title"/>
+            <TextInput v-model="form.title" autofocus label="Name" />
+            <InputError :message="form.errors.title" />
         </FormElement>
 
         <FormElement>
-            <TextArea v-model="form.description" label="Description"/>
-            <InputError :message="form.errors.description"/>
+            <TextArea v-model="form.description" label="Description" />
+            <InputError :message="form.errors.description" />
         </FormElement>
 
         <FormElement v-if="form.blogs">
