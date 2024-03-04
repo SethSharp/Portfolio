@@ -8,7 +8,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import TextArea from '@/Components/Inputs/TextArea.vue'
-import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
+import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 
 const props = defineProps({
     series: {
@@ -53,10 +53,23 @@ const findBlogs = (search) => {
     })
 }
 
+const addBlog = (newBlog) => {
+    if (!form.blogs.find((blog) => blog.id === newBlog.id)) {
+        form.blogs.push(newBlog)
+    } else {
+        alert('This blog has already been added to the series.')
+    }
+}
+
 const removeBlog = (blog) => {
     if (confirm('Are you sure to want to remove the blog from this series?')) {
         form.blogs = form.blogs.filter((formBlog) => formBlog.id !== blog.id)
     }
+}
+
+const cancel = () => {
+    findANewBlog.value = false
+    blogs.value = []
 }
 </script>
 
@@ -76,34 +89,41 @@ const removeBlog = (blog) => {
             <div>
                 <div class="flex">
                     <input
+                        v-if="findANewBlog"
                         type="text"
                         v-model="search"
                         @keyup.enter="findBlogs(search)"
                     />
 
-                    <div>
+                    <div class="my-auto ml-2">
                         <PrimaryButton v-if="!findANewBlog" @click="findANewBlog = true">
-                            Find a new blog
+                            Search for a new blog
                         </PrimaryButton>
-                        <SecondaryButton v-if="findANewBlog" @click="findANewBlog = false">
+                        <SecondaryButton v-if="findANewBlog" @click="cancel()">
                             Cancel
                         </SecondaryButton>
                     </div>
                 </div>
 
-                <div v-if="blogs" v-for="blog in blogs" class="bg-gray-300 rounded-xl p-2 text-sm">
+                <div
+                    v-if="blogs && findANewBlog"
+                    v-for="blog in blogs"
+                    class="bg-gray-300 rounded-xl p-2 text-sm mt-3 hover:bg-gray-200 hover:cursor-pointer"
+                    @click="addBlog(blog)"
+                >
                     <div>
                         {{ blog.title }}
                     </div>
                 </div>
             </div>
-            <div v-if="!findANewBlog" class="space-y-2 overflow-scroll h-44">
+
+            <div v-if="!findANewBlog" class="space-y-2 overflow-scroll h-52 mt-6">
                 <div v-for="blog in form.blogs" class="bg-gray-300 rounded-xl p-2 text-sm">
                     <div>
                         {{ blog.title }}
                     </div>
 
-                    <div @click="removeBlog(blog)" class="text-black font-medium cursor-pointer">
+                    <div @click="removeBlog(blog)" class="text-black font-bold cursor-pointer">
                         remove
                     </div>
                 </div>

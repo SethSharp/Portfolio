@@ -16,7 +16,7 @@ class StoreSeriesController extends Controller
             'description' => $storeSeriesRequest->input('description')
         ]);
 
-        $blogs = $storeSeriesRequest->input('blogs');
+        $blogs = collect($storeSeriesRequest->input('blogs'))->pluck('id');
 
         $series->blogs()->sync($blogs);
 
