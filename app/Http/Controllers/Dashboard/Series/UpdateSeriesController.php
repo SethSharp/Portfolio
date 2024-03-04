@@ -16,6 +16,10 @@ class UpdateSeriesController extends Controller
             'description' => $updateSeriesRequest->input('description')
         ]);
 
+        $blogs = collect($updateSeriesRequest->input('blogs'))->pluck('id');
+
+        $series->blogs()->sync($blogs);
+
         return redirect()
             ->route('dashboard.series.index')
             ->with('success', $series->name . ' successfully updated.');

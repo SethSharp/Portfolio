@@ -56,6 +56,7 @@ const findBlogs = (search) => {
 const addBlog = (newBlog) => {
     if (!form.blogs.find((blog) => blog.id === newBlog.id)) {
         form.blogs.push(newBlog)
+        blogs.value = blogs.value.filter((blog) => blog.id !== newBlog.id)
     } else {
         alert('This blog has already been added to the series.')
     }
@@ -88,11 +89,12 @@ const cancel = () => {
         <FormElement v-if="form.blogs">
             <div>
                 <div class="flex">
-                    <input
+                    <TextInput
                         v-if="findANewBlog"
                         type="text"
                         v-model="search"
                         @keyup.enter="findBlogs(search)"
+                        class="w-full"
                     />
 
                     <div class="my-auto ml-2">
@@ -118,7 +120,8 @@ const cancel = () => {
             </div>
 
             <div v-if="!findANewBlog" class="space-y-2 overflow-scroll h-52 mt-6">
-                <div v-for="blog in form.blogs" class="bg-gray-300 rounded-xl p-2 text-sm">
+                <h1>Current Blogs</h1>
+                <div v-for="blog in form.blogs" class="bg-gray-200 rounded-xl p-2 text-sm">
                     <div>
                         {{ blog.title }}
                     </div>
