@@ -8,6 +8,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import TextArea from '@/Components/Inputs/TextArea.vue'
+import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
 
 const props = defineProps({
     series: {
@@ -17,6 +18,7 @@ const props = defineProps({
 })
 
 const emits = defineEmits(['close'])
+const findANewBlog = ref(false)
 const search = ref(null)
 const blogs = ref([])
 
@@ -47,7 +49,7 @@ const destroySeries = () => {
 
 const findBlogs = (search) => {
     axios.get(route('dashboard.search.blogs') + '?search=' + search).then((res) => {
-        console.log(res)
+        blogs.value = res.data.blogs
     })
 }
 
@@ -71,12 +73,31 @@ const removeBlog = (blog) => {
         </FormElement>
 
         <FormElement v-if="form.blogs">
-            <input
-                type="text"
-                v-model="search"
-                @keyup.enter="findBlogs(search)"
-            />
-            <div class="space-y-2 overflow-scroll h-44">
+            <div>
+                <div class="flex">
+                    <input
+                        type="text"
+                        v-model="search"
+                        @keyup.enter="findBlogs(search)"
+                    />
+
+                    <div>
+                        <PrimaryButton v-if="!findANewBlog" @click="findANewBlog = true">
+                            Find a new blog
+                        </PrimaryButton>
+                        <SecondaryButton v-if="findANewBlog" @click="findANewBlog = false">
+                            Cancel
+                        </SecondaryButton>
+                    </div>
+                </div>
+
+                <div v-if="blogs" v-for="blog in blogs" class="bg-gray-300 rounded-xl p-2 text-sm">
+                    <div>
+                        {{ blog.title }}
+                    </div>
+                </div>
+            </div>
+            <div v-if="!findANewBlog" class="space-y-2 overflow-scroll h-44">
                 <div v-for="blog in form.blogs" class="bg-gray-300 rounded-xl p-2 text-sm">
                     <div>
                         {{ blog.title }}

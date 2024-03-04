@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Domain\Blog\Models\Blog;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class SearchBlogsController extends Controller
 {
@@ -13,7 +13,6 @@ class SearchBlogsController extends Controller
         $search = $request->input('search');
 
         return response()->json([
-            'data' => $search,
             'blogs' => Blog::where('title', 'LIKE', '%' . $search . '%')->get()
         ]);
     }
