@@ -1,5 +1,6 @@
 <script setup>
-import { useForm, router } from '@inertiajs/vue3'
+import {ref} from "vue";
+import {useForm, router} from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
@@ -16,10 +17,13 @@ const props = defineProps({
 })
 
 const emits = defineEmits(['close'])
+const search = ref(null)
+const blogs = ref([])
 
 const form = useForm({
     title: props.series?.title ? props.series.title : '',
     description: props.series?.description ? props.series.description : '',
+    blogs: props.series?.blogs ? props.series.blogs : [],
 })
 
 const submit = () => {
@@ -40,18 +44,49 @@ const destroySeries = () => {
         onSuccess: () => emits('close'),
     })
 }
+
+const findBlogs = (search) => {
+    axios.get(route('dashboard.search.blogs') + '?search=' + search).then((res) => {
+        console.log(res)
+    })
+}
+
+const removeBlog = (blog) => {
+    if (confirm('Are you sure to want to remove the blog from this series?')) {
+        form.blogs = form.blogs.filter(formBlog => formBlog.id !== blog.id)
+    }
+}
 </script>
 
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Name" />
-            <InputError :message="form.errors.title" />
+            <TextInput v-model="form.title" autofocus label="Name"/>
+            <InputError :message="form.errors.title"/>
         </FormElement>
 
         <FormElement>
-            <TextArea v-model="form.description" label="Description" />
-            <InputError :message="form.errors.description" />
+            <TextArea v-model="form.description" label="Description"/>
+            <InputError :message="form.errors.description"/>
+        </FormElement>
+
+        <FormElement v-if="form.blogs">
+            <input
+                type="text"
+                v-model="search"
+                @keyup.enter="findBlogs(search)"
+            />
+            <div class="space-y-2 overflow-scroll h-44">
+                <div v-for="blog in form.blogs" class="bg-gray-300 rounded-xl p-2 text-sm">
+                    <div>
+                        {{ blog.title }}
+                    </div>
+
+                    <div @click="removeBlog(blog)" class="text-black font-medium cursor-pointer">
+                        remove
+                    </div>
+                </div>
+            </div>
         </FormElement>
 
         <div class="gap-x-2 flex">

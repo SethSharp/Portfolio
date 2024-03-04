@@ -25,6 +25,9 @@ class StoreSeriesRequest extends FormRequest
                 'required',
                 'string',
             ],
+            'blogs' => [
+                'array'
+            ]
         ];
     }
 }

@@ -26,6 +26,8 @@ use App\Http\Controllers\Dashboard\Series\DestroySeriesController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin,author'])->prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('/search-blogs', \App\Http\Controllers\SearchBlogsController::class)->name('search.blogs');
+
         Route::get('/file/create', CreateFileController::class)->name('files.create');
         Route::post('/file/store', StoreFileController::class)->name('files.store');
 

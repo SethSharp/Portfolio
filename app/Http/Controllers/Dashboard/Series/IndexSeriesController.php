@@ -14,7 +14,7 @@ class IndexSeriesController extends Controller
         $this->authorize('manage', Series::class);
 
         return Inertia::render('Dashboard/Series/Index', [
-            'allSeries' => Series::all()
+            'allSeries' => Series::with('blogs')->get()
         ]);
     }
 }
