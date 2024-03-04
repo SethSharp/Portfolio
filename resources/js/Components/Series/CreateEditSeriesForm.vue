@@ -8,7 +8,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import TextArea from '@/Components/Inputs/TextArea.vue'
-import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
+import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 
 const props = defineProps({
     series: {
@@ -75,11 +75,7 @@ const removeBlog = (blog) => {
         <FormElement v-if="form.blogs">
             <div>
                 <div class="flex">
-                    <input
-                        type="text"
-                        v-model="search"
-                        @keyup.enter="findBlogs(search)"
-                    />
+                    <input type="text" v-model="search" @keyup.enter="findBlogs(search)" />
 
                     <div>
                         <PrimaryButton v-if="!findANewBlog" @click="findANewBlog = true">
