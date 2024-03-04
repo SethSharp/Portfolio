@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Domain\Blog\Models\Blog;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class SearchBlogsController extends Controller
 {
