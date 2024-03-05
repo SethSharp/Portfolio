@@ -42,10 +42,10 @@ class Blog extends Model
             ->withTimestamps();
     }
 
-//    public function series(): BelongsTo
-//    {
-//        return $this->belongsTo(Series::class);
-//    }
+    //    public function series(): BelongsTo
+    //    {
+    //        return $this->belongsTo(Series::class);
+    //    }
 
     public function series(): BelongsToMany
     {
