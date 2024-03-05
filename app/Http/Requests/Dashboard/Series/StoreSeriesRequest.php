@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Dashboard\Series;
 
 use Illuminate\Validation\Rule;
-use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Series;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,12 +24,6 @@ class StoreSeriesRequest extends FormRequest
             'description' => [
                 'required',
                 'string',
-            ],
-            'blogs' => [
-                'array',
-            ],
-            'blogs.*.id' => [
-                Rule::exists(Blog::class, 'id')
             ]
         ];
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dashboard\Blogs;
+namespace Http\Dashboard\Blogs;
 
 use Tests\TestCase;
 use App\Domain\Blog\Models\Tag;
@@ -8,6 +8,7 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
+use App\Domain\Blog\Models\Series;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
 
@@ -234,6 +235,97 @@ class StoreBlogTest extends TestCase
             'meta_tags' => 'some tag',
             'meta_description' => 'some description',
             'content' => 'some content here'
+        ]);
+    }
+
+    /** @test */
+    public function can_assign_a_series()
+    {
+        $series = Series::factory()->create();
+
+        $this->actingAs($user = User::factory()->admin()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'series_id' => $series->id,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'series_id' => $series->id,
+            'author_id' => $user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $blog = Blog::where([
+            'author_id' => $user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+        ])->first();
+
+        $this->assertDatabaseHas('blog_series', [
+            'blog_id' => $blog->id,
+            'series_id' => $series->id,
+            'order' => 1
+        ]);
+    }
+
+    /** @test */
+    public function can_assign_a_series_with_other_blogs()
+    {
+        $series = Series::factory()->create();
+        $blog = Blog::factory()->create();
+
+        $series->blogs()->attach($blog, [
+            'order' => 1
+        ]);
+
+        $this->actingAs($user = User::factory()->admin()->create())
+            ->postJson(route('dashboard.blogs.store'), [
+                'title' => 'Some Title',
+                'series_id' => $series->id,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'series_id' => $series->id,
+            'author_id' => $user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $blog = Blog::where([
+            'author_id' => $user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+        ])->first();
+
+        $this->assertDatabaseHas('blog_series', [
+            'blog_id' => $blog->id,
+            'series_id' => $series->id,
+            'order' => 2
         ]);
     }
 

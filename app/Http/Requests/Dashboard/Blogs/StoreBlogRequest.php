@@ -4,6 +4,7 @@ namespace App\Http\Requests\Dashboard\Blogs;
 
 use Illuminate\Validation\Rule;
 use App\Domain\Blog\Models\Blog;
+use App\Domain\Blog\Models\Series;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBlogRequest extends FormRequest
@@ -20,6 +21,11 @@ class StoreBlogRequest extends FormRequest
                 'required',
                 'string',
                 Rule::unique(Blog::class, 'title'),
+            ],
+            'series_id' => [
+                'nullable',
+                'int',
+                Rule::exists(Series::class, 'id')
             ],
             'slug' => [
                 'nullable',

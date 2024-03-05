@@ -8,6 +8,7 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
+use App\Domain\Blog\Models\Series;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
 
@@ -246,6 +247,115 @@ class UpdateBlogTest extends TestCase
             'meta_description' => 'Some description',
             'meta_tags' => 'some tags',
             'content' => 'some content here'
+        ]);
+    }
+
+    /** @test */
+    public function can_assign_a_series()
+    {
+        $series = Series::factory()->create();
+
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'series_id' => $series->id,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'series_id' => $series->id,
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $blog = Blog::where([
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+        ])->first();
+
+        $this->assertDatabaseHas('blog_series', [
+            'blog_id' => $blog->id,
+            'series_id' => $series->id,
+            'order' => 1
+        ]);
+    }
+
+    /** @test */
+    public function can_assign_a_series_with_other_blogs()
+    {
+        $series = Series::factory()->create();
+        $blog = Blog::factory()->create([
+            'series_id' => $series->id
+        ]);
+
+        $series->blogs()->attach($blog, [
+            'order' => 1
+        ]);
+
+        $blog2 = Blog::factory()->create([
+            'series_id' => $series->id
+        ]);
+
+        $series->blogs()->attach($blog2, [
+            'order' => 1
+        ]);
+
+        $blog3 = Blog::factory()->create([
+            'series_id' => $series->id
+        ]);
+
+        $series->blogs()->attach($blog3, [
+            'order' => 1
+        ]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.blogs.update', $blog2->id), [
+                'title' => 'Some Title',
+                'series_id' => null,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'series_id' => $series->id,
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $blog = Blog::where([
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+        ])->first();
+
+        $this->assertDatabaseHas('blog_series', [
+            'blog_id' => $blog->id,
+            'series_id' => $series->id,
+            'order' => 2
         ]);
     }
 

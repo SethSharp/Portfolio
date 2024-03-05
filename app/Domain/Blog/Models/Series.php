@@ -11,10 +11,16 @@ class Series extends Model
     use HasFactory;
 
     protected $guarded = [];
-    
+
     public function blogs(): BelongsToMany
     {
         return $this->belongsToMany(Blog::class)
+            ->withPivotValue('order')
             ->withTimestamps();
+    }
+
+    public function nextOrder(): int
+    {
+        return $this->blogs()->count() + 1;
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Dashboard\Series;
 
 use Illuminate\Validation\Rule;
-use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Series;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -20,14 +19,11 @@ class UpdateSeriesRequest extends FormRequest
             'title' => [
                 'required',
                 'string',
+                Rule::unique(Series::class, 'title')->ignore($this->route('series')->id),
             ],
             'description' => [
                 'required',
                 'string',
-            ],
-            'blogs' => [
-                'array',
-                'blogs.*.id' => Rule::exists(Blog::class, 'id')
             ]
         ];
     }

@@ -42,7 +42,12 @@ class Blog extends Model
             ->withTimestamps();
     }
 
-    public function series(): BelongsToMany
+    public function series(): BelongsTo
+    {
+        return $this->belongsTo(Series::class);
+    }
+
+    public function seriesGroup(): BelongsToMany
     {
         return $this->belongsToMany(Series::class, 'blog_series')
             ->withTimestamps();

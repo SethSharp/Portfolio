@@ -5,6 +5,7 @@ namespace App\Domain\Blog\Actions;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
+use App\Domain\Blog\Models\Series;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 
@@ -23,10 +24,25 @@ class UpdateBlogAction
             'slug' => $slug,
         ]);
 
-        if ($updateBlogRequest->input('tags')) {
-            $tags = collect($updateBlogRequest->input('tags'))->pluck('id');
+        if ($tags = $updateBlogRequest->input('tags')) {
+            $tags = collect($tags)->pluck('id');
 
             $blog->tags()->sync($tags);
+        }
+
+        if (is_null($updateBlogRequest->input('series_id')) && $blog->series_id) {
+            // remove blog from old series
+            app(RemoveBlogFromSeriesAction::class)($blog, Series::whereId($blog->series_id)->first());
+
+//            $newSeriesModel = Series::whereId($series)->first();
+//
+//            $newSeriesModel->blogs()->attach($blog->id, [
+//                'order' => $newSeriesModel->nextOrder()
+//            ]);
+//
+//            $blog->update([
+//                'series_id' => $newSeriesModel->id
+//            ]);
         }
 
         $blog = app(CleanBlogContentAction::class)($blog);
@@ -41,7 +57,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (!$blog->published_at) {
+                if (! $blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

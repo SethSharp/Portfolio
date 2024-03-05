@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-return new class() extends Migration {
+return new class() extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -14,8 +15,9 @@ return new class() extends Migration {
     {
         Schema::create('blog_series', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('series_id');
             $table->foreignId('blog_id');
+            $table->foreignId('series_id');
+            $table->unsignedInteger('order');
             $table->timestamps();
         });
     }
