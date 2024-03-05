@@ -310,7 +310,7 @@ class UpdateBlogTest extends TestCase
         ]);
 
         $series->blogs()->attach($blog2, [
-            'order' => 1
+            'order' => 2
         ]);
 
         $blog3 = Blog::factory()->create([
@@ -318,7 +318,7 @@ class UpdateBlogTest extends TestCase
         ]);
 
         $series->blogs()->attach($blog3, [
-            'order' => 1
+            'order' => 3
         ]);
 
         $this->actingAs(User::factory()->admin()->create())

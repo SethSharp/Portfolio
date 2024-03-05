@@ -10,8 +10,8 @@ class RemoveBlogFromSeriesAction
     public function __invoke(Blog $blog, Series $oldSeries): void
     {
         // remove from pivot
-        $originalOrder = $oldSeries->blogs()->where('blog_id', $blog->id)->first()->pivot->order;
-        dd($oldSeries->blogs()->where('blog_id', $blog->id)->first()->pivot);
+        $originalOrder = $oldSeries->blogs()->where('blog_id', $blog->id)->first();//->pivot->order;
+        dd($originalOrder);
         //        $oldSeries->blogs()->detach($blog->id);
 
         /**

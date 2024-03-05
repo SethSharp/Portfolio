@@ -14,9 +14,8 @@ class Series extends Model
 
     public function blogs(): BelongsToMany
     {
-        return $this->belongsToMany(Blog::class)
-            ->withPivotValue('order')
-            ->withTimestamps();
+        return $this->belongsToMany(Blog::class, 'blog_series', 'series_id', 'blog_id')
+            ->withPivotValue('order', 1);
     }
 
     public function nextOrder(): int
