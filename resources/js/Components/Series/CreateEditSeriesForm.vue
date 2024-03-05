@@ -1,5 +1,5 @@
 <script setup>
-import {useForm, router} from '@inertiajs/vue3'
+import { useForm, router } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import TextArea from '@/Components/Inputs/TextArea.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
@@ -45,13 +45,13 @@ const destroySeries = () => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Name"/>
-            <InputError :message="form.errors.title"/>
+            <TextInput v-model="form.title" autofocus label="Name" />
+            <InputError :message="form.errors.title" />
         </FormElement>
 
         <FormElement>
-            <TextArea v-model="form.description" label="Description"/>
-            <InputError :message="form.errors.description"/>
+            <TextArea v-model="form.description" label="Description" />
+            <InputError :message="form.errors.description" />
         </FormElement>
 
         <div class="gap-x-2 flex">

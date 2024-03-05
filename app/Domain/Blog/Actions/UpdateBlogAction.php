@@ -34,15 +34,15 @@ class UpdateBlogAction
             // remove blog from old series
             app(RemoveBlogFromSeriesAction::class)($blog, Series::whereId($blog->series_id)->first());
 
-//            $newSeriesModel = Series::whereId($series)->first();
-//
-//            $newSeriesModel->blogs()->attach($blog->id, [
-//                'order' => $newSeriesModel->nextOrder()
-//            ]);
-//
-//            $blog->update([
-//                'series_id' => $newSeriesModel->id
-//            ]);
+            //            $newSeriesModel = Series::whereId($series)->first();
+            //
+            //            $newSeriesModel->blogs()->attach($blog->id, [
+            //                'order' => $newSeriesModel->nextOrder()
+            //            ]);
+            //
+            //            $blog->update([
+            //                'series_id' => $newSeriesModel->id
+            //            ]);
         }
 
         $blog = app(CleanBlogContentAction::class)($blog);
