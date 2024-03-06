@@ -4,7 +4,7 @@ namespace App\Domain\Blog\Actions;
 
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogRequest;
 
 class StoreBlogAction
@@ -30,11 +30,11 @@ class StoreBlogAction
             $blog->tags()->sync($tags);
         }
 
-        if ($series = $storeBlogRequest->input('series_id')) {
-            $seriesModel = Series::whereId($series)->first();
+        if ($group = $storeBlogRequest->input('group_id')) {
+            $groupModel = Group::whereId($group)->first();
 
-            $seriesModel->blogs()->attach($blog->id, [
-                'order' => $seriesModel->nextOrder()
+            $groupModel->blogs()->attach($blog->id, [
+                'order' => $groupModel->nextOrder()
             ]);
         }
 
@@ -42,7 +42,7 @@ class StoreBlogAction
 
         $blog->render();
 
-        if (! $blog->isDraft()) {
+        if (!$blog->isDraft()) {
             $blog->update([
                 'published_at' => now()
             ]);

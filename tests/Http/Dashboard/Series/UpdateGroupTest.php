@@ -1,18 +1,18 @@
 <?php
 
-namespace Http\Dashboard\Series;
+namespace Http\Dashboard\group;
 
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use App\Providers\RouteServiceProvider;
 
-class UpdateSeriesTest extends TestCase
+class UpdateGroupTest extends TestCase
 {
     /** @test */
     public function must_be_authenticated()
     {
-        $this->putJson(route('dashboard.series.update', Series::factory()->create()))
+        $this->putJson(route('dashboard.group.update', Group::factory()->create()))
             ->assertStatus(401);
     }
 
@@ -20,7 +20,7 @@ class UpdateSeriesTest extends TestCase
     public function must_have_admin_role()
     {
         $this->actingAs(User::factory()->create())
-            ->putJson(route('dashboard.series.update', Series::factory()->create()))
+            ->putJson(route('dashboard.group.update', Group::factory()->create()))
             ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
@@ -28,7 +28,7 @@ class UpdateSeriesTest extends TestCase
     public function fields_are_required()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->putJson(route('dashboard.series.update', Series::factory()->create()))
+            ->putJson(route('dashboard.group.update', Group::factory()->create()))
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
@@ -40,7 +40,7 @@ class UpdateSeriesTest extends TestCase
     public function fields_must_be_a_string()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->putJson(route('dashboard.series.update', Series::factory()->create()), [
+            ->putJson(route('dashboard.group.update', Group::factory()->create()), [
                 'title' => 1234,
                 'description' => 1234,
             ])
@@ -52,15 +52,15 @@ class UpdateSeriesTest extends TestCase
     }
 
     /** @test */
-    public function series_must_be_unique()
+    public function group_must_be_unique()
     {
-        Series::factory()->create([
-            'title' => 'Series #1',
+        Group::factory()->create([
+            'title' => 'Group #1',
         ]);
 
         $this->actingAs(User::factory()->admin()->create())
-            ->putJson(route('dashboard.series.update', Series::factory()->create()), [
-                'title' => 'Series #1'
+            ->putJson(route('dashboard.group.update', Group::factory()->create()), [
+                'title' => 'Group #1'
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
@@ -69,40 +69,40 @@ class UpdateSeriesTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_update_a_series()
+    public function admin_can_update_a_group()
     {
-        $series = Series::factory()->create();
+        $group = Group::factory()->create();
 
         $this->actingAs(User::factory()->admin()->create())
-            ->putJson(route('dashboard.series.update', $series), [
-                'title' => 'New Series',
-                'description' => 'New Series',
+            ->putJson(route('dashboard.group.update', $group), [
+                'title' => 'New Group',
+                'description' => 'New Group',
             ])
-            ->assertRedirect(route('dashboard.series.index'));
+            ->assertRedirect(route('dashboard.group.index'));
 
-        $this->assertDatabaseHas('series', [
-            'id' => $series->id,
-            'title' => 'New Series',
-            'description' => 'New Series',
+        $this->assertDatabaseHas('groups', [
+            'id' => $group->id,
+            'title' => 'New Group',
+            'description' => 'New Group',
         ]);
     }
 
     /** @test */
-    public function will_ignore_current_series_name()
+    public function will_ignore_current_group_name()
     {
-        $series = Series::factory()->create();
+        $group = Group::factory()->create();
 
         $this->actingAs(User::factory()->admin()->create())
-            ->putJson(route('dashboard.series.update', $series), [
-                'title' => $series->title,
-                'description' => 'New Series',
+            ->putJson(route('dashboard.group.update', $group), [
+                'title' => $group->title,
+                'description' => 'New Group',
             ])
-            ->assertRedirect(route('dashboard.series.index'));
+            ->assertRedirect(route('dashboard.group.index'));
 
-        $this->assertDatabaseHas('series', [
-            'id' => $series->id,
-            'title' => $series->title,
-            'description' => 'New Series',
+        $this->assertDatabaseHas('groups', [
+            'id' => $group->id,
+            'title' => $group->title,
+            'description' => 'New Group',
         ]);
     }
 }

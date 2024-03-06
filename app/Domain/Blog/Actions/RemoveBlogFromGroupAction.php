@@ -3,14 +3,14 @@
 namespace App\Domain\Blog\Actions;
 
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 
-class RemoveBlogFromSeriesAction
+class RemoveBlogFromGroupAction
 {
-    public function __invoke(Blog $blogToRemove, Series $oldSeries): void
+    public function __invoke(Blog $blogToRemove, Group $oldGroup): void
     {
         // remove from pivot
-        $originalOrder = $oldSeries->blogs()->where('blog_id', $blogToRemove->id)->first();
+        $originalOrder = $oldGroup->blogs()->where('blog_id', $blogToRemove->id)->first();
 
         /**
          * blog - 1
@@ -23,11 +23,12 @@ class RemoveBlogFromSeriesAction
          * This logic will get item with the order above the old
          */
 
-        $blogs = $oldSeries->blogs()->where('order', '>', $originalOrder->pivot->order)->get();
+        $blogs = $oldGroup->blogs()->where('order', '>', $originalOrder->pivot->order)->get();
 
         $count = $originalOrder->pivot->order;
+
         foreach ($blogs as $blog) {
-            $oldSeries->blogs()->updateExistingPivot($blog->id, [
+            $oldGroup->blogs()->updateExistingPivot($blog->id, [
                 'order' => $count
             ]);
 
@@ -35,6 +36,6 @@ class RemoveBlogFromSeriesAction
         }
 
         // remove old pivot
-        $oldSeries->blogs()->detach($blogToRemove->id);
+        $oldGroup->blogs()->detach($blogToRemove->id);
     }
 }

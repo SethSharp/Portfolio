@@ -2,12 +2,12 @@
 
 namespace Database\Factories\Domain\Blog\Models;
 
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SeriesFactory extends Factory
+class GroupFactory extends Factory
 {
-    protected $model = Series::class;
+    protected $model = Group::class;
 
     public function definition()
     {

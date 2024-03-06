@@ -16,7 +16,7 @@ const props = defineProps({
         type: Object,
         default: null,
     },
-    series: {
+    groups: {
         type: Array,
         required: true,
     },
@@ -26,10 +26,10 @@ const props = defineProps({
     },
 })
 
-const seriesOptions = props.series.map((series) => {
+const groupOptions = props.groups.map((group) => {
     return {
-        value: series.id,
-        label: series.title,
+        value: group.id,
+        label: group.title,
     }
 })
 
@@ -45,7 +45,7 @@ const content = ref('')
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
-    series_id: props.blog?.series_id ? props.blog.series_id : null,
+    group_id: props.blog?.group_id ? props.blog.group_id : null,
     tags: props.blog?.tags ? props.blog.tags : [],
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
@@ -71,8 +71,8 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <Select v-model="form.series_id" :options="seriesOptions" label="Series" />
-            <InputError :message="form.errors.series_id" />
+            <Select v-model="form.group_id" :options="groupOptions" label="Groups" />
+            <InputError :message="form.errors.group_id" />
         </FormElement>
 
         <FormElement>

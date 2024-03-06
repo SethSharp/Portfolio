@@ -18,11 +18,11 @@ use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
 use App\Http\Controllers\Dashboard\Blogs\IndexBlogsController;
 use App\Http\Controllers\Dashboard\Blogs\UpdateBlogController;
 use App\Http\Controllers\Dashboard\Files\CreateFileController;
-use App\Http\Controllers\Dashboard\Series\IndexSeriesController;
-use App\Http\Controllers\Dashboard\Series\StoreSeriesController;
-use App\Http\Controllers\Dashboard\Series\UpdateSeriesController;
+use App\Http\Controllers\Dashboard\Group\IndexGroupController;
+use App\Http\Controllers\Dashboard\Group\StoreGroupController;
+use App\Http\Controllers\Dashboard\Group\UpdateGroupController;
+use App\Http\Controllers\Dashboard\Group\DestroyGroupController;
 use App\Http\Controllers\Dashboard\Blogs\StoreBlogImageController;
-use App\Http\Controllers\Dashboard\Series\DestroySeriesController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin,author'])->prefix('dashboard')->name('dashboard.')->group(function () {
@@ -47,11 +47,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::put('/restore', RestoreTagController::class)->name('restore');
         });
 
-        Route::prefix('series')->name('series.')->group(function () {
-            Route::get('/', IndexSeriesController::class)->name('index');
-            Route::post('/store', StoreSeriesController::class)->name('store');
-            Route::put('/{series}/update', UpdateSeriesController::class)->name('update');
-            Route::delete('/{series}/destroy', DestroySeriesController::class)->name('destroy');
+        Route::prefix('group')->name('group.')->group(function () {
+            Route::get('/', IndexGroupController::class)->name('index');
+            Route::post('/store', StoreGroupController::class)->name('store');
+            Route::put('/{group}/update', UpdateGroupController::class)->name('update');
+            Route::delete('/{group}/destroy', DestroyGroupController::class)->name('destroy');
         });
     });
 

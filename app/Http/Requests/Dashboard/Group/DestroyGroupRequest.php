@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Series;
+namespace App\Http\Requests\Dashboard\Group;
 
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use Illuminate\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroySeriesRequest extends FormRequest
+class DestroyGroupRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('manage', Series::class);
+        return $this->user()->can('manage', Group::class);
     }
 
     public function rules(): array
@@ -23,10 +23,10 @@ class DestroySeriesRequest extends FormRequest
         $validator->validate();
 
         $validator->after(function (Validator $validator) {
-            $series = $this->route('series');
+            $group = $this->route('group');
 
-            if ($series->blogs()->count()) {
-                $validator->errors()->add('series', 'This series has 1 or more blogs attached.');
+            if ($group->blogs()->count()) {
+                $validator->errors()->add('group', 'This group has 1 or more blogs attached.');
             }
         });
     }

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Series;
+namespace App\Http\Requests\Dashboard\Group;
 
 use Illuminate\Validation\Rule;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSeriesRequest extends FormRequest
+class UpdateGroupRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('manage', Series::class);
+        return $this->user()->can('manage', Group::class);
     }
 
     public function rules(): array
@@ -19,7 +19,7 @@ class UpdateSeriesRequest extends FormRequest
             'title' => [
                 'required',
                 'string',
-                Rule::unique(Series::class, 'title')->ignore($this->route('series')->id),
+                Rule::unique(Group::class, 'title')->ignore($this->route('group')->id),
             ],
             'description' => [
                 'required',

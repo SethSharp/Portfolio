@@ -12,11 +12,10 @@ return new class() extends Migration {
      */
     public function up()
     {
-        Schema::create('blog_series', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('blog_id');
-            $table->foreignId('series_id');
-            $table->unsignedInteger('order')->nullable();
+            $table->string('title');
+            $table->string('description');
             $table->timestamps();
         });
     }

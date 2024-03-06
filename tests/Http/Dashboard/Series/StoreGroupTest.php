@@ -1,18 +1,18 @@
 <?php
 
-namespace Http\Dashboard\Series;
+namespace Http\Dashboard\group;
 
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use App\Providers\RouteServiceProvider;
 
-class StoreSeriesTest extends TestCase
+class StoreGroupTest extends TestCase
 {
     /** @test */
     public function must_be_authenticated()
     {
-        $this->postJson(route('dashboard.series.store'))
+        $this->postJson(route('dashboard.group.store'))
             ->assertStatus(401);
     }
 
@@ -20,7 +20,7 @@ class StoreSeriesTest extends TestCase
     public function must_have_admin_role()
     {
         $this->actingAs(User::factory()->create())
-            ->postJson(route('dashboard.series.store'))
+            ->postJson(route('dashboard.group.store'))
             ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
@@ -28,7 +28,7 @@ class StoreSeriesTest extends TestCase
     public function fields_are_required()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.series.store'))
+            ->postJson(route('dashboard.group.store'))
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
@@ -40,7 +40,7 @@ class StoreSeriesTest extends TestCase
     public function fields_must_be_a_string()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.series.store'), [
+            ->postJson(route('dashboard.group.store'), [
                 'title' => 1234,
                 'description' => 1234,
             ])
@@ -52,15 +52,15 @@ class StoreSeriesTest extends TestCase
     }
 
     /** @test */
-    public function series_must_be_unique()
+    public function group_must_be_unique()
     {
-        Series::factory()->create([
-            'title' => 'Series #1',
+        Group::factory()->create([
+            'title' => 'Group #1',
         ]);
 
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.series.store'), [
-                'title' => 'Series #1'
+            ->postJson(route('dashboard.group.store'), [
+                'title' => 'Group #1'
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
@@ -69,18 +69,18 @@ class StoreSeriesTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_store_a_new_series()
+    public function admin_can_store_a_new_group()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.series.store'), [
-                'title' => 'New Series',
-                'description' => 'New Series',
+            ->postJson(route('dashboard.group.store'), [
+                'title' => 'New Group',
+                'description' => 'New Group',
             ])
-            ->assertRedirect(route('dashboard.series.index'));
+            ->assertRedirect(route('dashboard.group.index'));
 
-        $this->assertDatabaseHas('series', [
-            'title' => 'New Series',
-            'description' => 'New Series',
+        $this->assertDatabaseHas('groups', [
+            'title' => 'New Group',
+            'description' => 'New Group',
         ]);
     }
 }

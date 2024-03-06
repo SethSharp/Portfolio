@@ -29,9 +29,9 @@ const links = [
         active: route().current('dashboard.tags.*'),
     },
     {
-        name: 'Series',
-        href: route('dashboard.series.index'),
-        active: route().current('dashboard.series.*'),
+        name: 'Group',
+        href: route('dashboard.group.index'),
+        active: route().current('dashboard.group.*'),
     },
 ]
 </script>

@@ -9,7 +9,7 @@ import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 const props = defineProps({
-    series: {
+    group: {
         type: Object,
         default: null,
     },
@@ -18,25 +18,25 @@ const props = defineProps({
 const emits = defineEmits(['close'])
 
 const form = useForm({
-    title: props.series?.title ? props.series.title : '',
-    description: props.series?.description ? props.series.description : '',
+    title: props.group?.title ? props.group.title : '',
+    description: props.group?.description ? props.group.description : '',
 })
 
 const submit = () => {
-    if (props.series) {
-        form.put(route('dashboard.series.update', props.series), {
+    if (props.group) {
+        form.put(route('dashboard.group.update', props.group), {
             onSuccess: () => emits('close'),
         })
     } else {
-        form.post(route('dashboard.series.store'), {
+        form.post(route('dashboard.group.store'), {
             onSuccess: () => emits('close'),
         })
     }
 }
 
-const destroySeries = () => {
-    router.delete(route('dashboard.series.destroy', props.series), {
-        onBefore: () => confirm('Are you sure you want to permanently delete this series?'),
+const destroyGroup = () => {
+    router.delete(route('dashboard.group.destroy', props.group), {
+        onBefore: () => confirm('Are you sure you want to permanently delete this group?'),
         onSuccess: () => emits('close'),
     })
 }
@@ -45,7 +45,7 @@ const destroySeries = () => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Name" />
+            <TextInput v-model="form.title" autofocus label="Title" />
             <InputError :message="form.errors.title" />
         </FormElement>
 
@@ -55,7 +55,7 @@ const destroySeries = () => {
         </FormElement>
 
         <div class="gap-x-2 flex">
-            <DangerButton @click.prevent="destroySeries"> Delete</DangerButton>
+            <DangerButton @click.prevent="destroyGroup"> Delete</DangerButton>
 
             <PrimaryButton @click.prevent="submit"> Save</PrimaryButton>
         </div>

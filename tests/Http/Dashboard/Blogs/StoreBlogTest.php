@@ -8,7 +8,7 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
 
@@ -239,14 +239,14 @@ class StoreBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_assign_a_series()
+    public function can_assign_a_group()
     {
-        $series = Series::factory()->create();
+        $group = Group::factory()->create();
 
         $this->actingAs($user = User::factory()->admin()->create())
             ->postJson(route('dashboard.blogs.store'), [
                 'title' => 'Some Title',
-                'series_id' => $series->id,
+                'group_id' => $group->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -258,7 +258,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'author_id' => $user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -274,27 +274,27 @@ class StoreBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
-        $this->assertDatabaseHas('blog_series', [
+        $this->assertDatabaseHas('blog_group', [
             'blog_id' => $blog->id,
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'order' => 1
         ]);
     }
 
     /** @test */
-    public function can_assign_a_series_with_other_blogs()
+    public function can_assign_a_group_with_other_blogs()
     {
-        $series = Series::factory()->create();
+        $group = Group::factory()->create();
         $blog = Blog::factory()->create();
 
-        $series->blogs()->attach($blog, [
+        $group->blogs()->attach($blog, [
             'order' => 1
         ]);
 
         $this->actingAs($user = User::factory()->admin()->create())
             ->postJson(route('dashboard.blogs.store'), [
                 'title' => 'Some Title',
-                'series_id' => $series->id,
+                'group_id' => $group->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -306,7 +306,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'author_id' => $user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -322,9 +322,9 @@ class StoreBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
-        $this->assertDatabaseHas('blog_series', [
+        $this->assertDatabaseHas('blog_group', [
             'blog_id' => $blog->id,
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'order' => 2
         ]);
     }

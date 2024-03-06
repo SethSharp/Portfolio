@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Series;
+namespace App\Http\Requests\Dashboard\Group;
 
 use Illuminate\Validation\Rule;
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSeriesRequest extends FormRequest
+class StoreGroupRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('manage', Series::class);
+        return $this->user()->can('manage', Group::class);
     }
 
     public function rules(): array
@@ -20,7 +20,7 @@ class StoreSeriesRequest extends FormRequest
             'title' => [
                 'required',
                 'string',
-                Rule::unique(Series::class, 'title'),
+                Rule::unique(Group::class, 'title'),
             ],
             'description' => [
                 'required',

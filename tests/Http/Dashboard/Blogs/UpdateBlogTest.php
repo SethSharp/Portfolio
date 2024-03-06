@@ -8,7 +8,7 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
-use App\Domain\Blog\Models\Series;
+use App\Domain\Blog\Models\Group;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
 
@@ -251,14 +251,14 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_assign_a_series()
+    public function can_assign_a_group()
     {
-        $series = Series::factory()->create();
+        $group = Group::factory()->create();
 
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'series_id' => $series->id,
+                'group_id' => $group->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -270,7 +270,8 @@ class UpdateBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'series_id' => $series->id,
+            'id' => $this->blog->id,
+            'group_id' => $group->id,
             'author_id' => $this->user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -286,45 +287,31 @@ class UpdateBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
-        $this->assertDatabaseHas('blog_series', [
+        $this->assertDatabaseHas('blog_group', [
             'blog_id' => $blog->id,
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'order' => 1
         ]);
     }
 
     /** @test */
-    public function can_assign_a_series_with_other_blogs()
+    public function can_assign_a_group_with_other_blogs()
     {
-        $series = Series::factory()->create();
+        $group = Group::factory()->create();
         $blog = Blog::factory()->create([
-            'series_id' => $series->id
+            'group_id' => $group->id
         ]);
 
-        $series->blogs()->attach($blog, [
+        $group->blogs()->attach($blog, [
             'order' => 1
         ]);
 
-        $blog2 = Blog::factory()->create([
-            'series_id' => $series->id
-        ]);
-
-        $series->blogs()->attach($blog2, [
-            'order' => 2
-        ]);
-
-        $blog3 = Blog::factory()->create([
-            'series_id' => $series->id
-        ]);
-
-        $series->blogs()->attach($blog3, [
-            'order' => 3
-        ]);
+        $blog2 = Blog::factory()->create();
 
         $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $blog2->id), [
                 'title' => 'Some Title',
-                'series_id' => null,
+                'group_id' => $group->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -337,7 +324,7 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'id' => $blog2->id,
-            'series_id' => null,
+            'group_id' => $group->id,
             'author_id' => $blog2->author->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -347,21 +334,15 @@ class UpdateBlogTest extends TestCase
             'content' => 'some content here'
         ]);
 
-        $this->assertDatabaseHas('blog_series', [
+        $this->assertDatabaseHas('blog_group', [
             'blog_id' => $blog->id,
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'order' => 1
         ]);
 
-        $this->assertDatabaseMissing('blog_series', [
+        $this->assertDatabaseHas('blog_group', [
             'blog_id' => $blog2->id,
-            'series_id' => $series->id,
-            'order' => 2
-        ]);
-
-        $this->assertDatabaseHas('blog_series', [
-            'blog_id' => $blog3->id,
-            'series_id' => $series->id,
+            'group_id' => $group->id,
             'order' => 2
         ]);
     }
