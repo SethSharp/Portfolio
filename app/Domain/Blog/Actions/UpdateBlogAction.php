@@ -31,18 +31,13 @@ class UpdateBlogAction
         }
 
         if (is_null($updateBlogRequest->input('series_id')) && $blog->series_id) {
-            // remove blog from old series
             app(RemoveBlogFromSeriesAction::class)($blog, Series::whereId($blog->series_id)->first());
 
-            //            $newSeriesModel = Series::whereId($series)->first();
-            //
-            //            $newSeriesModel->blogs()->attach($blog->id, [
-            //                'order' => $newSeriesModel->nextOrder()
-            //            ]);
-            //
-            //            $blog->update([
-            //                'series_id' => $newSeriesModel->id
-            //            ]);
+            $blog->update([
+                'series_id' => null
+            ]);
+        } elseif ($series = $updateBlogRequest->input('series_id')) {
+            app(AddBlogToGroupAction::class)($blog, Series::whereId($series)->first());
         }
 
         $blog = app(CleanBlogContentAction::class)($blog);

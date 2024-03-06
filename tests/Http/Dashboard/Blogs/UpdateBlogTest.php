@@ -336,8 +336,9 @@ class UpdateBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'series_id' => $series->id,
-            'author_id' => $this->user->id,
+            'id' => $blog2->id,
+            'series_id' => null,
+            'author_id' => $blog2->author->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'some title',
@@ -346,14 +347,20 @@ class UpdateBlogTest extends TestCase
             'content' => 'some content here'
         ]);
 
-        $blog = Blog::where([
-            'author_id' => $this->user->id,
-            'title' => 'Some Title',
-            'slug' => 'some-slug',
-        ])->first();
-
         $this->assertDatabaseHas('blog_series', [
             'blog_id' => $blog->id,
+            'series_id' => $series->id,
+            'order' => 1
+        ]);
+
+        $this->assertDatabaseMissing('blog_series', [
+            'blog_id' => $blog2->id,
+            'series_id' => $series->id,
+            'order' => 2
+        ]);
+
+        $this->assertDatabaseHas('blog_series', [
+            'blog_id' => $blog3->id,
             'series_id' => $series->id,
             'order' => 2
         ]);

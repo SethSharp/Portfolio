@@ -16,7 +16,7 @@ return new class() extends Migration {
             $table->id();
             $table->foreignId('blog_id');
             $table->foreignId('series_id');
-            $table->unsignedInteger('order')->default(1);
+            $table->unsignedInteger('order')->nullable();
             $table->timestamps();
         });
     }

@@ -42,15 +42,15 @@ class Blog extends Model
             ->withTimestamps();
     }
 
-    //    public function series(): BelongsTo
-    //    {
-    //        return $this->belongsTo(Series::class);
-    //    }
-
-    public function series(): BelongsToMany
+    public function series(): BelongsTo
     {
-        return $this->belongsToMany(Tag::class, 'blog_series', 'blog_id', 'series_id')
-            ->withPivotValue('order', 0);
+        return $this->belongsTo(Series::class);
+    }
+
+    public function group(): BelongsToMany
+    {
+        return $this->belongsToMany(Series::class, 'blog_series', 'blog_id', 'series_id')
+            ->withPivot('order');
     }
 
     public function tags(): BelongsToMany

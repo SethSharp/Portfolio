@@ -7,12 +7,10 @@ use App\Domain\Blog\Models\Series;
 
 class RemoveBlogFromSeriesAction
 {
-    public function __invoke(Blog $blog, Series $oldSeries): void
+    public function __invoke(Blog $blogToRemove, Series $oldSeries): void
     {
         // remove from pivot
-        $originalOrder = $oldSeries->blogs()->where('blog_id', $blog->id)->first();// ->pivot->order;
-        dd($originalOrder);
-        //        $oldSeries->blogs()->detach($blog->id);
+        $originalOrder = $oldSeries->blogs()->where('blog_id', $blogToRemove->id)->first();
 
         /**
          * blog - 1
@@ -25,8 +23,18 @@ class RemoveBlogFromSeriesAction
          * This logic will get item with the order above the old
          */
 
-        dd($originalOrder);
-        $blogs = $oldSeries->blogs()->where('order', '>', $originalOrder)->get();
-        dd($blogs);
+        $blogs = $oldSeries->blogs()->where('order', '>', $originalOrder->pivot->order)->get();
+
+        $count = $originalOrder->pivot->order;
+        foreach ($blogs as $blog) {
+            $oldSeries->blogs()->updateExistingPivot($blog->id, [
+                'order' => $count
+            ]);
+
+            $count = $count + 1;
+        }
+
+        // remove old pivot
+        $oldSeries->blogs()->detach($blogToRemove->id);
     }
 }
