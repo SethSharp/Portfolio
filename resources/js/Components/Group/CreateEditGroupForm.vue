@@ -54,6 +54,18 @@ const destroyGroup = () => {
             <InputError :message="form.errors.description" />
         </FormElement>
 
+        <FormElement>
+            <div class="h-56 overflow-y-scroll">
+                <div v-for="blog in group.blogs" class="bg-gray-100 p-2 rounded-lg my-2">
+                    <div>
+                        {{ blog.title }}
+                    </div>
+
+                    <span class="text-black font-medium"> delete </span>
+                </div>
+            </div>
+        </FormElement>
+
         <div class="gap-x-2 flex">
             <DangerButton @click.prevent="destroyGroup"> Delete</DangerButton>
 
