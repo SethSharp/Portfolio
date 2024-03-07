@@ -14,7 +14,7 @@ class IndexGroupController extends Controller
         $this->authorize('manage', Group::class);
 
         return Inertia::render('Dashboard/Group/Index', [
-            'allGroups' => Group::with(['blogs' => fn($q) => $q->orderBy('order')])->whereHas('blogs')->get()
+            'allGroups' => Group::with(['blogs' => fn ($q) => $q->orderBy('order')])->whereHas('blogs')->get()
         ]);
     }
 }
