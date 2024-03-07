@@ -12,6 +12,10 @@ class RemoveBlogFromGroupAction
         // remove from pivot
         $originalOrder = $oldGroup->blogs()->where('blog_id', $blogToRemove->id)->first();
 
+        if (is_null($originalOrder)) {
+            throw new \Exception("Blog " . $blogToRemove->title . " does not exist in group " . $oldGroup->title);
+        }
+
         /**
          * blog - 1
          * blog - removed
