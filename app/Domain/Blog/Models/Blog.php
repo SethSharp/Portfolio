@@ -50,7 +50,8 @@ class Blog extends Model
     public function blogGroup(): BelongsToMany
     {
         return $this->belongsToMany(Group::class, 'blog_group', 'blog_id', 'group_id')
-            ->withPivot('order');
+            ->withPivot('order')
+            ->withTimestamps();
     }
 
     public function tags(): BelongsToMany

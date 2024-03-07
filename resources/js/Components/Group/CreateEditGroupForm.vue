@@ -44,7 +44,7 @@ const destroyGroup = () => {
 }
 
 const shiftBlog = (from, to) => {
-    props.group.blogs.splice(to, 0, props.group.blogs.splice(from, 1)[0])
+    form.blogs.splice(to, 0, form.blogs.splice(from, 1)[0])
 }
 </script>
 
@@ -63,7 +63,7 @@ const shiftBlog = (from, to) => {
         <FormElement>
             <div class="h-56 overflow-y-scroll">
                 <div
-                    v-for="(blog, key) in group.blogs"
+                    v-for="(blog, key) in form.blogs"
                     :key="key"
                     class="bg-gray-100 p-2 rounded-lg my-2 flex transition"
                 >

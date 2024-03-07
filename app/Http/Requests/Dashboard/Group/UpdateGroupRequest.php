@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Dashboard\Group;
 
+use App\Domain\Blog\Models\Blog;
 use Illuminate\Validation\Rule;
 use App\Domain\Blog\Models\Group;
 use Illuminate\Foundation\Http\FormRequest;
@@ -24,6 +25,13 @@ class UpdateGroupRequest extends FormRequest
             'description' => [
                 'required',
                 'string',
+            ],
+            'blogs' => [
+                'array',
+                'nullable'
+            ],
+            'blogs.*.id' => [
+                Rule::exists(Blog::class, 'id')
             ]
         ];
     }

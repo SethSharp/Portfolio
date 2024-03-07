@@ -15,7 +15,8 @@ class Group extends Model
     public function blogs(): BelongsToMany
     {
         return $this->belongsToMany(Blog::class)
-            ->withPivot('order');
+            ->withPivot('order')
+            ->withTimestamps();
     }
 
     public function nextOrder(): int
