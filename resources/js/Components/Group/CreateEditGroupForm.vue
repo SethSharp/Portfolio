@@ -7,6 +7,7 @@ import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
     group: {
@@ -20,6 +21,7 @@ const emits = defineEmits(['close'])
 const form = useForm({
     title: props.group?.title ? props.group.title : '',
     description: props.group?.description ? props.group.description : '',
+    blogs: props.group?.blogs ? props.group.blogs : [],
 })
 
 const submit = () => {
@@ -40,6 +42,10 @@ const destroyGroup = () => {
         onSuccess: () => emits('close'),
     })
 }
+
+const shiftBlog = (from, to) => {
+    props.group.blogs.splice(to, 0, props.group.blogs.splice(from, 1)[0])
+}
 </script>
 
 <template>
@@ -56,12 +62,30 @@ const destroyGroup = () => {
 
         <FormElement>
             <div class="h-56 overflow-y-scroll">
-                <div v-for="blog in group.blogs" class="bg-gray-100 p-2 rounded-lg my-2">
+                <div
+                    v-for="(blog, key) in group.blogs"
+                    :key="key"
+                    class="bg-gray-100 p-2 rounded-lg my-2 flex transition"
+                >
                     <div>
-                        {{ blog.title }}
-                    </div>
+                        <div>
+                            {{ blog.title }}
+                        </div>
 
-                    <span class="text-black font-medium"> delete </span>
+                        <span class="text-black font-medium"> delete </span>
+                    </div>
+                    <div class="flex ml-auto my-auto">
+                        <ArrowLongDownIcon
+                            v-if="key !== group.blogs.length - 1"
+                            class="size-5 hover:text-gray-500 transition"
+                            @click="shiftBlog(key, key + 1)"
+                        />
+                        <ArrowLongUpIcon
+                            v-if="key !== 0"
+                            class="size-5 hover:text-gray-500 transition"
+                            @click="shiftBlog(key, key - 1)"
+                        />
+                    </div>
                 </div>
             </div>
         </FormElement>
