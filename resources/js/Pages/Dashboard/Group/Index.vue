@@ -35,7 +35,7 @@ const openModal = (group) => {
             </div>
         </div>
 
-        <Modal :open="open" @close="open = false" size="4xl">
+        <Modal :open="open" @close="open = false" size="xl">
             <CreateEditGroupForm :group="currentGroup" @close="open = false" />
         </Modal>
     </AuthenticatedLayout>
