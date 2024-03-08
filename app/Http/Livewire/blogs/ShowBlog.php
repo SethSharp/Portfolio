@@ -9,14 +9,18 @@ use App\Domain\Blog\Models\Blog;
 class ShowBlog extends Component
 {
     public Blog $blog;
+    public ?Blog $prev;
+    public ?Blog $next;
 
     public int $blogLikes = 0;
     public bool $isLiked = false;
     public bool $showRegisterModal = false;
 
-    public function mount(Blog $blog): void
+    public function mount(Blog $blog, $prev = null, $next = null): void
     {
         $this->blog = $blog;
+        $this->prev = $prev;
+        $this->next = $next;
 
         $this->blogLikes = $this->blog->likes()->count();
 
@@ -54,7 +58,6 @@ class ShowBlog extends Component
         return view('livewire.blogs.show-blog', [
             'blog' => $this->blog,
             'content' => $this->blog->getContent()
-        ])
-            ->layout('layouts.main');
+        ]);
     }
 }

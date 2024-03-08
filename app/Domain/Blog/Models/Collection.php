@@ -23,4 +23,9 @@ class Collection extends Model
     {
         return $this->blogs()->count() + 1;
     }
+
+    public function getBlogOrder(Blog $blog): ?int
+    {
+        return $this->blogs()->where('blog_id', $blog->id)?->first()->pivot->order;
+    }
 }

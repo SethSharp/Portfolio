@@ -21,8 +21,19 @@ class ShowBlogController extends Controller
             }
         }
 
+        $prev = null;
+        $next = null;
+        $blogSeries = $blog->collection()->first();
+
+        if ($order = $blogSeries?->getBlogOrder($blog)) {
+            $prev = $blogSeries->blogs()->where('order', $order - 1)->first();
+            $next = $blogSeries->blogs()->where('order', $order + 1)->first();
+        }
+
         return view('blogs.show', [
-            'blog' => $blog
+            'blog' => $blog,
+            'prev' => $prev,
+            'next' => $next
         ]);
     }
 }
