@@ -1,5 +1,5 @@
 <script setup>
-import {useForm} from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Checkbox from '@/Components/Inputs/Checkbox.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
@@ -8,7 +8,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import Editor from '@/Components/Editor/Editor.vue'
-import {ref} from 'vue'
+import { ref } from 'vue'
 import Select from '@/Components/Inputs/Select.vue'
 
 const props = defineProps({
@@ -66,29 +66,29 @@ const submit = () => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Title"/>
-            <InputError :message="form.errors.title"/>
+            <TextInput v-model="form.title" autofocus label="Title" />
+            <InputError :message="form.errors.title" />
         </FormElement>
 
         <FormElement>
-            <Select v-model="form.collection_id" :options="collectionOptions" label="Collection"/>
-            <InputError :message="form.errors.collection_id"/>
+            <Select v-model="form.collection_id" :options="collectionOptions" label="Collection" />
+            <InputError :message="form.errors.collection_id" />
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.slug" label="Slug"/>
-            <InputError :message="form.errors.slug"/>
+            <TextInput v-model="form.slug" label="Slug" />
+            <InputError :message="form.errors.slug" />
         </FormElement>
 
         <FormElement>
             {{ form.tags }}
-            <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags"/>
-            <InputError :message="form.errors.tags"/>
+            <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags" />
+            <InputError :message="form.errors.tags" />
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.meta_title" label="Meta Title"/>
-            <InputError :message="form.errors.meta_title"/>
+            <TextInput v-model="form.meta_title" label="Meta Title" />
+            <InputError :message="form.errors.meta_title" />
         </FormElement>
 
         <FormElement>
@@ -97,22 +97,22 @@ const submit = () => {
                 label="Meta Description"
                 description="What users will see in google or in the portfolio to see what each blog entails."
             />
-            <InputError :message="form.errors.meta_description"/>
+            <InputError :message="form.errors.meta_description" />
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.meta_tags" label="Meta Tags"/>
-            <InputError :message="form.errors.meta_tags"/>
+            <TextInput v-model="form.meta_tags" label="Meta Tags" />
+            <InputError :message="form.errors.meta_tags" />
         </FormElement>
 
         <FormElement>
-            <Editor v-model="form.content"/>
-            <InputError :message="form.errors.content"/>
+            <Editor v-model="form.content" />
+            <InputError :message="form.errors.content" />
         </FormElement>
 
         <FormElement>
-            <Checkbox v-model="form.is_draft" label="Is Draft"/>
-            <InputError :message="form.errors.is_draft"/>
+            <Checkbox v-model="form.is_draft" label="Is Draft" />
+            <InputError :message="form.errors.is_draft" />
         </FormElement>
 
         <PrimaryButton as="submit" @click.prevent="submit">
