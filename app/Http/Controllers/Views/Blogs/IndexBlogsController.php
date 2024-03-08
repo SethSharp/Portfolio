@@ -11,7 +11,7 @@ class IndexBlogsController extends Controller
     public function __invoke(): View
     {
         return view('blogs.index', [
-            'blogs' => Blog::published()->get()
+            'blogs' => Blog::published()->get(),
         ]);
     }
 }

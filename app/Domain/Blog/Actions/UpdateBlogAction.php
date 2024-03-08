@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
+use App\Domain\Blog\Models\Collection;
 use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 
 class UpdateBlogAction
@@ -23,10 +24,26 @@ class UpdateBlogAction
             'slug' => $slug,
         ]);
 
-        if ($updateBlogRequest->input('tags')) {
-            $tags = collect($updateBlogRequest->input('tags'))->pluck('id');
+        if ($tags = $updateBlogRequest->input('tags')) {
+            $tags = collect($tags)->pluck('id');
 
             $blog->tags()->sync($tags);
+        }
+
+        if (is_null($updateBlogRequest->input('collection_id')) && $blog->collection_id) {
+            app(RemoveBlogFromCollectionAction::class)($blog, Collection::whereId($blog->collection_id)->first());
+
+            $blog->update([
+                'collection_id' => null
+            ]);
+        } elseif ($updateBlogRequest->input('collection_id') && is_null($blog->collection_id)) {
+            $collection = $updateBlogRequest->input('collection_id');
+
+            app(AddBlogToCollectionAction::class)($blog, Collection::whereId($collection)->first());
+
+            $blog->update([
+                'collection_id' => $collection
+            ]);
         }
 
         $blog = app(CleanBlogContentAction::class)($blog);
@@ -41,7 +58,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (!$blog->published_at) {
+                if (! $blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

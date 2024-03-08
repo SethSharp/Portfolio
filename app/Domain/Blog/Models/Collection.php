@@ -2,13 +2,11 @@
 
 namespace App\Domain\Blog\Models;
 
-use App\Domain\Iam\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Comment extends Model
+class Collection extends Model
 {
     use HasFactory;
 
@@ -16,11 +14,13 @@ class Comment extends Model
 
     public function blogs(): BelongsToMany
     {
-        return $this->belongsToMany(Blog::class, 'blog_comment', 'comment_id', 'blog_id');
+        return $this->belongsToMany(Blog::class)
+            ->withPivot('order')
+            ->withTimestamps();
     }
 
-    public function user(): HasOne
+    public function nextOrder(): int
     {
-        return $this->hasOne(User::class, 'id');
+        return $this->blogs()->count() + 1;
     }
 }

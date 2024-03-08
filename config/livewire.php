@@ -72,7 +72,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Livewire Endpoint Middleware Group
+    | Livewire Endpoint Middleware CollectionPolicy
     |--------------------------------------------------------------------------
     |
     | This value sets the middleware group that will be applied to the main

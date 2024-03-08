@@ -9,6 +9,7 @@ use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
+use App\Domain\Blog\Models\Collection;
 use App\Providers\RouteServiceProvider;
 
 class UpdateBlogTest extends TestCase
@@ -246,6 +247,103 @@ class UpdateBlogTest extends TestCase
             'meta_description' => 'Some description',
             'meta_tags' => 'some tags',
             'content' => 'some content here'
+        ]);
+    }
+
+    /** @test */
+    public function can_assign_a_collection()
+    {
+        $collection = Collection::factory()->create();
+
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'collection_id' => $collection->id,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'id' => $this->blog->id,
+            'collection_id' => $collection->id,
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $blog = Blog::where([
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+        ])->first();
+
+        $this->assertDatabaseHas('blog_collection', [
+            'blog_id' => $blog->id,
+            'collection_id' => $collection->id,
+            'order' => 1
+        ]);
+    }
+
+    /** @test */
+    public function can_assign_a_collection_with_other_blogs()
+    {
+        $collection = Collection::factory()->create();
+        $blog = Blog::factory()->create([
+            'collection_id' => $collection->id
+        ]);
+
+        $collection->blogs()->attach($blog, [
+            'order' => 1
+        ]);
+
+        $blog2 = Blog::factory()->create();
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.blogs.update', $blog2->id), [
+                'title' => 'Some Title',
+                'collection_id' => $collection->id,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'id' => $blog2->id,
+            'collection_id' => $collection->id,
+            'author_id' => $blog2->author->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $this->assertDatabaseHas('blog_collection', [
+            'blog_id' => $blog->id,
+            'collection_id' => $collection->id,
+            'order' => 1
+        ]);
+
+        $this->assertDatabaseHas('blog_collection', [
+            'blog_id' => $blog2->id,
+            'collection_id' => $collection->id,
+            'order' => 2
         ]);
     }
 

@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import { Link } from '@inertiajs/vue3'
 import Modal from '@/Components/Modal.vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'

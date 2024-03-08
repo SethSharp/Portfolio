@@ -1,9 +1,12 @@
 <script setup>
-import { ref } from 'vue'
-import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogTitle } from '@headlessui/vue'
+import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from '@headlessui/vue'
 
 defineProps({
     open: Boolean,
+    size: {
+        type: String,
+        default: 'md',
+    },
 })
 
 const emits = defineEmits('close')
@@ -36,7 +39,8 @@ const emits = defineEmits('close')
                         leave-to="opacity-0 scale-95"
                     >
                         <DialogPanel
-                            class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                            :class="'max-w-' + size"
+                            class="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
                         >
                             <slot />
                         </DialogPanel>

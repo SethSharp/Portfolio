@@ -28,6 +28,11 @@ const links = [
         href: route('dashboard.tags.index'),
         active: route().current('dashboard.tags.*'),
     },
+    {
+        name: 'Collection',
+        href: route('dashboard.collection.index'),
+        active: route().current('dashboard.collection.*'),
+    },
 ]
 </script>
 
