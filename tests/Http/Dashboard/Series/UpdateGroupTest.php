@@ -4,6 +4,7 @@ namespace Http\Dashboard\group;
 
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
+use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Group;
 use App\Providers\RouteServiceProvider;
 
@@ -103,6 +104,45 @@ class UpdateGroupTest extends TestCase
             'id' => $group->id,
             'title' => $group->title,
             'description' => 'New Group',
+        ]);
+    }
+
+    /** @test */
+    public function can_update_blog_order()
+    {
+        $blogs = Blog::factory(3)->create();
+        $group = Group::factory()->create();
+
+        $group->blogs()->attach($blogs->pluck('id')->toArray());
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.group.update', $group), [
+                'title' => $group->title,
+                'description' => 'New Group',
+                'blogs' => [
+                    $blogs[2],
+                    $blogs[0],
+                    $blogs[1],
+                ]
+            ])
+            ->assertRedirect(route('dashboard.group.index'));
+
+        $this->assertDatabaseHas('groups', [
+            'id' => $group->id,
+            'title' => $group->title,
+            'description' => 'New Group',
+        ])->assertDatabaseHas('blog_group', [
+            'blog_id' => $blogs[0]->id,
+            'group_id' => $group->id,
+            'order' => 2
+        ])->assertDatabaseHas('blog_group', [
+            'blog_id' => $blogs[1]->id,
+            'group_id' => $group->id,
+            'order' => 3
+        ])->assertDatabaseHas('blog_group', [
+            'blog_id' => $blogs[2]->id,
+            'group_id' => $group->id,
+            'order' => 1
         ]);
     }
 }

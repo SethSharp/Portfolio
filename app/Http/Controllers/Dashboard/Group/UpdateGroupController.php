@@ -16,12 +16,12 @@ class UpdateGroupController extends Controller
             'description' => $updateGroupRequest->input('description')
         ]);
 
-        $blogs = $updateGroupRequest->input('blogs');
-
-        foreach ($blogs as $index => $blog) {
-            $group->blogs()->updateExistingPivot($blog['id'], [
-                'order' => $index + 1
-            ]);
+        if ($blogs = $updateGroupRequest->input('blogs')) {
+            foreach ($blogs as $index => $blog) {
+                $group->blogs()->updateExistingPivot($blog['id'], [
+                    'order' => $index + 1
+                ]);
+            }
         }
 
         return redirect()
