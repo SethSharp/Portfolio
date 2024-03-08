@@ -13,7 +13,7 @@ class IndexCollectionController extends Controller
     {
         $this->authorize('manage', Collection::class);
 
-        return Inertia::render('Dashboard/CollectionPolicy/Index', [
+        return Inertia::render('Dashboard/Collection/Index', [
             'allCollections' => Collection::with(['blogs' => fn ($q) => $q->orderBy('order')])->get()
         ]);
     }
