@@ -45,7 +45,7 @@
         <livewire:blogs.comments.blog-comments :blog="$blog"/>
     </div>
 
-    <div class="mx-auto grid grid-cols-2 gap-x-6">
+    <div class="mx-auto grid lg:grid-cols-2 gap-6">
         @if($prev)
             <div
                 class="cursor-pointer rounded-lg border-2 border-gray-400 transition hover:border-gray-500 hover:bg-gray-100 p-2">
