@@ -8,7 +8,7 @@ defineProps({
         required: false,
         default: {},
     },
-    groups: {
+    collections: {
         type: Array,
         required: true,
         default: [],
@@ -23,6 +23,6 @@ defineProps({
 
 <template>
     <AuthenticatedLayout title="Edit Blog">
-        <CreateEditForm :blog="blog" :tags="tags" :groups="groups" />
+        <CreateEditForm :blog="blog" :tags="tags" :collections="collections" />
     </AuthenticatedLayout>
 </template>

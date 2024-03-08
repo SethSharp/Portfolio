@@ -8,8 +8,8 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
-use App\Domain\Blog\Models\Group;
 use Illuminate\Support\Facades\Cache;
+use App\Domain\Blog\Models\Collection;
 use App\Providers\RouteServiceProvider;
 
 class StoreBlogTest extends TestCase
@@ -239,14 +239,14 @@ class StoreBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_assign_a_group()
+    public function can_assign_a_collection()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
 
         $this->actingAs($user = User::factory()->admin()->create())
             ->postJson(route('dashboard.blogs.store'), [
                 'title' => 'Some Title',
-                'group_id' => $group->id,
+                'collection_id' => $collection->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -258,7 +258,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'author_id' => $user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -274,27 +274,27 @@ class StoreBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blog->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 1
         ]);
     }
 
     /** @test */
-    public function can_assign_a_group_with_other_blogs()
+    public function can_assign_a_collection_with_other_blogs()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
         $blog = Blog::factory()->create();
 
-        $group->blogs()->attach($blog, [
+        $collection->blogs()->attach($blog, [
             'order' => 1
         ]);
 
         $this->actingAs($user = User::factory()->admin()->create())
             ->postJson(route('dashboard.blogs.store'), [
                 'title' => 'Some Title',
-                'group_id' => $group->id,
+                'collection_id' => $collection->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -306,7 +306,7 @@ class StoreBlogTest extends TestCase
             ->assertRedirect(route('dashboard.blogs.index'));
 
         $this->assertDatabaseHas('blogs', [
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'author_id' => $user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -322,9 +322,9 @@ class StoreBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blog->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 2
         ]);
     }

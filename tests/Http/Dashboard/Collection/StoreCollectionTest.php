@@ -1,18 +1,18 @@
 <?php
 
-namespace Http\Dashboard\group;
+namespace Http\Dashboard\Collection;
 
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Group;
+use App\Domain\Blog\Models\Collection;
 use App\Providers\RouteServiceProvider;
 
-class StoreGroupTest extends TestCase
+class StoreCollectionTest extends TestCase
 {
     /** @test */
     public function must_be_authenticated()
     {
-        $this->postJson(route('dashboard.group.store'))
+        $this->postJson(route('dashboard.collection.store'))
             ->assertStatus(401);
     }
 
@@ -20,7 +20,7 @@ class StoreGroupTest extends TestCase
     public function must_have_admin_role()
     {
         $this->actingAs(User::factory()->create())
-            ->postJson(route('dashboard.group.store'))
+            ->postJson(route('dashboard.collection.store'))
             ->assertRedirect(RouteServiceProvider::BLOG);
     }
 
@@ -28,7 +28,7 @@ class StoreGroupTest extends TestCase
     public function fields_are_required()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.group.store'))
+            ->postJson(route('dashboard.collection.store'))
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
@@ -40,7 +40,7 @@ class StoreGroupTest extends TestCase
     public function fields_must_be_a_string()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.group.store'), [
+            ->postJson(route('dashboard.collection.store'), [
                 'title' => 1234,
                 'description' => 1234,
             ])
@@ -52,15 +52,15 @@ class StoreGroupTest extends TestCase
     }
 
     /** @test */
-    public function group_must_be_unique()
+    public function collection_must_be_unique()
     {
-        Group::factory()->create([
-            'title' => 'Group #1',
+        Collection::factory()->create([
+            'title' => 'CollectionPolicy #1',
         ]);
 
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.group.store'), [
-                'title' => 'Group #1'
+            ->postJson(route('dashboard.collection.store'), [
+                'title' => 'CollectionPolicy #1'
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
@@ -69,18 +69,18 @@ class StoreGroupTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_store_a_new_group()
+    public function admin_can_store_a_new_collection()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->postJson(route('dashboard.group.store'), [
-                'title' => 'New Group',
-                'description' => 'New Group',
+            ->postJson(route('dashboard.collection.store'), [
+                'title' => 'New CollectionPolicy',
+                'description' => 'New CollectionPolicy',
             ])
-            ->assertRedirect(route('dashboard.group.index'));
+            ->assertRedirect(route('dashboard.collection.index'));
 
-        $this->assertDatabaseHas('groups', [
-            'title' => 'New Group',
-            'description' => 'New Group',
+        $this->assertDatabaseHas('collections', [
+            'title' => 'New CollectionPolicy',
+            'description' => 'New CollectionPolicy',
         ]);
     }
 }

@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditForm from '@/Components/Blogs/CreateEditForm.vue'
 
 defineProps({
-    groups: {
+    collections: {
         type: Array,
         required: true,
     },
@@ -16,6 +16,6 @@ defineProps({
 
 <template>
     <AuthenticatedLayout title="Create Blog">
-        <CreateEditForm :tags="tags" :groups="groups" />
+        <CreateEditForm :tags="tags" :collections="collections" />
     </AuthenticatedLayout>
 </template>

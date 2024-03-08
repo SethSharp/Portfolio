@@ -16,7 +16,7 @@ const props = defineProps({
         type: Object,
         default: null,
     },
-    groups: {
+    collections: {
         type: Array,
         required: true,
     },
@@ -26,10 +26,10 @@ const props = defineProps({
     },
 })
 
-const groupOptions = props.groups.map((group) => {
+const collectionOptions = props.collections.map((collection) => {
     return {
-        value: group.id,
-        label: group.title,
+        value: collection.id,
+        label: collection.title,
     }
 })
 
@@ -45,7 +45,7 @@ const content = ref('')
 const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
-    group_id: props.blog?.group_id ? props.blog.group_id : null,
+    collection_id: props.blog?.collection_id ? props.blog.collection_id : null,
     tags: props.blog?.tags ? props.blog.tags : [],
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
@@ -71,8 +71,8 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <Select v-model="form.group_id" :options="groupOptions" label="Groups" />
-            <InputError :message="form.errors.group_id" />
+            <Select v-model="form.collection_id" :options="collectionOptions" label="Collection" />
+            <InputError :message="form.errors.collection_id" />
         </FormElement>
 
         <FormElement>

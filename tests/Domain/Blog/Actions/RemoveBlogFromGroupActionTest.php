@@ -4,125 +4,125 @@ namespace Domain\Blog\Actions;
 
 use Tests\TestCase;
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Group;
-use App\Domain\Blog\Actions\AddBlogToGroupAction;
-use App\Domain\Blog\Actions\RemoveBlogFromGroupAction;
+use App\Domain\Blog\Models\Collection;
+use App\Domain\Blog\Actions\AddBlogToCollectionAction;
+use App\Domain\Blog\Actions\RemoveBlogFromCollectionAction;
 
 class RemoveBlogFromGroupActionTest extends TestCase
 {
     /** @test */
-    public function can_handle_a_group_not_part_of_the_series()
+    public function can_handle_a_collection_not_part_of_the_collection()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
         $blogs = Blog::factory(3)->create([
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Blog " . $blogs[0]->title . " does not exist in group " . $group->title);
+        $this->expectExceptionMessage("Blog " . $blogs[0]->title . " does not exist in collection " . $collection->title);
 
-        app(RemoveBlogFromGroupAction::class)($blogs[0], $group);
+        app(RemoveBlogFromCollectionAction::class)($blogs[0], $collection);
     }
 
     /** @test */
     public function can_properly_order_removing_blog_at_the_start()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
         $blogs = Blog::factory(3)->create([
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
         foreach ($blogs as $blog) {
-            app(AddBlogToGroupAction::class)($blog, $group);
+            app(AddBlogToCollectionAction::class)($blog, $collection);
         }
 
-        app(RemoveBlogFromGroupAction::class)($blogs[0], $group);
+        app(RemoveBlogFromCollectionAction::class)($blogs[0], $collection);
 
-        $this->assertDatabaseMissing('blog_group', [
+        $this->assertDatabaseMissing('blog_collection', [
             'blog_id' => $blogs[0]->id,
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blogs[1]->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 1,
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blogs[2]->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 2,
         ]);
 
-        $this->assertDatabaseCount('blog_group', 2);
+        $this->assertDatabaseCount('blog_collection', 2);
     }
 
     /** @test */
     public function can_properly_remove_blog_in_the_middle()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
         $blogs = Blog::factory(3)->create([
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
         foreach ($blogs as $blog) {
-            app(AddBlogToGroupAction::class)($blog, $group);
+            app(AddBlogToCollectionAction::class)($blog, $collection);
         }
 
-        app(RemoveBlogFromGroupAction::class)($blogs[1], $group);
+        app(RemoveBlogFromCollectionAction::class)($blogs[1], $collection);
 
-        $this->assertDatabaseMissing('blog_group', [
+        $this->assertDatabaseMissing('blog_collection', [
             'blog_id' => $blogs[1]->id,
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blogs[0]->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 1,
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blogs[2]->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 2,
         ]);
 
-        $this->assertDatabaseCount('blog_group', 2);
+        $this->assertDatabaseCount('blog_collection', 2);
     }
 
     /** @test */
     public function can_properly_remove_blog_from_the_end()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
         $blogs = Blog::factory(3)->create([
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
         foreach ($blogs as $blog) {
-            app(AddBlogToGroupAction::class)($blog, $group);
+            app(AddBlogToCollectionAction::class)($blog, $collection);
         }
 
-        app(RemoveBlogFromGroupAction::class)($blogs[2], $group);
+        app(RemoveBlogFromCollectionAction::class)($blogs[2], $collection);
 
-        $this->assertDatabaseMissing('blog_group', [
+        $this->assertDatabaseMissing('blog_collection', [
             'blog_id' => $blogs[2]->id,
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blogs[0]->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 1,
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blogs[1]->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 2,
         ]);
 
-        $this->assertDatabaseCount('blog_group', 2);
+        $this->assertDatabaseCount('blog_collection', 2);
     }
 }

@@ -10,7 +10,7 @@ import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
-    group: {
+    collection: {
         type: Object,
         default: null,
     },
@@ -19,26 +19,26 @@ const props = defineProps({
 const emits = defineEmits(['close'])
 
 const form = useForm({
-    title: props.group?.title ? props.group.title : '',
-    description: props.group?.description ? props.group.description : '',
-    blogs: props.group?.blogs ? props.group.blogs : [],
+    title: props.collection?.title ? props.collection.title : '',
+    description: props.collection?.description ? props.collection.description : '',
+    blogs: props.collection?.blogs ? props.collection.blogs : [],
 })
 
 const submit = () => {
-    if (props.group) {
-        form.put(route('dashboard.group.update', props.group), {
+    if (props.collection) {
+        form.put(route('dashboard.collection.update', props.collection), {
             onSuccess: () => emits('close'),
         })
     } else {
-        form.post(route('dashboard.group.store'), {
+        form.post(route('dashboard.collection.store'), {
             onSuccess: () => emits('close'),
         })
     }
 }
 
-const destroyGroup = () => {
-    router.delete(route('dashboard.group.destroy', props.group), {
-        onBefore: () => confirm('Are you sure you want to permanently delete this group?'),
+const destroyCollection = () => {
+    router.delete(route('dashboard.collection.destroy', props.collection), {
+        onBefore: () => confirm('Are you sure you want to permanently delete this collection?'),
         onSuccess: () => emits('close'),
     })
 }
@@ -76,7 +76,7 @@ const shiftBlog = (from, to) => {
                     </div>
                     <div class="flex ml-auto my-auto">
                         <ArrowLongDownIcon
-                            v-if="key !== group.blogs.length - 1"
+                            v-if="key !== collection.blogs.length - 1"
                             class="size-5 hover:text-gray-500 transition"
                             @click="shiftBlog(key, key + 1)"
                         />
@@ -91,7 +91,7 @@ const shiftBlog = (from, to) => {
         </FormElement>
 
         <div class="gap-x-2 flex">
-            <DangerButton @click.prevent="destroyGroup"> Delete</DangerButton>
+            <DangerButton @click.prevent="destroyCollection"> Delete</DangerButton>
 
             <PrimaryButton @click.prevent="submit"> Save</PrimaryButton>
         </div>

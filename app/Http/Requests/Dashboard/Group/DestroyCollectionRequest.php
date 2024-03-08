@@ -2,15 +2,15 @@
 
 namespace App\Http\Requests\Dashboard\Group;
 
-use App\Domain\Blog\Models\Group;
 use Illuminate\Validation\Validator;
+use App\Domain\Blog\Models\Collection;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroyGroupRequest extends FormRequest
+class DestroyCollectionRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('manage', Group::class);
+        return $this->user()->can('manage', Collection::class);
     }
 
     public function rules(): array
@@ -23,10 +23,10 @@ class DestroyGroupRequest extends FormRequest
         $validator->validate();
 
         $validator->after(function (Validator $validator) {
-            $group = $this->route('group');
+            $group = $this->route('collection');
 
             if ($group->blogs()->count()) {
-                $validator->errors()->add('group', 'This group has 1 or more blogs attached.');
+                $validator->errors()->add('collection', 'This collection has 1 or more blogs attached.');
             }
         });
     }

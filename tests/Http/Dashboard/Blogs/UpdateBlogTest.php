@@ -8,8 +8,8 @@ use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use App\Support\Cache\CacheKeys;
-use App\Domain\Blog\Models\Group;
 use Illuminate\Support\Facades\Cache;
+use App\Domain\Blog\Models\Collection;
 use App\Providers\RouteServiceProvider;
 
 class UpdateBlogTest extends TestCase
@@ -251,14 +251,14 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_assign_a_group()
+    public function can_assign_a_collection()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
 
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'group_id' => $group->id,
+                'collection_id' => $collection->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -271,7 +271,7 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'id' => $this->blog->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'author_id' => $this->user->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -287,22 +287,22 @@ class UpdateBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blog->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 1
         ]);
     }
 
     /** @test */
-    public function can_assign_a_group_with_other_blogs()
+    public function can_assign_a_collection_with_other_blogs()
     {
-        $group = Group::factory()->create();
+        $collection = Collection::factory()->create();
         $blog = Blog::factory()->create([
-            'group_id' => $group->id
+            'collection_id' => $collection->id
         ]);
 
-        $group->blogs()->attach($blog, [
+        $collection->blogs()->attach($blog, [
             'order' => 1
         ]);
 
@@ -311,7 +311,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $blog2->id), [
                 'title' => 'Some Title',
-                'group_id' => $group->id,
+                'collection_id' => $collection->id,
                 'slug' => 'some-slug',
                 'tags' => [],
                 'meta_title' => 'some title',
@@ -324,7 +324,7 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'id' => $blog2->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'author_id' => $blog2->author->id,
             'title' => 'Some Title',
             'slug' => 'some-slug',
@@ -334,15 +334,15 @@ class UpdateBlogTest extends TestCase
             'content' => 'some content here'
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blog->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 1
         ]);
 
-        $this->assertDatabaseHas('blog_group', [
+        $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blog2->id,
-            'group_id' => $group->id,
+            'collection_id' => $collection->id,
             'order' => 2
         ]);
     }

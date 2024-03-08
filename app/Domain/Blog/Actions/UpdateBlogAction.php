@@ -5,8 +5,8 @@ namespace App\Domain\Blog\Actions;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
-use App\Domain\Blog\Models\Group;
 use Illuminate\Support\Facades\Cache;
+use App\Domain\Blog\Models\Collection;
 use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 
 class UpdateBlogAction
@@ -30,19 +30,19 @@ class UpdateBlogAction
             $blog->tags()->sync($tags);
         }
 
-        if (is_null($updateBlogRequest->input('group_id')) && $blog->group_id) {
-            app(RemoveBlogFromGroupAction::class)($blog, Group::whereId($blog->group_id)->first());
+        if (is_null($updateBlogRequest->input('collection_id')) && $blog->collection_id) {
+            app(RemoveBlogFromCollectionAction::class)($blog, Collection::whereId($blog->collection_id)->first());
 
             $blog->update([
-                'group_id' => null
+                'collection_id' => null
             ]);
-        } elseif ($updateBlogRequest->input('group_id') && is_null($blog->group_id)) {
-            $group = $updateBlogRequest->input('group_id');
+        } elseif ($updateBlogRequest->input('collection_id') && is_null($blog->collection_id)) {
+            $collection = $updateBlogRequest->input('collection_id');
 
-            app(AddBlogToGroupAction::class)($blog, Group::whereId($group)->first());
+            app(AddBlogToCollectionAction::class)($blog, Collection::whereId($collection)->first());
 
             $blog->update([
-                'group_id' => $group
+                'collection_id' => $collection
             ]);
         }
 
@@ -58,7 +58,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (!$blog->published_at) {
+                if (! $blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

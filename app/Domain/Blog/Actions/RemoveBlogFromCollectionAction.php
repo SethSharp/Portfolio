@@ -3,17 +3,17 @@
 namespace App\Domain\Blog\Actions;
 
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Group;
+use App\Domain\Blog\Models\Collection;
 
-class RemoveBlogFromGroupAction
+class RemoveBlogFromCollectionAction
 {
-    public function __invoke(Blog $blogToRemove, Group $oldGroup): void
+    public function __invoke(Blog $blogToRemove, Collection $oldCollection): void
     {
         // remove from pivot
-        $originalOrder = $oldGroup->blogs()->where('blog_id', $blogToRemove->id)->first();
+        $originalOrder = $oldCollection->blogs()->where('blog_id', $blogToRemove->id)->first();
 
         if (is_null($originalOrder)) {
-            throw new \Exception("Blog " . $blogToRemove->title . " does not exist in group " . $oldGroup->title);
+            throw new \Exception("Blog " . $blogToRemove->title . " does not exist in CollectionPolicy " . $oldCollection->title);
         }
 
         /**
@@ -27,12 +27,12 @@ class RemoveBlogFromGroupAction
          * This logic will get item with the order above the old
          */
 
-        $blogs = $oldGroup->blogs()->where('order', '>', $originalOrder->pivot->order)->get();
+        $blogs = $oldCollection->blogs()->where('order', '>', $originalOrder->pivot->order)->get();
 
         $count = $originalOrder->pivot->order;
 
         foreach ($blogs as $blog) {
-            $oldGroup->blogs()->updateExistingPivot($blog->id, [
+            $oldCollection->blogs()->updateExistingPivot($blog->id, [
                 'order' => $count
             ]);
 
@@ -40,6 +40,6 @@ class RemoveBlogFromGroupAction
         }
 
         // remove old pivot
-        $oldGroup->blogs()->detach($blogToRemove->id);
+        $oldCollection->blogs()->detach($blogToRemove->id);
     }
 }

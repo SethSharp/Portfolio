@@ -42,14 +42,14 @@ class Blog extends Model
             ->withTimestamps();
     }
 
-    public function group(): BelongsTo
+    public function collection(): BelongsTo
     {
-        return $this->belongsTo(Group::class);
+        return $this->belongsTo(Collection::class);
     }
 
-    public function blogGroup(): BelongsToMany
+    public function blogCollection(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class, 'blog_group', 'blog_id', 'group_id')
+        return $this->belongsToMany(Collection::class, 'blog_collection', 'blog_id', 'collection_id')
             ->withPivot('order')
             ->withTimestamps();
     }

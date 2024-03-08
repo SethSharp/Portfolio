@@ -18,11 +18,11 @@ use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
 use App\Http\Controllers\Dashboard\Blogs\IndexBlogsController;
 use App\Http\Controllers\Dashboard\Blogs\UpdateBlogController;
 use App\Http\Controllers\Dashboard\Files\CreateFileController;
-use App\Http\Controllers\Dashboard\Group\IndexGroupController;
-use App\Http\Controllers\Dashboard\Group\StoreGroupController;
-use App\Http\Controllers\Dashboard\Group\UpdateGroupController;
-use App\Http\Controllers\Dashboard\Group\DestroyGroupController;
 use App\Http\Controllers\Dashboard\Blogs\StoreBlogImageController;
+use App\Http\Controllers\Dashboard\Collection\IndexCollectionController;
+use App\Http\Controllers\Dashboard\Collection\StoreCollectionController;
+use App\Http\Controllers\Dashboard\Collection\UpdateCollectionController;
+use App\Http\Controllers\Dashboard\Collection\DestroyCollectionController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin,author'])->prefix('dashboard')->name('dashboard.')->group(function () {
@@ -47,11 +47,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::put('/restore', RestoreTagController::class)->name('restore');
         });
 
-        Route::prefix('group')->name('group.')->group(function () {
-            Route::get('/', IndexGroupController::class)->name('index');
-            Route::post('/store', StoreGroupController::class)->name('store');
-            Route::put('/{group}/update', UpdateGroupController::class)->name('update');
-            Route::delete('/{group}/destroy', DestroyGroupController::class)->name('destroy');
+        Route::prefix('collection')->name('collection.')->group(function () {
+            Route::get('/', IndexCollectionController::class)->name('index');
+            Route::post('/store', StoreCollectionController::class)->name('store');
+            Route::put('/{collection}/update', UpdateCollectionController::class)->name('update');
+            Route::delete('/{collection}/destroy', DestroyCollectionController::class)->name('destroy');
         });
     });
 

@@ -6,8 +6,8 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Domain\Blog\Models\Tag;
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Group;
 use App\Http\Controllers\Controller;
+use App\Domain\Blog\Models\Collection;
 
 class EditBlogController extends Controller
 {
@@ -17,7 +17,7 @@ class EditBlogController extends Controller
 
         return Inertia::render('Dashboard/Blogs/Edit', [
             'blog' => $blog,
-            'groups' => Group::all(),
+            'collections' => Collection::all(),
             'tags' => Tag::all(),
         ]);
     }

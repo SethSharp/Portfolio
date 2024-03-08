@@ -13,7 +13,7 @@ return new class() extends Migration {
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->foreignId('group_id')->nullable()->after('id');
+            $table->foreignId('collection_id')->nullable()->after('id');
         });
     }
 };

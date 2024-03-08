@@ -4,14 +4,14 @@ namespace App\Http\Requests\Dashboard\Group;
 
 use Illuminate\Validation\Rule;
 use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Group;
+use App\Domain\Blog\Models\Collection;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGroupRequest extends FormRequest
+class UpdateCollectionRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('manage', Group::class);
+        return $this->user()->can('manage', Collection::class);
     }
 
     public function rules(): array
@@ -20,7 +20,7 @@ class UpdateGroupRequest extends FormRequest
             'title' => [
                 'required',
                 'string',
-                Rule::unique(Group::class, 'title')->ignore($this->route('group')->id),
+                Rule::unique(Collection::class, 'title')->ignore($this->route('collection')->id),
             ],
             'description' => [
                 'required',

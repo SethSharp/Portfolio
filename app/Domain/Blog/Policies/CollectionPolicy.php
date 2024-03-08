@@ -4,7 +4,7 @@ namespace App\Domain\Blog\Policies;
 
 use App\Domain\Iam\Models\User;
 
-class GroupPolicy
+class CollectionPolicy
 {
     public function manage(User $user): bool
     {
