@@ -38,9 +38,9 @@ defineProps({
                 </div>
 
                 <div class="text-center bg-white hover:bg-gray-100 transition p-4 m-4 rounded-lg">
-                    <Link :href="route('blogs.show', blog)" class="text-center w-full !bg-red-50">
+                    <a :href="route('blogs.show', blog)" class="text-center w-full !bg-red-50">
                         <EyeIcon class="w-6 h-6 mx-auto" />
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>

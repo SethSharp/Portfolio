@@ -1,5 +1,5 @@
 @extends("layouts.main")
 
 @section("content")
-    <livewire:blogs.show-blog :blog="$blog" :prev="$prev" :next="$next"/>
+    <livewire:blogs.show-blog :blog="$blog"/>
 @stop

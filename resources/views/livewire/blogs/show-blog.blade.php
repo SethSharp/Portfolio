@@ -14,10 +14,15 @@
     <div class="flex-wrap">
         <div class="text-2xl sm:text-3xl font-bold"> {{ $blog->title }}</div>
 
+        @if($collection)
+            <span class="text-gray-400 font-medium">
+                {{ $collection->title }}
+            </span>
+        @endif
+
         <div class="mt-2 text-gray-400 font-medium text-md">
             @if($blog->published_at)
-                Published
-                by {{ $blog->author->name  }} {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }}
+                {{ $blog->author->name  }} {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }}
             @else
                 This blog is in a draft status
             @endif
@@ -78,6 +83,13 @@
             </div>
         @endif
     </div>
+
+    @if ($recentBlog)
+        <div class="mt-12 h-44">
+            <h1 class="text-xl pb-4"> Recent Blog</h1>
+            <x-blogs.card :blog="$recentBlog"/>
+        </div>
+    @endif
 
     <x-modals.register/>
 </div>

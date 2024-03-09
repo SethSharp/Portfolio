@@ -5,33 +5,47 @@ namespace App\Http\Livewire\blogs;
 use Livewire\Component;
 use Illuminate\View\View;
 use App\Domain\Blog\Models\Blog;
+use App\Domain\Blog\Models\Collection;
 
 class ShowBlog extends Component
 {
     public Blog $blog;
     public ?Blog $prev;
     public ?Blog $next;
+    public ?Collection $collection;
+    public ?Blog $recentBlog;
 
     public int $blogLikes = 0;
     public bool $isLiked = false;
     public bool $showRegisterModal = false;
 
-    public function mount(Blog $blog, $prev = null, $next = null): void
+    public function mount(Blog $blog): void
     {
         $this->blog = $blog;
-        $this->prev = $prev;
-        $this->next = $next;
-
+        $this->recentBlog = Blog::whereNot('id', $this->blog->id)->latest()?->first();
         $this->blogLikes = $this->blog->likes()->count();
 
         if (auth()->check()) {
             $this->isLiked = auth()->user()->likedBlogs->contains('id', $this->blog->id);
         }
+
+        $this->getSeries();
+    }
+
+    public function getSeries(): void
+    {
+        $blogCollection = $this->blog->collection()->first();
+
+        if ($order = $blogCollection?->getBlogOrder($this->blog)) {
+            $this->collection = $blogCollection;
+            $this->prev = $blogCollection->blogs()->where('order', $order - 1)->first();
+            $this->next = $blogCollection->blogs()->where('order', $order + 1)->first();
+        }
     }
 
     public function like(): void
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             // sets the intended url so when the user registers or logs in - redirects to here
             session(['url.intended' => route('blogs.show', $this->blog)]);
 
