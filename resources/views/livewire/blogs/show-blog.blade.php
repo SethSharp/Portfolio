@@ -22,27 +22,31 @@
                 This blog is in a draft status
             @endif
         </div>
-
-        <button type="button" wire:click="like"
-                class="flex {{ $isLiked ? 'text-red-500 hover:text-red-300' : 'text-gray-400 hover:text-red-500' }}">
-            <x-icons.heart/>
-            <span class="text-gray-600 font-medium"> {{ $blogLikes }}</span>
-        </button>
     </div>
 
     <div class="mt-8 prose min-h-[400px]">
         {!! $content !!}
     </div>
 
-    <div class="flex gap-x-4 mt-2">
-        @foreach($blog->tags as $tag)
-            <span
-                class="rounded-lg border-secondary-500 text-secondary-700 border-[1px] bg-gray-100 text-md p-2"> {{ $tag->name }} </span>
-        @endforeach
-    </div>
+    <div class="mt-12">
+        <div class="flex">
+            <button type="button" wire:click="like"
+                    class="flex my-auto mx-4 {{ $isLiked ? 'text-red-500 hover:text-red-300' : 'text-gray-400 hover:text-red-500' }}">
+                <x-icons.heart/>
+                <span class="text-gray-600 font-medium"> {{ $blogLikes }}</span>
+            </button>
 
-    <div class="mt-8">
-        <livewire:blogs.comments.blog-comments :blog="$blog"/>
+            <div class="flex gap-4">
+                @foreach($blog->tags as $tag)
+                    <span
+                        class="rounded-lg text-secondary-700 border-[1px] bg-gray-100 text-md p-2"> {{ $tag->name }} </span>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <livewire:blogs.comments.blog-comments :blog="$blog"/>
+        </div>
     </div>
 
     <div class="mx-auto grid lg:grid-cols-2 gap-6">

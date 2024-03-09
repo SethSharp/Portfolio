@@ -81,7 +81,6 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            {{ form.tags }}
             <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags" />
             <InputError :message="form.errors.tags" />
         </FormElement>
