@@ -22,7 +22,7 @@ class ShowBlog extends Component
     public function mount(Blog $blog): void
     {
         $this->blog = $blog;
-        $this->recentBlog = Blog::whereNot('id', $this->blog->id)->latest()?->first();
+        $this->recentBlog = Blog::whereNot('id', $this->blog->id)->published()?->latest()?->first();
         $this->blogLikes = $this->blog->likes()->count();
 
         if (auth()->check()) {
