@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import { Link, router } from '@inertiajs/vue3'
 import Blog from '@/Components/Cards/Blog.vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
@@ -7,6 +7,10 @@ defineProps({
     draftBlogs: Array,
     publishedBlogs: Array,
 })
+
+const create = () => {
+    router.post(route('dashboard.blogs.create'))
+}
 </script>
 
 <template>
@@ -14,7 +18,8 @@ defineProps({
         <div class="flex justify-end">
             <Link
                 class="bg-primary-500 rounded-xl p-2 text-white font-medium"
-                :href="route('dashboard.blogs.create')"
+                as="button"
+                @click="create"
             >
                 Create Blog
             </Link>

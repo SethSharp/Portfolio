@@ -14,11 +14,11 @@ class StoreBlogImageController extends Controller
 {
     public function __invoke(StoreBlogImageRequest $request, StoreFileAction $action): JsonResponse
     {
-        $path = $action($request->file('file'));
+        $path = $action($request->file('file'), $request->input('blog_id'));
         $url = Storage::disk('s3')->url($path);
 
-        $fileId = intval($request->input('fileId'));
-        $blogId = intval($request->input('blogId')) ?: null;
+        $fileId = intval($request->input('file_id'));
+        $blogId = intval($request->input('blog_id')) ?: null;
 
         if ($fileId) {
             $file = File::whereId($fileId)->first();
