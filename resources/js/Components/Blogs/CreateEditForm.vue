@@ -1,15 +1,16 @@
 <script setup>
+import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
+import Editor from '@/Components/Editor/Editor.vue'
+import Select from '@/Components/Inputs/Select.vue'
 import Checkbox from '@/Components/Inputs/Checkbox.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
+import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import Editor from '@/Components/Editor/Editor.vue'
-import { ref } from 'vue'
-import Select from '@/Components/Inputs/Select.vue'
 
 const props = defineProps({
     blog: {
@@ -43,6 +44,7 @@ const tagOptions = props.tags.map((tag) => {
 const content = ref('')
 
 const form = useForm({
+    cover_image: null,
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
     collection_id: props.blog?.collection_id ? props.blog.collection_id : null,
@@ -55,16 +57,24 @@ const form = useForm({
 })
 
 const submit = () => {
-    if (props.blog) {
-        form.put(route('dashboard.blogs.update', props.blog))
-    } else {
-        form.post(route('dashboard.blogs.store'))
-    }
+    props.blog
+        ? form
+              .transform((data) => ({
+                  ...data,
+                  _method: 'put',
+              }))
+              .put(route('dashboard.blogs.update', props.blog))
+        : form.post(route('dashboard.blogs.store'))
 }
 </script>
 
 <template>
     <Form>
+        <FormElement>
+            <ImageUpload v-model="form.cover_image" label="Cover Image" />
+            <InputError :message="form.errors.title" />
+        </FormElement>
+
         <FormElement>
             <TextInput v-model="form.title" autofocus label="Title" />
             <InputError :message="form.errors.title" />

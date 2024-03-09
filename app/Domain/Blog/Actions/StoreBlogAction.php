@@ -2,6 +2,7 @@
 
 namespace App\Domain\Blog\Actions;
 
+use App\Domain\File\Actions\StoreFileAction;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Collection;
@@ -24,6 +25,10 @@ class StoreBlogAction
             'published_at' => null
         ]);
 
+        if ($coverImage = $storeBlogRequest->file('cover_image')) {
+            $path = app(StoreFileAction::class)($coverImage);
+        }
+
         if ($tags = $storeBlogRequest->input('tags')) {
             $tags = collect($tags)->pluck('id');
 
@@ -42,7 +47,7 @@ class StoreBlogAction
 
         $blog->render();
 
-        if (! $blog->isDraft()) {
+        if (!$blog->isDraft()) {
             $blog->update([
                 'published_at' => now()
             ]);

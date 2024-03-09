@@ -2,7 +2,6 @@
 import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
-import { router, useForm } from '@inertiajs/vue3'
 import Modal from '@/Components/Modal.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue'

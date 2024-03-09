@@ -17,6 +17,10 @@ class StoreBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'cover_image' => [
+                'nullable',
+                'file'
+            ],
             'title' => [
                 'required',
                 'string',
