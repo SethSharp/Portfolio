@@ -85,7 +85,7 @@
     </div>
 
     @if ($recentBlog)
-        <div class="mt-12 h-44">
+        <div class="mt-12">
             <h1 class="text-xl pb-4"> Recent Blog</h1>
             <x-blogs.card :blog="$recentBlog"/>
         </div>
