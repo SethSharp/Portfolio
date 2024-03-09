@@ -7,8 +7,6 @@ use App\Http\Controllers\Dashboard\Blogs\EditBlogController;
 use App\Http\Controllers\Dashboard\Blogs\ShowBlogController;
 use App\Http\Controllers\Dashboard\Tags\IndexTagsController;
 use App\Http\Controllers\Dashboard\Tags\UpdateTagController;
-use App\Http\Controllers\Dashboard\Blogs\StoreBlogController;
-
 use App\Http\Controllers\Dashboard\Files\StoreFileController;
 use App\Http\Controllers\Dashboard\Tags\DestroyTagController;
 use App\Http\Controllers\Dashboard\Tags\RestoreTagController;
@@ -34,7 +32,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/create', CreateBlogController::class)->name('create');
             Route::get('/{blog}', ShowBlogController::class)->name('show');
             Route::get('/{blog}/edit', EditBlogController::class)->name('edit');
-            //            Route::post('/store', StoreBlogController::class)->name('store');
             Route::post('/store/image', StoreBlogImageController::class)->name('image.store');
             Route::put('/{blog}/update', UpdateBlogController::class)->name('update');
         });

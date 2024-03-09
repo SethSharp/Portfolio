@@ -10,20 +10,8 @@ class CleanBlogContentAction
 {
     public function __invoke(Blog $blog): Blog
     {
-        // recent files that need replacing
-        $files = File::whereNull('blog_id')
-            ->get();
-
-        $files->each(function (File $file) use ($blog) {
-            $file->update(['blog_id' => $blog->id]);
-        });
-
-        $content = $blog->content;
-
-        $newContent = str_replace('blogid="null"', 'blogid="' . $blog->id . '"', $content);
-
         // Replace height attribute with style attribute
-        $newContent = preg_replace('/height="(\d+)"/', 'style="height: $1px"', $newContent);
+        $newContent = preg_replace('/height="(\d+)"/', 'style="height: $1px"', $blog->content);
 
         $blog->update([
             'content' => $newContent
@@ -36,13 +24,16 @@ class CleanBlogContentAction
 
         $fileIds = $matches[1];
 
-        foreach ($files as $file) {
-            if (!in_array((string)$file->id, $fileIds)) {
-                app(DestroyFileAction::class)($file);
+        // recent files that need replacing
+        File::where('blog_id', $blog->id)
+            ->get()
+            ->each(function (File $file) use ($fileIds) {
+                if (!in_array((string)$file->id, $fileIds)) {
+                    app(DestroyFileAction::class)($file);
 
-                $file->delete();
-            }
-        }
+                    $file->delete();
+                }
+            });
 
         return $blog;
     }

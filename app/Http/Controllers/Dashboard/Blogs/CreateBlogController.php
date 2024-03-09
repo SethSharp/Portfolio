@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Dashboard\Blogs;
 
 use Inertia\Inertia;
-use Inertia\Response;
-use App\Domain\Blog\Models\Tag;
 use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
-use App\Domain\Blog\Models\Collection;
 
 class CreateBlogController extends Controller
 {
-    public function __invoke(): Response
+    public function __invoke()
     {
         $blog = Blog::create([
             'author_id' => auth()->user()->id,
@@ -21,10 +18,6 @@ class CreateBlogController extends Controller
             'is_draft' => true,
         ]);
 
-        return Inertia::render('Dashboard/Blogs/Edit', [
-            'blog' => $blog,
-            'collections' => Collection::all(),
-            'tags' => Tag::all(),
-        ]);
+        return Inertia::location(route('dashboard.blogs.edit', $blog));
     }
 }

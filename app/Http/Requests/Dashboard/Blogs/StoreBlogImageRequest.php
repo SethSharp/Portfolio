@@ -22,9 +22,10 @@ class StoreBlogImageRequest extends FormRequest
             ],
             'file_id' => [
                 'nullable',
-                'string'
+                'int'
             ],
             'blog_id' => [
+                'required',
                 'int',
                 Rule::exists(Blog::class, 'id')
             ],

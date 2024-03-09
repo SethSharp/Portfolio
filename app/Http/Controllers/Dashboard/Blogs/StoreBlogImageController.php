@@ -18,16 +18,19 @@ class StoreBlogImageController extends Controller
         $url = Storage::disk('s3')->url($path);
 
         $fileId = intval($request->input('file_id'));
-        $blogId = intval($request->input('blog_id')) ?: null;
+        $blogId = intval($request->input('blog_id'));
 
         if ($fileId) {
             $file = File::whereId($fileId)->first();
 
             if ($file) {
+                // delete old file
                 $deleted = app(DestroyFileAction::class)($file);
 
+                // replace with new
                 if ($deleted) {
                     $file->update([
+                        'blog_id' => $blogId,
                         'path' => $path,
                         'url' => $url,
                     ]);
@@ -39,7 +42,7 @@ class StoreBlogImageController extends Controller
             }
         } else {
             $file = File::create([
-                'blog_id' => null,
+                'blog_id' => $blogId,
                 'path' => $path,
                 'url' => $url,
             ]);
