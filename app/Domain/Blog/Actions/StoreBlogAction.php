@@ -2,10 +2,10 @@
 
 namespace App\Domain\Blog\Actions;
 
-use App\Domain\File\Actions\StoreFileAction;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Domain\Blog\Models\Collection;
+use App\Domain\File\Actions\StoreFileAction;
 use App\Http\Requests\Dashboard\Blogs\StoreBlogRequest;
 
 class StoreBlogAction
