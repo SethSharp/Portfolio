@@ -11,7 +11,7 @@ class ShowHomeController extends Controller
     public function __invoke(): View
     {
         return view('home', [
-            'blog' => Blog::latest()->first()
+            'blog' => Blog::published()->latest()->first()
         ]);
     }
 }
