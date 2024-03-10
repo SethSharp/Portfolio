@@ -130,7 +130,7 @@ class UpdateBlogTest extends TestCase
     public function meta_data_is_nullable()
     {
         $this->actingAs(User::factory()->admin()->create())
-            ->putJson(route('dashboard.blogs.store', $this->blog), [
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'title',
                 'slug' => 'slug',
                 'content' => 'test',
@@ -528,88 +528,16 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function will_replace_blog_id_in_content()
-    {
-        $tag = Tag::factory()->create();
-
-        $this->actingAs($this->user)
-            ->putJson(route('dashboard.blogs.update', $this->blog), [
-                'title' => 'Some Title',
-                'slug' => 'some-slug',
-                'tags' => [
-                    [
-                        'id' => $tag->id,
-                        'name' => $tag->name
-                    ]
-                ],
-                'meta_title' => 'Some title',
-                'meta_description' => 'Some description',
-                'meta_tags' => 'Some tags',
-                'content' => '<tt-image blogid="null"> </tt-image>',
-                'is_draft' => true
-            ])
-            ->assertRedirect(route('dashboard.blogs.index'));
-
-        $blog = Blog::first();
-
-        $this->assertDatabaseHas('blogs', [
-            'author_id' => $this->user->id,
-            'is_draft' => 1,
-            'title' => 'Some Title',
-            'slug' => 'some-slug',
-            'meta_title' => 'Some title',
-            'meta_description' => 'Some description',
-            'meta_tags' => 'Some tags',
-            'content' => "<tt-image blogid=\"$blog->id\"> </tt-image>"
-        ]);
-    }
-
-    /** @test */
-    public function any_files_without_blog_id_will_be_assigned_recently_created_one()
-    {
-        $file = File::create([
-            'path' => 'some-path',
-            'url' => 'some-url'
-        ]);
-
-        $tag = Tag::factory()->create();
-
-        $this->actingAs($this->user)
-            ->putJson(route('dashboard.blogs.update', $this->blog), [
-                'title' => 'Some Title',
-                'slug' => 'some-slug',
-                'tags' => [
-                    [
-                        'id' => $tag->id,
-                        'name' => $tag->name
-                    ]
-                ],
-                'meta_title' => 'Some title',
-                'meta_description' => 'Some description',
-                'meta_tags' => 'Some tags',
-                'content' => "<tt-image fileid=\"$file->id\" blogid=\"null\"> </tt-image>",
-                'is_draft' => true
-            ])
-            ->assertRedirect(route('dashboard.blogs.index'));
-
-        $blog = Blog::first();
-
-        $this->assertDatabaseHas('files', [
-            'blog_id' => $blog->id,
-            'path' => 'some-path',
-            'url' => 'some-url'
-        ]);
-    }
-
-    /** @test */
     public function captures_all_unused_files_and_deletes_them()
     {
         $file = File::create([
+            'blog_id' => $this->blog->id,
             'path' => 'some-path',
             'url' => 'some-url'
         ]);
 
         $anotherFile = File::create([
+            'blog_id' => $this->blog->id,
             'path' => 'some-path',
             'url' => 'some-url'
         ]);

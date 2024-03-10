@@ -2,9 +2,18 @@
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
 import { ListBulletIcon, PhotoIcon, TableCellsIcon } from '@heroicons/vue/16/solid/index.js'
 
-defineProps({
+const props = defineProps({
     editor: Object,
+    blog: Object,
 })
+
+const insertImage = () => {
+    props.editor
+        .chain()
+        .focus()
+        .insertContent(`<tt-image blogId="${props.blog.id}"></tt-image>`)
+        .run()
+}
 </script>
 
 <template>
@@ -17,10 +26,7 @@ defineProps({
             <ListBulletIcon class="w-6 h-6 text-black" />
         </BubbleButton>
 
-        <BubbleButton
-            @click.prevent="editor.chain().focus().insertContent('<tt-image></tt-image>').run()"
-            class="rounded-md"
-        >
+        <BubbleButton @click.prevent="insertImage" class="rounded-md">
             <PhotoIcon class="w-6 h-6 text-black" />
         </BubbleButton>
     </div>

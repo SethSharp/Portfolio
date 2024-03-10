@@ -19,6 +19,7 @@ const props = defineProps({
     modelValue: {
         type: String,
     },
+    blog: Object,
 })
 
 const emits = defineEmits(['update:modelValue'])
@@ -71,12 +72,13 @@ const editor = useEditor({
             <BubbleMenu :editor="editor" />
         </div>
 
-        <Toolbar :editor="editor" />
+        <Toolbar :editor="editor" :blog="blog" />
 
         <div class="mt-4">
             <div class="text-gray-500">
                 To add a hard break: `Ctr` + `Enter` on windows or `Cmd` + `Enter` on mac
             </div>
+
             <EditorContent :editor="editor" />
         </div>
     </div>

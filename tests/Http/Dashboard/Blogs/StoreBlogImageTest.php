@@ -5,6 +5,7 @@ namespace Dashboard\Blogs;
 use Tests\TestCase;
 use Mockery\MockInterface;
 use App\Domain\Iam\Models\User;
+use App\Domain\Blog\Models\Blog;
 use App\Domain\File\Models\File;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -20,20 +21,22 @@ class StoreBlogImageTest extends TestCase
     /** @test */
     public function must_be_authenticated()
     {
-        $this->postJson(route('dashboard.blogs.store'))
+        $this->postJson(route('dashboard.blogs.image.store'))
             ->assertStatus(401);
     }
 
     /** @test */
-    public function file_is_required()
+    public function fields_is_required()
     {
         $this->actingAs(User::factory()->author()->create())
             ->postJson(route('dashboard.blogs.image.store'), [
                 'file' => null,
+                'blog_id' => null,
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
-                'file' => 'The file field is required'
+                'file' => 'The file field is required',
+                'blog_id' => 'The blog id field is required'
             ]);
     }
 
@@ -51,32 +54,16 @@ class StoreBlogImageTest extends TestCase
     }
 
     /** @test */
-    public function fields_must_be_a_string()
+    public function blog_id_must_exist()
     {
         $this->actingAs(User::factory()->author()->create())
             ->postJson(route('dashboard.blogs.image.store'), [
-                'fileId' => 1234,
-                'blogId' => 1234,
+                'blog_id' => 1,
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
-                'fileId' => 'The file id must be a string',
-                'blogId' => 'The blog id must be a string'
+                'blog_id' => 'The selected blog id is invalid.'
             ]);
-    }
-
-    /** @test */
-    public function fields_are_not_required()
-    {
-        Storage::fake('s3');
-
-        $uploadedFile = UploadedFile::fake()->image('file.jpg');
-
-        $this->actingAs(User::factory()->author()->create())
-            ->postJson(route('dashboard.blogs.image.store'), [
-                'file' => $uploadedFile,
-            ])
-            ->assertOk();
     }
 
     /** @test */
@@ -104,6 +91,8 @@ class StoreBlogImageTest extends TestCase
             })
             ->andReturn('new-file-path');
 
+        $blog = Blog::factory()->create();
+
         $this->destroyFileAction->shouldReceive('__invoke')
             ->once()
             ->withArgs(function ($storedFileInstance) use ($file) {
@@ -115,12 +104,13 @@ class StoreBlogImageTest extends TestCase
         $this->actingAs(User::factory()->author()->create())
             ->postJson(route('dashboard.blogs.image.store'), [
                 'file' => $uploadedFile,
-                'fileId' => (string)$file->id
+                'file_id' => (string)$file->id,
+                'blog_id' => $blog->id
             ])
             ->assertOk();
 
         $this->assertDatabaseHas('files', [
-            'blog_id' => null,
+            'blog_id' => $blog->id,
             'path' => 'new-file-path',
             'url' => '/storage/new-file-path'
         ]);
@@ -135,6 +125,7 @@ class StoreBlogImageTest extends TestCase
         app()->instance(StoreFileAction::class, $this->storeFileAction);
 
         $file = UploadedFile::fake()->image('file.jpg');
+        $blog = Blog::factory()->create();
 
         $this->storeFileAction->shouldReceive('__invoke')
             ->once()
@@ -146,13 +137,34 @@ class StoreBlogImageTest extends TestCase
         $this->actingAs(User::factory()->author()->create())
             ->postJson(route('dashboard.blogs.image.store'), [
                 'file' => $file,
+                'blog_id' => $blog->id
             ])
             ->assertOk();
 
         $this->assertDatabaseHas('files', [
-            'blog_id' => null,
+            'blog_id' => $blog->id,
             'path' => 'some-random-path',
             'url' => '/storage/some-random-path'
         ]);
+    }
+
+    /** @test */
+    public function path_is_stored_correctly()
+    {
+        Storage::fake('s3');
+
+        $file = UploadedFile::fake()->image('file.jpg');
+        $blog = Blog::factory()->create();
+
+        $this->actingAs(User::factory()->author()->create())
+            ->postJson(route('dashboard.blogs.image.store', $blog), [
+                'file' => $file,
+                'blog_id' => $blog->id
+            ])
+            ->assertOk();
+
+        $file = File::first();
+
+        $this->assertStringContainsString('blogs/' . $blog->id . '/content', $file->path);
     }
 }
