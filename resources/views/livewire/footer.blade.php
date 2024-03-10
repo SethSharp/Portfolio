@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="sm:w-1/2 px-8 bg-gray-200 rounded pt-4">
+            <div class="sm:w-1/2 px-2 sm:px-8 bg-gray-200 rounded py-2">
                 <h1 class="text-xl font-medium mb-2"> Contact </h1>
 
                 @if (session()->has('success'))
