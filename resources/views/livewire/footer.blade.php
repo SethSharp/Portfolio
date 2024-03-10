@@ -77,7 +77,7 @@
                             <textarea
                                 type="text"
                                 class="p-2 h-28 w-full rounded-xl text-gray-500 border-none"
-                                placeholder="Make a comment..."
+                                placeholder="Your enquiry..."
                                 wire:model.lazy="content"
                                 wire:ignore
                             ></textarea>
