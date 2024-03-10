@@ -2,6 +2,7 @@
 
 namespace App\Domain\Blog\Actions;
 
+use App\Domain\File\Actions\StoreFileAction;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
@@ -46,6 +47,14 @@ class UpdateBlogAction
             ]);
         }
 
+        if ($coverImage = $updateBlogRequest->file('cover_image')) {
+            $coverImagePath = app(StoreFileAction::class)($coverImage, $blog, '/cover-images');
+
+            $blog->update([
+                'cover_image' => $coverImagePath
+            ]);
+        }
+
         $blog = app(CleanBlogContentAction::class)($blog);
 
         Cache::forget(CacheKeys::renderedBlogContent($blog));
@@ -58,7 +67,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (! $blog->published_at) {
+                if (!$blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

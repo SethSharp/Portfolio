@@ -72,7 +72,7 @@ const submit = () => {
     <Form>
         <FormElement>
             <ImageUpload v-model="form.cover_image" label="Cover Image" />
-            <InputError :message="form.errors.title" />
+            <InputError :message="form.errors.cover_image" />
         </FormElement>
 
         <FormElement>

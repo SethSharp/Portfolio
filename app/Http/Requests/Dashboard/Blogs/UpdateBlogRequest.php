@@ -17,6 +17,11 @@ class UpdateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'cover_image' => [
+                'nullable',
+                'image',
+                'exclude'
+            ],
             'title' => [
                 'required',
                 'string',
