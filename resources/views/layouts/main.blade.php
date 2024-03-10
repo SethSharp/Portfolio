@@ -32,11 +32,11 @@
         </h1>
     </div>
 
-    <div class="md:flex w-3/4 mx-auto mt-2 sm:mt-8">
+    <div class="md:flex w-3/4 mx-auto mt-2 sm:mt-8 mb-12">
         @yield("content")
     </div>
 
-    <footer class="bg-white h-20"></footer>
+    <livewire:footer/>
 </main>
 </body>
 
