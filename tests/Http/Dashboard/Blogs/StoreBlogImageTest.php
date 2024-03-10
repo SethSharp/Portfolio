@@ -104,7 +104,7 @@ class StoreBlogImageTest extends TestCase
         $this->actingAs(User::factory()->author()->create())
             ->postJson(route('dashboard.blogs.image.store'), [
                 'file' => $uploadedFile,
-                'file_id' => $file->id,
+                'file_id' => (string)$file->id,
                 'blog_id' => $blog->id
             ])
             ->assertOk();
