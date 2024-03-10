@@ -22,14 +22,13 @@ class NotifySlackOfContactNotification extends Notification
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage())
-            ->content('New Contact on your portfolio!')
+            ->content($this->content)
             ->attachment(function ($attachment) use ($notifiable) {
                 $attachment->title("New Contact on your portfolio!")
                     ->fields([
                         "Name" => $this->name,
                         "Subject" => $this->subject,
-                    ])
-                    ->fallback($this->content);
+                    ]);
             });
     }
 }
