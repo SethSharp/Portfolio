@@ -32,6 +32,8 @@ class Footer extends Component
         $this->name = '';
         $this->subject = '';
         $this->content = '';
+
+        session()->flash('success', 'Message sent successfully.');
     }
 
     public function render(): View

@@ -47,6 +47,12 @@
             <div class="sm:w-1/2 px-8 bg-primary-50 rounded pt-4">
                 <h1 class="text-xl font-medium mb-2"> Contact </h1>
 
+                @if (session()->has('success'))
+                    <div class="text-green-500">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div>
                     <form wire:submit.prevent="send" class="space-y-2">
                         <div class="grid grid-cols-2 gap-2">
