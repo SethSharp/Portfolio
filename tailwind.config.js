@@ -32,6 +32,7 @@ module.exports = {
             },
             colors: {
                 primary: {
+                    50: colors.yellow[50],
                     100: colors.yellow[100],
                     200: colors.yellow[200],
                     300: colors.yellow[300],
