@@ -11,13 +11,11 @@ class DestroyFileAction
     public function __invoke(File $file): bool
     {
         try {
-            Storage::disk(app()->environment('local')
-                ? 'public'
-                : config('filesystems.default'))
-                ->delete($file->path);
+            Storage::disk('s3')->delete($file->path);
 
             return true;
         } catch (Exception $e) {
+            
             return false;
         }
     }

@@ -2,10 +2,12 @@
     <div class="p-8">
         <div class="sm:flex space-y-4">
             <div class="sm:w-1/2 font-bold text-xl">
-                <span> Seth Sharp - Portfolio </span>
-
+                <div class="flex">
+                    <p>Seth Sharp </p>
+                    <p class="pl-1 text-primary-500"> Portfolio</p>
+                </div>
                 <div>
-                    <ul class="text-gray-500 space-y-3 mt-4">
+                    <ul class="text-gray-500 pl-2 space-y-3 mt-4">
                         <li>
                             <a class="text-lg hover:underline underline-offset-4 transition"
                                href="/">
@@ -44,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="sm:w-1/2 px-8 bg-primary-50 rounded pt-4">
+            <div class="sm:w-1/2 px-8 bg-gray-200 rounded pt-4">
                 <h1 class="text-xl font-medium mb-2"> Contact </h1>
 
                 @if (session()->has('success'))

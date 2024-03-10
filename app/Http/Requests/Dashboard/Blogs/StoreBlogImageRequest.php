@@ -22,7 +22,7 @@ class StoreBlogImageRequest extends FormRequest
             ],
             'file_id' => [
                 'nullable',
-                'int'
+                'string'
             ],
             'blog_id' => [
                 'required',
