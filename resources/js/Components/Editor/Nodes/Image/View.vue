@@ -29,6 +29,7 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                 <EditImage
                     @close="open = false"
                     :open="open"
+                    :blogId="blogId"
                     v-model="src"
                     v-model:fileId="fileId"
                     v-model:alt="alt"

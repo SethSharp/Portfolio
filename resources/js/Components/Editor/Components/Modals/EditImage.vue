@@ -9,6 +9,7 @@ import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 const props = defineProps({
     open: Boolean,
+    blogId: Number,
     modelValue: {
         type: [String, null],
     },
@@ -39,7 +40,8 @@ const file = ref(null)
 const storeImage = () => {
     const formData = new FormData()
     formData.append('file', file.value)
-    formData.append('fileId', computedFileId.value)
+    formData.append('file_id', computedFileId.value)
+    formData.append('blog_id', props.blogId)
 
     axios
         .post(route('dashboard.blogs.image.store'), formData)
@@ -48,6 +50,7 @@ const storeImage = () => {
         })
         .catch((err) => {
             console.log(err)
+            alert('We failed to upload your file: ', err)
         })
 }
 
@@ -56,13 +59,13 @@ const handleSuccess = (res) => {
     emits('update:fileId', res.data.fileId)
 }
 
-watch(file, (val) => {
+watch(file, (_) => {
     storeImage()
 })
 </script>
 
 <template>
-    <Modal :open="open" @close="emits('close')">
+    <Modal :open="open" @close="emits('close')" size="md">
         <ImageUpload v-model="file" :current-image="path" :error="errors['file']" />
 
         <div>

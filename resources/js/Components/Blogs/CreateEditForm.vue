@@ -115,7 +115,7 @@ const submit = () => {
         </FormElement>
 
         <FormElement>
-            <Editor v-model="form.content" />
+            <Editor v-model="form.content" :blog="blog" />
             <InputError :message="form.errors.content" />
         </FormElement>
 

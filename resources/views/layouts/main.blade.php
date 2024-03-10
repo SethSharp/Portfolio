@@ -23,20 +23,22 @@
 <main>
     <x-nav-bar/>
 
-    <div class="ml-8 sm:ml-16">
-        <h1 class="text-3xl font-bold text-black inline-block pr-2">
-            @yield('partOne')
-        </h1>
-        <h1 class="text-3xl font-bold text-amber-400 inline-block">
-            @yield('partTwo')
-        </h1>
+    <div class="min-h-screen">
+        <div class="ml-8 sm:ml-16">
+            <h1 class="text-3xl font-bold text-black inline-block pr-2">
+                @yield('partOne')
+            </h1>
+            <h1 class="text-3xl font-bold text-amber-400 inline-block">
+                @yield('partTwo')
+            </h1>
+        </div>
+
+        <div class="md:flex w-3/4 mx-auto mt-2 sm:mt-8 mb-12">
+            @yield("content")
+        </div>
     </div>
 
-    <div class="md:flex w-3/4 mx-auto mt-2 sm:mt-8">
-        @yield("content")
-    </div>
-
-    <footer class="bg-white h-20"></footer>
+    <livewire:footer/>
 </main>
 </body>
 
