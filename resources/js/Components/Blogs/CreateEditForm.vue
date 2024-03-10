@@ -57,14 +57,15 @@ const form = useForm({
 })
 
 const submit = () => {
-    props.blog
-        ? form
-              .transform((data) => ({
-                  ...data,
-                  _method: 'put',
-              }))
-              .put(route('dashboard.blogs.update', props.blog))
-        : form.post(route('dashboard.blogs.store'))
+    let content = form.transform((data) => ({
+        ...data,
+        _method: 'put',
+    }))
+
+    console.log(content)
+    console.log(form.cover_image)
+
+    content.put(route('dashboard.blogs.update', props.blog))
 }
 </script>
 
