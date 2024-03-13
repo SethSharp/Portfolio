@@ -8,11 +8,10 @@ use Illuminate\Notifications\Messages\SlackMessage;
 class NotifySlackOfContactNotification extends Notification
 {
     public function __construct(
+        public string $email,
         public string $name,
-        public string $subject,
-        public string $content,
-    ) {
-    }
+        public string $message,
+    ) {}
 
     public function via($notifiable): array
     {
@@ -22,12 +21,12 @@ class NotifySlackOfContactNotification extends Notification
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage())
-            ->content($this->content)
+            ->content($this->message)
             ->attachment(function ($attachment) use ($notifiable) {
                 $attachment->title("New Contact on your portfolio!")
                     ->fields([
-                        "Name" => $this->name,
-                        "Subject" => $this->subject,
+                        "Name" => $this->email,
+                        "Subject" => $this->name,
                     ]);
             });
     }

@@ -62,22 +62,22 @@
                                 <input
                                     type="text"
                                     class="p-2 w-full rounded-xl text-gray-500 border-none"
-                                    placeholder="Name"
-                                    wire:model.lazy="name"
+                                    placeholder="Email"
+                                    wire:model.lazy="email"
                                     wire:ignore
                                 >
-                                @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
+                                @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
                                 <input
                                     type="text"
                                     class="p-2 w-full rounded-xl text-gray-500 border-none"
-                                    placeholder="Subject"
-                                    wire:model.lazy="subject"
+                                    placeholder="Name"
+                                    wire:model.lazy="name"
                                     wire:ignore
                                 >
-                                @error('subject') <span class="text-red-500">{{ $message }}</span> @enderror
+                                @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -85,12 +85,12 @@
                             <textarea
                                 type="text"
                                 class="p-2 h-28 w-full rounded-xl text-gray-500 border-none"
-                                placeholder="Your enquiry..."
-                                wire:model.lazy="content"
+                                placeholder="Your message..."
+                                wire:model.lazy="message"
                                 wire:ignore
                             ></textarea>
 
-                            @error('content') <span class="text-red-500">{{ $message }}</span> @enderror
+                            @error('message') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="flex justify-end">

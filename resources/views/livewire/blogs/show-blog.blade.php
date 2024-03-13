@@ -1,6 +1,10 @@
-@section('title', $blog->meta_title ?: '')
+@section('title', $blog->meta_title)
 
 @push('meta')
+    @if($blog->meta_title)
+        <meta name="description" content="{{ $blog->meta_title }}">
+    @endif
+
     @if($blog->meta_description)
         <meta name="description" content="{{ $blog->meta_description }}">
     @endif
@@ -8,25 +12,29 @@
     @if($blog->meta_tags)
         {!! $blog->meta_tags !!}
     @endif
+
+    @if (! $blog->is_draft)
+        <meta name="robots" content="noindex, nofollow"/>
+    @endif
 @endpush
 
 <div class="sm:w-3/4 mx-auto">
     <div class="flex-wrap">
-        <div class="text-2xl sm:text-3xl font-bold"> {{ $blog->title }}</div>
+        <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
 
         @if($collection)
-            <span class="text-gray-400 font-medium">
+            <h5 class="text-gray-400 font-medium text-sm">
                 {{ $collection->title }}
-            </span>
+            </h5>
         @endif
 
-        <div class="mt-2 text-gray-400 font-medium text-md">
+        <h6 class="mt-2 text-gray-400 font-medium text-sm">
             @if($blog->published_at)
                 {{ $blog->author->name  }} {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }}
             @else
                 This blog is in a draft status
             @endif
-        </div>
+        </h6>
     </div>
 
     <div class="mt-8 prose min-h-[400px]">
@@ -86,7 +94,7 @@
 
     @if ($recentBlog)
         <div class="mt-12">
-            <h1 class="text-xl pb-4"> Recent Blog</h1>
+            <h4 class="text-xl pb-4"> Recent Blog</h4>
             <x-blogs.card :blog="$recentBlog"/>
         </div>
     @endif

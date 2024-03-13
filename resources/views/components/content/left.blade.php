@@ -4,13 +4,13 @@
     <div class="flex justify-center">
         <div class="bg-gray-50 leading-loose shadow-xl overflow-hidden rounded-3xl md:flex">
             <div class="w-full md:w-1/2 rounded-r-3xl flex flex-col">
-                <div class="px-4 md:px-10 py-5 text-lg font-medium text-black">
+                <h3 class="px-4 md:px-10 py-5 text-lg font-medium text-black">
                     {{ $title }}
-                </div>
+                </h3>
 
-                <div class="px-6 md:px-12 pb-5 text-md flex-grow text-gray-600">
+                <article class="px-6 md:px-12 pb-5 text-md flex-grow text-gray-600">
                     {{ $slot }}
-                </div>
+                </article>
             </div>
             <div class="w-full md:w-1/2 inline-flex items-center">
                 <div class="inline-block w-full relative">

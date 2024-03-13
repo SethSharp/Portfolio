@@ -1,10 +1,10 @@
 <div class="my-12">
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2">
+        <h2 class="text-4xl font-medium mt-2">
             <a href="http://habittracker-uc-1.eba-ayudv8jf.ap-southeast-2.elasticbeanstalk.com" class="hover:underline">
                 Habit Tracker
             </a>
-        </h1>
+        </h2>
     </div>
     <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
         <div>
@@ -38,15 +38,15 @@
             <div class="mx-auto space-y-4 w-3/4">
                 <div class="flex">
                     <x-icons.building/>
-                    <span class="my-auto ml-4 font-semi"> AWS </span>
+                    <p class="my-auto ml-4 font-semi"> AWS </p>
                 </div>
                 <div class="flex">
                     <x-icons.database/>
-                    <span class="my-auto ml-4 font-semi"> RDS </span>
+                    <p class="my-auto ml-4 font-semi"> RDS </p>
                 </div>
                 <div class="flex">
                     <x-icons.cloud-up/>
-                    <span class="my-auto ml-4 font-semi"> Push to Deploy </span>
+                    <p class="my-auto ml-4 font-semi"> Push to Deploy </p>
                 </div>
             </div>
             <div class="mt-6">
