@@ -16,9 +16,9 @@ class Footer extends Component
     protected function rules(): array
     {
         return [
+            'email' => ['required', 'string', 'max:999'],
             'name' => ['required', 'string', 'max:999'],
-            'subject' => ['required', 'string', 'max:999'],
-            'content' => ['required', 'string', 'max:999'],
+            'message' => ['required', 'string', 'max:999'],
         ];
     }
 
