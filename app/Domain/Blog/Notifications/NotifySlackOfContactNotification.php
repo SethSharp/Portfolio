@@ -11,7 +11,8 @@ class NotifySlackOfContactNotification extends Notification
         public string $email,
         public string $name,
         public string $message,
-    ) {
+    )
+    {
     }
 
     public function via($notifiable): array
@@ -26,8 +27,8 @@ class NotifySlackOfContactNotification extends Notification
             ->attachment(function ($attachment) use ($notifiable) {
                 $attachment->title("New Contact on your portfolio!")
                     ->fields([
-                        "Name" => $this->email,
-                        "Subject" => $this->name,
+                        "Email" => $this->email,
+                        "Name" => $this->name,
                     ]);
             });
     }
