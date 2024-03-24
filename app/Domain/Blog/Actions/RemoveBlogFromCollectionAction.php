@@ -13,7 +13,7 @@ class RemoveBlogFromCollectionAction
         $originalOrder = $oldCollection->blogs()->where('blog_id', $blogToRemove->id)->first();
 
         if (is_null($originalOrder)) {
-            throw new \Exception("Blog " . $blogToRemove->title . " does not exist in CollectionPolicy " . $oldCollection->title);
+            throw new \Exception("Blog " . $blogToRemove->title . " does not exist in collection " . $oldCollection->title);
         }
 
         /**

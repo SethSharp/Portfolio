@@ -13,7 +13,8 @@
          class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50">
         <div class="flex items-center justify-center min-h-screen">
             <div class="bg-white sm:w-1/2 p-6 rounded shadow-lg">
-                <h2 class="text-2xl font-bold mb-4">You need to register an account to comment</h2>
+                <h1 class="text-2xl font-bold mb-4">You need to register an account to comment</h1>
+                
                 <p>
                     This is an easy process and allows the comments within these blogs
                     to be more likely to be actual people.

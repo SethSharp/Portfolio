@@ -20,25 +20,28 @@
 
 <body class="mg-0 pd-0">
 @livewireScripts
-<main>
-    <x-nav-bar/>
 
-    <div class="min-h-screen">
-        <div class="ml-8 sm:ml-16">
-            <h1 class="text-3xl font-bold text-black inline-block pr-2">
+<header>
+    <x-nav-bar/>
+</header>
+
+<main>
+    <section class="min-h-screen">
+        <div class="ml-8 sm:ml-16 text-3xl font-bold ">
+            <h1 class="text-black inline-block pr-2">
                 @yield('partOne')
             </h1>
-            <h1 class="text-3xl font-bold text-amber-400 inline-block">
+            <h2 class="text-amber-400 inline-block">
                 @yield('partTwo')
-            </h1>
+            </h2>
         </div>
 
         <div class="md:flex w-3/4 mx-auto mt-2 sm:mt-8 mb-12">
             @yield("content")
         </div>
-    </div>
-
-    <livewire:footer/>
+    </section>
 </main>
+
+<livewire:footer/>
 </body>
 

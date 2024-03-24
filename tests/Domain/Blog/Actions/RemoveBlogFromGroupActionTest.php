@@ -11,17 +11,15 @@ use App\Domain\Blog\Actions\RemoveBlogFromCollectionAction;
 class RemoveBlogFromGroupActionTest extends TestCase
 {
     /** @test */
-    public function can_handle_a_collection_not_part_of_the_collection()
+    public function can_handle_a_blog_not_part_of_the_collection()
     {
         $collection = Collection::factory()->create();
-        $blogs = Blog::factory(3)->create([
-            'collection_id' => $collection->id
-        ]);
+        $blog = Blog::factory()->create();
 
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Blog " . $blogs[0]->title . " does not exist in collection " . $collection->title);
+        $this->expectExceptionMessage("Blog " . $blog->title . " does not exist in collection " . $collection->title);
 
-        app(RemoveBlogFromCollectionAction::class)($blogs[0], $collection);
+        app(RemoveBlogFromCollectionAction::class)($blog, $collection);
     }
 
     /** @test */

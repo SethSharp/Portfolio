@@ -1,5 +1,5 @@
 <div>
-    <span class="text-gray-400 text-xl"> Comments ({{ count($comments) }})</span>
+    <h3 class="text-gray-400 text-xl"> Comments ({{ count($comments) }})</h3>
 
     <div class="bg-gray-100 mt-4 px-2 sm:px-4 py-0.5 rounded-lg">
         @foreach($comments as $comment)
@@ -33,7 +33,7 @@
                 </x-button.primary>
             </div>
 
-            @error('comment') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('comment') <p class="text-red-500">{{ $message }}</p> @enderror
         </form>
     </div>
 

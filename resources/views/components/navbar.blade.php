@@ -1,4 +1,4 @@
-<div class="h-20 mb-4 w-full bg-white sm:pr-10">
+<nav class="h-20 w-full bg-white sm:pr-10">
     <div class="h-full
                 inline-block align-middle
                 -z-10 grid
@@ -96,4 +96,4 @@
             });
         </script>
     </div>
-</div>
+</nav>

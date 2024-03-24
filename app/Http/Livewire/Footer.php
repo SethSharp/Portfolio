@@ -9,16 +9,16 @@ use App\Domain\Blog\Notifications\NotifySlackOfContactNotification;
 
 class Footer extends Component
 {
+    public $email = '';
     public $name = '';
-    public $subject = '';
-    public $content = '';
+    public $message = '';
 
     protected function rules(): array
     {
         return [
+            'email' => ['required', 'string', 'max:999'],
             'name' => ['required', 'string', 'max:999'],
-            'subject' => ['required', 'string', 'max:999'],
-            'content' => ['required', 'string', 'max:999'],
+            'message' => ['required', 'string', 'max:999'],
         ];
     }
 
@@ -27,11 +27,11 @@ class Footer extends Component
         $this->validate();
 
         Notification::route('slack', config('services.slack.notifications.webhook'))
-            ->notify(new NotifySlackOfContactNotification($this->name, $this->subject, $this->content));
+            ->notify(new NotifySlackOfContactNotification($this->email, $this->name, $this->message));
 
+        $this->email = '';
         $this->name = '';
-        $this->subject = '';
-        $this->content = '';
+        $this->message = '';
 
         session()->flash('success', 'Message sent successfully.');
     }
