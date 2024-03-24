@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Livewire\Livewire;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
-use App\Http\Livewire\blogs\ShowBlog;
+use App\Http\Livewire\Blogs\ShowBlog;
 
 class ShowBlogComponentTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\blogs;
+namespace App\Http\Livewire\Blogs;
 
 use Livewire\Component;
 use Illuminate\View\View;

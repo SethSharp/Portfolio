@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\blogs\comments;
+namespace App\Http\Livewire\Blogs\Comments;
 
 use Livewire\Component;
 use Illuminate\View\View;
@@ -38,7 +38,7 @@ class BlogComments extends Component
 
     public function save(): void
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             // sets the intended url so when the user registers or logs in - redirects to here
             session(['url.intended' => route('blogs.show', $this->blog)]);
 
