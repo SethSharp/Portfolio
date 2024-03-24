@@ -1,6 +1,4 @@
-@if ($blog->meta_title)
-    @section('title', $blog->meta_title)
-@endif
+@section('title', $blog?->meta_title ? $blog->meta_title : $blog->title)
 
 @push('meta')
     @if($blog->meta_title)
