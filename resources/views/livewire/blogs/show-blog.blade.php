@@ -1,4 +1,6 @@
-@section('title', $blog->meta_title)
+@if ($blog->meta_title)
+    @section('title', $blog->meta_title)
+@endif
 
 @push('meta')
     @if($blog->meta_title)
@@ -10,7 +12,7 @@
     @endif
 
     @if($blog->meta_tags)
-        {!! $blog->meta_tags !!}
+
     @endif
 
     @if (! $blog->is_draft)
