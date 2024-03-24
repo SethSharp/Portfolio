@@ -37,7 +37,7 @@
         </h6>
     </div>
 
-    <div class="mt-8 prose min-h-[400px]">
+    <div class="mt-8 prose min-h-[400px] leading-loose">
         {!! $content !!}
     </div>
 
