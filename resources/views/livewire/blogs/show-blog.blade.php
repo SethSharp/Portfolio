@@ -1,16 +1,12 @@
 @section('title', $blog?->meta_title ? $blog->meta_title : $blog->title)
 
 @push('meta')
-    @if($blog->meta_title)
-        <meta name="description" content="{{ $blog->meta_title }}">
-    @endif
-
     @if($blog->meta_description)
         <meta name="description" content="{{ $blog->meta_description }}">
     @endif
 
     @if($blog->meta_tags)
-
+        <meta name="keywords" content="{{ $blog?->meta_tags ? $blog->meta_tags : '' }}">
     @endif
 
     @if (! $blog->is_draft)
