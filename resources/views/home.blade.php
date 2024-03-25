@@ -1,5 +1,7 @@
 @props(['blog' => null])
 
+@section('title', 'Home - ' . config('app.name'))
+
 @extends("layouts.main")
 
 @section("content")

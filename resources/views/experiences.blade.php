@@ -1,5 +1,7 @@
 @extends("layouts.main")
 
+@section('title', 'Experiences - ' . config('app.name'))
+
 @section('partOne', 'My')
 @section('partTwo', 'Experiences')
 

@@ -24,7 +24,7 @@ Route::get('/', ShowHomeController::class)->name('home');
 Route::get('/about', ShowHomeController::class)->name('about');
 Route::get('/experience', ShowExperienceController::class)->name('experience');
 Route::get('/capabilities', ShowCapabiltiesController::class)->name('capabilities');
-Route::get('/portfolio', ShowProjectsController::class)->name('projects');
+Route::get('/projects', ShowProjectsController::class)->name('projects');
 Route::get('/sitemap', ShowSitemapController::class)->name('sitemap');
 
 Route::prefix('blogs')->name('blogs.')->group(function () {
