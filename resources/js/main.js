@@ -10,6 +10,9 @@ import json from 'highlight.js/lib/languages/json'
 import sql from 'highlight.js/lib/languages/sql'
 import yaml from 'highlight.js/lib/languages/yaml'
 
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm'
+import { intersect } from '@alpinejs/intersect'
+
 hljs.registerLanguage('php', php)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('plaintext', plaintext)
@@ -20,3 +23,7 @@ hljs.registerLanguage('sql', sql)
 hljs.registerLanguage('yaml', yaml)
 
 hljs.highlightAll()
+
+Alpine.plugin(intersect)
+
+Livewire.start()

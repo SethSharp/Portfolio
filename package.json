@@ -24,6 +24,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@alpinejs/intersect": "^3.13.7",
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
         "@tiptap/extension-bubble-menu": "^2.2.1",

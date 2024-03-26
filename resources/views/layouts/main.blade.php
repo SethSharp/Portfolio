@@ -6,8 +6,6 @@
 
     @stack('meta')
 
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-
     @vite('resources/css/app.css')
     @vite('resources/js/main.js')
 
@@ -18,7 +16,6 @@
 </head>
 
 <body class="mg-0 pd-0">
-@livewireScripts
 
 <header>
     <x-nav-bar/>
@@ -42,5 +39,7 @@
 </main>
 
 <livewire:footer/>
+
+@livewireScriptConfig
 </body>
 
