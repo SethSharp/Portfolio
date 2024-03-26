@@ -18,7 +18,6 @@
     <div class="flex-wrap">
 
         @if ($blog->cover_image)
-            asd
             <img src="{{ config('app.cloudfront_url') . $blog->cover_image }}"/>
         @endif
         <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
