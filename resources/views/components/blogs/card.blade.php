@@ -1,24 +1,28 @@
 @props(['blog'])
 
-<a class="rounded-xl shadow h-fit overflow-hidden cursor-pointer hover:bg-gray-100 transition"
+<a class="rounded-xl shadow-md overflow-hidden cursor-pointer hover:bg-gray-100 transition md:flex h-full space-y-4"
    href="{{ route('blogs.show', $blog)  }}">
-    <div class="bg-gray-50 w-full">
-        <div class="p-3 text-lg font-medium text-left"> {{ substr($blog->title, 0, 75) }} </div>
-
-        <p class="px-6 py-4 text-md text-left text-gray-500">
-            {{ substr($blog->meta_description, 0, 100) . '...' }}
-        </p>
+    <div class="md:w-1/2 md:h-full p-4">
+        <img
+            src="{{ config('app.cloudfront_url') . $blog->cover_image }}"
+            alt="{{ $blog->title . ' cover image' }}"
+            class="rounded-lg overflow-hidden object-cover object-center md:size-full"
+        />
     </div>
 
-    <div class=" w-full">
-        <div class="grid grid-cols-2">
-            <div class="flex justify-start font-medium text-gray-500">
-                <span class="ml-4 my-3"> {{$blog->author->name}} </span>
-            </div>
+    <div class="md:w-1/2 text-left py-2">
+        <div class="flex">
+            <p class="text-xs text-gray-400 font-medium my-auto"> {{ $blog->author->name  }} {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }} </p>
 
-            <div class="flex justify-end font-medium text-gray-400">
-                <span class="mr-4 my-3"> {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }} </span>
+            <div class="flex my-auto ml-2 text-sm text-gray-400">
+                <x-icons.heart class="!size-3 my-auto"/>
+                <span> {{ $blog->likes->count() }}</span>
             </div>
+        </div>
+        <div class="text-xl"> {{ $blog->title }} </div>
+
+        <div class="mt-2 text-sm text-secondary-400 line-clamp-4">
+            {{ $blog?->meta_description }}
         </div>
     </div>
 </a>

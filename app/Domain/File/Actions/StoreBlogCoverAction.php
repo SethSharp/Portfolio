@@ -11,7 +11,7 @@ class StoreBlogCoverAction
 {
     public function __invoke(UploadedFile $file, int $blogId, string $path = '/content/'): string
     {
-        $newFile = ImageManager::gd()->read($file)->resize(600, 400)->encode();
+        $newFile = ImageManager::gd()->read($file)->scale(500, 500)->encode();
 
         $structure = app()->environment('testing') || app()->environment('local')
             ? 'testing/' : 'production/';
