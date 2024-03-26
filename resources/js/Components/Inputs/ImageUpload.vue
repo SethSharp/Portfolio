@@ -15,6 +15,8 @@ const props = defineProps({
     error: [String, null],
 })
 
+console.log(props.currentImage)
+
 const emits = defineEmits(['update:modelValue'])
 
 const inputVal = computed({

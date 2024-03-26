@@ -51,7 +51,7 @@ class UpdateBlogAction
             $coverImagePath = app(StoreBlogCoverAction::class)($coverImage, $blog->id, '/cover-images/');
 
             $blog->update([
-                'cover_image' => $coverImagePath
+                'cover_image' => config('app.cloudfront_url') . $coverImagePath
             ]);
         }
 

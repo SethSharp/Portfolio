@@ -4,7 +4,7 @@
    href="{{ route('blogs.show', $blog)  }}">
     <div class="md:w-1/2 md:h-full p-4">
         <img
-            src="{{ config('app.cloudfront_url') . $blog->cover_image }}"
+            src="{{ $blog->cover_image }}"
             alt="{{ $blog->title . ' cover image' }}"
             class="rounded-lg overflow-hidden object-cover object-center md:size-full"
         />
