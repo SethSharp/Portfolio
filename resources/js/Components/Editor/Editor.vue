@@ -1,22 +1,22 @@
 <script setup>
-import {createLowlight} from 'lowlight'
+import { createLowlight } from 'lowlight'
 import Link from '@tiptap/extension-link'
-import {Text} from '@tiptap/extension-text'
+import { Text } from '@tiptap/extension-text'
 import StarterKit from '@tiptap/starter-kit'
 import php from 'highlight.js/lib/languages/php'
 import Document from '@tiptap/extension-document'
 import ListItem from '@tiptap/extension-list-item'
-import {Underline} from '@tiptap/extension-underline'
-import {HardBreak} from '@tiptap/extension-hard-break'
-import {useEditor, EditorContent} from '@tiptap/vue-3'
-import {TextAlign} from '@tiptap/extension-text-align'
+import { Underline } from '@tiptap/extension-underline'
+import { HardBreak } from '@tiptap/extension-hard-break'
+import { useEditor, EditorContent } from '@tiptap/vue-3'
+import { TextAlign } from '@tiptap/extension-text-align'
 import OrderedList from '@tiptap/extension-ordered-list'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import Toolbar from '@/Components/Editor/Toolbar.vue'
 import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
 import Image from '@/Components/Editor/Nodes/Image/Image.js'
 import { Paragraph } from '@tiptap/extension-paragraph'
-import {Heading} from '@/Components/Editor/CustomExtensions/Heading.js'
+import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
 
 const props = defineProps({
     modelValue: {
@@ -28,7 +28,7 @@ const props = defineProps({
 const emits = defineEmits(['update:modelValue'])
 const lowlight = createLowlight()
 
-lowlight.register({php})
+lowlight.register({ php })
 
 const editor = useEditor({
     content: props.modelValue,
@@ -71,7 +71,7 @@ const editor = useEditor({
             class: 'bg-white p-4 max-w-none w-full min-h-[500px] focus:outline-none border border-gray-200 rounded-md max-h-[85vh] overflow-y-scroll overflow-hidden prose prose-img:m-0 ',
         },
     },
-    onUpdate: ({editor}) => {
+    onUpdate: ({ editor }) => {
         emits('update:modelValue', editor.getHTML())
     },
 })
@@ -80,17 +80,17 @@ const editor = useEditor({
 <template>
     <div>
         <div class="w-full bg-red-500">
-            <BubbleMenu :editor="editor"/>
+            <BubbleMenu :editor="editor" />
         </div>
 
-        <Toolbar :editor="editor" :blog="blog"/>
+        <Toolbar :editor="editor" :blog="blog" />
 
         <div class="mt-4">
             <div class="text-gray-500">
                 To add a hard break: `Ctr` + `Enter` on windows or `Cmd` + `Enter` on mac
             </div>
 
-            <EditorContent :editor="editor"/>
+            <EditorContent :editor="editor" />
         </div>
     </div>
 </template>
@@ -103,8 +103,8 @@ const editor = useEditor({
     }
 
     pre {
-        background: #0D0D0D;
-        color: #FFF;
+        background: #0d0d0d;
+        color: #fff;
         font-family: 'JetBrainsMono', monospace;
         padding: 0.75rem 1rem;
         border-radius: 0.5rem;
@@ -131,7 +131,7 @@ const editor = useEditor({
         .hljs-name,
         .hljs-selector-id,
         .hljs-selector-class {
-            color: #F98181;
+            color: #f98181;
         }
 
         .hljs-number,
@@ -141,23 +141,23 @@ const editor = useEditor({
         .hljs-literal,
         .hljs-type,
         .hljs-params {
-            color: #FBBC88;
+            color: #fbbc88;
         }
 
         .hljs-string,
         .hljs-symbol,
         .hljs-bullet {
-            color: #B9F18D;
+            color: #b9f18d;
         }
 
         .hljs-title,
         .hljs-section {
-            color: #FAF594;
+            color: #faf594;
         }
 
         .hljs-keyword,
         .hljs-selector-tag {
-            color: #70CFF8;
+            color: #70cff8;
         }
 
         .hljs-emphasis {
