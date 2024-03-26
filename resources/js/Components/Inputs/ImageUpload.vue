@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
-import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
+import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 
 const props = defineProps({
     modelValue: {

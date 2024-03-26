@@ -19,11 +19,12 @@ class BlogFactory extends Factory
 
         return [
             'author_id' => User::factory()->create()->id,
+            'cover_image' => config('app.cloudfront_url') . $this->getRandomCover(),
             'is_draft' => false,
             'title' => $name,
             'slug' => $slug,
             'meta_title' => fake()->text(20),
-            'meta_description' => fake()->text(100),
+            'meta_description' => fake()->text(200),
             'meta_tags' => fake()->text(10),
             'content' => fake()->text(400),
             'published_at' => now()
@@ -55,5 +56,20 @@ class BlogFactory extends Factory
                 'is_draft' => false
             ]);
         });
+    }
+
+    protected function getRandomCover(): string
+    {
+        return $this->coverImages()[array_rand($this->coverImages())];
+    }
+
+    private function coverImages(): array
+    {
+        return [
+            'seeding/desk-1.avif',
+            'seeding/desk-2.avif',
+            'seeding/desk-3.avif',
+            'seeding/desk-4.avif',
+        ];
     }
 }

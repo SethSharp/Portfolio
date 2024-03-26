@@ -7,6 +7,7 @@ use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
 use App\Domain\Blog\Models\Collection;
+use App\Domain\File\Actions\StoreBlogCoverAction;
 use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 
 class UpdateBlogAction
@@ -46,6 +47,14 @@ class UpdateBlogAction
             ]);
         }
 
+        if ($coverImage = $updateBlogRequest->file('cover_image')) {
+            $coverImagePath = app(StoreBlogCoverAction::class)($coverImage, $blog->id);
+
+            $blog->update([
+                'cover_image' => config('app.cloudfront_url') . $coverImagePath
+            ]);
+        }
+
         $blog = app(CleanBlogContentAction::class)($blog);
 
         Cache::forget(CacheKeys::renderedBlogContent($blog));
@@ -58,7 +67,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (! $blog->published_at) {
+                if (!$blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

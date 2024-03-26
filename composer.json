@@ -14,7 +14,7 @@
         "codinglabsau/php-styles": "dev-main",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^1.0",
-        "intervention/image": "^2.7.1",
+        "intervention/image-laravel": "^1.2",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/slack-notification-channel": "^3.2",

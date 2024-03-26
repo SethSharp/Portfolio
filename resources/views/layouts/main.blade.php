@@ -32,7 +32,7 @@
             </h2>
         </div>
 
-        <div class="md:flex w-3/4 mx-auto mt-2 sm:mt-8 mb-12">
+        <div class="md:flex w-4/5 mx-auto mt-2 sm:mt-8 mb-12">
             @yield("content")
         </div>
     </section>
