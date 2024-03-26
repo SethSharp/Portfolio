@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class StoreBlogCoverAction
 {
-    public function __invoke(UploadedFile $file, int $blogId, string $path = '/content/'): string
+    public function __invoke(UploadedFile $file, int $blogId, string $path = '/cover-images/'): string
     {
         $newFile = ImageManager::gd()->read($file)->scale(500, 500)->encode();
 

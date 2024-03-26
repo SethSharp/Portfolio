@@ -8,6 +8,9 @@
         <testsuite name="Http">
             <directory>./tests/Http</directory>
         </testsuite>
+        <testsuite name="Domain">
+            <directory>./tests/Domain</directory>
+        </testsuite>
     </testsuites>
     <php>
         <env name="APP_ENV" value="testing"/>
