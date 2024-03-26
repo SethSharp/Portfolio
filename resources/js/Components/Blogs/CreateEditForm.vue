@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
+import { router, useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Editor from '@/Components/Editor/Editor.vue'
 import Select from '@/Components/Inputs/Select.vue'
@@ -56,16 +56,11 @@ const form = useForm({
     is_draft: props.blog?.is_draft ? props.blog.is_draft : false,
 })
 
-const submit = () => {
-    let content = form.transform((data) => ({
+const submit = async () => {
+    form.transform((data) => ({
         ...data,
         _method: 'put',
-    }))
-
-    console.log(content)
-    console.log(form.cover_image)
-
-    content.put(route('dashboard.blogs.update', props.blog))
+    })).post(route('dashboard.blogs.update', props.blog))
 }
 </script>
 
