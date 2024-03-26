@@ -19,7 +19,7 @@
         <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
 
         @if($collection)
-            <h5 class="text-gray-400 font-medium text-sm">
+            <h5 class="text-gray-400 font-medium text-sm mt-2">
                 {{ $collection->title }}
             </h5>
         @endif
