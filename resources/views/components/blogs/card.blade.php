@@ -19,9 +19,9 @@
                 <span> {{ $blog->likes->count() }}</span>
             </div>
         </div>
-        <div class="text-xl"> {{ $blog->title }} </div>
+        <div class="text-xl font-semibold"> {{ $blog->title }} </div>
 
-        <div class="mt-2 text-sm text-secondary-400 line-clamp-4">
+        <div class="py-2 text-md text-secondary-400 max-h-24">
             {{ $blog?->meta_description }}
         </div>
     </div>
