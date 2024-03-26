@@ -47,8 +47,9 @@
 
             <div class="flex gap-4">
                 @foreach($blog->tags as $tag)
-                    <span
-                        class="rounded-lg text-secondary-700 border-[1px] bg-gray-100 text-md p-2"> {{ $tag->name }} </span>
+                    <span class="rounded-lg text-secondary-700 border-[1px] bg-secondary-100 text-sm px-2 py-1">
+                        {{ $tag->name }}
+                    </span>
                 @endforeach
             </div>
         </div>
