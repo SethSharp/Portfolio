@@ -2,9 +2,9 @@
 
 namespace App\Domain\File\Actions;
 
-use Intervention\Image\ImageManager;
 use League\Flysystem\Visibility;
 use Illuminate\Http\UploadedFile;
+use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 
 class StoreBlogCoverAction

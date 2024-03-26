@@ -2,13 +2,12 @@
 
 namespace App\Domain\Blog\Actions;
 
-use App\Domain\File\Actions\StoreBlogCoverAction;
 use Illuminate\Support\Str;
 use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
 use App\Domain\Blog\Models\Collection;
-use App\Domain\File\Actions\StoreFileAction;
+use App\Domain\File\Actions\StoreBlogCoverAction;
 use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
 
 class UpdateBlogAction
