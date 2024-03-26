@@ -15,13 +15,12 @@ import Link from '@tiptap/extension-link'
 import Text from '@tiptap/extension-text'
 import Document from '@tiptap/extension-document'
 import ListItem from '@tiptap/extension-list-item'
+import Paragraph from '@tiptap/extension-paragraph'
 import Underline from '@tiptap/extension-underline'
 import HardBreak from '@tiptap/extension-hard-break'
 import TextAlign from '@tiptap/extension-text-align'
-import OrderedList from '@tiptap/extension-ordered-list'
-import Image from '@/Components/Editor/Nodes/Image/Image.js'
-import Paragraph from '@tiptap/extension-paragraph'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import Image from '@/Components/Editor/Nodes/Image/Image.js'
 import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
 
 const lowlight = createLowlight()
@@ -51,11 +50,6 @@ const Extensions = Extension.create({
             ListItem,
             TextAlign.configure({
                 types: ['heading', 'paragraph'],
-            }),
-            OrderedList.configure({
-                HTMLAttributes: {
-                    class: 'list-decimal ml-6',
-                },
             }),
             Text,
             Underline,

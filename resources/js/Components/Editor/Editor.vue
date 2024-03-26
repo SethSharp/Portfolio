@@ -1,7 +1,8 @@
 <script setup>
 import StarterKit from '@tiptap/starter-kit'
-import Toolbar from '@/Components/Editor/Toolbar.vue'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
+import OrderedList from '@tiptap/extension-ordered-list'
+import Toolbar from '@/Components/Editor/Toolbar.vue'
 import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
 import Extensions from '@/Components/Editor/extensions.js'
 
@@ -14,7 +15,15 @@ const emits = defineEmits(['update:modelValue'])
 
 const editor = useEditor({
     content: props.modelValue,
-    extensions: [StarterKit, Extensions],
+    extensions: [
+        StarterKit,
+        Extensions,
+        OrderedList.configure({
+            HTMLAttributes: {
+                class: 'list-decimal ml-6',
+            },
+        }),
+    ],
     editorProps: {
         attributes: {
             class: 'bg-white p-4 max-w-none w-full min-h-[500px] focus:outline-none border border-gray-200 rounded-md max-h-[85vh] overflow-y-scroll overflow-hidden prose prose-img:m-0 ',
