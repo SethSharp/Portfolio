@@ -1,5 +1,12 @@
 @props(['blog' => null])
 
+@section('title', 'Home - ' . config('app.name'))
+
+@push('meta')
+    <meta name="description"
+          content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
+@endpush
+
 @extends("layouts.main")
 
 @section("content")
@@ -10,9 +17,9 @@
                     <div class="w-full">
                         <a href="{{ route('blogs.show', $blog)  }}" class="w-3/4 mx-auto">
                             <div
-                                class="w-full p-4 border-2 border-blue-400 bg-blue-100 rounded-xl text-blue-600"
+                                class="w-fit p-4 border-2 border-blue-400 bg-blue-100 rounded-xl text-blue-600"
                             >
-                                New blog added!
+                                Check out the latest blog
                             </div>
                         </a>
                     </div>

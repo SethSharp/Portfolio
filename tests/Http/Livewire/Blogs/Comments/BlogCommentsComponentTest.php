@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
 use Illuminate\Support\Facades\Notification;
-use App\Http\Livewire\blogs\comments\BlogComments;
+use App\Http\Livewire\Blogs\Comments\BlogComments;
 use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogCommentsComponentTest extends TestCase

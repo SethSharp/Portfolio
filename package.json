@@ -16,6 +16,7 @@
         "husky": "^9.0.6",
         "laravel-vite-plugin": "^1.0.0",
         "postcss": "^8.4.31",
+        "postcss-nesting": "^12.1.0",
         "prettier": "^3.2.4",
         "prettier-plugin-tailwindcss": "0.5.6",
         "tailwindcss": "^3.2.1",
@@ -23,10 +24,11 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@alpinejs/intersect": "^3.13.7",
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
         "@tiptap/extension-bubble-menu": "^2.2.1",
-        "@tiptap/extension-code": "^2.2.1",
+        "@tiptap/extension-code-block-lowlight": "^2.2.4",
         "@tiptap/extension-document": "^2.2.1",
         "@tiptap/extension-hard-break": "^2.2.4",
         "@tiptap/extension-heading": "^2.2.1",
@@ -41,6 +43,8 @@
         "@tiptap/starter-kit": "^2.2.1",
         "@tiptap/vue-3": "^2.2.1",
         "@vueuse/core": "^10.7.2",
-        "clean-install": "^1.0.0"
+        "clean-install": "^1.0.0",
+        "highlight.js": "^11.9.0",
+        "lowlight": "^3.1.0"
     }
 }

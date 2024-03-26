@@ -3,23 +3,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title> @yield('title', config('app.name')) </title>
-    <meta name="description"
-          content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
 
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    @stack('meta')
 
     @vite('resources/css/app.css')
+    @vite('resources/js/main.js')
 
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     @routes
     @livewireStyles
 </head>
 
 <body class="mg-0 pd-0">
-@livewireScripts
 
 <header>
     <x-nav-bar/>
@@ -43,5 +39,7 @@
 </main>
 
 <livewire:footer/>
+
+@livewireScriptConfig
 </body>
 

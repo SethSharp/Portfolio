@@ -1,16 +1,12 @@
-@section('title', $blog->meta_title)
+@section('title', $blog?->meta_title ? $blog->meta_title : $blog->title)
 
 @push('meta')
-    @if($blog->meta_title)
-        <meta name="description" content="{{ $blog->meta_title }}">
-    @endif
-
     @if($blog->meta_description)
         <meta name="description" content="{{ $blog->meta_description }}">
     @endif
 
     @if($blog->meta_tags)
-        {!! $blog->meta_tags !!}
+        <meta name="keywords" content="{{ $blog?->meta_tags ? $blog->meta_tags : '' }}">
     @endif
 
     @if (! $blog->is_draft)
@@ -23,7 +19,7 @@
         <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
 
         @if($collection)
-            <h5 class="text-gray-400 font-medium text-sm">
+            <h5 class="text-gray-400 font-medium text-sm mt-2">
                 {{ $collection->title }}
             </h5>
         @endif
@@ -37,7 +33,7 @@
         </h6>
     </div>
 
-    <div class="mt-8 prose min-h-[400px]">
+    <div class="mt-8 prose min-h-[400px] leading-loose">
         {!! $content !!}
     </div>
 
@@ -51,8 +47,9 @@
 
             <div class="flex gap-4">
                 @foreach($blog->tags as $tag)
-                    <span
-                        class="rounded-lg text-secondary-700 border-[1px] bg-gray-100 text-md p-2"> {{ $tag->name }} </span>
+                    <span class="rounded-lg text-secondary-700 border-[1px] bg-secondary-100 text-sm px-2 py-1">
+                        {{ $tag->name }}
+                    </span>
                 @endforeach
             </div>
         </div>
