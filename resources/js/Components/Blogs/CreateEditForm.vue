@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { router, useForm } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Editor from '@/Components/Editor/Editor.vue'
 import Select from '@/Components/Inputs/Select.vue'
