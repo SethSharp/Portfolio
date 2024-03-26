@@ -1,5 +1,5 @@
 import './bootstrap'
-import '../css/night-owl.css'
+import '../css/panda-syntax-light.css'
 import hljs from 'highlight.js'
 import php from 'highlight.js/lib/languages/php'
 import typescript from 'highlight.js/lib/languages/typescript'
