@@ -137,7 +137,7 @@ const setLink = () => {
                 </BubbleButton>
 
                 <BubbleButton
-                    @click="editor.chain().focus().toggleCode().run()"
+                    @click="editor.chain().focus().toggleCodeBlock().run()"
                     :active="editor.isActive('code')"
                     class="rounded-r-xl"
                 >
