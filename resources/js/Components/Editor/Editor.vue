@@ -54,7 +54,6 @@ const editor = useEditor({
 </template>
 
 <style>
-/* Basic editor styles */
 .tiptap {
     > * + * {
         margin-top: 0.75em;
