@@ -2,10 +2,10 @@
 
 namespace Http\Dashboard\Blogs;
 
-use App\Providers\RouteServiceProvider;
 use Tests\TestCase;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
+use App\Providers\RouteServiceProvider;
 
 class DeleteBlogTest extends TestCase
 {
