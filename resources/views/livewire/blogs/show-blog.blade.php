@@ -89,12 +89,12 @@
         @endif
     </div>
 
-    @if ($recentBlog)
-        <div class="mt-12">
+    <div class="grid mb-6 mt-6">
+        @if ($recentBlog)
             <h4 class="text-xl pb-4"> Recent Blog</h4>
             <x-blogs.card :blog="$recentBlog"/>
-        </div>
-    @endif
+        @endif
+    </div>
 
     <x-modals.register/>
 </div>

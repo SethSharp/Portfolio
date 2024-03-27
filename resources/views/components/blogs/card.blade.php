@@ -1,15 +1,15 @@
 @props(['blog'])
 
-<div class="rounded-xl shadow-md overflow-hidden md:flex h-fit md:space-y-4">
-    <div class="md:h-full md:w-1/2 p-2 md:p-4">
+<div class="rounded-xl shadow-md overflow-hidden sm:flex h-full md:space-y-4">
+    <div class="sm:h-full sm:w-1/2 p-2 md:p-4">
         <img
             src="{{ $blog->cover_image }}"
             alt="{{ $blog->title . ' cover image' }}"
-            class="rounded-lg overflow-hidden object-left mx-auto my-auto md:size-72"
+            class="rounded-lg overflow-hidden object-cover aspect-square object-left lg:size-full max-h-80 m-auto"
         />
     </div>
 
-    <div class="md:w-1/2 text-left px-4 h-full md:py-2">
+    <div class="sm:w-1/2 text-left px-4 h-full md:py-2">
         <div class="flex">
             <p class="text-xs text-gray-400 font-medium my-auto"> {{ $blog->author->name  }} {{ $blog->published_at->diffForHumans() }} </p>
 
