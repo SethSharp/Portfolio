@@ -1,11 +1,11 @@
 @props(['blog'])
 
-<div class="rounded-xl shadow-md overflow-hidden hover:bg-gray-100 transition md:flex h-fit space-y-4">
+<div class="rounded-xl shadow-md overflow-hidden md:flex h-fit space-y-4">
     <div class="md:h-full md:w-1/2 p-4">
         <img
             src="{{ $blog->cover_image }}"
             alt="{{ $blog->title . ' cover image' }}"
-            class="rounded-lg overflow-hidden object-left mx-auto my-auto object-center size-72"
+            class="rounded-lg overflow-hidden object-left mx-auto my-auto md:size-72"
         />
     </div>
 
