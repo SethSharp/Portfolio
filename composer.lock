@@ -4366,7 +4366,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Blog",
-                "reference": "d3f9083e3ce74991f112e6b7b1e999cea8d9cf09"
+                "reference": "179c5e40766d3aa7cd3439fb3af9e8ab0b9797a7"
             },
             "require": {
                 "codinglabsau/laravel-roles": "^2.4",
@@ -4375,7 +4375,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "SethSharp\\BlogCrud\\": "src"
+                    "SethSharp\\BlogCrud\\": "src",
+                    "SethSharp\\BlogCrud\\Database\\Factories\\Models\\Iam\\": "database/factories/Models/Iam/"
                 }
             },
             "license": [

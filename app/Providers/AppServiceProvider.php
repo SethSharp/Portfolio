@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Policies\BlogPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +31,7 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             Url::forceScheme('https');
         }
+
+        Gate::policy(Blog::class, BlogPolicy::class);
     }
 }

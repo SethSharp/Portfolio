@@ -3,14 +3,14 @@
 namespace Dashboard\Blogs;
 
 use Tests\TestCase;
-use SethSharp\BlogCrud\Models\Blog\Tag;
-use SethSharp\BlogCrud\Models\Iam\User;
-use SethSharp\BlogCrud\Models\Blog\Blog;
-use SethSharp\BlogCrud\Models\File;
 use App\Support\Cache\CacheKeys;
+use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Cache;
-use SethSharp\BlogCrud\Models\Blog\Collection;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Tag;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Collection;
 
 class UpdateBlogTest extends TestCase
 {
@@ -21,7 +21,8 @@ class UpdateBlogTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->author()->create();
+        $this->user = User::factory()->admin()->create();
+
         $this->blog = Blog::factory()->create([
             'author_id' => $this->user->id
         ]);
