@@ -92,9 +92,7 @@
     @if ($recentBlog)
         <div class="mt-12">
             <h4 class="text-xl pb-4"> Recent Blog</h4>
-            <div class="h-72">
-                <x-blogs.card :blog="$recentBlog"/>
-            </div>
+            <x-blogs.card :blog="$recentBlog"/>
         </div>
     @endif
 

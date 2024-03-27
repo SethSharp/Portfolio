@@ -57,7 +57,7 @@
             <div class="bg-white z-50 relative shadow-2xl w-full hidden
                         flex-col rounded px-6 py-3 font-medium mt-4
                         text-center" id="dropdown">
-                <a href="/home"
+                <a href="/"
                    class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('/') ? 'underline' : '' }}">
                     Home
                 </a>
