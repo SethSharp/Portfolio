@@ -22,7 +22,7 @@ class Blog extends Model
 
     protected $casts = [
         'is_draft' => 'bool',
-        'published_at' => 'timestamp'
+        'published_at' => 'datetime'
     ];
 
     public function author(): BelongsTo

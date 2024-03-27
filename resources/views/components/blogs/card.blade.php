@@ -11,7 +11,7 @@
 
     <div class="md:w-1/2 text-left p-4 h-full py-2">
         <div class="flex">
-            <p class="text-xs text-gray-400 font-medium my-auto"> {{ $blog->author->name  }} {{ Carbon\Carbon::parse($blog->published_at)->diffForHumans() }} </p>
+            <p class="text-xs text-gray-400 font-medium my-auto"> {{ $blog->author->name  }} {{ $blog->published_at->diffForHumans() }} </p>
 
             <div class="flex my-auto gap-0.5 ml-2 text-sm text-gray-400">
                 <x-icons.heart class="!size-3 my-auto"/>
