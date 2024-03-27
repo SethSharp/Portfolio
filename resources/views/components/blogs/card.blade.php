@@ -5,7 +5,7 @@
         <img
             src="{{ $blog->cover_image }}"
             alt="{{ $blog->title . ' cover image' }}"
-            class="rounded-lg overflow-hidden object-cover aspect-square object-left lg:size-full max-h-80 m-auto"
+            class="rounded-lg overflow-hidden object-cover aspect-square object-left lg:size-full max-h-52 md:max-h-80 m-auto"
         />
     </div>
 
