@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
 use App\Domain\Iam\Models\User;
 use App\Domain\Blog\Models\Blog;
-use SethSharp\BlogCrud\Models\Blog\Tag;
-use SethSharp\BlogCrud\Models\Blog\Collection;
+use App\Domain\Blog\Models\Tag;
+use App\Domain\Blog\Models\Collection;
 
 class UpdateBlogTest extends TestCase
 {
@@ -21,8 +21,7 @@ class UpdateBlogTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
-
+        $this->user = User::factory()->admin()->create();
         $this->blog = Blog::factory()->create([
             'author_id' => $this->user->id
         ]);
