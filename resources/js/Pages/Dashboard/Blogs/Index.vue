@@ -16,13 +16,9 @@ const create = () => {
 <template>
     <AuthenticatedLayout title="Blogs">
         <div class="flex justify-end">
-            <Link
-                class="bg-primary-500 rounded-xl p-2 text-white font-medium"
-                as="button"
-                @click="create"
-            >
+            <button class="bg-primary-500 rounded-xl p-2 text-white font-medium" @click="create">
                 Create Blog
-            </Link>
+            </button>
         </div>
 
         <div>

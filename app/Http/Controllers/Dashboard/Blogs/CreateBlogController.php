@@ -3,20 +3,15 @@
 namespace App\Http\Controllers\Dashboard\Blogs;
 
 use Inertia\Inertia;
-use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
+use App\Domain\Blog\Actions\CreateBlogAction;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateBlogController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): Response
     {
-        $blog = Blog::create([
-            'author_id' => auth()->user()->id,
-            'slug' => 'this-is-my-blog',
-            'title' => 'This is my blog!',
-            'content' => '',
-            'is_draft' => true,
-        ]);
+        $blog = app(CreateBlogAction::class);
 
         return Inertia::location(route('dashboard.blogs.edit', $blog));
     }

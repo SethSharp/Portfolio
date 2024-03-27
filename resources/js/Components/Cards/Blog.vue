@@ -1,13 +1,19 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
-import { PencilSquareIcon, EyeIcon } from '@heroicons/vue/16/solid/index.js'
+import { Link, router } from '@inertiajs/vue3'
+import { PencilSquareIcon, EyeIcon, TrashIcon } from '@heroicons/vue/16/solid/index.js'
 
-defineProps({
+const props = defineProps({
     blog: {
         type: Object,
         required: true,
     },
 })
+
+const deleteBlog = () => {
+    router.delete(route('dashboard.blogs.delete', props.blog), {
+        onBefore: () => confirm('Are you sure you want to delete this blog?'),
+    })
+}
 </script>
 
 <template>
@@ -28,19 +34,28 @@ defineProps({
             class="absolute inset-0 flex w-full h-full bg-black bg-opacity-25 opacity-0 transition group-hover:opacity-100"
         >
             <div class="w-full h-full flex-wrap gap-y-2">
-                <div class="text-center bg-white hover:bg-gray-100 transition p-4 m-4 rounded-lg">
-                    <Link
-                        :href="route('dashboard.blogs.edit', blog)"
-                        class="text-center w-full !bg-red-300"
-                    >
-                        <PencilSquareIcon class="w-6 h-6 mx-auto" />
+                <div class="text-center bg-white hover:bg-gray-100 transition m-4 rounded-lg">
+                    <Link :href="route('dashboard.blogs.edit', blog)" class="size-full">
+                        <span class="flex p-4">
+                            <PencilSquareIcon class="w-6 h-6 mx-auto my-auto" />
+                        </span>
                     </Link>
                 </div>
 
-                <div class="text-center bg-white hover:bg-gray-100 transition p-4 m-4 rounded-lg">
-                    <a :href="route('blogs.show', blog)" class="text-center w-full !bg-red-50">
-                        <EyeIcon class="w-6 h-6 mx-auto" />
+                <div class="text-center bg-white hover:bg-gray-100 transition m-4 rounded-lg">
+                    <a :href="route('blogs.show', blog)" class="size-full">
+                        <span class="flex p-4">
+                            <EyeIcon class="size-6 mx-auto my-auto" />
+                        </span>
                     </a>
+                </div>
+
+                <div class="text-center bg-white hover:bg-gray-100 transition m-4 rounded-lg">
+                    <button @click.prevent="deleteBlog" class="size-full">
+                        <span class="flex p-4">
+                            <TrashIcon class="size-6 mx-auto my-auto" />
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>

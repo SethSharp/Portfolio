@@ -21,6 +21,11 @@ class BlogPolicy
         return $user->hasRole(User::ROLE_AUTHOR);
     }
 
+    public function delete(User $user): bool
+    {
+        return $user->hasRole(User::ROLE_ADMIN);
+    }
+
     public function update(User $user, Blog $blog): bool
     {
         return $blog->author_id === $user->id;
