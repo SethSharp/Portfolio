@@ -4,7 +4,7 @@
 
 @push('meta')
     <meta name="description"
-          content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
+          content="Over my time in the industry I reflect on these experiences - to share to others about to go on their journey as developers or anyone that is curios.">
 @endpush
 
 @section('partOne', 'My')

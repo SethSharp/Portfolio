@@ -2,7 +2,7 @@
 
 @push('meta')
     <meta name="description"
-          content="Hey I am Seth Sharp, this is where you can find all my blogs.">
+          content="Hey I am Seth Sharp, this is where you can find all my blogs!">
 @endpush
 
 @extends("layouts.main")
