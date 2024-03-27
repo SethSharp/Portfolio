@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
-use App\Domain\Blog\Models\Blog;
+use sethsharp\Models\Blog\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Domain\Blog\Actions\UpdateBlogAction;
-use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
+use sethsharp\Models\Actions\UpdateBlogAction;
+use sethsharp\Models\Requests\UpdateBlogRequest;
 
 class UpdateBlogController extends Controller
 {

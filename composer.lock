@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d463e278933abdd6359e0431363a1284",
+    "content-hash": "a43dc390af7c4ea2de6da5fb60c2e218",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4359,6 +4359,45 @@
                 }
             ],
             "time": "2024-03-02T07:15:17+00:00"
+        },
+        {
+            "name": "sethsharp/blog",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../Blog",
+                "reference": "d3f9083e3ce74991f112e6b7b1e999cea8d9cf09"
+            },
+            "require": {
+                "codinglabsau/laravel-roles": "^2.4",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SethSharp\\BlogCrud\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Seth Sharp",
+                    "homepage": "https://www.sethsharpportfolio.com/",
+                    "role": "Maintainer, Developer"
+                }
+            ],
+            "description": "A blog CRUD package",
+            "homepage": "https://github.com/SethSharp/Blog",
+            "keywords": [
+                "Blog",
+                "Laravel"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "symfony/clock",
@@ -9694,7 +9733,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codinglabsau/php-styles": 20
+        "codinglabsau/php-styles": 20,
+        "sethsharp/blog": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

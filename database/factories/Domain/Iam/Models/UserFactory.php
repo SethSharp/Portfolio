@@ -4,7 +4,7 @@ namespace Database\Factories\Domain\Iam\Models;
 
 use Codinglabs\Roles\Role;
 use Illuminate\Support\Str;
-use App\Domain\Iam\Models\User;
+use sethsharp\Models\Iam\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
