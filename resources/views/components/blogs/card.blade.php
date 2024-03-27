@@ -1,4 +1,4 @@
-<div class="rounded-xl shadow-md overflow-hidden sm:flex h-full md:space-y-4">
+<div class="rounded-xl shadow-md overflow-hidden sm:flex md:space-y-4">
     <div class="sm:h-full sm:w-1/2 p-2 md:p-4">
         <a href="{{ route('blogs.show', $blog)  }}">
             <img
