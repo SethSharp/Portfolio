@@ -533,13 +533,11 @@ class UpdateBlogTest extends TestCase
         $file = File::create([
             'blog_id' => $this->blog->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $anotherFile = File::create([
             'blog_id' => $this->blog->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $tag = Tag::factory()->create();
@@ -567,13 +565,11 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $this->assertDatabaseMissing('files', [
             'blog_id' => $anotherFile->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
     }
 
@@ -582,7 +578,6 @@ class UpdateBlogTest extends TestCase
     {
         $file = File::create([
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $tag = Tag::factory()->create();

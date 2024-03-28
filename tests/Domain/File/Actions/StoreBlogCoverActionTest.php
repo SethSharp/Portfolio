@@ -21,8 +21,6 @@ class StoreBlogCoverActionTest extends TestCase
 
         app(StoreBlogCoverAction::class)($file, $blog->id);
 
-        // since filename is generated in the action, we can't test that it is stored
-        // but can test that the directory is created -> file is created
-        Storage::disk('s3')->assertExists('testing/blogs/' . $blog->id . '/cover-images/');
+        Storage::disk('s3')->assertExists('testing/blogs/' . $blog->id . '/cover-image.jpg');
     }
 }

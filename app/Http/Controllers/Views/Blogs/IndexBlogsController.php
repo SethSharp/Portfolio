@@ -11,7 +11,11 @@ class IndexBlogsController extends Controller
     public function __invoke(): View
     {
         return view('blogs.index', [
-            'blogs' => Blog::published()->with('likes')->orderByDesc('published_at')->get(),
+            'blogs' => Blog::published()
+                ->with('likes')
+                ->orderByDesc('published_at')
+                ->get()
+                ->each(fn (Blog $blog) => $blog->append('cover_image')),
         ]);
     }
 }

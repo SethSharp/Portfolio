@@ -21,7 +21,6 @@ class DestroyFileActionTest extends TestCase
 
         $file = File::create([
             'path' => $path,
-            'url' => 'some-url'
         ]);
 
         app(DestroyFileAction::class)($file);

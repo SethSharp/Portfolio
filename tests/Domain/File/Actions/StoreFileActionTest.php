@@ -21,8 +21,8 @@ class StoreFileActionTest extends TestCase
 
         app(StoreFileAction::class)($file, $blog->id);
 
-        // since filename is generated in the action, we can't test that it is stored
-        // but can test that the directory is created -> file is created
-        Storage::disk('s3')->assertExists('testing/blogs/' . $blog->id . '/content/');
+        $path = $file->hashName(path: "testing/blogs/{$blog->id}/content");
+
+        Storage::disk('s3')->assertExists($path);
     }
 }

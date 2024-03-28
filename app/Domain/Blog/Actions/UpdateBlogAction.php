@@ -51,7 +51,7 @@ class UpdateBlogAction
             $coverImagePath = app(StoreBlogCoverAction::class)($coverImage, $blog->id);
 
             $blog->update([
-                'cover_image' => config('app.cloudfront_url') . $coverImagePath
+                'cover_image' => $coverImagePath
             ]);
         }
 
@@ -67,7 +67,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (!$blog->published_at) {
+                if (! $blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

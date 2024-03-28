@@ -13,7 +13,8 @@ class EditBlogController extends Controller
 {
     public function __invoke(Blog $blog): Response
     {
-        $blog->load('tags');
+        $blog->load('tags')
+            ->append('cover_image');
 
         return Inertia::render('Dashboard/Blogs/Edit', [
             'blog' => $blog,

@@ -81,7 +81,6 @@ class StoreBlogImageTest extends TestCase
 
         $file = File::create([
             'path' => 'some-old-path',
-            'url' => '/storage/some-old-path'
         ]);
 
         $this->storeFileAction->shouldReceive('__invoke')
@@ -112,7 +111,6 @@ class StoreBlogImageTest extends TestCase
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
             'path' => 'new-file-path',
-            'url' => '/storage/new-file-path'
         ]);
     }
 
@@ -144,7 +142,6 @@ class StoreBlogImageTest extends TestCase
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
             'path' => 'some-random-path',
-            'url' => '/storage/some-random-path'
         ]);
     }
 
