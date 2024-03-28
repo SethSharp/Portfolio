@@ -56,7 +56,7 @@ class BlogComments extends Component
 
         $this->blog->comments()->attach($comment);
 
-        auth()->user()->notify(new NotifySlackOfCommentNotification($comment, $this->blog));
+        auth()->user()->notify(new \SethSharp\BlogCrud\Notifications\NotifySlackOfCommentNotification($comment, $this->blog));
 
         $this->comments->push($comment);
 

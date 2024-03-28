@@ -4366,7 +4366,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Blog",
-                "reference": "b8f02a897906bba2659886e100efbd765273cc6d"
+                "reference": "fa6c028656ecb6ee396d9c7adee9f38ef296efef"
             },
             "require": {
                 "codinglabsau/laravel-roles": "^2.4",

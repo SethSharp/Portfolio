@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
-
 use Illuminate\Support\Facades\URL;
+
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Policies\BlogPolicy;

@@ -3,14 +3,14 @@
 namespace Dashboard\Blogs;
 
 use Tests\TestCase;
+use App\Domain\Blog\Models\Tag;
+use App\Domain\Iam\Models\User;
+use App\Domain\Blog\Models\Blog;
 use App\Support\Cache\CacheKeys;
 use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Cache;
-use App\Providers\RouteServiceProvider;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Tag;
 use App\Domain\Blog\Models\Collection;
+use App\Providers\RouteServiceProvider;
 
 class UpdateBlogTest extends TestCase
 {

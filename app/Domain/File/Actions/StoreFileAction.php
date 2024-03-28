@@ -16,7 +16,8 @@ class StoreFileAction
         $filename = uniqid() . '_' . $file->getClientOriginalName();
 
         $path = $structure . 'blogs/' . $blogId . $path . $filename;
-        //        dd($path);
+
+        $path = $file->hashName(path: "$structure/blogs/{$blogId}/{$path}.");
 
         Storage::disk('s3')->put($path, file_get_contents($file), Visibility::PUBLIC);
 
