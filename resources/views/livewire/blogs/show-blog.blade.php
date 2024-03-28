@@ -9,7 +9,7 @@
         <meta name="keywords" content="{{ $blog?->meta_tags ? $blog->meta_tags : '' }}">
     @endif
 
-    @if (! $blog->is_draft)
+    @if ($blog->is_draft)
         <meta name="robots" content="noindex, nofollow"/>
     @endif
 @endpush
