@@ -10,10 +10,10 @@ class Blog extends \SethSharp\BlogCrud\Models\Blog\Blog
 {
     use HasFactory;
 
-    public function coverImage(): Attribute
+    public function cover(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this?->cover_image ? Storage::disk('s3')->url($this->cover_image) : null
+            get: fn() => $this?->cover_image ? Storage::disk('s3')->url($this->cover_image) : null
         );
     }
 }
