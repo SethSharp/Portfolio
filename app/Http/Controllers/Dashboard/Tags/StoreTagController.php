@@ -4,16 +4,14 @@ namespace App\Http\Controllers\Dashboard\Tags;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use SethSharp\BlogCrud\Models\Blog\Tag;
+use SethSharp\BlogCrud\Actions\Tags\StoreTagAction;
 use SethSharp\BlogCrud\Requests\Tags\StoreTagRequest;
 
 class StoreTagController extends Controller
 {
-    public function __invoke(StoreTagRequest $storeTagRequest): RedirectResponse
+    public function __invoke(StoreTagRequest $storeTagRequest, StoreTagAction $storeTagAction): RedirectResponse
     {
-        $tag = Tag::create([
-            'name' => $storeTagRequest->input('name')
-        ]);
+        $tag = $storeTagAction($storeTagRequest);
 
         return redirect()
             ->route('dashboard.tags.index')

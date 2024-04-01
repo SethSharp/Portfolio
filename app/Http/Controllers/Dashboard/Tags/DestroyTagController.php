@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Dashboard\Tags;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use SethSharp\BlogCrud\Actions\Tags\DestroyTagAction;
 use SethSharp\BlogCrud\Models\Blog\Tag;
 
 class DestroyTagController extends Controller
 {
-    public function __invoke(Tag $tag): RedirectResponse
+    public function __invoke(Tag $tag, DestroyTagAction $destroyTagAction): RedirectResponse
     {
         $this->authorize('destroy', Tag::class);
 
-        $tag->delete();
+        $destroyTagAction($tag);
 
         return redirect()
             ->route('dashboard.tags.index')
