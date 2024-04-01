@@ -3,8 +3,8 @@
 namespace Http\Dashboard\Collection;
 
 use Tests\TestCase;
-use SethSharp\BlogCrud\Models\Iam\User;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 

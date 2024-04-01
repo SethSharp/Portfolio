@@ -3,9 +3,9 @@
 namespace Dashboard\Tags;
 
 use Tests\TestCase;
+use App\Providers\RouteServiceProvider;
 use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Models\Iam\User;
-use App\Providers\RouteServiceProvider;
 
 class RestoreTagTest extends TestCase
 {

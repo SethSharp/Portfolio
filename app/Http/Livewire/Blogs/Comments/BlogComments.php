@@ -57,7 +57,7 @@ class BlogComments extends Component
 
         $this->blog->comments()->attach($comment);
 
-//        dd(auth()->user());
+        //        dd(auth()->user());
         auth()->user()->notify(new NotifySlackOfCommentNotification($comment, $this->blog));
 
         $this->comments->push($comment);

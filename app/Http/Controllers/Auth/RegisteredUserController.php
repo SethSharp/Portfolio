@@ -9,8 +9,8 @@ use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use SethSharp\BlogCrud\Models\Iam\User;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
 use Illuminate\Validation\ValidationException;
 
 class RegisteredUserController extends Controller

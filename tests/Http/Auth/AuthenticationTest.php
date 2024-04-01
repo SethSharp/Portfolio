@@ -3,8 +3,8 @@
 namespace Tests\Http\Auth;
 
 use Tests\TestCase;
-use SethSharp\BlogCrud\Models\Iam\User;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class AuthenticationTest extends TestCase

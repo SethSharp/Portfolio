@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Models\Blog\Blog;
-use SethSharp\BlogCrud\Policies\BlogPolicy;
 use SethSharp\BlogCrud\Policies\TagPolicy;
+use SethSharp\BlogCrud\Policies\BlogPolicy;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 use SethSharp\BlogCrud\Policies\CollectionPolicy;
 
