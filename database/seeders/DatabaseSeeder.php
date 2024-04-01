@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Domain\Blog\Models\Tag;
-use App\Domain\Iam\Models\User;
 use Illuminate\Database\Seeder;
-use App\Domain\Blog\Models\Blog;
 use App\Console\Commands\Bootstrap;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Artisan;
+use SethSharp\BlogCrud\Models\Blog\Tag;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,11 +28,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tag::factory()->create([
-            'name' => 'Tutorial'
+            'name' => 'Laravel'
         ]);
 
         Tag::factory()->create([
             'name' => 'AWS'
+        ]);
+
+        Tag::factory()->create([
+            'name' => 'Discussion'
+        ]);
+
+        Tag::factory()->create([
+            'name' => 'Tutorial'
         ]);
 
         User::factory()->author()->create([

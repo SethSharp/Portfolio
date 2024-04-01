@@ -3,7 +3,7 @@
 namespace Tests\Http\Auth\Profile;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
+use SethSharp\BlogCrud\Models\Iam\User;
 
 class ProfileTest extends TestCase
 {

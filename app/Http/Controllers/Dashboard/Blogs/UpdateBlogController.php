@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
-use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Actions\Blogs\UpdateBlogAction;
 use SethSharp\BlogCrud\Requests\Blogs\UpdateBlogRequest;
 

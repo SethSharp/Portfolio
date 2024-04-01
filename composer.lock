@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a43dc390af7c4ea2de6da5fb60c2e218",
+    "content-hash": "cec9762a279ab9f7103f302db38bba4d",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4361,15 +4361,18 @@
             "time": "2024-03-02T07:15:17+00:00"
         },
         {
-            "name": "sethsharp/blog",
+            "name": "sethsharp/blog-crud",
             "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "../Blog",
-                "reference": "8b99cccbe00efc9c2bfd1893df556c767016d071"
+                "url": "../blog-crud",
+                "reference": "423e829c7455c5f51d0f3369d420d60a37e55e5e"
             },
             "require": {
+                "aws/aws-sdk-php": "^3.298",
                 "codinglabsau/laravel-roles": "^2.4",
+                "intervention/image-laravel": "^1.2",
+                "laravel/slack-notification-channel": "^3.2",
                 "php": "^8.2"
             },
             "type": "library",
@@ -9735,7 +9738,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "codinglabsau/php-styles": 20,
-        "sethsharp/blog": 20
+        "sethsharp/blog-crud": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
