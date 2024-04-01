@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use SethSharp\BlogCrud\BlogServiceProvider;
 
 return [
 
@@ -196,6 +197,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        BlogServiceProvider::class,
 
     ],
 
