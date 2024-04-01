@@ -11,7 +11,7 @@ class CreateBlogController extends Controller
 {
     public function __invoke(): Response
     {
-        $blog = app(CreateBlogAction::class);
+        $blog = app(CreateBlogAction::class)();
 
         return Inertia::location(route('dashboard.blogs.edit', $blog));
     }
