@@ -25,9 +25,6 @@ use App\Http\Controllers\Dashboard\Collection\DestroyCollectionController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin,author'])->prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::get('/file/create', CreateFileController::class)->name('files.create');
-        Route::post('/file/store', StoreFileController::class)->name('files.store');
-
         Route::prefix('blogs')->name('blogs.')->group(function () {
             Route::get('/', IndexBlogsController::class)->name('index');
             Route::post('/create', CreateBlogController::class)->name('create');

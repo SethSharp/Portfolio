@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\Tags;
 use App\Domain\Blog\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Dashboard\Tags\StoreTagRequest;
+use SethSharp\BlogCrud\Requests\Tags\StoreTagRequest;
 
 class StoreTagController extends Controller
 {
