@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cec9762a279ab9f7103f302db38bba4d",
+    "content-hash": "13670718574c574a6f2274cac4cef80d",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4363,10 +4363,16 @@
         {
             "name": "sethsharp/blog-crud",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SethSharp/BlogCrud.git",
+                "reference": "084b909c442d86c23f587ddfc4222f1f0ce02af0"
+            },
             "dist": {
-                "type": "path",
-                "url": "../blog-crud",
-                "reference": "423e829c7455c5f51d0f3369d420d60a37e55e5e"
+                "type": "zip",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/084b909c442d86c23f587ddfc4222f1f0ce02af0",
+                "reference": "084b909c442d86c23f587ddfc4222f1f0ce02af0",
+                "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",
@@ -4375,6 +4381,7 @@
                 "laravel/slack-notification-channel": "^3.2",
                 "php": "^8.2"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -4382,6 +4389,7 @@
                     "SethSharp\\BlogCrud\\Database\\Factories\\": "src/Database/Factories"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4395,13 +4403,14 @@
             "description": "A blog CRUD package",
             "homepage": "https://github.com/SethSharp/Blog",
             "keywords": [
-                "Blog",
-                "Laravel"
+                "blog",
+                "laravel"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/SethSharp/BlogCrud/issues",
+                "source": "https://github.com/SethSharp/BlogCrud/tree/main"
+            },
+            "time": "2024-04-01T04:22:55+00:00"
         },
         {
             "name": "symfony/clock",
@@ -9737,8 +9746,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codinglabsau/php-styles": 20,
-        "sethsharp/blog-crud": 20
+        "codinglabsau/php-styles": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
