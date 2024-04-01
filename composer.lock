@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb4dfe363ec935c5f777507950961a9c",
+    "content-hash": "c635de1163d6bf99aee188cc4b0ed090",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4364,10 +4364,16 @@
         {
             "name": "sethsharp/blog-crud",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SethSharp/BlogCrud.git",
+                "reference": "b3a0f399ac47d32c63a3c7b031212c4b25d99031"
+            },
             "dist": {
-                "type": "path",
-                "url": "../blog-crud",
-                "reference": "93f9d447ecdbb281f3c7ef25ad53f88feda2468e"
+                "type": "zip",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/b3a0f399ac47d32c63a3c7b031212c4b25d99031",
+                "reference": "b3a0f399ac47d32c63a3c7b031212c4b25d99031",
+                "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",
@@ -4377,6 +4383,7 @@
                 "laravel/slack-notification-channel": "^3.2",
                 "php": "^8.2"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -4391,6 +4398,7 @@
                     "SethSharp\\BlogCrud\\Database\\Factories\\": "src/Database/Factories"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4404,13 +4412,14 @@
             "description": "A blog CRUD package",
             "homepage": "https://github.com/SethSharp/Blog",
             "keywords": [
-                "Blog",
-                "Laravel"
+                "blog",
+                "laravel"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/SethSharp/BlogCrud/issues",
+                "source": "https://github.com/SethSharp/BlogCrud/tree/main"
+            },
+            "time": "2024-04-01T08:55:00+00:00"
         },
         {
             "name": "symfony/clock",
