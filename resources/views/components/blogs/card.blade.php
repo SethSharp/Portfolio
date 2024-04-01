@@ -2,7 +2,7 @@
     <div class="sm:h-full sm:w-1/2 p-2 md:p-4">
         <a href="{{ route('blogs.show', $blog)  }}">
             <img
-                src="{{ $blog->cover_image }}"
+                src="{{ $blog->cover }}"
                 alt="{{ $blog->title . ' cover image' }}"
                 class="rounded-lg overflow-hidden object-cover aspect-square object-left lg:size-full max-h-52 md:max-h-80 m-auto"
             />
