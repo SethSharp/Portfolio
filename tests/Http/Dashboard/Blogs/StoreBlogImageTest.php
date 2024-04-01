@@ -4,14 +4,13 @@ namespace Dashboard\Blogs;
 
 use Tests\TestCase;
 use Mockery\MockInterface;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\File\Models\File;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\File;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-
-use App\Domain\File\Actions\StoreFileAction;
-use App\Domain\File\Actions\DestroyFileAction;
+use SethSharp\BlogCrud\Actions\Files\StoreFileAction;
+use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
 
 class StoreBlogImageTest extends TestCase
 {
@@ -162,6 +161,6 @@ class StoreBlogImageTest extends TestCase
 
         $file = File::first();
 
-        $this->assertStringContainsString('blogs/' . $blog->id . '/content', $file->path);
+        $this->assertStringContainsString('testing/blogs/' . $blog->id . '/content/', $file->path);
     }
 }

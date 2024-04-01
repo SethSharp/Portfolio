@@ -5,11 +5,11 @@ namespace Tests\Http\Livewire\Blogs\Comments;
 use Tests\TestCase;
 use Livewire\Livewire;
 use Illuminate\Support\Str;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Livewire\Blogs\Comments\BlogComments;
-use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
+use SethSharp\BlogCrud\Notifications\NotifySlackOfCommentNotification;
 
 class BlogCommentsComponentTest extends TestCase
 {
@@ -24,7 +24,7 @@ class BlogCommentsComponentTest extends TestCase
             ->call('save')
             ->assertSet('showRegisterModal', true);
 
-        $this->assertDatabaseCount('comments', 3);
+        $this->assertDatabaseCount('comments', 0);
     }
 
     /** @test */

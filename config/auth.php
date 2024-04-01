@@ -1,5 +1,7 @@
 <?php
 
+use SethSharp\BlogCrud\Models\Iam\User;
+
 return [
 
     /*
@@ -62,7 +64,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Domain\Iam\Models\User::class,
+            'model' => User::class,
         ],
 
         // 'users' => [

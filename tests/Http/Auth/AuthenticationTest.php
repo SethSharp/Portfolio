@@ -3,9 +3,9 @@
 namespace Tests\Http\Auth;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
+use SethSharp\BlogCrud\Models\Iam\User;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class AuthenticationTest extends TestCase
 {

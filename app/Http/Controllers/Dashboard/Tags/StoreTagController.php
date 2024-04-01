@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Tags;
 
-use App\Domain\Blog\Models\Tag;
+use SethSharp\BlogCrud\Models\Blog\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use SethSharp\BlogCrud\Requests\Tags\StoreTagRequest;

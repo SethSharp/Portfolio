@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Tags;
 
-use App\Domain\Blog\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Requests\Tags\UpdateTagRequest;
 
 class UpdateTagController extends Controller

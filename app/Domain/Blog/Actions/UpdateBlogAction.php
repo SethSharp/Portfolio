@@ -3,12 +3,12 @@
 namespace App\Domain\Blog\Actions;
 
 use Illuminate\Support\Str;
-use App\Domain\Blog\Models\Blog;
-use App\Support\Cache\CacheKeys;
 use Illuminate\Support\Facades\Cache;
-use App\Domain\Blog\Models\Collection;
-use App\Domain\File\Actions\StoreBlogCoverAction;
-use App\Http\Requests\Dashboard\Blogs\UpdateBlogRequest;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Collection;
+use SethSharp\BlogCrud\Support\Cache\CacheKeys;
+use SethSharp\BlogCrud\Requests\Blogs\UpdateBlogRequest;
+use SethSharp\BlogCrud\Actions\Blogs\StoreBlogCoverAction;
 
 class UpdateBlogAction
 {
@@ -67,7 +67,7 @@ class UpdateBlogAction
                     'published_at' => null
                 ]);
             } else {
-                if (! $blog->published_at) {
+                if (!$blog->published_at) {
                     $blog->update([
                         'published_at' => now()
                     ]);

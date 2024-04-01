@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Blogs\Comments;
 
 use Livewire\Component;
 use Illuminate\View\View;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Comment;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Comment;
+use SethSharp\BlogCrud\Notifications\NotifySlackOfCommentNotification;
 
 class BlogComments extends Component
 {
@@ -29,6 +30,7 @@ class BlogComments extends Component
             ->with('user')
             ->get()
             ->each(function (Comment $comment) {
+
                 $comment->posted = $comment->created_at->diffForHumans();
 
                 return $comment;
@@ -55,7 +57,8 @@ class BlogComments extends Component
 
         $this->blog->comments()->attach($comment);
 
-        auth()->user()->notify(new \SethSharp\BlogCrud\Notifications\NotifySlackOfCommentNotification($comment, $this->blog));
+//        dd(auth()->user());
+        auth()->user()->notify(new NotifySlackOfCommentNotification($comment, $this->blog));
 
         $this->comments->push($comment);
 

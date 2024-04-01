@@ -3,8 +3,8 @@
 namespace Dashboard\Tags;
 
 use Tests\TestCase;
-use App\Domain\Blog\Models\Tag;
-use App\Domain\Iam\Models\User;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Tag;
 use App\Providers\RouteServiceProvider;
 
 class StoreTagTest extends TestCase

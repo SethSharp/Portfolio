@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
-use App\Domain\File\Models\File;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Domain\File\Actions\StoreFileAction;
-use App\Domain\File\Actions\DestroyFileAction;
-use App\Http\Requests\Dashboard\Blogs\StoreBlogImageRequest;
+use SethSharp\BlogCrud\Models\File\File;
+use SethSharp\BlogCrud\Actions\Files\StoreFileAction;
+use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
+use SethSharp\BlogCrud\Requests\Blogs\StoreBlogImageRequest;
 
 class StoreBlogImageController extends Controller
 {

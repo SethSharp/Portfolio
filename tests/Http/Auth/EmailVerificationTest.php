@@ -3,11 +3,11 @@
 namespace Tests\Http\Auth;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
 
 class EmailVerificationTest extends TestCase
 {
@@ -39,7 +39,7 @@ class EmailVerificationTest extends TestCase
         $response = $this->actingAs($user)->get($verificationUrl);
 
         Event::assertDispatched(Verified::class);
-        
+
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
         $response->assertRedirect(RouteServiceProvider::HOME . '?verified=1');
     }

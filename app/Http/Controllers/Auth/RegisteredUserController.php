@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\Request;
-use App\Domain\Iam\Models\User;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use SethSharp\BlogCrud\Models\Iam\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\ValidationException;
 

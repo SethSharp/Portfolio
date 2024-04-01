@@ -4,8 +4,8 @@ namespace App\Http\Livewire\Blogs;
 
 use Livewire\Component;
 use Illuminate\View\View;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Collection;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Collection;
 
 class ShowBlog extends Component
 {

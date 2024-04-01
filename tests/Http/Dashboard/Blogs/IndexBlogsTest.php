@@ -3,8 +3,8 @@
 namespace Http\Dashboard\Blogs;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 use Inertia\Testing\AssertableInertia;
 use App\Providers\RouteServiceProvider;
 
@@ -47,9 +47,9 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index'))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
-                ->where('publishedBlogs.0.id', $published->id)
-                ->where('draftBlogs.0.id', $draft->id)
+                fn(AssertableInertia $page) => $page
+                    ->where('publishedBlogs.0.id', $published->id)
+                    ->where('draftBlogs.0.id', $draft->id)
             );
     }
 }

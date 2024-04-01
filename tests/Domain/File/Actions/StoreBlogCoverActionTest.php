@@ -3,10 +3,10 @@
 namespace Tests\Domain\File\Actions;
 
 use Tests\TestCase;
-use App\Domain\Blog\Models\Blog;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use App\Domain\File\Actions\StoreBlogCoverAction;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Actions\Blogs\StoreBlogCoverAction;
 
 class StoreBlogCoverActionTest extends TestCase
 {

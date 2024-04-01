@@ -6,7 +6,7 @@ use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use SethSharp\BlogCrud\Actions\Blogs\UpdateBlogAction;
-use SethSharp\BlogCrud\Models\Requests\UpdateBlogRequest;
+use SethSharp\BlogCrud\Requests\Blogs\UpdateBlogRequest;
 
 class UpdateBlogController extends Controller
 {

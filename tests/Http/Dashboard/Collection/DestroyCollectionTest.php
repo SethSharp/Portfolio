@@ -3,10 +3,10 @@
 namespace Http\Dashboard\Collection;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\Blog\Models\Collection;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Blog\Collection;
 
 class DestroyCollectionTest extends TestCase
 {

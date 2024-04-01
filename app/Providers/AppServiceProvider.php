@@ -6,8 +6,12 @@ use Illuminate\Support\Facades\URL;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Policies\BlogPolicy;
+use SethSharp\BlogCrud\Policies\TagPolicy;
+use SethSharp\BlogCrud\Models\Blog\Collection;
+use SethSharp\BlogCrud\Policies\CollectionPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +37,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Gate::policy(Blog::class, BlogPolicy::class);
+        Gate::policy(Tag::class, TagPolicy::class);
+        Gate::policy(Collection::class, CollectionPolicy::class);
     }
 }

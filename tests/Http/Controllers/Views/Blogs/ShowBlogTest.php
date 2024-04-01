@@ -3,8 +3,8 @@
 namespace Tests\Http\Controllers\Views\Blogs;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class ShowBlogTest extends TestCase
 {

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Dashboard\Tags;
 
 use Illuminate\Http\Request;
-use App\Domain\Blog\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use SethSharp\BlogCrud\Models\Blog\Tag;
 
 class RestoreTagController extends Controller
 {
