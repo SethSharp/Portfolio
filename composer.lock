@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c635de1163d6bf99aee188cc4b0ed090",
+    "content-hash": "e9162e1b49fe9e832e24dd14ff5b80e3",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4363,16 +4363,16 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "dev-main",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SethSharp/BlogCrud.git",
-                "reference": "b3a0f399ac47d32c63a3c7b031212c4b25d99031"
+                "reference": "fa57de8f6dc91326254b0144a0f6be30d56c4ba1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/b3a0f399ac47d32c63a3c7b031212c4b25d99031",
-                "reference": "b3a0f399ac47d32c63a3c7b031212c4b25d99031",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/fa57de8f6dc91326254b0144a0f6be30d56c4ba1",
+                "reference": "fa57de8f6dc91326254b0144a0f6be30d56c4ba1",
                 "shasum": ""
             },
             "require": {
@@ -4383,7 +4383,6 @@
                 "laravel/slack-notification-channel": "^3.2",
                 "php": "^8.2"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -4417,9 +4416,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SethSharp/BlogCrud/issues",
-                "source": "https://github.com/SethSharp/BlogCrud/tree/main"
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.1"
             },
-            "time": "2024-04-01T08:55:00+00:00"
+            "time": "2024-04-01T09:12:35+00:00"
         },
         {
             "name": "symfony/clock",
@@ -9756,8 +9755,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codinglabsau/php-styles": 20,
-        "sethsharp/blog-crud": 20
+        "codinglabsau/php-styles": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
