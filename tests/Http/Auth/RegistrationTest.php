@@ -3,9 +3,9 @@
 namespace Tests\Http\Auth;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\VerifyEmail;
 

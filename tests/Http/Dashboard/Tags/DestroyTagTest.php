@@ -3,9 +3,9 @@
 namespace Dashboard\Tags;
 
 use Tests\TestCase;
-use App\Domain\Blog\Models\Tag;
-use App\Domain\Iam\Models\User;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Blog\Tag;
+use SethSharp\BlogCrud\Models\Iam\User;
 
 class DestroyTagTest extends TestCase
 {

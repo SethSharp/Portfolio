@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\Collection;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Http\Controllers\Controller;
-use App\Domain\Blog\Models\Collection;
+use SethSharp\BlogCrud\Models\Blog\Collection;
 
 class IndexCollectionController extends Controller
 {

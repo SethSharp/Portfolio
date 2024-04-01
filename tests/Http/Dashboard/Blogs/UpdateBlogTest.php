@@ -3,14 +3,14 @@
 namespace Dashboard\Blogs;
 
 use Tests\TestCase;
-use App\Domain\Blog\Models\Tag;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\File\Models\File;
-use App\Support\Cache\CacheKeys;
+use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Cache;
-use App\Domain\Blog\Models\Collection;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Blog\Tag;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Collection;
+use SethSharp\BlogCrud\Support\Cache\CacheKeys;
 
 class UpdateBlogTest extends TestCase
 {
@@ -21,7 +21,7 @@ class UpdateBlogTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->author()->create();
+        $this->user = User::factory()->admin()->create();
         $this->blog = Blog::factory()->create([
             'author_id' => $this->user->id
         ]);
@@ -533,13 +533,11 @@ class UpdateBlogTest extends TestCase
         $file = File::create([
             'blog_id' => $this->blog->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $anotherFile = File::create([
             'blog_id' => $this->blog->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $tag = Tag::factory()->create();
@@ -567,13 +565,11 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $this->assertDatabaseMissing('files', [
             'blog_id' => $anotherFile->id,
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
     }
 
@@ -582,7 +578,6 @@ class UpdateBlogTest extends TestCase
     {
         $file = File::create([
             'path' => 'some-path',
-            'url' => 'some-url'
         ]);
 
         $tag = Tag::factory()->create();

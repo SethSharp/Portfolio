@@ -3,10 +3,10 @@
 namespace Tests\Domain\File\Actions;
 
 use Tests\TestCase;
-use App\Domain\File\Models\File;
 use Illuminate\Http\UploadedFile;
+use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Storage;
-use App\Domain\File\Actions\DestroyFileAction;
+use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
 
 class DestroyFileActionTest extends TestCase
 {
@@ -21,7 +21,6 @@ class DestroyFileActionTest extends TestCase
 
         $file = File::create([
             'path' => $path,
-            'url' => 'some-url'
         ]);
 
         app(DestroyFileAction::class)($file);

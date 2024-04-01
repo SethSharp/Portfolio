@@ -3,7 +3,7 @@
 namespace App\Domain\Iam\Actions;
 
 use App\Domain\Iam\Models\Role;
-use App\Domain\Iam\Models\User;
+use SethSharp\BlogCrud\Models\Iam\User;
 
 class SyncRolesAction
 {
@@ -15,7 +15,7 @@ class SyncRolesAction
         ];
 
         foreach ($roles as $role) {
-            if (! Role::where('name', $role)->exists()) {
+            if (!Role::where('name', $role)->exists()) {
                 Role::create(['name' => $role]);
             }
         }

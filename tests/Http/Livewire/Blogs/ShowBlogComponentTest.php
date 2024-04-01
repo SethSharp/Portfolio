@@ -4,9 +4,9 @@ namespace Tests\Http\Livewire\Blogs;
 
 use Tests\TestCase;
 use Livewire\Livewire;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
 use App\Http\Livewire\Blogs\ShowBlog;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class ShowBlogComponentTest extends TestCase
 {

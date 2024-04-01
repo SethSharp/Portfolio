@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Dashboard\Collection;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Domain\Blog\Models\Collection;
-use App\Http\Requests\Dashboard\Group\DestroyCollectionRequest;
+use SethSharp\BlogCrud\Models\Blog\Collection;
+use SethSharp\BlogCrud\Requests\Collection\DestroyCollectionRequest;
 
 class DestroyCollectionController extends Controller
 {

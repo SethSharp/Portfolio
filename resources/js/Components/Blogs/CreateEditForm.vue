@@ -69,7 +69,7 @@ const submit = async () => {
         <FormElement>
             <ImageUpload
                 v-model="form.cover_image"
-                :current-image="blog?.cover_image ? blog.cover_image : null"
+                :current-image="blog.cover"
                 label="Cover Image"
             />
             <InputError :message="form.errors.cover_image" />

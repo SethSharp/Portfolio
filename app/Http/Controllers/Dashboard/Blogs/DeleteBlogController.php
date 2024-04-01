@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Blogs;
 
-use App\Domain\Blog\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Domain\Blog\Actions\DeleteBlogAction;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Actions\Blogs\DeleteBlogAction;
 
 class DeleteBlogController extends Controller
 {

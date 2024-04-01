@@ -3,9 +3,9 @@
 namespace Http\Dashboard\Collection;
 
 use Tests\TestCase;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Collection;
 use App\Providers\RouteServiceProvider;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Collection;
 
 class StoreCollectionTest extends TestCase
 {

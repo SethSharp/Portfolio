@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Domain\Iam\Models\User;
 use Illuminate\Validation\Rule;
+use SethSharp\BlogCrud\Models\Iam\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileUpdateRequest extends FormRequest

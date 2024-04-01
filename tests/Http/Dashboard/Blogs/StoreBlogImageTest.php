@@ -4,14 +4,13 @@ namespace Dashboard\Blogs;
 
 use Tests\TestCase;
 use Mockery\MockInterface;
-use App\Domain\Iam\Models\User;
-use App\Domain\Blog\Models\Blog;
-use App\Domain\File\Models\File;
 use Illuminate\Http\UploadedFile;
+use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Storage;
-
-use App\Domain\File\Actions\StoreFileAction;
-use App\Domain\File\Actions\DestroyFileAction;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Actions\Files\StoreFileAction;
+use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
 
 class StoreBlogImageTest extends TestCase
 {
@@ -81,7 +80,6 @@ class StoreBlogImageTest extends TestCase
 
         $file = File::create([
             'path' => 'some-old-path',
-            'url' => '/storage/some-old-path'
         ]);
 
         $this->storeFileAction->shouldReceive('__invoke')
@@ -112,7 +110,6 @@ class StoreBlogImageTest extends TestCase
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
             'path' => 'new-file-path',
-            'url' => '/storage/new-file-path'
         ]);
     }
 
@@ -144,7 +141,6 @@ class StoreBlogImageTest extends TestCase
         $this->assertDatabaseHas('files', [
             'blog_id' => $blog->id,
             'path' => 'some-random-path',
-            'url' => '/storage/some-random-path'
         ]);
     }
 
@@ -165,6 +161,6 @@ class StoreBlogImageTest extends TestCase
 
         $file = File::first();
 
-        $this->assertStringContainsString('blogs/' . $blog->id . '/content', $file->path);
+        $this->assertStringContainsString('testing/blogs/' . $blog->id . '/content/', $file->path);
     }
 }
