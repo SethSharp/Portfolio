@@ -5,6 +5,7 @@ namespace Tests;
 use Carbon\Carbon;
 use Tests\Traits\SeedsRoles;
 use Tests\Traits\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -20,8 +21,10 @@ abstract class TestCase extends BaseTestCase
         $this->withoutVite();
 
         $this->seedRoles();
-        
+
 
         Carbon::setTestNow(now());
+
+        Storage::fake('s3');
     }
 }
