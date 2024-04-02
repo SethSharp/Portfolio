@@ -9,7 +9,7 @@ use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Livewire\Blogs\Comments\BlogComments;
-use SethSharp\BlogCrud\Notifications\NotifySlackOfCommentNotification;
+use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogCommentsComponentTest extends TestCase
 {

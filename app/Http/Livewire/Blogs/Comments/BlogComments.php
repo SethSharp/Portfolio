@@ -6,7 +6,7 @@ use Livewire\Component;
 use Illuminate\View\View;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Comment;
-use SethSharp\BlogCrud\Notifications\NotifySlackOfCommentNotification;
+use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogComments extends Component
 {
