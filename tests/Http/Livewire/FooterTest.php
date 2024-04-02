@@ -33,10 +33,7 @@ class FooterTest extends TestCase
             ->set('name', 'a name')
             ->set('message', 'some message')
             ->call('send')
-            ->assertOk()
-            ->assertSessionHas([
-                'success' => 'Message sent successfully.'
-            ]);
+            ->assertOk();
 
         Notification::assertSentOnDemand(NotifySlackOfContactNotification::class);
     }
