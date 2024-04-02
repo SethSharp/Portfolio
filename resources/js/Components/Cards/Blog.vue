@@ -36,7 +36,7 @@ const deleteBlog = () => {
 
                             <div class="flex my-auto gap-0.5 ml-2 text-sm text-gray-400">
                                 <HeartIcon class="size-3 my-auto"/>
-                                <span> - </span>
+                                <span> {{ blog.likes.length }}</span>
                             </div>
                         </div>
 
