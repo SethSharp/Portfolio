@@ -40,7 +40,6 @@ class IndexBlogsTest extends TestCase
     /** @test */
     public function can_separate_draft_and_published_blogs()
     {
-        $this->markTestSkipped('Need to figure out what is going on in the package or other areas.');
         $draft = Blog::factory()->draft()->create();
         $published = Blog::factory()->published()->create();
 
@@ -48,7 +47,7 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index'))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
+                fn(AssertableInertia $page) => $page
                     ->where('publishedBlogs.0.id', $published->id)
                     ->where('draftBlogs.0.id', $draft->id)
             );

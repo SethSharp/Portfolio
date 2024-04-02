@@ -17,8 +17,8 @@ const deleteBlog = () => {
 </script>
 
 <template>
-    <div class="group bg-gray-100 rounded-3xl relative w-auto min-h-64 overflow-hidden">
-        <div class="h-full">
+    <div class="group h-full rounded-3xl relative w-auto overflow-hidden">
+        <div class="h-full min-h-full">
             <div class="rounded-xl shadow-md overflow-hidden sm:flex md:space-y-4">
                 <div class="sm:h-full sm:w-1/2 p-2 md:p-4">
                     <img
