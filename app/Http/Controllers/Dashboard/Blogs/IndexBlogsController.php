@@ -17,13 +17,11 @@ class IndexBlogsController extends Controller
             'publishedBlogs' => Blog::with(['tags', 'author', 'likes'])
                 ->orderByDesc('created_at')
                 ->published()
-                ->get()
-                ->each(fn (Blog $blog) => $blog->append('cover')),
+                ->get(),
             'draftBlogs' => Blog::with(['tags', 'author', 'likes'])
                 ->orderByDesc('created_at')
                 ->notPublished()
-                ->get()
-                ->each(fn (Blog $blog) => $blog->append('cover')),
+                ->get(),
         ]);
     }
 }

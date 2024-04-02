@@ -14,8 +14,7 @@ class IndexBlogsController extends Controller
             'blogs' => Blog::published()
                 ->with('likes')
                 ->orderByDesc('published_at')
-                ->get()
-                ->each(fn (Blog $blog) => $blog->append('cover')),
+                ->get(),
         ]);
     }
 }
