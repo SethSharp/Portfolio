@@ -1,6 +1,6 @@
 <script setup>
-import { Link, router } from '@inertiajs/vue3'
-import { PencilSquareIcon, EyeIcon, TrashIcon, HeartIcon } from '@heroicons/vue/16/solid/index.js'
+import {Link, router} from '@inertiajs/vue3'
+import {PencilSquareIcon, EyeIcon, TrashIcon, HeartIcon} from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
     blog: {
@@ -35,8 +35,8 @@ const deleteBlog = () => {
                             </p>
 
                             <div class="flex my-auto gap-0.5 ml-2 text-sm text-gray-400">
-                                <HeartIcon class="size-3 my-auto" />
-                                <span> {{ blog.likes.length }}</span>
+                                <HeartIcon class="size-3 my-auto"/>
+                                <span> - </span>
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@ const deleteBlog = () => {
                 <div class="text-center bg-white hover:bg-gray-100 transition m-4 rounded-lg">
                     <Link :href="route('dashboard.blogs.edit', blog)" class="size-full">
                         <span class="flex p-4">
-                            <PencilSquareIcon class="w-6 h-6 mx-auto my-auto" />
+                            <PencilSquareIcon class="w-6 h-6 mx-auto my-auto"/>
                         </span>
                     </Link>
                 </div>
@@ -65,7 +65,7 @@ const deleteBlog = () => {
                 <div class="text-center bg-white hover:bg-gray-100 transition m-4 rounded-lg">
                     <a :href="route('blogs.show', blog)" class="size-full">
                         <span class="flex p-4">
-                            <EyeIcon class="size-6 mx-auto my-auto" />
+                            <EyeIcon class="size-6 mx-auto my-auto"/>
                         </span>
                     </a>
                 </div>
@@ -73,7 +73,7 @@ const deleteBlog = () => {
                 <div class="text-center bg-white hover:bg-gray-100 transition m-4 rounded-lg">
                     <button @click.prevent="deleteBlog" class="size-full">
                         <span class="flex p-4">
-                            <TrashIcon class="size-6 mx-auto my-auto" />
+                            <TrashIcon class="size-6 mx-auto my-auto"/>
                         </span>
                     </button>
                 </div>
