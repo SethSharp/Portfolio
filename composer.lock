@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0c45a862ad93599b11bf2b8a5abd023",
+    "content-hash": "e2cf40cc46628d21642f5d0de7d33cc1",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4363,16 +4363,16 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SethSharp/BlogCrud.git",
-                "reference": "c676aa39583b0032915fec150f2482fa05a9fe13"
+                "reference": "0db695718d3c996ef66f5fbb93aecedb8807f8a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/c676aa39583b0032915fec150f2482fa05a9fe13",
-                "reference": "c676aa39583b0032915fec150f2482fa05a9fe13",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/0db695718d3c996ef66f5fbb93aecedb8807f8a3",
+                "reference": "0db695718d3c996ef66f5fbb93aecedb8807f8a3",
                 "shasum": ""
             },
             "require": {
@@ -4416,9 +4416,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SethSharp/BlogCrud/issues",
-                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.2"
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.3"
             },
-            "time": "2024-04-02T08:48:54+00:00"
+            "time": "2024-04-02T09:04:30+00:00"
         },
         {
             "name": "symfony/clock",
