@@ -47,7 +47,7 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index'))
             ->assertOk()
             ->assertInertia(
-                fn(AssertableInertia $page) => $page
+                fn (AssertableInertia $page) => $page
                     ->where('publishedBlogs.0.id', $published->id)
                     ->where('draftBlogs.0.id', $draft->id)
             );
