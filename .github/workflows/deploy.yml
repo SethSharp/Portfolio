@@ -61,7 +61,7 @@ jobs:
         env:
           DB_USERNAME: root
           DB_PASSWORD: root
-        run: ./vendor/bin/phpunit --verbose
+        run: ./vendor/bin/phpunit
 
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
