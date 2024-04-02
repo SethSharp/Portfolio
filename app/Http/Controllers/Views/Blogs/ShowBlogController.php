@@ -11,9 +11,9 @@ class ShowBlogController extends Controller
 {
     public function __invoke(Blog $blog): View
     {
-        if ($blog->isDraft()) {
+        if ($blog->is_published) {
             if (auth()->check()) {
-                if (!auth()->user()->hasRole([User::ROLE_ADMIN])) {
+                if (! auth()->user()->hasRole([User::ROLE_ADMIN])) {
                     abort(403, 'Blog is currently in a draft status');
                 }
             } else {

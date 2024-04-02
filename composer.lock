@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9162e1b49fe9e832e24dd14ff5b80e3",
+    "content-hash": "cb4dfe363ec935c5f777507950961a9c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4363,17 +4363,11 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SethSharp/BlogCrud.git",
-                "reference": "fa57de8f6dc91326254b0144a0f6be30d56c4ba1"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/fa57de8f6dc91326254b0144a0f6be30d56c4ba1",
-                "reference": "fa57de8f6dc91326254b0144a0f6be30d56c4ba1",
-                "shasum": ""
+                "type": "path",
+                "url": "../blog-crud",
+                "reference": "fa57de8f6dc91326254b0144a0f6be30d56c4ba1"
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",
@@ -4397,7 +4391,6 @@
                     "SethSharp\\BlogCrud\\Database\\Factories\\": "src/Database/Factories"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4411,14 +4404,13 @@
             "description": "A blog CRUD package",
             "homepage": "https://github.com/SethSharp/Blog",
             "keywords": [
-                "blog",
-                "laravel"
+                "Blog",
+                "Laravel"
             ],
-            "support": {
-                "issues": "https://github.com/SethSharp/BlogCrud/issues",
-                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.1"
-            },
-            "time": "2024-04-01T09:12:35+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "symfony/clock",
@@ -9755,7 +9747,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codinglabsau/php-styles": 20
+        "codinglabsau/php-styles": 20,
+        "sethsharp/blog-crud": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
