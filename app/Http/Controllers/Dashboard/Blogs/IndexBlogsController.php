@@ -14,14 +14,16 @@ class IndexBlogsController extends Controller
         $this->authorize('view', Blog::class);
 
         return Inertia::render('Dashboard/Blogs/Index', [
-            'publishedBlogs' => Blog::with(['tags', 'author'])
+            'publishedBlogs' => Blog::with(['tags', 'author', 'likes'])
                 ->orderByDesc('created_at')
                 ->published()
-                ->get(),
-            'draftBlogs' => Blog::with(['tags', 'author'])
+                ->get()
+                ->each(fn (Blog $blog) => $blog->append('cover')),
+            'draftBlogs' => Blog::with(['tags', 'author', 'likes'])
                 ->orderByDesc('created_at')
                 ->notPublished()
                 ->get()
+                ->each(fn (Blog $blog) => $blog->append('cover')),
         ]);
     }
 }
