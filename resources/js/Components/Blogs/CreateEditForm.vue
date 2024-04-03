@@ -62,6 +62,20 @@ const submit = async () => {
         _method: 'put',
     })).post(route('dashboard.blogs.update', props.blog))
 }
+
+const confirmLeave = (e) => {
+    if (form.isDirty) {
+        e.returnValue = ''
+
+        const message = 'Are you sure you want to leave?'
+
+        e.returnValue = message
+
+        return message
+    }
+}
+
+window.addEventListener('beforeunload', confirmLeave)
 </script>
 
 <template>
