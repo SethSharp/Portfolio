@@ -39,7 +39,7 @@ class BlogComments extends Component
 
     public function save(): void
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             // sets the intended url so when the user registers or logs in - redirects to here
             session(['url.intended' => route('blogs.show', $this->blog)]);
 
@@ -57,7 +57,6 @@ class BlogComments extends Component
 
         $this->blog->comments()->attach($comment);
 
-        //        dd(auth()->user());
         auth()->user()->notify(new NotifySlackOfCommentNotification($comment, $this->blog));
 
         $this->comments->push($comment);
