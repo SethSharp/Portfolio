@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Views\Blogs;
 
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
-use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class ShowBlogController extends Controller
