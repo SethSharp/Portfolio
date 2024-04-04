@@ -24,6 +24,26 @@ class ShowBlogComponentTest extends TestCase
     }
 
     /** @test */
+    public function shows_no_index_if_blog_is_in_a_draft_state()
+    {
+        $blog = Blog::factory()->draft()->create();
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->get(route('blogs.show', $blog))
+            ->assertSee('noindex, nofollow');
+    }
+
+    /** @test */
+    public function does_not_show_no_index_if_blog_is_published()
+    {
+        $blog = Blog::factory()->published()->create();
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->get(route('blogs.show', $blog))
+            ->assertDontSee('noindex, nofollow');
+    }
+
+    /** @test */
     public function can_see_blog_likes()
     {
         $user = User::factory()->create();

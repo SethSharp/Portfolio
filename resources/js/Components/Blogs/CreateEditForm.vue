@@ -53,7 +53,7 @@ const form = useForm({
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
     meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
     content: props.blog?.content ? props.blog.content : '',
-    is_draft: props.blog?.is_draft ? props.blog.is_draft : false,
+    is_draft: !props.blog.is_published,
 })
 
 const submit = async () => {

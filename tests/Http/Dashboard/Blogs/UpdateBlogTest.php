@@ -58,7 +58,6 @@ class UpdateBlogTest extends TestCase
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'title' => 'The title field is required.',
-                'is_draft' => 'The is draft field is required.',
             ]);
     }
 
@@ -84,7 +83,6 @@ class UpdateBlogTest extends TestCase
         $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'is_draft' => false,
-                'meta_title' => null
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors([
@@ -138,11 +136,7 @@ class UpdateBlogTest extends TestCase
                 'meta_tags' => null,
                 'meta_description' => null,
             ])
-            ->assertJsonMissingValidationErrors([
-                'meta_title',
-                'meta_tags',
-                'meta_description'
-            ]);
+            ->assertRedirect();
     }
 
     /** @test */
@@ -406,7 +400,6 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
-            'is_draft' => 1,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'Some title',
@@ -418,10 +411,9 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
-    public function can_published_a_draft_blog()
+    public function can_publish_a_draft_blog()
     {
         $this->blog->update([
-            'is_draft' => false,
             'published_at' => null
         ]);
 
@@ -439,7 +431,6 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
-            'is_draft' => 0,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'Some title',
@@ -455,7 +446,7 @@ class UpdateBlogTest extends TestCase
     {
         $user = User::factory()->author()->create();
 
-        $blog = Blog::factory()->published()->create([
+        $blog = Blog::factory()->create([
             'author_id' => $user->id,
             'published_at' => now()->subDay()
         ]);
@@ -474,7 +465,6 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'author_id' => $user->id,
-            'is_draft' => 0,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'Some title',
@@ -490,7 +480,7 @@ class UpdateBlogTest extends TestCase
     {
         $tag = Tag::factory()->create();
 
-        $this->actingAs($user = User::factory()->admin()->create())
+        $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'slug' => 'some-slug',
@@ -510,7 +500,6 @@ class UpdateBlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
-            'is_draft' => 1,
             'title' => 'Some Title',
             'slug' => 'some-slug',
             'meta_title' => 'Some title',
