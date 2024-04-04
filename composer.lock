@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb4dfe363ec935c5f777507950961a9c",
+    "content-hash": "7ae738bd176e7e6abda60d460580cf91",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4364,11 +4364,17 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "dev-drop-is_draft-and-use-published_at",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SethSharp/BlogCrud.git",
+                "reference": "889023ec75247ef3518c50975b6a0c6a96cf2bcf"
+            },
             "dist": {
-                "type": "path",
-                "url": "../blog-crud",
-                "reference": "965c80fb2428802be01412e5e9e0d7f27cb2ec36"
+                "type": "zip",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/889023ec75247ef3518c50975b6a0c6a96cf2bcf",
+                "reference": "889023ec75247ef3518c50975b6a0c6a96cf2bcf",
+                "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",
@@ -4392,6 +4398,7 @@
                     "SethSharp\\BlogCrud\\Database\\Factories\\": "src/Database/Factories"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4405,13 +4412,14 @@
             "description": "A blog CRUD package",
             "homepage": "https://github.com/SethSharp/Blog",
             "keywords": [
-                "Blog",
-                "Laravel"
+                "blog",
+                "laravel"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/SethSharp/BlogCrud/issues",
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.5"
+            },
+            "time": "2024-04-04T03:01:57+00:00"
         },
         {
             "name": "symfony/clock",
@@ -9749,8 +9757,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codinglabsau/php-styles": 20,
-        "sethsharp/blog-crud": 20
+        "codinglabsau/php-styles": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
