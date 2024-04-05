@@ -198,7 +198,7 @@ const links = [
 
             <!-- Page Content -->
             <main>
-                <div class="bg-white rounded-xl m-6 p-12">
+                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12">
                     <slot />
                 </div>
             </main>

@@ -1,43 +1,67 @@
 <script setup>
-import { Link, router } from '@inertiajs/vue3'
+import { onMounted, ref, watch } from 'vue'
+import { router } from '@inertiajs/vue3'
 import Blog from '@/Components/Cards/Blog.vue'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import TextInput from '@/Components/Inputs/TextInput.vue'
+import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 
-defineProps({
-    draftBlogs: Array,
-    publishedBlogs: Array,
+const props = defineProps({
+    blogs: Object,
+    tabs: Object,
+    status: String,
 })
+
+const search = ref('')
 
 const create = () => {
     router.post(route('dashboard.blogs.create'))
 }
+
+const visitSearch = () => {
+    router.visit(
+        route('dashboard.blogs.index', {
+            filter: { q: search.value, status: props.status.toLowerCase() },
+        })
+    )
+}
+
+watch(search, (newSearch) => {
+    if (!newSearch) {
+        visitSearch()
+    }
+})
+
+onMounted(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    search.value = urlParams.get('filter[q]') || ''
+})
 </script>
 
 <template>
-    <AuthenticatedLayout title="Blogs">
-        <div class="flex justify-end">
-            <button class="bg-primary-500 rounded-xl p-2 text-white font-medium" @click="create">
-                Create Blog
-            </button>
+    <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
+        <div class="flex">
+            <div class="ml-auto flex gap-2">
+                <TextInput type="search" @reset="reset()" v-model="search" />
+                <SecondaryButton @click="visitSearch"> search</SecondaryButton>
+            </div>
         </div>
 
-        <div>
-            <h1 class="text-2xl">Draft Blogs</h1>
-            <div
-                v-if="draftBlogs.length"
-                class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-4 mt-6"
-            >
-                <Blog v-for="blog in draftBlogs" :blog="blog" />
-            </div>
-            <div v-else class="text-gray-400">No blogs in draft status</div>
+        <div v-if="blogs.data.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            <Blog v-for="blog in blogs.data" :blog="blog" />
         </div>
 
-        <div class="mt-8">
-            <h1 class="text-2xl">Published Blogs</h1>
-            <div v-if="publishedBlogs" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-                <Blog v-for="blog in publishedBlogs" :blog="blog" />
+        <div v-else class="flex justify-center align-middle">
+            <div class="text-center">
+                <h3 class="text-gray-400 text-md sm:text-xl">
+                    There are currently no blogs in the {{ status }} state.
+                </h3>
+
+                <div v-if="status === 'published'" class="mt-4">
+                    <PrimaryButton @click="create"> Create Blog </PrimaryButton>
+                </div>
             </div>
-            <div v-else class="text-gray-400">No published blogs</div>
         </div>
-    </AuthenticatedLayout>
+    </IndexBlogsLayout>
 </template>

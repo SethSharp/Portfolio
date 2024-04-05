@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.3",
-        "sethsharp/blog-crud": "^1.0.5",
+        "sethsharp/blog-crud": "^1.0.6",
+        "spatie/laravel-query-builder": "^5.8",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

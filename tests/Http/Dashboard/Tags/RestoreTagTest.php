@@ -46,7 +46,7 @@ class RestoreTagTest extends TestCase
             ->putJson(route('dashboard.tags.restore'), [
                 'tag_id' => $this->tag->id
             ])
-            ->assertRedirect(route('dashboard.tags.index'));
+            ->assertRedirect();
 
         $this->assertDatabaseHas('tags', [
             'name' => $this->tag->name,

@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\Blogs\CreateBlogController;
 use App\Http\Controllers\Dashboard\Blogs\DeleteBlogController;
 use App\Http\Controllers\Dashboard\Blogs\IndexBlogsController;
 use App\Http\Controllers\Dashboard\Blogs\UpdateBlogController;
+use App\Http\Controllers\Dashboard\Blogs\RestoreBlogController;
 use App\Http\Controllers\Dashboard\Blogs\StoreBlogImageController;
 use App\Http\Controllers\Dashboard\Collection\IndexCollectionController;
 use App\Http\Controllers\Dashboard\Collection\StoreCollectionController;
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/store/image', StoreBlogImageController::class)->name('image.store');
             Route::put('/{blog}/update', UpdateBlogController::class)->name('update');
             Route::delete('/{blog}/delete', DeleteBlogController::class)->name('delete');
+            Route::put('/restore', RestoreBlogController::class)->name('restore');
         });
 
         Route::prefix('tags')->name('tags.')->group(function () {

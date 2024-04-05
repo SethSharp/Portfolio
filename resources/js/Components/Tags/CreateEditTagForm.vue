@@ -4,8 +4,8 @@ import Form from '@/Components/Form/Form.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 const props = defineProps({
     tag: {
