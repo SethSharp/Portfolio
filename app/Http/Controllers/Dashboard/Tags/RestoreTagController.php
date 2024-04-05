@@ -19,7 +19,7 @@ class RestoreTagController extends Controller
         $restoreTagAction($tag);
 
         return redirect()
-            ->route('dashboard.tags.index')
+            ->back()
             ->with('success', 'Tag successfully restored.');
     }
 }

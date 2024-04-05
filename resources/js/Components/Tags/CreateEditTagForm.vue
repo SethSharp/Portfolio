@@ -1,11 +1,11 @@
 <script setup>
-import { useForm, router } from '@inertiajs/vue3'
+import {useForm, router} from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 const props = defineProps({
     tag: {
@@ -54,8 +54,8 @@ const restoreTag = () => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.name" autofocus label="Name" />
-            <InputError :message="form.errors.name" />
+            <TextInput v-model="form.name" autofocus label="Name"/>
+            <InputError :message="form.errors.name"/>
         </FormElement>
 
         <div class="gap-x-2 flex">

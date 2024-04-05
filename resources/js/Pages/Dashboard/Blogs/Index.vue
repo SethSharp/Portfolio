@@ -1,4 +1,5 @@
 <script setup>
+import {onMounted, ref, watch} from 'vue'
 import {router} from '@inertiajs/vue3'
 import Blog from '@/Components/Cards/Blog.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
@@ -12,23 +13,33 @@ const props = defineProps({
     status: String,
 })
 
-const urlParams = new URLSearchParams(window.location.search);
-const search = urlParams.get('filter[q]') || '';
+const search = ref('');
 
 const create = () => {
     router.post(route('dashboard.blogs.create'))
 }
 
 const visitSearch = () => {
-    router.visit(route('dashboard.blogs.index', {filter: {q: search, status: props.status.toLowerCase()}}))
+    router.visit(route('dashboard.blogs.index', {filter: {q: search.value, status: props.status.toLowerCase()}}))
 }
+
+watch(search, (newSearch) => {
+    if (!newSearch) {
+        visitSearch()
+    }
+})
+
+onMounted(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    search.value = urlParams.get('filter[q]') || '';
+})
 </script>
 
 <template>
     <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
         <div class="flex">
             <div class="ml-auto flex gap-2">
-                <TextInput type="search" v-model="search"/>
+                <TextInput type="search" @reset="reset()" v-model="search"/>
                 <SecondaryButton @click="visitSearch"> search</SecondaryButton>
             </div>
         </div>

@@ -27,7 +27,7 @@ const openModal = (tag = null) => {
                 {{ currentStatus }} Tags ({{ tags.data.length }})
             </h1>
             <div class="flex ml-auto">
-                <PrimaryButton @click.prevent="openModal"> Create Tag</PrimaryButton>
+                <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
             </div>
         </template>
 
