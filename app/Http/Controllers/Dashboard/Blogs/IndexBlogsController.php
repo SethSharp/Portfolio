@@ -9,6 +9,7 @@ use App\Domain\Blog\Enums\BlogStatus;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use SethSharp\BlogCrud\Models\Blog\Blog;
+use App\Support\Filters\BlogSearchFilter;
 use App\Support\Filters\BlogStatusFilter;
 
 class IndexBlogsController extends Controller
@@ -20,7 +21,8 @@ class IndexBlogsController extends Controller
         $blogs = QueryBuilder::for(Blog::class)
             ->with(['tags', 'author', 'likes'])
             ->allowedFilters([
-                AllowedFilter::custom('status', new BlogStatusFilter())->default(BlogStatus::PUBLISHED->value)
+                AllowedFilter::custom('status', new BlogStatusFilter())->default(BlogStatus::PUBLISHED->value),
+                AllowedFilter::custom('q', new BlogSearchFilter()),
             ])
             ->defaultSort('-created_at')
             ->paginate(2)
