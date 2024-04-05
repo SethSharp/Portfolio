@@ -1,5 +1,5 @@
 <script setup>
-import {TransitionRoot, TransitionChild, Dialog, DialogPanel} from '@headlessui/vue'
+import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from '@headlessui/vue'
 
 defineProps({
     open: Boolean,
@@ -24,7 +24,7 @@ const emits = defineEmits('close')
                 leave-from="opacity-100"
                 leave-to="opacity-0"
             >
-                <div class="fixed inset-0 bg-black/25"/>
+                <div class="fixed inset-0 bg-black/25" />
             </TransitionChild>
 
             <div class="fixed inset-0 overflow-y-auto">
@@ -42,7 +42,7 @@ const emits = defineEmits('close')
                             :class="'max-w-sm'"
                             class="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
                         >
-                            <slot/>
+                            <slot />
                         </DialogPanel>
                     </TransitionChild>
                 </div>

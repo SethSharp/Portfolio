@@ -1,8 +1,8 @@
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
-import Tabs from "@/Components/Tabs.vue";
-import {router} from "@inertiajs/vue3";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import Tabs from '@/Components/Tabs.vue'
+import { router } from '@inertiajs/vue3'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 defineProps({
     status: String,
@@ -12,7 +12,7 @@ defineProps({
         type: Object,
         default: null,
         required: false,
-    }
+    },
 })
 
 const create = () => {
@@ -28,14 +28,12 @@ const create = () => {
                     {{ status }} Blogs ({{ count }})
                 </h1>
                 <div class="flex ml-auto">
-                    <PrimaryButton @click="create">
-                        Create Blog
-                    </PrimaryButton>
+                    <PrimaryButton @click="create"> Create Blog </PrimaryButton>
                 </div>
             </div>
 
             <Tabs :tabs="tabs" :data="data">
-                <slot/>
+                <slot />
             </Tabs>
         </div>
     </AuthenticatedLayout>

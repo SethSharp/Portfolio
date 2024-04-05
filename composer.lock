@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8082dc5bcf5d51ed871f4f19988aea07",
+    "content-hash": "6b1f2c5f2698d83dc7d16e0ebaea83a6",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.303.2",
+            "version": "3.303.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "c087819351de027791d830ffc7f45195488ae988"
+                "reference": "9ae5429f7699701cb158780cd287d1549f45ad32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c087819351de027791d830ffc7f45195488ae988",
-                "reference": "c087819351de027791d830ffc7f45195488ae988",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9ae5429f7699701cb158780cd287d1549f45ad32",
+                "reference": "9ae5429f7699701cb158780cd287d1549f45ad32",
                 "shasum": ""
             },
             "require": {
@@ -151,9 +151,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.303.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.303.4"
             },
-            "time": "2024-04-03T18:08:21+00:00"
+            "time": "2024-04-05T18:04:15+00:00"
         },
         {
             "name": "brick/math",
@@ -3106,16 +3106,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.2.3",
+            "version": "3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4d599a6e2351d6b6bf21737accdfe1a4ce3fdbb1"
+                "reference": "82c28278c1c8f7b82dcdab25692237f052ffc8d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4d599a6e2351d6b6bf21737accdfe1a4ce3fdbb1",
-                "reference": "4d599a6e2351d6b6bf21737accdfe1a4ce3fdbb1",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/82c28278c1c8f7b82dcdab25692237f052ffc8d8",
+                "reference": "82c28278c1c8f7b82dcdab25692237f052ffc8d8",
                 "shasum": ""
             },
             "require": {
@@ -3208,7 +3208,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-30T18:22:00+00:00"
+            "time": "2024-04-05T09:58:10+00:00"
         },
         {
             "name": "nette/schema",
@@ -4364,11 +4364,17 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "dev-drop-is_draft-and-use-published_at",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SethSharp/BlogCrud.git",
+                "reference": "36ac2d8797d780f676f57b332688de9dff6ef5f4"
+            },
             "dist": {
-                "type": "path",
-                "url": "../blog-crud",
-                "reference": "86b778db0d7a1a6fd3b783e06d166e44ff7f73ce"
+                "type": "zip",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/36ac2d8797d780f676f57b332688de9dff6ef5f4",
+                "reference": "36ac2d8797d780f676f57b332688de9dff6ef5f4",
+                "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",
@@ -4392,6 +4398,7 @@
                     "SethSharp\\BlogCrud\\Database\\Factories\\": "src/Database/Factories"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4405,13 +4412,14 @@
             "description": "A blog CRUD package",
             "homepage": "https://github.com/SethSharp/Blog",
             "keywords": [
-                "Blog",
-                "Laravel"
+                "blog",
+                "laravel"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/SethSharp/BlogCrud/issues",
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.6"
+            },
+            "time": "2024-04-05T21:10:15+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -8503,16 +8511,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.16",
+            "version": "10.5.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "18f8d4a5f52b61fdd9370aaae3167daa0eeb69cd"
+                "reference": "c1f736a473d21957ead7e94fcc029f571895abf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/18f8d4a5f52b61fdd9370aaae3167daa0eeb69cd",
-                "reference": "18f8d4a5f52b61fdd9370aaae3167daa0eeb69cd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c1f736a473d21957ead7e94fcc029f571895abf5",
+                "reference": "c1f736a473d21957ead7e94fcc029f571895abf5",
                 "shasum": ""
             },
             "require": {
@@ -8584,7 +8592,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.16"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.17"
             },
             "funding": [
                 {
@@ -8600,7 +8608,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-28T10:08:10+00:00"
+            "time": "2024-04-05T04:39:01+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9882,8 +9890,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codinglabsau/php-styles": 20,
-        "sethsharp/blog-crud": 20
+        "codinglabsau/php-styles": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

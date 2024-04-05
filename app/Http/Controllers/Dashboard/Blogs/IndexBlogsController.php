@@ -25,7 +25,7 @@ class IndexBlogsController extends Controller
                 AllowedFilter::custom('q', new BlogSearchFilter()),
             ])
             ->defaultSort('-created_at')
-            ->paginate(5)
+            ->paginate(9)
             ->withQueryString();
 
         $currentStatus = BlogStatus::from(request()->input('filter.status', BlogStatus::PUBLISHED->value));

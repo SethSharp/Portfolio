@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import Modal from '@/Components/Modal.vue'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
@@ -31,7 +31,10 @@ const openModal = (tag = null) => {
             </div>
         </template>
 
-        <div v-if="tags.data.length > 0" class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6">
+        <div
+            v-if="tags.data.length > 0"
+            class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6"
+        >
             <div
                 v-for="tag in tags.data"
                 :key="tag.id"
@@ -55,7 +58,7 @@ const openModal = (tag = null) => {
         </div>
 
         <Modal :open="open" @close="open = false" size="sm">
-            <CreateEditTagForm :tag="currentTag" @close="open = false"/>
+            <CreateEditTagForm :tag="currentTag" @close="open = false" />
         </Modal>
     </IndexTagsLayout>
 </template>

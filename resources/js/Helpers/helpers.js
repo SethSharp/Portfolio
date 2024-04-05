@@ -8,4 +8,4 @@ const getBlogCoverImage = (cover) => {
     return placeholderCover
 }
 
-export {getBlogCoverImage}
+export { getBlogCoverImage }

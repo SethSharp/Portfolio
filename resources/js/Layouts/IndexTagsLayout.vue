@@ -10,7 +10,7 @@ defineProps({
         type: Object,
         default: null,
         required: false,
-    }
+    },
 })
 </script>
 
@@ -18,11 +18,11 @@ defineProps({
     <AuthenticatedLayout title="Tags">
         <div class="p-3 sm:p-6">
             <div class="sm:flex mb-4">
-                <slot name="header"/>
+                <slot name="header" />
             </div>
 
             <Tabs :tabs="tabs" :data="data">
-                <slot/>
+                <slot />
             </Tabs>
         </div>
     </AuthenticatedLayout>

@@ -1,7 +1,13 @@
 <script setup>
-import {Link, router} from '@inertiajs/vue3'
-import {PencilSquareIcon, EyeIcon, TrashIcon, ArrowLeftStartOnRectangleIcon} from '@heroicons/vue/16/solid/index.js'
-import {getBlogCoverImage} from '@/Helpers/helpers.js'
+import { Link, router } from '@inertiajs/vue3'
+import {
+    PencilSquareIcon,
+    EyeIcon,
+    TrashIcon,
+    ArrowLeftStartOnRectangleIcon,
+} from '@heroicons/vue/16/solid/index.js'
+import { getBlogCoverImage } from '@/Helpers/helpers.js'
+import axios from 'axios'
 
 const props = defineProps({
     blog: {
@@ -17,7 +23,15 @@ const deleteBlog = () => {
 }
 
 const restoreBlog = () => {
-    // TODO: restore logic in package
+    router.put(
+        route('dashboard.blogs.restore'),
+        {
+            blog_id: props.blog,
+        },
+        {
+            onBefore: () => confirm('Are you sure you want to restore this blog?'),
+        }
+    )
 }
 </script>
 
@@ -44,30 +58,38 @@ const restoreBlog = () => {
         <div
             class="absolute inset-0 flex w-full h-full bg-black bg-opacity-10 opacity-0 transition group-hover:opacity-100"
         >
-            <div class="w-full h-full flex">
-                <div class="text-center bg-white hover:bg-gray-100 transition m-4 size-10 rounded-lg">
+            <div class="w-full h-full flex gap-2 p-2">
+                <div class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg">
                     <Link :href="route('dashboard.blogs.edit', blog)" class="size-full">
-                        <PencilSquareIcon class="text-gray-600 hover:text-gray-700 transition p-1"/>
+                        <PencilSquareIcon
+                            class="text-gray-500 hover:text-gray-700 transition p-1"
+                        />
                     </Link>
                 </div>
 
-                <div class="text-center bg-white hover:bg-gray-100 transition m-4 size-10 rounded-lg">
+                <div class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg">
                     <a :href="route('blogs.show', blog)" class="size-full">
-                        <EyeIcon class="text-gray-600 hover:text-gray-700 transition p-1"/>
+                        <EyeIcon class="text-gray-500 hover:text-gray-700 transition p-1" />
                     </a>
                 </div>
 
-                <div v-if="! blog.deleted_at"
-                     class="text-center bg-white hover:bg-gray-100 transition m-4 size-10 rounded-lg">
+                <div
+                    v-if="!blog.deleted_at"
+                    class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
+                >
                     <button @click.prevent="deleteBlog" class="size-full">
-                        <TrashIcon class="text-gray-600 hover:text-gray-700 transition p-1"/>
+                        <TrashIcon class="text-gray-500 hover:text-gray-700 transition p-1" />
                     </button>
                 </div>
 
-                <div v-else
-                     class="text-center bg-white hover:bg-gray-100 transition m-4 size-10 rounded-lg">
+                <div
+                    v-else
+                    class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
+                >
                     <button @click.prevent="restoreBlog" class="size-full">
-                        <ArrowLeftStartOnRectangleIcon class="text-gray-600 hover:text-gray-700 transition p-1"/>
+                        <ArrowLeftStartOnRectangleIcon
+                            class="text-gray-500 hover:text-gray-700 transition p-1"
+                        />
                     </button>
                 </div>
             </div>
