@@ -16,15 +16,15 @@
 
 <div class="sm:w-3/4 mx-auto">
     <div class="flex-wrap">
-        <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
-
         @if($collection)
-            <h5 class="text-gray-400 font-medium text-sm mt-2">
+            <div class="text-gray-400 font-medium text-md">
                 {{ $collection->title }}
-            </h5>
+            </div>
         @endif
 
-        <h6 class="mt-2 text-gray-400 font-medium text-sm">
+        <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
+
+        <h6 class="text-gray-400 font-medium text-sm">
             @if($blog->published_at)
                 {{ $blog->author->name  }} {{ $blog->published_at_for_humans }}
             @else
@@ -62,7 +62,7 @@
     <div class="mx-auto grid lg:grid-cols-2 gap-6">
         @if($prev)
             <div
-                class="cursor-pointer rounded-lg border-2 border-gray-400 transition hover:border-gray-500 hover:bg-gray-100 p-2">
+                class="cursor-pointer rounded-lg border border-gray-300 transition hover:border-gray-500 hover:bg-gray-50 p-2">
                 <a href="{{ route('blogs.show', $prev) }}">
                     <div class="flex">
                         <span class="text-primary-600">Previous blog </span>
@@ -77,7 +77,7 @@
 
         @if($next)
             <div
-                class="cursor-pointer rounded-lg border-2 border-gray-400 transition hover:border-gray-500 hover:bg-gray-100 p-2">
+                class="cursor-pointer rounded-lg border border-gray-300 transition hover:border-gray-500 hover:bg-gray-50 p-2">
                 <a href="{{ route('blogs.show', $next) }}">
                     <div class="flex justify-end">
                         <span class="text-primary-600">Next blog </span>
