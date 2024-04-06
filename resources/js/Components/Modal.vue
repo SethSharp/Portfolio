@@ -39,7 +39,7 @@ const emits = defineEmits('close')
                         leave-to="opacity-0 scale-95"
                     >
                         <DialogPanel
-                            :class="'max-w-sm'"
+                            :class="'max-w-' + size"
                             class="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
                         >
                             <slot />

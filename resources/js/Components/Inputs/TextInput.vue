@@ -3,14 +3,9 @@ import { onMounted, ref } from 'vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 
 defineProps({
-    label: {
-        type: String,
-        default: '',
-    },
-    description: {
-        type: String,
-        default: '',
-    },
+    id: String,
+    label: String,
+    description: String,
     type: {
         type: String,
         default: 'text',
@@ -38,6 +33,7 @@ defineExpose({ focus: () => input.value.focus() })
         <InputLabel :value="label" />
 
         <input
+            :id="id"
             :type="type"
             class="w-full !border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
             v-model="model"

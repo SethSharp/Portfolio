@@ -1,5 +1,8 @@
 <script setup>
 defineProps({
+    for: {
+        type: String,
+    },
     value: {
         type: String,
     },

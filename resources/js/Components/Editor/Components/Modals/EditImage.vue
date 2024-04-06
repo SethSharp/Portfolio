@@ -6,6 +6,8 @@ import Modal from '@/Components/Modal.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import InputLabel from '@/Components/Inputs/InputLabel.vue'
+import FormElement from '@/Components/Form/FormElement.vue'
 
 const props = defineProps({
     open: Boolean,
@@ -43,10 +45,12 @@ const storeImage = () => {
     formData.append('file_id', computedFileId.value)
     formData.append('blog_id', props.blogId)
 
+    console.log('posting')
     axios
         .post(route('dashboard.blogs.image.store'), formData)
         .then((res) => {
             handleSuccess(res)
+            console.log(res)
         })
         .catch((err) => {
             console.log(err)
@@ -65,25 +69,35 @@ watch(file, (_) => {
 </script>
 
 <template>
-    <Modal :open="open" @close="emits('close')" size="md">
-        <ImageUpload v-model="file" :current-image="path" :error="errors['file']" />
+    <Modal :open="open" @close="emits('close')" size="2xl">
+        <div class="mb-4">
+            <FormElement>
+                <ImageUpload
+                    v-model="file"
+                    :current-image="path"
+                    label="Image Upload"
+                    :error="errors['file']"
+                />
+            </FormElement>
 
-        <div>
-            <label for="alt"> Alt</label>
-            <TextInput v-model="computedAlt" />
-        </div>
+            <FormElement>
+                <InputLabel for="alt" value="Alt" />
+                <TextInput id="alt" type="text" v-model="computedAlt" />
+            </FormElement>
 
-        <div>
-            <label for="height"> Height</label>
-            <input
-                type="number"
-                class="mt-2"
-                step="1"
-                min="0"
-                max="999"
-                required
-                v-model="computedHeight"
-            />
+            <FormElement>
+                <InputLabel for="height" value="Height" />
+
+                <TextInput
+                    id="height"
+                    v-model="computedHeight"
+                    required
+                    type="number"
+                    step="1"
+                    min="0"
+                    max="999"
+                />
+            </FormElement>
         </div>
 
         <PrimaryButton as="button" @click.prevent="emits('close')"> Save</PrimaryButton>

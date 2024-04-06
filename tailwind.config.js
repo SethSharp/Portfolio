@@ -23,6 +23,12 @@ module.exports = {
         'md:grid-cols-4',
         'md:grid-cols-5',
         'md:grid-cols-6',
+
+        'max-w-sm',
+        'max-w-md',
+        'max-w-lg',
+        'max-w-xl',
+        'max-w-2xl',
     ],
 
     theme: {
