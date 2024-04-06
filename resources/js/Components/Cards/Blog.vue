@@ -59,7 +59,10 @@ const restoreBlog = () => {
             class="absolute inset-0 flex w-full h-full bg-black bg-opacity-10 opacity-0 transition group-hover:opacity-100"
         >
             <div class="w-full h-full flex gap-2 p-2">
-                <div class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg">
+                <div
+                    v-if="!blog.deleted_at"
+                    class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
+                >
                     <Link :href="route('dashboard.blogs.edit', blog)" class="size-full">
                         <PencilSquareIcon
                             class="text-gray-500 hover:text-gray-700 transition p-1"
