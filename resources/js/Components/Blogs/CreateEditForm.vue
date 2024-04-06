@@ -11,6 +11,8 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import FormGrid from '@/Components/Form/FormGrid.vue'
+import BlogCoverUpload from '@/Components/Inputs/BlogCoverUpload.vue'
 
 const props = defineProps({
     blog: {
@@ -81,7 +83,7 @@ window.addEventListener('beforeunload', confirmLeave)
 <template>
     <Form>
         <FormElement>
-            <ImageUpload
+            <BlogCoverUpload
                 v-model="form.cover_image"
                 :current-image="blog.cover"
                 label="Cover Image"
@@ -90,24 +92,37 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Title" />
-            <InputError :message="form.errors.title" />
+            <Checkbox v-model="form.is_draft" label="Is Draft" />
+            <InputError :message="form.errors.is_draft" />
         </FormElement>
 
-        <FormElement>
-            <Select v-model="form.collection_id" :options="collectionOptions" label="Collection" />
-            <InputError :message="form.errors.collection_id" />
-        </FormElement>
+        <FormGrid>
+            <FormElement>
+                <TextInput v-model="form.title" autofocus label="Title" />
+                <InputError :message="form.errors.title" />
+            </FormElement>
 
-        <FormElement>
-            <TextInput v-model="form.slug" label="Slug" />
-            <InputError :message="form.errors.slug" />
-        </FormElement>
+            <FormElement>
+                <Select
+                    v-model="form.collection_id"
+                    :options="collectionOptions"
+                    label="Collection"
+                />
+                <InputError :message="form.errors.collection_id" />
+            </FormElement>
+        </FormGrid>
 
-        <FormElement>
-            <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags" />
-            <InputError :message="form.errors.tags" />
-        </FormElement>
+        <FormGrid>
+            <FormElement>
+                <TextInput v-model="form.slug" label="Slug" />
+                <InputError :message="form.errors.slug" />
+            </FormElement>
+
+            <FormElement>
+                <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags" />
+                <InputError :message="form.errors.tags" />
+            </FormElement>
+        </FormGrid>
 
         <FormElement>
             <TextInput v-model="form.meta_title" label="Meta Title" />
@@ -131,11 +146,6 @@ window.addEventListener('beforeunload', confirmLeave)
         <FormElement>
             <Editor v-model="form.content" :blog="blog" />
             <InputError :message="form.errors.content" />
-        </FormElement>
-
-        <FormElement>
-            <Checkbox v-model="form.is_draft" label="Is Draft" />
-            <InputError :message="form.errors.is_draft" />
         </FormElement>
 
         <PrimaryButton as="submit" @click.prevent="submit">

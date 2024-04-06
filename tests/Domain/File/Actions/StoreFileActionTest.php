@@ -21,8 +21,6 @@ class StoreFileActionTest extends TestCase
 
         app(StoreFileAction::class)($file, $blog->id);
 
-        $path = $file->hashName(path: "testing/blogs/{$blog->id}/content");
-
-        Storage::disk('s3')->assertExists($path);
+        Storage::disk('s3')->assertExists("testing/blogs/{$blog->id}/content");
     }
 }
