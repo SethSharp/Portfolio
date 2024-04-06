@@ -97,31 +97,31 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <FormElement>
+            <div>
                 <TextInput v-model="form.title" autofocus label="Title" />
                 <InputError :message="form.errors.title" />
-            </FormElement>
+            </div>
 
-            <FormElement>
+            <div>
                 <Select
                     v-model="form.collection_id"
                     :options="collectionOptions"
                     label="Collection"
                 />
                 <InputError :message="form.errors.collection_id" />
-            </FormElement>
+            </div>
         </FormGrid>
 
         <FormGrid>
-            <FormElement>
+            <div>
                 <TextInput v-model="form.slug" label="Slug" />
                 <InputError :message="form.errors.slug" />
-            </FormElement>
+            </div>
 
-            <FormElement>
+            <div>
                 <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags" />
                 <InputError :message="form.errors.tags" />
-            </FormElement>
+            </div>
         </FormGrid>
 
         <FormElement>

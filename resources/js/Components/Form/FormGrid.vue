@@ -4,7 +4,7 @@ import FormElement from '@/Components/Form/FormElement.vue'
 
 <template>
     <FormElement>
-        <div class="grid sm:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-4">
             <slot />
         </div>
     </FormElement>
