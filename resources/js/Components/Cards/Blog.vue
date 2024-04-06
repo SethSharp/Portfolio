@@ -70,7 +70,10 @@ const restoreBlog = () => {
                     </Link>
                 </div>
 
-                <div class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg">
+                <div
+                    v-if="!blog.deleted_at"
+                    class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
+                >
                     <a :href="route('blogs.show', blog)" class="size-full">
                         <EyeIcon class="text-gray-500 hover:text-gray-700 transition p-1" />
                     </a>
