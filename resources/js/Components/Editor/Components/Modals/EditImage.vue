@@ -45,7 +45,6 @@ const storeImage = () => {
     formData.append('file_id', computedFileId.value)
     formData.append('blog_id', props.blogId)
 
-    console.log('posting')
     axios
         .post(route('dashboard.blogs.image.store'), formData)
         .then((res) => {
