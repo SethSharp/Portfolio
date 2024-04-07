@@ -22,7 +22,7 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
                 @foreach($blogs as $blog)
                     <x-blogs.card :blog="$blog"/>
                 @endforeach
