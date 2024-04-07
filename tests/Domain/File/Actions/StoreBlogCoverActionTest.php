@@ -21,6 +21,6 @@ class StoreBlogCoverActionTest extends TestCase
 
         app(StoreBlogCoverAction::class)($file, $blog->id);
 
-        Storage::disk('s3')->assertExists('testing/blogs/' . $blog->id . '/cover-image.jpg');
+        Storage::disk('s3')->assertExists('testing/blogs/' . $blog->id . '/cover-images');
     }
 }
