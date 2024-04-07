@@ -13,7 +13,7 @@
 @section("content")
     <div class="text-center w-full">
         <x-body.enter-wrapper>
-            <div class="!flex !justify-start">
+            <div class="!flex !text-left">
                 <h2 class="text-xl">
                     Latest Series: <a href="{{ route('collections.show', $collection) }}"
                                       class="font-medium underline hover:text-gray-800">
@@ -22,7 +22,7 @@
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
                 @foreach($blogs as $blog)
                     <x-blogs.card :blog="$blog"/>
                 @endforeach

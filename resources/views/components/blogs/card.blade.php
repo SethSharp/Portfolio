@@ -4,7 +4,7 @@
             <img
                 src="{{ $blog->cover }}"
                 alt="{{ $blog->title . ' cover image' }}"
-                class="rounded-lg h-full object-cover object-center max-h-96"
+                class="rounded-lg h-full object-cover object-left max-h-96"
             />
         </div>
 
