@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/vue/16/solid/index.js'
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 
 const props = defineProps({
@@ -21,7 +21,13 @@ const props = defineProps({
 
 const emits = defineEmits(['update:modelValue'])
 
-const selectedOptions = ref(props.modelValue ? props.modelValue : [])
+const selectedOptions = ref(
+    props.modelValue
+        ? props.options.filter((option) => {
+              return props.modelValue.some((modelOption) => modelOption.id === option.id)
+          })
+        : []
+)
 
 watch(selectedOptions, (newVal) => {
     if (newVal) {
@@ -31,7 +37,7 @@ watch(selectedOptions, (newVal) => {
 </script>
 
 <template>
-    <div>
+    <div class="relative">
         <InputLabel :value="label" />
 
         <Listbox v-model="selectedOptions" multiple>
@@ -52,13 +58,12 @@ watch(selectedOptions, (newVal) => {
                 leave-from-class="opacity-100"
                 leave-to-class="opacity-0"
             >
-                <ListboxOptions>
+                <ListboxOptions class="absolute bg-white w-full shadow-md">
                     <ListboxOption
                         v-slot="{ active, selected }"
                         v-for="option in options"
-                        :key="option.name"
+                        :key="option.id"
                         :value="option"
-                        as="template"
                     >
                         <li
                             :class="[
@@ -77,7 +82,7 @@ watch(selectedOptions, (newVal) => {
                                 v-if="selected"
                                 class="absolute inset-y-0 left-0 flex items-center pl-3 text-primary-600"
                             >
-                                <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                                <CheckIcon class="size-5" aria-hidden="true" />
                             </span>
                         </li>
                     </ListboxOption>
