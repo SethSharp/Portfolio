@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Views\ShowCollectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowSitemapController;
@@ -31,6 +32,8 @@ Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', IndexBlogsController::class)->name('index');
     Route::get('/{blog:slug}', ShowBlogController::class)->name('show');
 });
+
+Route::get('/collection/{collection}', ShowCollectionController::class)->name('collections.show');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/blog.php';
