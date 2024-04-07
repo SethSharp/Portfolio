@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Views\ShowCollectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowSitemapController;
 use App\Http\Controllers\Views\ShowProjectsController;
 use App\Http\Controllers\Views\Blogs\ShowBlogController;
+use App\Http\Controllers\Views\ShowCollectionController;
 use App\Http\Controllers\Views\ShowExperienceController;
 use App\Http\Controllers\Views\ShowCapabiltiesController;
 use App\Http\Controllers\Views\Blogs\IndexBlogsController;
