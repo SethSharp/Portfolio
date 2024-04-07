@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "611a8abafb89471573224c3d54b9ff00",
+    "content-hash": "544751d2879ecdbcc6e20c280125e001",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4364,16 +4364,16 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SethSharp/BlogCrud.git",
-                "reference": "d669dc07cca0d10d375cee787def007cf9301533"
+                "reference": "ee6af9cbd3aa22b25e1719a4109e1f5ad4cd51d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/d669dc07cca0d10d375cee787def007cf9301533",
-                "reference": "d669dc07cca0d10d375cee787def007cf9301533",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/ee6af9cbd3aa22b25e1719a4109e1f5ad4cd51d9",
+                "reference": "ee6af9cbd3aa22b25e1719a4109e1f5ad4cd51d9",
                 "shasum": ""
             },
             "require": {
@@ -4417,9 +4417,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SethSharp/BlogCrud/issues",
-                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.7"
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v1.0.8"
             },
-            "time": "2024-04-06T04:48:40+00:00"
+            "time": "2024-04-07T02:28:42+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",

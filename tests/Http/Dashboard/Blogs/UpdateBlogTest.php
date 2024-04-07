@@ -289,6 +289,54 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
+    public function can_update_a_blog_collection()
+    {
+        $collection = Collection::factory()->create();
+
+        $this->blog->update([
+            'collection_id' => Collection::factory()->create()->id
+        ]);
+
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'collection_id' => $collection->id,
+                'slug' => 'some-slug',
+                'tags' => [],
+                'meta_title' => 'some title',
+                'meta_tags' => 'some tag',
+                'meta_description' => 'some description',
+                'content' => 'some content here',
+                'is_draft' => false
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'id' => $this->blog->id,
+            'collection_id' => $collection->id,
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+            'meta_title' => 'some title',
+            'meta_tags' => 'some tag',
+            'meta_description' => 'some description',
+            'content' => 'some content here'
+        ]);
+
+        $blog = Blog::where([
+            'author_id' => $this->user->id,
+            'title' => 'Some Title',
+            'slug' => 'some-slug',
+        ])->first();
+
+        $this->assertDatabaseHas('blog_collection', [
+            'blog_id' => $blog->id,
+            'collection_id' => $collection->id,
+            'order' => 1
+        ]);
+    }
+
+    /** @test */
     public function can_assign_a_collection_with_other_blogs()
     {
         $collection = Collection::factory()->create();

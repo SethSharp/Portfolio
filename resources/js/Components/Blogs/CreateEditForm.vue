@@ -4,14 +4,13 @@ import { useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Editor from '@/Components/Editor/Editor.vue'
 import Select from '@/Components/Inputs/Select.vue'
+import FormGrid from '@/Components/Form/FormGrid.vue'
 import Checkbox from '@/Components/Inputs/Checkbox.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
-import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import FormGrid from '@/Components/Form/FormGrid.vue'
 import BlogCoverUpload from '@/Components/Inputs/BlogCoverUpload.vue'
 
 const props = defineProps({
@@ -31,8 +30,8 @@ const props = defineProps({
 
 const collectionOptions = props.collections.map((collection) => {
     return {
-        value: collection.id,
-        label: collection.title,
+        id: collection.id,
+        name: collection.title,
     }
 })
 
@@ -59,6 +58,7 @@ const form = useForm({
 })
 
 const submit = async () => {
+    console.log(form.collection_id)
     form.transform((data) => ({
         ...data,
         _method: 'put',
