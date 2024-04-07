@@ -5,7 +5,7 @@ on: [ push ]
 jobs:
   tests:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     env:
       DB_DATABASE: testing
@@ -13,7 +13,7 @@ jobs:
       DB_PASSWORD: root
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up MySQL
         run: |
@@ -37,7 +37,7 @@ jobs:
         run: npm i --force --legacy-peer-deps
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
 
