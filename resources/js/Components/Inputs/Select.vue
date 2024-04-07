@@ -15,8 +15,6 @@ const props = defineProps({
 
 const emits = defineEmits(['update:modelValue'])
 
-console.log('gotten: ' + props.modelValue)
-
 const selectedOption = ref(
     props.modelValue !== undefined
         ? props.options.find((option) => option.id === props.modelValue)

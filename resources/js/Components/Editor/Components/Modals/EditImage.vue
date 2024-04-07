@@ -4,10 +4,10 @@ import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
 import Modal from '@/Components/Modal.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
-import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
+import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 const props = defineProps({
     open: Boolean,
@@ -49,7 +49,6 @@ const storeImage = () => {
         .post(route('dashboard.blogs.image.store'), formData)
         .then((res) => {
             handleSuccess(res)
-            console.log(res)
         })
         .catch((err) => {
             console.log(err)
@@ -86,16 +85,7 @@ watch(file, (_) => {
 
             <FormElement>
                 <InputLabel for="height" value="Height" />
-
-                <TextInput
-                    id="height"
-                    v-model="computedHeight"
-                    required
-                    type="number"
-                    step="1"
-                    min="0"
-                    max="999"
-                />
+                <TextInput id="height" v-model="computedHeight" type="number" />
             </FormElement>
         </div>
 

@@ -6,11 +6,12 @@ export default {
 
 <script setup>
 import { ref } from 'vue'
-import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
 import { PhotoIcon } from '@heroicons/vue/24/solid'
-import EditableNode from '../../Components/EditableNodeWrapper.vue'
+import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
+import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
 import breakdownNodeViewProps from '@/Helpers/breakdownNodeViewProps'
 import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
+import EditableNode from '@/Components/Editor/Components/EditableNodeWrapper.vue'
 
 const props = defineProps({
     ...nodeViewProps,
@@ -25,7 +26,9 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
     <NodeViewWrapper>
         <EditableNode v-bind="props">
             <template #tools>
-                <button @click="open = true">Edit</button>
+                <button @click="open = true">
+                    <PencilSquareIcon class="size-4" />
+                </button>
                 <EditImage
                     @close="open = false"
                     :open="open"

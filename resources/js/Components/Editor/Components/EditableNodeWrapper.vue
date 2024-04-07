@@ -22,8 +22,8 @@ const editable = computed(() => {
                     <ArrowsPointingOutIcon class="w-4 h-4 text-gray-800" />
                 </div>
 
-                <button class="p-1" type="button" @click.prevent="deleteNode">
-                    <TrashIcon class="w-4 h-4 text-gray-800" />
+                <button type="button" @click.prevent="deleteNode">
+                    <TrashIcon class="size-4 text-gray-800" />
                 </button>
 
                 <slot name="tools" />
