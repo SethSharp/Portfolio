@@ -53,7 +53,6 @@
                     </span>
                 @endforeach
             </div>
-
         </div>
 
         <div class="mt-8">

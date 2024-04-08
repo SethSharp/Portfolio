@@ -648,4 +648,30 @@ class UpdateBlogTest extends TestCase
 
         $this->assertEquals("<img fileid=\"$file->id\" blogid='null'> </img>", Cache::get(CacheKeys::renderedBlogContent($blog)));
     }
+
+    /** @test */
+    public function can_update_and_blog_cover_is_not_reset()
+    {
+        $this->blog->update([
+            'cover_image' => 'original cover'
+        ]);
+
+        $this->actingAs($this->user)
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => 'Some Title',
+                'slug' => 'some-slug',
+                'cover_image' => null,
+                'meta_title' => 'Some title',
+                'meta_description' => 'Some description',
+                'meta_tags' => 'Some tags',
+                'content' => "Some content",
+                'is_draft' => true
+            ])
+            ->assertRedirect(route('dashboard.blogs.index'));
+
+        $this->assertDatabaseHas('blogs', [
+            'title' => 'Some Title',
+            'cover_image' => 'original cover'
+        ]);
+    }
 }

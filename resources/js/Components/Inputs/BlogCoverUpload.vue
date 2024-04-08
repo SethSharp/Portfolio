@@ -44,7 +44,10 @@ const fileUpload = () => document.getElementById(uniqueId).click()
     <InputLabel :value="label" />
 
     <div class="flex items-center space-x-2">
-        <img :src="newImage ?? curImg" class="max-w-lg max-h-64 object-cover object-center" />
+        <img
+            :src="newImage ?? curImg"
+            class="max-w-lg max-h-40 sm:max-h-64 object-cover object-center"
+        />
 
         <input
             :id="uniqueId"

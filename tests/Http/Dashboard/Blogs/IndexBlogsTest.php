@@ -48,7 +48,7 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index'))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
+                fn(AssertableInertia $page) => $page
                     ->where('blogs.data.0.id', $published->id)
             );
     }
@@ -63,7 +63,7 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index', ['filter' => ['status' => BlogStatus::PUBLISHED->value]]))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
+                fn(AssertableInertia $page) => $page
                     ->where('blogs.data.0.id', $published->id)
             );
     }
@@ -78,7 +78,7 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index', ['filter' => ['status' => BlogStatus::DRAFTED->value]]))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
+                fn(AssertableInertia $page) => $page
                     ->where('blogs.data.0.id', $drafted->id)
             );
     }
@@ -95,26 +95,38 @@ class IndexBlogsTest extends TestCase
             ->get(route('dashboard.blogs.index', ['filter' => ['status' => BlogStatus::DELETED->value]]))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
+                fn(AssertableInertia $page) => $page
                     ->where('blogs.data.0.id', $deleted->id)
             );
     }
 
     /** @test */
-    public function blogs_are_ordered_by_created_at()
+    public function published_blogs_are_ordered_by_published_at()
     {
-        $blog3 = Blog::factory()->published()->create();
         $blog1 = Blog::factory()->published()->create();
         $blog2 = Blog::factory()->published()->create();
+        $blog3 = Blog::factory()->published()->create();
+
+        $blog1->update([
+            'published_at' => now()->subDay()
+        ]);
+
+        $blog2->update([
+            'published_at' => now()
+        ]);
+
+        $blog3->update([
+            'published_at' => now()->subDays(4)
+        ]);
 
         $this->actingAs(User::factory()->admin()->create())
-            ->get(route('dashboard.blogs.index'))
+            ->get(route('dashboard.blogs.index', ['filter' => ['status' => BlogStatus::PUBLISHED->value]]))
             ->assertOk()
             ->assertInertia(
-                fn (AssertableInertia $page) => $page
-                    ->where('blogs.data.0.id', $blog3->id)
+                fn(AssertableInertia $page) => $page
+                    ->where('blogs.data.0.id', $blog2->id)
                     ->where('blogs.data.1.id', $blog1->id)
-                    ->where('blogs.data.2.id', $blog2->id)
+                    ->where('blogs.data.2.id', $blog3->id)
             );
     }
 }
