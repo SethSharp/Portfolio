@@ -1,12 +1,12 @@
 <script setup>
-import {Link, router} from '@inertiajs/vue3'
+import { Link, router } from '@inertiajs/vue3'
 import {
     PencilSquareIcon,
     EyeIcon,
     TrashIcon,
     ArrowLeftStartOnRectangleIcon,
 } from '@heroicons/vue/16/solid/index.js'
-import {getBlogCoverImage} from '@/Helpers/helpers.js'
+import { getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
     blog: {
@@ -74,7 +74,7 @@ const restoreBlog = () => {
                     class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
                 >
                     <a :href="route('blogs.show', blog)" class="size-full">
-                        <EyeIcon class="text-gray-500 hover:text-gray-700 transition p-1"/>
+                        <EyeIcon class="text-gray-500 hover:text-gray-700 transition p-1" />
                     </a>
                 </div>
 
@@ -83,7 +83,7 @@ const restoreBlog = () => {
                     class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
                 >
                     <button @click.prevent="deleteBlog" class="size-full">
-                        <TrashIcon class="text-gray-500 hover:text-gray-700 transition p-1"/>
+                        <TrashIcon class="text-gray-500 hover:text-gray-700 transition p-1" />
                     </button>
                 </div>
 

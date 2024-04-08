@@ -1,11 +1,11 @@
 <script setup>
-import {useVModels} from '@vueuse/core'
+import { useVModels } from '@vueuse/core'
 import Modal from '@/Components/Modal.vue'
 import Select from '@/Components/Inputs/Select.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import Form from "@/Components/Form/Form.vue";
+import Form from '@/Components/Form/Form.vue'
 
 const props = defineProps({
     open: Boolean,
@@ -57,15 +57,20 @@ const options = [
     <Modal :open="open" @close="emits('close')">
         <Form>
             <FormElement>
-                <TextInput id="columns" type="number" v-model="computedCols" label="Columns"/>
+                <TextInput id="columns" type="number" v-model="computedCols" label="Columns" />
             </FormElement>
 
             <FormElement>
-                <TextInput id="mobile-columns" type="number" v-model="computedMobile" label="Mobile Columns"/>
+                <TextInput
+                    id="mobile-columns"
+                    type="number"
+                    v-model="computedMobile"
+                    label="Mobile Columns"
+                />
             </FormElement>
 
             <FormElement>
-                <Select v-model="computedGap" :options="options" label="Gap"/>
+                <Select v-model="computedGap" :options="options" label="Gap" />
             </FormElement>
         </Form>
 
