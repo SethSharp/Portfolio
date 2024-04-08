@@ -9,17 +9,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "codinglabsau/php-styles": "dev-main",
+        "sethsharp/blog-crud": "^1.1.2",
         "guzzlehttp/guzzle": "^7.2",
-        "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.7",
-        "league/flysystem-aws-s3-v3": "^3.0",
+        "inertiajs/inertia-laravel": "^1.0",
+        "tightenco/ziggy": "^1.0",
         "livewire/livewire": "^3.3",
-        "sethsharp/blog-crud": "^1.1.2",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "spatie/laravel-query-builder": "^5.8",
-        "tightenco/ziggy": "^1.0"
+        "codinglabsau/php-styles": "dev-main"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

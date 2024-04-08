@@ -5,10 +5,10 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue'
-import { PhotoIcon } from '@heroicons/vue/24/solid'
-import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
-import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
+import {ref} from 'vue'
+import {PhotoIcon} from '@heroicons/vue/24/solid'
+import {NodeViewWrapper, nodeViewProps} from '@tiptap/vue-3'
+import {PencilSquareIcon} from '@heroicons/vue/16/solid/index.js'
 import breakdownNodeViewProps from '@/Helpers/breakdownNodeViewProps'
 import EditImage from '@/Components/Editor/Components/Modals/EditImage.vue'
 import EditableNode from '@/Components/Editor/Components/EditableNodeWrapper.vue'
@@ -19,7 +19,7 @@ const props = defineProps({
 
 const open = ref(false)
 
-let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
+let {fileId, blogId, src, alt, height} = breakdownNodeViewProps(props)
 </script>
 
 <template>
@@ -27,8 +27,9 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
         <EditableNode v-bind="props">
             <template #tools>
                 <button @click="open = true">
-                    <PencilSquareIcon class="size-4" />
+                    <PencilSquareIcon class="size-4"/>
                 </button>
+
                 <EditImage
                     @close="open = false"
                     :open="open"
@@ -45,11 +46,11 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                     <div class="flex w-full justify-center">
                         <div class="flex-col w-full">
                             <div v-if="src" class="flex mb-4 w-full">
-                                <img :src="src" :alt="alt" :style="{ height: `${height}px` }" />
+                                <img :src="src" :alt="alt" :style="{ height: `${height}px` }"/>
                             </div>
 
                             <div v-else class="flex flex-col justify-center items-center mt-2">
-                                <PhotoIcon class="w-12 h-12 text-gray-300" />
+                                <PhotoIcon class="w-12 h-12 text-gray-300"/>
                                 <p class="mt-1 text-sm text-gray-300">Select or upload an image</p>
                             </div>
                         </div>

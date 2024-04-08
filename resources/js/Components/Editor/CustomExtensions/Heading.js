@@ -1,9 +1,9 @@
+import {mergeAttributes} from '@tiptap/core'
 import BaseHeading from '@tiptap/extension-heading'
-import { mergeAttributes } from '@tiptap/core'
 
 export const Heading = BaseHeading.extend({
     levels: [1, 2, 3],
-    renderHTML({ node, HTMLAttributes }) {
+    renderHTML({node, HTMLAttributes}) {
         const level = this.options.levels.includes(node.attrs.level)
             ? node.attrs.level
             : this.options.levels[0]
@@ -21,4 +21,4 @@ export const Heading = BaseHeading.extend({
             0,
         ]
     },
-}).configure({ levels: [1, 2, 3] })
+}).configure({levels: [1, 2, 3]})

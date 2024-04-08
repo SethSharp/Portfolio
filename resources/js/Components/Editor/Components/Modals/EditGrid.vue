@@ -1,14 +1,11 @@
 <script setup>
-import axios from 'axios'
-import { ref, watch } from 'vue'
-import { useVModels } from '@vueuse/core'
-import { useForm } from '@inertiajs/vue3'
+import {useVModels} from '@vueuse/core'
 import Modal from '@/Components/Modal.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import Select from '@/Components/Inputs/Select.vue'
+import TextInput from '@/Components/Inputs/TextInput.vue'
+import FormElement from '@/Components/Form/FormElement.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import Form from "@/Components/Form/Form.vue";
 
 const props = defineProps({
     open: Boolean,
@@ -58,23 +55,19 @@ const options = [
 
 <template>
     <Modal :open="open" @close="emits('close')">
-        <div class="mb-4">
-            <div>
-                <InputLabel> Cols</InputLabel>
-                <TextInput type="number" v-model="computedCols" />
-            </div>
+        <Form>
+            <FormElement>
+                <TextInput id="columns" type="number" v-model="computedCols" label="Columns"/>
+            </FormElement>
 
-            <div>
-                <InputLabel> Mobile Columns</InputLabel>
-                <TextInput type="number" v-model="computedMobile" />
-            </div>
+            <FormElement>
+                <TextInput id="mobile-columns" type="number" v-model="computedMobile" label="Mobile Columns"/>
+            </FormElement>
 
-            <div>
-                <InputLabel> Gap</InputLabel>
-
-                <Select v-model="computedGap" :options="options" />
-            </div>
-        </div>
+            <FormElement>
+                <Select v-model="computedGap" :options="options" label="Gap"/>
+            </FormElement>
+        </Form>
 
         <PrimaryButton @click.prevent="emits('close')"> Save</PrimaryButton>
     </Modal>

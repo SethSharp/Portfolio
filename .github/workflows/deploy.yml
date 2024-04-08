@@ -34,12 +34,7 @@ jobs:
         run: composer install --no-cache --no-ansi --no-interaction --no-progress
 
       - name: Install node dependencies
-        run: npm i --force --legacy-peer-deps
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
+        run: npm ci
 
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -51,11 +46,7 @@ jobs:
         run: |
           php artisan cache:clear
           php artisan config:clear
-          php artisan cache:clear
-
-      - name: Build frontend
-        run: |
-          npm run build
+          php artisan route:clear
 
       - name: Execute tests
         env:

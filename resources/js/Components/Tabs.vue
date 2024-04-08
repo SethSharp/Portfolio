@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import {Link} from '@inertiajs/vue3'
 import Pagination from '@/Components/Pagination.vue'
 
 defineProps({
@@ -31,11 +31,11 @@ defineProps({
             </div>
         </div>
         <div class="mt-4">
-            <slot />
+            <slot/>
         </div>
 
-        <div v-if="data">
-            <Pagination :data="data" />
+        <div v-if="data" class="mt-12">
+            <Pagination :data="data"/>
         </div>
     </div>
 </template>
