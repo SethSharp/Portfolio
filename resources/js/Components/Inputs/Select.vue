@@ -78,7 +78,7 @@ watch(selectedOption, (newVal) => {
                                 v-if="selected"
                                 class="absolute inset-y-0 left-0 flex items-center pl-3 text-primary-600"
                             >
-                                <CheckIcon class="size-5" aria-hidden="true"/>
+                                <CheckIcon class="size-5" aria-hidden="true" />
                             </span>
                         </li>
                     </ListboxOption>
