@@ -48,6 +48,10 @@ jobs:
           php artisan config:clear
           php artisan route:clear
 
+      - name: Build frontend
+        run: |
+          npm run build
+
       - name: Execute tests
         env:
           DB_USERNAME: root
