@@ -29,9 +29,7 @@ const selectedOption = ref(
 const input = ref(null)
 
 watch(selectedOption, (newVal) => {
-    if (newVal) {
-        emits('update:modelValue', newVal.id)
-    }
+    emits('update:modelValue', newVal?.id ?? null)
 })
 </script>
 
@@ -44,7 +42,7 @@ watch(selectedOption, (newVal) => {
                 v-slot="{ open }"
                 class="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 h-10 pr-10 text-left shadow-md focus:outline-none focus-visible:border-primary-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
             >
-                {{ selectedOption?.name }}
+                {{ selectedOption?.name ?? 'no selection' }}
                 <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <ChevronDownIcon
                         class="size-5 text-gray-400 transition"
@@ -60,14 +58,28 @@ watch(selectedOption, (newVal) => {
                 leave-to-class="opacity-0"
             >
                 <ListboxOptions class="absolute z-10 bg-white w-full shadow-md">
-                    <ListboxOption key="null" :value="null">
+                    <ListboxOption v-slot="{ active, selected }" key="null" :value="null">
                         <li
                             :class="[
                                 active ? 'bg-primary-100 text-primary-900' : 'text-gray-900',
                                 'relative cursor-default select-none py-2 pl-10 pr-4',
                             ]"
                         >
-                            Clear Selection
+                            <span
+                                :class="[
+                                    selected ? 'font-medium' : 'font-normal',
+                                    'block truncate',
+                                ]"
+                            >
+                                none
+                            </span>
+
+                            <span
+                                v-if="selected"
+                                class="absolute inset-y-0 left-0 flex items-center pl-3 text-primary-600"
+                            >
+                                <CheckIcon class="size-5" aria-hidden="true"/>
+                            </span>
                         </li>
                     </ListboxOption>
 
