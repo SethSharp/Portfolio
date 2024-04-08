@@ -5,6 +5,7 @@ import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import { Head, useForm } from '@inertiajs/vue3'
+import FormElement from '@/Components/Form/FormElement.vue'
 
 const props = defineProps({
     email: {
@@ -36,9 +37,7 @@ const submit = () => {
         <Head title="Reset Password" />
 
         <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-
+            <FormElement>
                 <TextInput
                     id="email"
                     type="email"
@@ -47,14 +46,12 @@ const submit = () => {
                     required
                     autofocus
                     autocomplete="username"
+                    label="Email"
+                    :error="form.errors.email"
                 />
+            </FormElement>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
+            <FormElement>
                 <TextInput
                     id="password"
                     type="password"
@@ -62,14 +59,12 @@ const submit = () => {
                     v-model="form.password"
                     required
                     autocomplete="new-password"
+                    :error="form.errors.password"
+                    label="Password"
                 />
+            </FormElement>
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-
+            <FormElement>
                 <TextInput
                     id="password_confirmation"
                     type="password"
@@ -77,10 +72,10 @@ const submit = () => {
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"
+                    label="Confirm Password"
+                    :error="form.errors.password_confirmation"
                 />
-
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
+            </FormElement>
 
             <div class="flex items-center justify-end mt-4">
                 <PrimaryButton

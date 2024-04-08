@@ -1,7 +1,7 @@
 <script setup>
 import axios from 'axios'
-import { ref, watch } from 'vue'
-import { useVModels } from '@vueuse/core'
+import {ref, watch} from 'vue'
+import {useVModels} from '@vueuse/core'
 import Modal from '@/Components/Modal.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
@@ -79,13 +79,11 @@ watch(file, (_) => {
             </FormElement>
 
             <FormElement>
-                <InputLabel for="alt" value="Alt" />
-                <TextInput id="alt" type="text" v-model="computedAlt" />
+                <TextInput id="alt" type="text" v-model="computedAlt" label="Alt"/>
             </FormElement>
 
             <FormElement>
-                <InputLabel for="height" value="Height" />
-                <TextInput id="height" v-model="computedHeight" type="number" />
+                <TextInput id="height" v-model="computedHeight" type="number" label="Height"/>
             </FormElement>
         </div>
 

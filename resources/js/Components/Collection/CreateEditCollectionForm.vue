@@ -51,13 +51,15 @@ const shiftBlog = (from, to) => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Title" />
-            <InputError :message="form.errors.title" />
+            <TextInput v-model="form.title" autofocus label="Title" :error="form.errors.title" />
         </FormElement>
 
         <FormElement>
-            <TextArea v-model="form.description" label="Description" />
-            <InputError :message="form.errors.description" />
+            <TextArea
+                v-model="form.description"
+                label="Description"
+                :error="form.errors.description"
+            />
         </FormElement>
 
         <FormElement>
@@ -92,7 +94,6 @@ const shiftBlog = (from, to) => {
 
         <div class="gap-x-2 flex">
             <DangerButton @click.prevent="destroyCollection"> Delete</DangerButton>
-
             <PrimaryButton @click.prevent="submit"> Save</PrimaryButton>
         </div>
     </Form>

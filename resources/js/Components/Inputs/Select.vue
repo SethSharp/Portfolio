@@ -1,8 +1,9 @@
 <script setup>
-import { ref, watch } from 'vue'
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
+import {ref, watch} from 'vue'
+import {Listbox, ListboxButton, ListboxOptions, ListboxOption} from '@headlessui/vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
-import { CheckIcon, ChevronDownIcon } from '@heroicons/vue/16/solid/index.js'
+import {CheckIcon, ChevronDownIcon} from '@heroicons/vue/16/solid/index.js'
+import InputError from '@/Components/Inputs/InputError.vue'
 
 const props = defineProps({
     modelValue: Number,
@@ -10,6 +11,10 @@ const props = defineProps({
     options: {
         type: Array,
         default: [],
+    },
+    error: {
+        type: String,
+        default: null,
     },
 })
 
@@ -32,7 +37,7 @@ watch(selectedOption, (newVal) => {
 
 <template>
     <div class="relative">
-        <InputLabel :value="label" />
+        <InputLabel :value="label"/>
 
         <Listbox v-model="selectedOption">
             <ListboxButton
@@ -55,6 +60,17 @@ watch(selectedOption, (newVal) => {
                 leave-to-class="opacity-0"
             >
                 <ListboxOptions class="absolute z-10 bg-white w-full shadow-md">
+                    <ListboxOption key="null" :value="null">
+                        <li
+                            :class="[
+                                active ? 'bg-primary-100 text-primary-900' : 'text-gray-900',
+                                'relative cursor-default select-none py-2 pl-10 pr-4',
+                            ]"
+                        >
+                            Clear Selection
+                        </li>
+                    </ListboxOption>
+
                     <ListboxOption
                         v-slot="{ active, selected }"
                         v-for="option in options"
@@ -72,18 +88,20 @@ watch(selectedOption, (newVal) => {
                                     selected ? 'font-medium' : 'font-normal',
                                     'block truncate',
                                 ]"
-                                >{{ option.name }}</span
+                            >{{ option.name }}</span
                             >
                             <span
                                 v-if="selected"
                                 class="absolute inset-y-0 left-0 flex items-center pl-3 text-primary-600"
                             >
-                                <CheckIcon class="size-5" aria-hidden="true" />
+                                <CheckIcon class="size-5" aria-hidden="true"/>
                             </span>
                         </li>
                     </ListboxOption>
                 </ListboxOptions>
             </transition>
         </Listbox>
+
+        <InputError :message="error"/>
     </div>
 </template>

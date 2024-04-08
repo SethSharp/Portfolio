@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    for: {
+    forInput: {
         type: String,
     },
     value: {
@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-    <label class="block font-medium text-md text-gray-700">
+    <label :for="forInput" class="block font-medium text-md text-gray-700">
         <span v-if="value">{{ value }}</span>
         <span v-else><slot /></span>
     </label>

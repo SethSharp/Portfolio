@@ -1,9 +1,8 @@
 <script setup>
-import InputError from '@/Components/Inputs/InputError.vue'
-import InputLabel from '@/Components/Inputs/InputLabel.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
 import { Link, useForm, usePage } from '@inertiajs/vue3'
+import TextInput from '@/Components/Inputs/TextInput.vue'
+import FormElement from '@/Components/Form/FormElement.vue'
+import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 
 defineProps({
     mustVerifyEmail: {
@@ -33,9 +32,7 @@ const form = useForm({
         </header>
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
-            <div>
-                <InputLabel for="name" value="Name" />
-
+            <FormElement>
                 <TextInput
                     id="name"
                     type="text"
@@ -44,14 +41,12 @@ const form = useForm({
                     required
                     autofocus
                     autocomplete="name"
+                    label="Name"
+                    :error="form.errors.name"
                 />
+            </FormElement>
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
-
-            <div>
-                <InputLabel for="email" value="Email" />
-
+            <FormElement>
                 <TextInput
                     id="email"
                     type="email"
@@ -59,10 +54,10 @@ const form = useForm({
                     v-model="form.email"
                     required
                     autocomplete="username"
+                    label="Email"
+                    :error="form.errors.email"
                 />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+            </FormElement>
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">

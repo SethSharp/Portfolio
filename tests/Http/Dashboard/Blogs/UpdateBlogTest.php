@@ -11,6 +11,7 @@ use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 use SethSharp\BlogCrud\Support\Cache\CacheKeys;
+use SethSharp\BlogCrud\Actions\Blogs\AddBlogToCollectionAction;
 
 class UpdateBlogTest extends TestCase
 {
@@ -293,9 +294,14 @@ class UpdateBlogTest extends TestCase
     {
         $collection = Collection::factory()->create();
 
+        $originalCollection = Collection::factory()->create();
+
         $this->blog->update([
-            'collection_id' => Collection::factory()->create()->id
+            'collection_id' => $originalCollection->id
         ]);
+
+        // adds the blog to the pivot
+        app(AddBlogToCollectionAction::class)($this->blog, $originalCollection);
 
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
@@ -329,6 +335,9 @@ class UpdateBlogTest extends TestCase
             'slug' => 'some-slug',
         ])->first();
 
+        // assert that entry is not duplicated
+        $this->assertDatabaseCount('blog_collection', 1);
+
         $this->assertDatabaseHas('blog_collection', [
             'blog_id' => $blog->id,
             'collection_id' => $collection->id,
@@ -344,9 +353,7 @@ class UpdateBlogTest extends TestCase
             'collection_id' => $collection->id
         ]);
 
-        $collection->blogs()->attach($blog, [
-            'order' => 1
-        ]);
+        app(AddBlogToCollectionAction::class)($blog, $collection);
 
         $blog2 = Blog::factory()->create();
 

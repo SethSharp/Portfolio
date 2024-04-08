@@ -1,11 +1,13 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
+import InputError from '@/Components/Inputs/InputError.vue'
 
 defineProps({
-    label: {
+    label: String,
+    error: {
         type: String,
-        default: '',
+        default: null,
     },
 })
 
@@ -35,5 +37,7 @@ defineExpose({ focus: () => input.value.focus() })
             v-model="model"
             ref="input"
         />
+
+        <InputError :message="error" />
     </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
+import InputError from '@/Components/Inputs/InputError.vue'
 
 defineProps({
     id: String,
@@ -9,6 +10,10 @@ defineProps({
     type: {
         type: String,
         default: 'text',
+    },
+    error: {
+        type: String,
+        default: null,
     },
 })
 
@@ -30,7 +35,7 @@ defineExpose({ focus: () => input.value.focus() })
 
 <template>
     <div>
-        <InputLabel :value="label" />
+        <InputLabel :for-input="id" :value="label" />
 
         <input
             :id="id"
@@ -41,5 +46,7 @@ defineExpose({ focus: () => input.value.focus() })
         />
 
         <span class="text-gray-400 text-sm"> {{ description }} </span>
+
+        <InputError :message="error" />
     </div>
 </template>

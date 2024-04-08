@@ -6,6 +6,7 @@ import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
+import FormElement from '@/Components/Form/FormElement.vue'
 
 defineProps({
     canResetPassword: {
@@ -38,7 +39,7 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div>
+            <FormElement>
                 <TextInput
                     type="email"
                     class="mt-1 block w-full"
@@ -47,29 +48,24 @@ const submit = () => {
                     autofocus
                     autocomplete="username"
                     label="Email"
+                    :error="form.errors.email"
                 />
+            </FormElement>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
+            <FormElement>
                 <TextInput
                     type="password"
                     class="mt-1 block w-full"
                     v-model="form.password"
                     required
                     label="Password"
+                    :error="form.errors.password"
                 />
+            </FormElement>
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
+            <FormElement>
+                <Checkbox label="Remember Me" v-model="form.remember" />
+            </FormElement>
 
             <div class="flex items-center justify-end mt-4">
                 <Link

@@ -58,7 +58,6 @@ const form = useForm({
 })
 
 const submit = async () => {
-    console.log(form.collection_id)
     form.transform((data) => ({
         ...data,
         _method: 'put',
@@ -69,7 +68,7 @@ const confirmLeave = (e) => {
     if (form.isDirty) {
         e.returnValue = ''
 
-        const message = 'Are you sure you want to leave?'
+        const message = 'Are you sure you want to leave? There are unsaved changes.'
 
         e.returnValue = message
 
@@ -92,14 +91,17 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <Checkbox v-model="form.is_draft" label="Is Draft" />
-            <InputError :message="form.errors.is_draft" />
+            <Checkbox v-model="form.is_draft" label="Is Draft" :error="form.errors.is_draft" />
         </FormElement>
 
         <FormGrid>
             <div>
-                <TextInput v-model="form.title" autofocus label="Title" />
-                <InputError :message="form.errors.title" />
+                <TextInput
+                    v-model="form.title"
+                    autofocus
+                    label="Title"
+                    :error="form.errors.title"
+                />
             </div>
 
             <div>
@@ -107,40 +109,50 @@ window.addEventListener('beforeunload', confirmLeave)
                     v-model="form.collection_id"
                     :options="collectionOptions"
                     label="Collection"
+                    :error="form.errors.collection_id"
                 />
-                <InputError :message="form.errors.collection_id" />
             </div>
         </FormGrid>
 
         <FormGrid>
             <div>
-                <TextInput v-model="form.slug" label="Slug" />
-                <InputError :message="form.errors.slug" />
+                <TextInput v-model="form.slug" label="Slug" :error="form.errors.slug" />
             </div>
 
             <div>
-                <MultiSelect v-model="form.tags" :options="tagOptions" label="Tags" />
-                <InputError :message="form.errors.tags" />
+                <MultiSelect
+                    v-model="form.tags"
+                    :options="tagOptions"
+                    label="Tags"
+                    :error="form.errors.tags"
+                />
             </div>
         </FormGrid>
 
         <FormElement>
-            <TextInput v-model="form.meta_title" label="Meta Title" />
-            <InputError :message="form.errors.meta_title" />
+            <TextInput
+                v-model="form.meta_title"
+                label="Meta Title"
+                :error="form.errors.meta_title"
+            />
         </FormElement>
 
         <FormElement>
             <TextInput
                 v-model="form.meta_description"
                 label="Meta Description"
-                description="What users will see in google or in the portfolio to see what each blog entails."
+                description="Serves as a small blurb on the blog, used both in Google previews and within the portfolio site itself."
+                :error="form.errors.meta_description"
             />
-            <InputError :message="form.errors.meta_description" />
         </FormElement>
 
         <FormElement>
-            <TextInput v-model="form.meta_tags" label="Meta Tags" />
-            <InputError :message="form.errors.meta_tags" />
+            <TextInput
+                v-model="form.meta_tags"
+                label="Meta Tags"
+                description="Helps Google understand the content of the page - similar to how hashtags work on Instagram"
+                :error="form.errors.meta_tags"
+            />
         </FormElement>
 
         <FormElement>

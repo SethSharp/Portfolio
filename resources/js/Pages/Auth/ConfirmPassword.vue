@@ -5,6 +5,7 @@ import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import { Head, useForm } from '@inertiajs/vue3'
+import FormElement from '@/Components/Form/FormElement.vue'
 
 const form = useForm({
     password: '',
@@ -27,8 +28,7 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="password" value="Password" />
+            <FormElement>
                 <TextInput
                     id="password"
                     type="password"
@@ -37,9 +37,10 @@ const submit = () => {
                     required
                     autocomplete="current-password"
                     autofocus
+                    label="Password"
+                    :error="form.errors.password"
                 />
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+            </FormElement>
 
             <div class="flex justify-end mt-4">
                 <PrimaryButton
