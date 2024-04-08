@@ -36,6 +36,11 @@ jobs:
       - name: Install node dependencies
         run: npm ci
 
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
