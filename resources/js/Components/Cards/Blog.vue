@@ -40,7 +40,7 @@ const restoreBlog = () => {
             <div class="sm:w-1/2">
                 <img
                     :src="getBlogCoverImage(blog.cover)"
-                    class="rounded-lg h-full object-cover object-center"
+                    class="rounded-lg h-full object-cover object-left max-h-64 mx-auto aspect-square"
                 />
             </div>
 

@@ -14,7 +14,7 @@
     @endif
 @endpush
 
-<div class="sm:w-3/4 mx-auto">
+<div class="md:w-4/5 lg:w-3/4 mx-auto">
     <div class="flex-wrap">
         @if($collection)
             <div class="text-gray-400 font-medium text-md">
@@ -38,20 +38,22 @@
     </div>
 
     <div class="mt-12">
-        <div class="flex">
+        <div class="sm:flex">
             <button type="button" wire:click="like"
                     class="flex my-auto mx-4 {{ $isLiked ? 'text-red-500 hover:text-red-300' : 'text-gray-400 hover:text-red-500' }}">
                 <x-icons.heart/>
                 <span class="text-gray-600 font-medium"> {{ $blogLikes }}</span>
             </button>
 
-            <div class="flex gap-4">
+            <div class="gap-4 mt-4 flex py-5 sm:py-0 sm:flex sm:mt-0 overflow-x-auto">
                 @foreach($blog->tags as $tag)
-                    <span class="rounded-lg text-secondary-700 border-[1px] bg-secondary-100 text-sm px-2 py-1">
+                    <span
+                        class="rounded-lg text-secondary-700 h-fit border-[1px] bg-secondary-100 text-sm px-2 py-1 whitespace-nowrap">
                         {{ $tag->name }}
                     </span>
                 @endforeach
             </div>
+
         </div>
 
         <div class="mt-8">
