@@ -1,10 +1,10 @@
 <div>
     <div class="mb-8">
-        <h2 class="text-4xl font-medium mt-2">
+        <h1 class="text-4xl font-medium mt-2">
             <a href="https://www.framedjustforyou.com.au" class="hover:underline"> Framed Just For You</a>
-        </h2>
+        </h1>
     </div>
-    <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
+    <article class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
         <div>
             <div>
                 <div>
@@ -69,5 +69,5 @@
                 search functionality, and streamlined cart management.
             </div>
         </div>
-    </div>
+    </article>
 </div>

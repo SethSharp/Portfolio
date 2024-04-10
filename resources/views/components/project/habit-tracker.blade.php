@@ -1,12 +1,10 @@
 <div class="my-12">
     <div class="mb-8">
-        <h2 class="text-4xl font-medium mt-2">
-            <a href="http://habittracker-uc-1.eba-ayudv8jf.ap-southeast-2.elasticbeanstalk.com" class="hover:underline">
-                Habit Tracker
-            </a>
-        </h2>
+        <h1 class="text-4xl font-medium mt-2">
+            Habit Tracker
+        </h1>
     </div>
-    <div class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
+    <article class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
         <div>
             <div>
                 Habit Tracker is a major project of mine focusing on implementing my skills on the VILT stack
@@ -59,5 +57,5 @@
                 an RDS
             </div>
         </div>
-    </div>
+    </article>
 </div>

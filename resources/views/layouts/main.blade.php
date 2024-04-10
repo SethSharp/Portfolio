@@ -23,14 +23,14 @@
 
 <main>
     <section class="min-h-screen">
-        <div class="ml-8 sm:ml-16 text-3xl font-bold ">
-            <h1 class="text-black inline-block pr-2">
+        <h1 class="ml-8 sm:ml-16 text-3xl font-bold ">
+            <div class="text-black inline-block pr-2">
                 @yield('partOne')
-            </h1>
-            <h2 class="text-amber-400 inline-block">
+            </div>
+            <div class="text-amber-400 inline-block">
                 @yield('partTwo')
-            </h2>
-        </div>
+            </div>
+        </h1>
 
         <div class="md:flex w-4/5 mx-auto mt-2 sm:mt-8 mb-12">
             @yield("content")
