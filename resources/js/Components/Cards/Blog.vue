@@ -37,7 +37,7 @@ const restoreBlog = () => {
 <template>
     <div class="group h-full rounded-3xl relative overflow-hidden">
         <div class="sm:flex h-full gap-2">
-            <div class="sm:w-1/2">
+            <div class="sm:w-1/2 p-4">
                 <img
                     :src="getBlogCoverImage(blog.cover)"
                     class="rounded-lg h-full object-cover object-left max-h-64 mx-auto aspect-square"
