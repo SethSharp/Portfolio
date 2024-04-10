@@ -57,7 +57,9 @@ watch(selectedOption, (newVal) => {
                 leave-from-class="opacity-100"
                 leave-to-class="opacity-0"
             >
-                <ListboxOptions class="absolute z-10 bg-white w-full shadow-md">
+                <ListboxOptions
+                    class="absolute z-10 max-h-40 overflow-scroll bg-white w-full shadow-md"
+                >
                     <ListboxOption v-slot="{ active, selected }" key="null" :value="null">
                         <li
                             :class="[
