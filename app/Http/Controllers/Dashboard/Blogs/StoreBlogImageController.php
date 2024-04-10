@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Blogs;
 
 use Illuminate\Http\JsonResponse;
+use SethSharp\BlogCrud\Models\File;
 use App\Http\Controllers\Controller;
-use SethSharp\BlogCrud\Models\File\File;
 use SethSharp\BlogCrud\Actions\Files\StoreFileAction;
 use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
 use SethSharp\BlogCrud\Requests\Blogs\StoreBlogImageRequest;

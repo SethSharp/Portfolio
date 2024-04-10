@@ -1,5 +1,14 @@
 <?php
 
+use SethSharp\BlogCrud\Models\File;
+use Intervention\Image\ImageManager;
+use SethSharp\BlogCrud\Models\Blog\Tag;
+use SethSharp\BlogCrud\Models\Iam\User;
+use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Like;
+use SethSharp\BlogCrud\Models\Blog\Comment;
+use SethSharp\BlogCrud\Models\Blog\Collection;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -21,7 +30,7 @@ return [
     |
     | Allows the option for users to define their own driver
     */
-    'image_driver' => \Intervention\Image\ImageManager::gd(),
+    'image_driver' => ImageManager::gd(),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,17 +42,17 @@ return [
     */
     'models' => [
         'blog' => [
-            'blog' => \SethSharp\BlogCrud\Models\Blog\Blog::class,
-            'collection' => \SethSharp\BlogCrud\Models\Blog\Collection::class,
-            'comment' => \SethSharp\BlogCrud\Models\Blog\Comment::class,
-            'like' => \SethSharp\BlogCrud\Models\Blog\Like::class,
-            'tag' => \SethSharp\BlogCrud\Models\Blog\Tag::class,
+            'blog' => Blog::class,
+            'collection' => Collection::class,
+            'comment' => Comment::class,
+            'like' => Like::class,
+            'tag' => Tag::class,
         ],
         'file' => [
-            'file' => \SethSharp\BlogCrud\Models\File::class,
+            'file' => File::class,
         ],
         'iam' => [
-            'user' => \SethSharp\BlogCrud\Models\Iam\User::class,
+            'user' => User::class,
         ]
     ]
 ];
