@@ -26,7 +26,7 @@ class IndexBlogsController extends Controller
                 AllowedFilter::custom('status', new BlogStatusFilter())->default(BlogStatus::PUBLISHED->value),
                 AllowedFilter::custom('q', new BlogSearchFilter()),
             ])
-            ->when($currentStatus->value === BlogStatus::PUBLISHED->value, fn($query) => $query->orderByDesc('published_at'))
+            ->when($currentStatus->value === BlogStatus::PUBLISHED->value, fn ($query) => $query->orderByDesc('published_at'))
             ->paginate(9)
             ->withQueryString();
 
@@ -34,7 +34,7 @@ class IndexBlogsController extends Controller
             'blogs' => $blogs,
             'status' => $currentStatus->label(),
             'tabs' => collect(BlogStatus::cases())
-                ->map(fn(BlogStatus $status) => [
+                ->map(fn (BlogStatus $status) => [
                     'name' => $status->label(),
                     'active' => $status->value === $currentStatus->value,
                     'href' => route('dashboard.blogs.index', ['filter' => ['status' => $status->value]])

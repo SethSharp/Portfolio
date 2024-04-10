@@ -1,6 +1,6 @@
 <script setup>
 import { router } from '@inertiajs/vue3'
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import Blog from '@/Components/Cards/Blog.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
@@ -13,7 +13,10 @@ const props = defineProps({
     status: String,
 })
 
-const search = ref('')
+const routeStatus =
+    route().params.filter && route().params.filter.status ? route().params.filter.status : ''
+const query = route().params.filter && route().params.filter.q ? route().params.filter.q : ''
+const search = ref(query)
 
 const create = () => {
     router.post(route('dashboard.blogs.create'))
@@ -22,7 +25,7 @@ const create = () => {
 const visitSearch = () => {
     router.visit(
         route('dashboard.blogs.index', {
-            filter: { q: search.value, status: props.status.toLowerCase() },
+            filter: { q: search.value, status: routeStatus },
         })
     )
 }
@@ -31,11 +34,6 @@ watch(search, (newSearch) => {
     if (!newSearch) {
         visitSearch()
     }
-})
-
-onMounted(() => {
-    const query = route().params.filter && route().params.filter.q ? route().params.filter.q : ''
-    search.value = query
 })
 </script>
 
@@ -59,7 +57,7 @@ onMounted(() => {
                 </h3>
 
                 <div v-if="status === 'published'" class="mt-4">
-                    <PrimaryButton @click="create"> Create Blog</PrimaryButton>
+                    <PrimaryButton @click="create"> Create a Blog</PrimaryButton>
                 </div>
             </div>
         </div>
