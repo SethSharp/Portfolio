@@ -78,12 +78,15 @@
                 <x-content.left
                     title="About Me Currently"
                     src="about/4wd.png"
-                    alt="4WD track track with car coming down hill."
+                    alt="4WD track with car coming down hill."
                     caption="4WD track in Ormeau"
                 >
-                    I am currently living it up on the Gold Coast and enjoying every bit. I am working with Coding Labs
-                    and working in a sub-team focusing on coding, infrastructure and incident reporting. Mainly focusing
-                    on using our preferred tech stacks to bring the best product we can to our clients.
+                    <p>
+                        I currently reside on the Gold Coast and work as a Junior Software Developer at Coding
+                        Labs. I have been really enjoying the last year or so working in the field and have learnt so
+                        much. My primary tech stack includes Laravel, Vue, Inertia, JS/TS,
+                        Alpine, Livewire, and Tailwind CSS.
+                    </p>
                 </x-content.left>
 
                 <x-content.right
@@ -92,15 +95,13 @@
                     alt="Standing under the Sydney Harbour Bridge."
                     caption="Sydney Trip"
                 >
-                    After some time in the industry and finishing my degree, I have a few aspirations in mind, but one
-                    that sticks out most to me is starting a business in the technology field. It came up in a
-                    conversation
-                    and has stuck with me since and is something that is growing as a goal for my future.
-                    But until that day when I am experienced enough I am currently enjoying
-                    my
-                    current position at Coding Labs and the journey going through my beginner stages as a developer
-                    and hope to become experienced enough to lead other developers and coach/guide others who were in my
-                    shoes.
+                    <p>
+                        One of my major aspirations is to start my own business. I am eager to leverage my skills and
+                        experience to create innovative solutions and build a successful venture. But until then when I
+                        am experienced enough, I aim to
+                        grow in my career and become a lead developer, taking on more responsibilities and leading
+                        impactful projects.
+                    </p>
                 </x-content.right>
 
                 <x-content.left
@@ -109,10 +110,18 @@
                     alt="Fraser Island West Side lookout on top of a massive dune."
                     caption="Fraser Island - West Side"
                 >
-                    In my spare time I enjoy the outdoors by going 4WDing on bush tracks and beautiful national
-                    parks such as Fraser Island. As well camping and staying away from technology for as long as
-                    possible.
+                    <p>
+                        Apart from my professional and career aspirations, I am a big fan of outdoor adventures. Whether
+                        it's exploring the scenic views of Fraser Island or tackling challenging 4WD tracks or catching
+                        nothing when I go fishing.
+                    </p>
+                    <p>
+                        I also have a passion for gaming. Whenever I get some free time, I love diving into immersive
+                        games that offer a great escape and entertainment. It's a fun and relaxing way to unwind and
+                        enjoy some downtime.
+                    </p>
                 </x-content.left>
+
             </div>
         </div>
     </div>
