@@ -11,8 +11,7 @@ class NotifySlackOfContactNotification extends Notification
         public string $email,
         public string $name,
         public string $message,
-    )
-    {
+    ) {
     }
 
     public function via($notifiable): array
