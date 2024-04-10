@@ -19,5 +19,9 @@
         <x-body.wrapper>
             <x-project.framed/>
         </x-body.wrapper>
+
+        <x-body.wrapper>
+            <x-project.portfolio-package/>
+        </x-body.wrapper>
     </div>
 @stop
