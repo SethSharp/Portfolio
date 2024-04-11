@@ -58,7 +58,7 @@ jobs:
 
       - name: Build ZIP Package for Artifact Upload
         if: github.ref == 'refs/heads/main'
-        run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
+        run: zip -r deploy.zip ./ -x "vendor/*"
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main'
