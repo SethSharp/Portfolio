@@ -80,6 +80,18 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
 
+      - name: Install node dependencies
+        run: npm ci
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build frontend
+        run: |
+          npm run build
+
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
         run: |
