@@ -83,7 +83,7 @@ jobs:
           node-version: 20
 
       - name: Copy standard .env
-        run: php -r copy('.env.seth.production', '.env');
+        run: php -r "file_exists('.env') || copy('.env.seth.production', '.env');"
 
       - name: Generate key
         run: php artisan key:generate

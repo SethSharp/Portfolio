@@ -57,9 +57,15 @@ return [
     'beth' => [
         'in_app_name' => 'Bethany Frankis',
 
-        'copyright' => '&copy; 2024 Seth Sharp. All rights reserved.',
+        'copyright' => '&copy; 2024 Bethany Frankis. All rights reserved.',
 
-        'nav_links' => [],
+        'nav_links' => [
+            [
+                'href' => '/',
+                'active' => 'home',
+                'name' => 'About'
+            ],
+        ],
 
         'social_links' => []
     ]
