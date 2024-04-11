@@ -121,7 +121,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
 
-      - name: Deploy to Main Production Elastic Beanstalk Environment
+      - name: Deploy to Seth Production Site Elastic Beanstalk Environment
         if: github.ref == 'refs/heads/main'
         uses: einaregilsson/beanstalk-deploy@v22
         with:
