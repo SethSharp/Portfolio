@@ -3,45 +3,18 @@
         <div class="sm:flex space-y-4">
             <div class="sm:w-1/2 font-bold text-xl">
                 <div class="flex">
-                    <p>Seth Sharp </p>
-                    <p class="pl-1 text-primary-500"> Portfolio</p>
+                    {{ getCurrentEBEnvironmentConfig()['in_app_name'] . ' Portfolio' }}
                 </div>
                 <div>
                     <ul class="text-gray-500 pl-2 space-y-3 mt-4">
-                        <li>
-                            <a class="text-lg hover:underline underline-offset-4 transition"
-                               href="/">
-                                About
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="text-lg hover:underline underline-offset-4 transition"
-                               href="/experience">
-                                Experiences
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="text-lg hover:underline underline-offset-4 transition"
-                               href="/capabilities">
-                                Capabilities
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="text-lg hover:underline underline-offset-4 transition"
-                               href="/portfolio">
-                                Portfolio
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="text-lg hover:underline underline-offset-4 transition"
-                               href="/blogs">
-                                Blogs
-                            </a>
-                        </li>
+                        @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
+                            <li>
+                                <a class="text-lg hover:underline underline-offset-4 transition"
+                                   href="{{ $link['href'] }}">
+                                    {{ $link['name'] }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -106,24 +79,19 @@
 
     <div class="p-4 grid grid-cols-2">
         <p class="text-sm my-auto leading-5 text-gray-600">
-            &copy; 2023 Seth Sharp. All rights reserved.
+            {!! getCurrentEBEnvironmentConfig()['copyright'] !!}
         </p>
 
         <div class="flex space-x-2 justify-end">
-            <a href="https://github.com/SethSharp">
-                <img
-                    class="size-9 inline-block transition ease-in-out delay-0 hover:-translate-y-1 duration-50"
-                    src="/images/github.png"
-                    alt="GitHub Image"
-                >
-            </a>
-            <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
-                <img
-                    class="size-7 transition ease-in-out delay-0 hover:-translate-y-1 duration-50"
-                    src="/images/linkedIn.png"
-                    alt="LinkedIn Image"
-                >
-            </a>
+            @foreach(getCurrentEBEnvironmentConfig()['social_links'] as $link)
+                <a href="{{ $link['link'] }}">
+                    <img
+                        class="size-9 inline-block transition ease-in-out delay-0 hover:-translate-y-1 duration-50"
+                        src="{{ '/images/' . $link['image'] }}"
+                        alt="{{ $link['alt'] }}"
+                    >
+                </a>
+            @endforeach
         </div>
     </div>
 </footer>

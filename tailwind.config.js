@@ -1,7 +1,17 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 import colors from 'tailwindcss/colors.js'
 
-/** @type {import('tailwindcss').Config} */
+require('dotenv').config()
+
+let primary, secondary;
+if (process.env.EB_ENVIRONMENT === 'seth') {
+    primary = buildPrimaryColour(colors.yellow)
+    secondary = buildPrimaryColour(colors.gray)
+} else {
+    primary = buildPrimaryColour(colors.purple)
+    secondary = buildPrimaryColour(colors.gray)
+}
+
 module.exports = {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -37,32 +47,26 @@ module.exports = {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: {
-                    50: colors.yellow[50],
-                    100: colors.yellow[100],
-                    200: colors.yellow[200],
-                    300: colors.yellow[300],
-                    400: colors.yellow[400],
-                    500: colors.yellow[500],
-                    600: colors.yellow[600],
-                    700: colors.yellow[700],
-                    800: colors.yellow[800],
-                    900: colors.yellow[900],
-                },
-                secondary: {
-                    100: colors.gray[100],
-                    200: colors.gray[200],
-                    300: colors.gray[300],
-                    400: colors.gray[400],
-                    500: colors.gray[500],
-                    600: colors.gray[600],
-                    700: colors.gray[700],
-                    800: colors.gray[800],
-                    900: colors.gray[900],
-                },
+                primary: primary,
+                secondary: secondary,
             },
         },
     },
 
     plugins: [require('@tailwindcss/forms')],
+}
+
+function buildPrimaryColour(colour) {
+    return {
+        50: colour[50],
+        100: colour[100],
+        200: colour[200],
+        300: colour[300],
+        400: colour[400],
+        500: colour[500],
+        600: colour[600],
+        700: colour[700],
+        800: colour[800],
+        900: colour[900],
+    }
 }

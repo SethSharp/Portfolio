@@ -1,10 +1,9 @@
-name: Testing and Deployment
+name: Testing & Deployment
 
 on: [ push ]
 
 jobs:
-  tests:
-
+  test:
     runs-on: ubuntu-22.04
 
     env:
@@ -27,9 +26,6 @@ jobs:
           extensions: zip, sqlite3
           coverage: none
 
-      - name: Check composer compatability
-        run: composer check-platform-reqs
-
       - name: Install composer dependencies
         run: composer install --no-cache --no-ansi --no-interaction --no-progress
 
@@ -39,10 +35,46 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Build frontend
+        run: |
+          npm run build
+
+      - name: Execute tests
+        env:
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: ./vendor/bin/phpunit
+
+  build-deploy-seth-environment:
+    needs: test
+
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        environment: [ seth-production ]
+
+    steps:
+      - name: Install composer dependencies
+        run: composer install --no-cache --no-ansi --no-interaction --no-progress
+
+      - name: Install node dependencies
+        run: npm ci
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Copy standard .env
+        run: php -r copy('.env.seth.production', '.env');
 
       - name: Generate key
         run: php artisan key:generate
@@ -57,18 +89,9 @@ jobs:
         run: |
           npm run build
 
-      - name: Execute tests
-        env:
-          DB_USERNAME: root
-          DB_PASSWORD: root
-        run: ./vendor/bin/phpunit
-
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
         run: |
-          echo "APP_ENV=production" >> .env
-          echo "APP_URL=https://www.sethsharpportfolio.com" >> .env
-          echo "ASSET_URL=https://www.sethsharpportfolio.com" >> .env
           echo "DB_HOST=${{ secrets.DB_HOST}}" >> .env
           echo "DB_DATABASE=${{ secrets.DB_DATABASE}}" >> .env
           echo "DB_USERNAME=${{ secrets.DB_USERNAME}}" >> .env
@@ -89,7 +112,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
 
-      - name: Deploy to Elastic Beanstalk
+      - name: Deploy to Main Production Elastic Beanstalk Environment
         if: github.ref == 'refs/heads/main'
         uses: einaregilsson/beanstalk-deploy@v22
         with:
@@ -101,3 +124,68 @@ jobs:
           region: ap-southeast-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
+
+#  build-deploy-beth-environemnt:
+#    needs: test
+#
+#    runs-on: ubuntu-22.04
+#    strategy:
+#      matrix:
+#        environment: [ beth-production ]
+#
+#    steps:
+#      - name: Install composer dependencies
+#        run: composer install --no-cache --no-ansi --no-interaction --no-progress
+#
+#      - name: Install node dependencies
+#        run: npm ci
+#
+#      - name: Setup node
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 20
+#
+#      - name: Copy standard .env
+#        run: php -r copy('.env.beth.production', '.env');
+#
+#      - name: Generate key
+#        run: php artisan key:generate
+#
+#      - name: Clear some things
+#        run: |
+#          php artisan cache:clear
+#          php artisan config:clear
+#          php artisan route:clear
+#
+#      - name: Build frontend
+#        run: |
+#          npm run build
+#
+#      - name: Echo information to .env
+#        if: github.ref == 'refs/heads/main'
+#        run: |
+#          echo "DB_HOST=${{ secrets.DB_HOST}}" >> .env
+#          echo "DB_DATABASE=${{ secrets.DB_DATABASE}}" >> .env
+#          echo "DB_USERNAME=${{ secrets.DB_USERNAME}}" >> .env
+#          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD}}" >> .env
+#          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}" >> .env
+#          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
+#          echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
+#          echo "SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }}" >> .env
+#
+#      - name: Build ZIP Deployment Package
+#        if: github.ref == 'refs/heads/main'
+#        run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
+#
+#      - name: Deploy to Beth Production Elastic Beanstalk Environment
+#        if: github.ref == 'refs/heads/main'
+#        uses: einaregilsson/beanstalk-deploy@v22
+#        with:
+#          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+#          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+#          application_name: Portfolio
+#          environment_name: Portfolio-Production-Environment
+#          existing_bucket_name: elasticbeanstalk-ap-southeast-2-290427685328
+#          region: ap-southeast-2
+#          version_label: ${{ github.sha }}
+#          deployment_package: deploy.zip

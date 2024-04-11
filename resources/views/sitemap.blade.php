@@ -6,42 +6,15 @@
 @section("content")
     <div>
         <ul>
-            <li>
-                <a class="text-lg hover:underline underline-offset-4 transition"
-                   href="/">
-                    About
-                </a>
-            </li>
-
-            <li>
-                <a class="text-lg hover:underline underline-offset-4 transition"
-                   href="/experience">
-                    Experiences
-                </a>
-            </li>
-
-            <li>
-                <a class="text-lg hover:underline underline-offset-4 transition"
-                   href="/capabilities">
-                    Capabilities
-                </a>
-            </li>
-
-            <li>
-                <a class="text-lg hover:underline underline-offset-4 transition"
-                   href="/portfolio">
-                    Portfolio
-                </a>
-            </li>
-
-            <li>
-                <a class="text-lg hover:underline underline-offset-4 transition"
-                   href="/blogs">
-                    Blogs
-                </a>
-            </li>
+            @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
+                <li>
+                    <a class="text-lg hover:underline underline-offset-4 transition"
+                       href="{{ $link['href'] }}">
+                        {{ $link['name'] }}
+                    </a>
+                </li>
+            @endforeach
         </ul>
-
 
         <div class="w-full mt-6">
             <div class="text-2xl"> Blogs</div>

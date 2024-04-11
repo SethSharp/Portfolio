@@ -8,29 +8,13 @@
                 hidden
                 sm:flex">
         <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2 my-auto">
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('/') ? 'underline' : '' }}  underline-offset-4 p-2.5
+            @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
+                <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is($link['active']) ? 'underline' : '' }}  underline-offset-4 p-2.5
                    rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
-               href="/">
-                Home
-            </a>
-
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('projects') ? 'underline' : '' }} underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
-               href="/projects">
-                Projects
-            </a>
-
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('experience') ? 'underline' : '' }} underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
-               href="/experience">
-                Experiences
-            </a>
-
-            <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is('blogs') ? 'underline' : '' }} underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
-               href="/blogs">
-                Blogs
-            </a>
+                   href="{{ $link['href'] }}">
+                    {{ $link['name'] }}
+                </a>
+            @endforeach
         </div>
 
         @auth()
@@ -43,8 +27,8 @@
     <div class="sm:hidden">
         <div class="mx-8">
             <div class="flex mt-4">
-                <div class="my-auto text-3xl text-gray-400">
-                    Seth Sharp
+                <div class="my-auto text-3xl text-gray-600">
+                    {{ getCurrentEBEnvironmentConfig()['in_app_name'] }}
                 </div>
 
                 <div class="rounded ml-auto hover:bg-gray-300 transition p-1 cursor-pointer" id="menu-btn">
@@ -57,25 +41,13 @@
             <div class="bg-white z-50 relative shadow-2xl w-full hidden
                         flex-col rounded px-6 py-3 font-medium mt-4
                         text-center" id="dropdown">
-                <a href="/"
-                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('/') ? 'underline' : '' }}">
-                    Home
-                </a>
 
-                <a href="/projects"
-                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('projects') ? 'underline' : '' }}">
-                    Projects
-                </a>
-
-                <a href="/experience"
-                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('experience') ? 'underline' : '' }}">
-                    Experiences
-                </a>
-
-                <a href="/blogs"
-                   class="border transition hover:bg-black hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is('blogs') ? 'underline' : '' }}">
-                    Blogs
-                </a>
+                @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
+                    <a href="{{ $link['href'] }}"
+                       class="border transition hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is($link['active']) ? 'underline' : '' }}">
+                        {{ $link['name'] }}
+                    </a>
+                @endforeach
 
                 @auth()
                     <div class="my-auto font-medium mt-4">
@@ -86,6 +58,7 @@
         </div>
 
         <script>
+            // TODO: Change to alpine logic / improve UI/UX of the dropdown, also show a admin link to go to dashboard
             window.addEventListener('DOMContentLoaded', () => {
                 const menuBtn = document.querySelector('#menu-btn')
                 const dropdown = document.querySelector('#dropdown')

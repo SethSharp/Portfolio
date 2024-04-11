@@ -7,7 +7,6 @@ use App\Http\Controllers\Views\ShowProjectsController;
 use App\Http\Controllers\Views\Blogs\ShowBlogController;
 use App\Http\Controllers\Views\ShowCollectionController;
 use App\Http\Controllers\Views\ShowExperienceController;
-use App\Http\Controllers\Views\ShowCapabiltiesController;
 use App\Http\Controllers\Views\Blogs\IndexBlogsController;
 
 /*
@@ -24,7 +23,6 @@ use App\Http\Controllers\Views\Blogs\IndexBlogsController;
 Route::get('/', ShowHomeController::class)->name('home');
 Route::get('/about', ShowHomeController::class)->name('about');
 Route::get('/experience', ShowExperienceController::class)->name('experience');
-Route::get('/capabilities', ShowCapabiltiesController::class)->name('capabilities');
 Route::get('/projects', ShowProjectsController::class)->name('projects');
 Route::get('/sitemap', ShowSitemapController::class)->name('sitemap');
 
