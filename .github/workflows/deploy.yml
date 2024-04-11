@@ -62,13 +62,8 @@ jobs:
         environment: [ seth-production ]
 
     steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: zip, sqlite3
-          coverage: none
-          
+      - uses: actions/checkout@v4
+
       - name: Install composer dependencies
         run: composer install --no-cache --no-ansi --no-interaction --no-progress
 
