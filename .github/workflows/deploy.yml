@@ -84,6 +84,13 @@ jobs:
       - name: Unpackage ZIP Package
         run: unzip deploy.zip
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: zip, sqlite3
+          coverage: none
+
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.seth.production', '.env');"
 
