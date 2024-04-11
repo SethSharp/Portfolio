@@ -81,8 +81,11 @@ jobs:
         with:
           name: repo-artifact
 
-      - name: Unpackage ZIP into current directory
-        run: unzip -o deploy.zip -d .
+      - name: Unpackage ZIP Package
+        run: unzip deploy.zip
+  
+      - name: Change to Portfolio directory
+        run: cd Portfolio
 
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.seth.production', '.env');"
