@@ -58,7 +58,7 @@ jobs:
 
       - name: Build ZIP Package for Artifact Upload
         if: github.ref == 'refs/heads/main'
-        run: zip -r deploy.zip ./ -x "vendor/*"
+        run: zip -r deploy.zip ./ -x "node_modules/*" -x "tests/*"
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main'
@@ -83,9 +83,6 @@ jobs:
 
       - name: Unpackage ZIP Package
         run: unzip deploy.zip
-  
-      - name: Change to Portfolio directory
-        run: cd Portfolio
 
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.seth.production', '.env');"
