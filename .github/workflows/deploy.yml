@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        environment: [ seth-production ]
+        environment: seth-production
 
     steps:
       - uses: actions/checkout@v4
