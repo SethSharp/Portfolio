@@ -28,7 +28,6 @@ module.exports = {
         'grid-cols-5',
         'grid-cols-6',
 
-        //md
         'md:grid-cols-3',
         'md:grid-cols-4',
         'md:grid-cols-5',
