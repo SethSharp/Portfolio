@@ -44,7 +44,7 @@ return [
                 'alt' => 'GitHub Image'
             ],
             [
-                'link' => 'https://www.linkedin.com/in/seth-sharp-213bb3211/',
+                'link' => 'https://www.linkedin.com/in/seth-sharp/',
                 'image' => 'linkedIn.png',
                 'alt' => 'LinkedIn Image'
             ]
@@ -67,6 +67,12 @@ return [
             ],
         ],
 
-        'social_links' => []
+        'social_links' => [
+            [
+                'link' => 'https://www.linkedin.com/in/bethanyfrankis/',
+                'image' => 'linkedIn.png',
+                'alt' => 'LinkedIn Image'
+            ]
+        ]
     ]
 ];
