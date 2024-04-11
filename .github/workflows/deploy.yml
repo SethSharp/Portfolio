@@ -127,16 +127,25 @@ jobs:
           region: ap-southeast-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
-
-#  build-deploy-beth-environemnt:
+#
+#  build-deploy-beth-environment:
 #    needs: test
 #
 #    runs-on: ubuntu-22.04
-#    strategy:
-#      matrix:
-#        environment: [ beth-production ]
+#    environment:
+#      name: beth-production
+#      url: https://www.bethanyfrankisportfolio.com
 #
 #    steps:
+#      - uses: actions/checkout@v4
+#
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '8.2'
+#          extensions: zip, sqlite3
+#          coverage: none
+#
 #      - name: Install composer dependencies
 #        run: composer install --no-cache --no-ansi --no-interaction --no-progress
 #
@@ -149,7 +158,7 @@ jobs:
 #          node-version: 20
 #
 #      - name: Copy standard .env
-#        run: php -r copy('.env.beth.production', '.env');
+#        run: php -r "file_exists('.env') || copy('.env.beth.production', '.env');"
 #
 #      - name: Generate key
 #        run: php artisan key:generate
@@ -174,13 +183,14 @@ jobs:
 #          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}" >> .env
 #          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
 #          echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
+#          echo "SLACK_CHANNEL='#product-portfolio'" >> .env
 #          echo "SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }}" >> .env
 #
 #      - name: Build ZIP Deployment Package
 #        if: github.ref == 'refs/heads/main'
 #        run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
 #
-#      - name: Deploy to Beth Production Elastic Beanstalk Environment
+#      - name: Deploy to Seth Production Site Elastic Beanstalk Environment
 #        if: github.ref == 'refs/heads/main'
 #        uses: einaregilsson/beanstalk-deploy@v22
 #        with:
