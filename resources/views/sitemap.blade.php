@@ -21,7 +21,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-4">
                 @foreach($blogs as $blog)
-                    <a class="text-secondary-600 hover:text-secondary-700 hover:underline transition"
+                    <a class="text-gray-600 hover:text-gray-700 hover:underline transition"
                        href="{{ route('blogs.show', $blog)  }}">
                         {{ $blog->title }}
                     </a>

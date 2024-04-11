@@ -6,10 +6,10 @@ require('dotenv').config()
 let primary, secondary;
 if (process.env.EB_ENVIRONMENT === 'seth') {
     primary = buildPrimaryColour(colors.yellow)
-    secondary = buildPrimaryColour(colors.gray)
+    secondary = buildPrimaryColour(colors.blue)
 } else {
     primary = buildPrimaryColour(colors.purple)
-    secondary = buildPrimaryColour(colors.gray)
+    secondary = buildPrimaryColour(colors.yellow)
 }
 
 module.exports = {

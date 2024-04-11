@@ -48,7 +48,7 @@
             <div class="gap-4 mt-4 flex py-5 sm:py-0 sm:flex sm:mt-0 overflow-x-auto">
                 @foreach($blog->tags as $tag)
                     <span
-                        class="rounded-lg text-secondary-700 h-fit border-[1px] bg-secondary-100 text-sm px-2 py-1 whitespace-nowrap">
+                        class="rounded-lg text-gray-700 h-fit border-[1px] bg-gray-100 text-sm px-2 py-1 whitespace-nowrap">
                         {{ $tag->name }}
                     </span>
                 @endforeach

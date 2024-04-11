@@ -53,6 +53,15 @@ jobs:
           DB_PASSWORD: root
         run: ./vendor/bin/phpunit
 
+      - name: Remove ENV file
+        run: rm .env
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: repo-artifact
+          path: ./
+
   build-deploy-seth-environment:
     needs: test
 
@@ -64,39 +73,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
-          php-version: '8.2'
-          extensions: zip, sqlite3
-          coverage: none
-
-      - name: Install composer dependencies
-        run: composer install --no-cache --no-ansi --no-interaction --no-progress
-
-      - name: Install node dependencies
-        run: npm ci
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+          name: repo-artifact
 
       - name: Copy standard .env
         run: php -r "file_exists('.env') || copy('.env.seth.production', '.env');"
 
       - name: Generate key
         run: php artisan key:generate
-
-      - name: Clear some things
-        run: |
-          php artisan cache:clear
-          php artisan config:clear
-          php artisan route:clear
-
-      - name: Build frontend
-        run: |
-          npm run build
 
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
@@ -115,7 +101,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: zip -r deploy.zip ./ -x "node_modules/*" -x "vendor/*" -x "tests/*"
 
-      - name: Deploy to Seth Production Site Elastic Beanstalk Environment
+      - name: Deploy to Seth Production EB Environment
         if: github.ref == 'refs/heads/main'
         uses: einaregilsson/beanstalk-deploy@v22
         with:

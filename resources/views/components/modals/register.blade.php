@@ -22,7 +22,7 @@
 
                 <div class=" mt-5 flex gap-x-4">
                     <button @click="closeModal()"
-                            class="bg-white text-secondary-600 border-2 border-transparent hover:border-secondary-600 transition rounded-lg p-2">
+                            class="bg-white text-gray-600 border-2 border-transparent hover:border-gray-600 transition rounded-lg p-2">
                         Close
                     </button>
 
@@ -31,7 +31,7 @@
                         Register
                     </a>
 
-                    <span class="my-auto text-secondary-400"> or </span>
+                    <span class="my-auto text-gray-400"> or </span>
 
                     <a href="{{route('login')}}"
                        class="text-primary-600 border-2 border-primary-600 hover:border-transparent hover:text-primary-400 transition rounded-lg p-2">
