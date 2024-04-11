@@ -57,9 +57,9 @@ jobs:
     needs: test
 
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        environment: seth-production
+    environment:
+      name: seth-production
+      url: https://www.sethsharpportfolio.com
 
     steps:
       - uses: actions/checkout@v4
