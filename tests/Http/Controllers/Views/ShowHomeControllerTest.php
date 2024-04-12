@@ -2,10 +2,8 @@
 
 namespace Tests\Http\Controllers\Views;
 
-use App\Http\EnvironmentEnum;
 use Tests\TestCase;
-use SethSharp\BlogCrud\Models\Iam\User;
-use SethSharp\BlogCrud\Models\Blog\Blog;
+use App\Http\EnvironmentEnum;
 
 class ShowHomeControllerTest extends TestCase
 {
