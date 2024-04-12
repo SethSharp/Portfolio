@@ -28,7 +28,7 @@
             <span class="text-black inline-block pr-2">
                 @yield('partOne')
             </span>
-            <span class="text-amber-400 inline-block">
+            <span class="text-primary-400 inline-block">
                 @yield('partTwo')
             </span>
         </h1>

@@ -29,7 +29,7 @@
 
                         <div class="pt-2">
                             <h1 class="text-6xl font-bold inline-block pr-2 text-gray-800"> I'm </h1>
-                            <h1 class="text-6xl font-bold text-amber-400 inline-block text-opacity-19.5"> Seth
+                            <h1 class="text-6xl font-bold text-primary-400 inline-block text-opacity-19.5"> Seth
                                 Sharp </h1>
                         </div>
 
