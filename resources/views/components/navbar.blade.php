@@ -1,72 +1,65 @@
 <nav class="h-20 w-full bg-white sm:pr-10">
-    <div class="h-full
-                inline-block align-middle
-                -z-10 grid
-                grid-rows-2 grid-cols-2
-                sm:grid-rows-1 sm:grid-flow-col
-                sm:float-right
-                hidden
-                sm:flex">
-        <div class="bg-white bg-opacity-75 rounded-3xl w-fit h-fit p-2 my-auto">
+    <div class="h-full gap-6 float-right hidden sm:flex">
+
+        <div class="my-auto space-x-4">
             @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
-                <a class="my-auto mx-auto text-xl font-bold text-center {{ request()->is($link['active']) ? 'underline' : '' }}  underline-offset-4 p-2.5
-                   rounded-3xl hover:-translate-y-1 transition delay-75 duration-400 hover:underline"
-                   href="{{ $link['href'] }}">
+                <x-navigation.link href="{{ $link['href'] }}" active="{{ $link['active'] }}">
                     {{ $link['name'] }}
-                </a>
+                </x-navigation.link>
             @endforeach
         </div>
 
-        @auth()
-            <div class="my-auto font-medium">
-                <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
-            </div>
-        @endauth
+        <div class="my-auto space-x-1">
+            @auth
+                <a class="font-medium text-xl text-gray-500 hover:underline my-auto" href="{{ route('profile.edit') }}">
+                    Profile
+                </a>
+            @endauth
+
+            @role('admin')
+            <a class="font-medium text-xl text-gray-500 my-auto hover:underline"
+               href="{{ route('dashboard.blogs.index') }}">
+                Dashboard
+            </a>
+            @endrole
+        </div>
     </div>
 
-    <div class="sm:hidden">
-        <div class="mx-8">
-            <div class="flex mt-4">
-                <div class="my-auto text-3xl text-gray-600">
+    <div x-data="{ open: false }" class="sm:hidden">
+        <div class="mx-8 relative">
+            <div class="flex gap-6 mt-4">
+                <div x-on:click="open = ! open" class="hover:bg-gray-200 rounded transition cursor-pointer">
+                    <x-icons.burger class="!size-10"/>
+                </div>
+                <a href="{{route('home')}}" class="my-auto text-3xl text-gray-600">
                     {{ getCurrentEBEnvironmentConfig()['in_app_name'] }}
-                </div>
-
-                <div class="rounded ml-auto hover:bg-gray-300 transition p-1 cursor-pointer" id="menu-btn">
-                    <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
-                    <div class="h-2 my-2 w-16 bg-gray-400 opacity-50 rounded-lg"></div>
-                    <div class="h-2 my-2 w-12 ml-3 bg-gray-400 opacity-50 rounded-lg"></div>
-                </div>
+                </a>
             </div>
+            <div x-show="open" @click.outside="open = false" x-transition class="flex justify-start mt-4 z-50">
+                <div
+                    class="bg-gray-100 w-1/2 z-50 absolute text-left shadow-2xl px-6 py-6 space-y-2 grid">
+                    @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
+                        <x-navigation.link href="{{ $link['href'] }}" active="{{ $link['active'] }}">
+                            {{ $link['name'] }}
+                        </x-navigation.link>
+                    @endforeach
 
-            <div class="bg-white z-50 relative shadow-2xl w-full hidden
-                        flex-col rounded px-6 py-3 font-medium mt-4
-                        text-center" id="dropdown">
+                    <div class="border-t grid py-2 space-y-2">
+                        @auth
+                            <a class="font-medium text-gray-500 hover:underline" href="{{ route('profile.edit') }}">
+                                Profile
+                            </a>
+                        @endauth
 
-                @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
-                    <a href="{{ $link['href'] }}"
-                       class="border transition hover:text-white active:bg-black active:font-white text-2xl px-2 py-1 hover:bg-gray-200 rounded {{ request()->is($link['active']) ? 'underline' : '' }}">
-                        {{ $link['name'] }}
-                    </a>
-                @endforeach
-
-                @auth()
-                    <div class="my-auto font-medium mt-4">
-                        <a href="{{ route('profile.edit') }}"> {{ auth()->user()->name }} </a>
+                        @role('admin')
+                        <a class="font-medium text-gray-500 hover:underline"
+                           href="{{ route('dashboard.blogs.index') }}">
+                            Dashboard
+                        </a>
+                        @endrole
                     </div>
-                @endauth
+                </div>
             </div>
         </div>
-
-        <script>
-            // TODO: Change to alpine logic / improve UI/UX of the dropdown, also show a admin link to go to dashboard
-            window.addEventListener('DOMContentLoaded', () => {
-                const menuBtn = document.querySelector('#menu-btn')
-                const dropdown = document.querySelector('#dropdown')
-                menuBtn.addEventListener('click', () => {
-                    dropdown.classList.toggle('hidden')
-                    dropdown.classList.toggle('flex')
-                });
-            });
-        </script>
     </div>
 </nav>
