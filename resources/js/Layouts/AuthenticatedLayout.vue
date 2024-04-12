@@ -159,10 +159,11 @@ const links = [
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            :href="route('dashboard.blogs.index')"
-                            :active="route().current('dashboard.blogs.*')"
+                            v-for="link in links"
+                            :href="link.href"
+                            :active="link.active"
                         >
-                            Dashboard
+                            {{ link.name }}
                         </ResponsiveNavLink>
                     </div>
 
@@ -178,6 +179,9 @@ const links = [
                         </div>
 
                         <div class="mt-3 space-y-1">
+                            <ResponsiveNavLink external :href="route('home')">
+                                Portfolio
+                            </ResponsiveNavLink>
                             <ResponsiveNavLink :href="route('profile.edit')">
                                 Profile
                             </ResponsiveNavLink>
