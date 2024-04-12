@@ -5,6 +5,10 @@
 @push('meta')
     <meta name="description"
           content="Over my time in the industry I reflect on these experiences - to share to others about to go on their journey as developers or anyone that is curios.">
+
+    @if (config('environment.current') !== \App\Http\EnvironmentEnum::SETH->value)
+        <meta name="robots" content="noindex, nofollow"/>
+    @endif
 @endpush
 
 @section('partOne', 'My')

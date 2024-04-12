@@ -5,7 +5,11 @@
           content="Hey I am Seth Sharp, this is where you can find all my blogs!">
 @endpush
 
-@extends("layouts.main")
+@if (config('environment.current') === \App\Http\EnvironmentEnum::SETH->value)
+    @extends("layouts.main")
+@else
+    @extends("layouts.beth-main")
+@endif
 
 @section('partOne', 'My')
 @section('partTwo', 'Blogs')

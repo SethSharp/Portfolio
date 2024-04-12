@@ -10,8 +10,12 @@ class ShowHomeController extends Controller
 {
     public function __invoke(): View
     {
-        return view('home', [
-            'blog' => Blog::published()->orderByDesc('published_at')->first()
-        ]);
+        if (config('environment.current') === \App\Http\EnvironmentEnum::SETH->value) {
+            return view('pages.seth.home', [
+                'blog' => Blog::published()->orderByDesc('published_at')->first()
+            ]);
+        } else {
+            return view('pages.beth.home');
+        }
     }
 }

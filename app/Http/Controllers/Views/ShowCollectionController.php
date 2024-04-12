@@ -11,6 +11,7 @@ class ShowCollectionController extends Controller
     public function __invoke(Collection $collection): View
     {
         $collection->blogs()->orderBy('order');
+
         return view('collection.show', [
             'collection' => $collection
         ]);

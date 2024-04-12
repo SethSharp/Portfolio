@@ -3,29 +3,35 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowSitemapController;
-use App\Http\Controllers\Views\ShowProjectsController;
 use App\Http\Controllers\Views\Blogs\ShowBlogController;
 use App\Http\Controllers\Views\ShowCollectionController;
-use App\Http\Controllers\Views\ShowExperienceController;
 use App\Http\Controllers\Views\Blogs\IndexBlogsController;
+use App\Http\Controllers\Views\Seth\ShowProjectsController;
+use App\Http\Controllers\Views\Seth\ShowExperienceController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Rules with these environment routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| 1. Shared routes like home/about/sitemap will have a controller level condition to render pages
+| 2. Non shared routes require a 'noindex, nofollow' tag, as these pages are access through route
+|    with no protection no matter the environment - to ensure google does not crawl env 1 page
+|    for env 2 page
 |
 */
 
+// shared routes
 Route::get('/', ShowHomeController::class)->name('home');
-Route::get('/about', ShowHomeController::class)->name('about');
-Route::get('/experience', ShowExperienceController::class)->name('experience');
-Route::get('/projects', ShowProjectsController::class)->name('projects');
 Route::get('/sitemap', ShowSitemapController::class)->name('sitemap');
 
+// routes specific to seth
+Route::get('/experience', ShowExperienceController::class)->name('experience');
+Route::get('/projects', ShowProjectsController::class)->name('projects');
+
+// routes specific to beth
+
+// public facing blog related routes
 Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', IndexBlogsController::class)->name('index');
     Route::get('/{blog:slug}', ShowBlogController::class)->name('show');

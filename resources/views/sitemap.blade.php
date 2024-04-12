@@ -1,4 +1,4 @@
-@extends("layouts.main")
+@extends("layouts.seth-main")
 
 @section('partOne', 'The')
 @section('partTwo', 'Sitemap!')

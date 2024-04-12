@@ -9,7 +9,7 @@ return [
     /**
      * Seth environment values
      */
-    'seth' => [
+    \App\Http\EnvironmentEnum::SETH->value => [
         'in_app_name' => 'Seth Sharp',
 
         'copyright' => '&copy; 2022-2024 Seth Sharp. All rights reserved.',
@@ -54,7 +54,7 @@ return [
     /**
      * Beth environment values
      */
-    'beth' => [
+    \App\Http\EnvironmentEnum::BETH->value => [
         'in_app_name' => 'Bethany Frankis',
 
         'copyright' => '&copy; 2024 Bethany Frankis. All rights reserved.',
