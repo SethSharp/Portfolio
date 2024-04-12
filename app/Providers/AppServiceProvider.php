@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\EnvironmentEnum;
 use Illuminate\Support\Facades\URL;
 
 use Illuminate\Support\Facades\Gate;
@@ -33,7 +34,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (app()->environment('production')) {
-            Url::forceScheme('https');
+            if (config('environment.current') === EnvironmentEnum::SETH->value) {
+                Url::forceScheme('https');
+            }
         }
 
         Gate::policy(Blog::class, BlogPolicy::class);

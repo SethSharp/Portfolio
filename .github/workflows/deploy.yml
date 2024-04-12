@@ -128,7 +128,7 @@ jobs:
     runs-on: ubuntu-22.04
     environment:
       name: beth-production
-      url: https://www.bethanyfrankisportfolio.com
+      url: http://bethany-frankis-portfolio.ap-southeast-2.elasticbeanstalk.com/
 
     steps:
       - uses: actions/checkout@v4

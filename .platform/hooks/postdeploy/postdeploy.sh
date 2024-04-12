@@ -6,5 +6,3 @@ php artisan cache:clear
 php artisan config:clear
 php artisan view:clear
 php artisan route:clear
-
-echo "yes" | php artisan migrate --force || { echo "Failed to run migrations"; exit 1; }
