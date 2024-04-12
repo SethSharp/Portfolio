@@ -10,6 +10,7 @@
     @vite('resources/js/main.js')
 
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="icon" href="{{ asset('/beth/favicon.ico') }}" type="image/x-icon">
 
     @routes
     @livewireStyles

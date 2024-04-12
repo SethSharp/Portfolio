@@ -10,6 +10,7 @@
     @vite('resources/js/main.js')
 
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
 
     @routes
     @livewireStyles
@@ -24,12 +25,12 @@
 <main>
     <section class="min-h-screen">
         <h1 class="ml-8 sm:ml-16 text-3xl font-bold ">
-            <div class="text-black inline-block pr-2">
+            <span class="text-black inline-block pr-2">
                 @yield('partOne')
-            </div>
-            <div class="text-amber-400 inline-block">
+            </span>
+            <span class="text-amber-400 inline-block">
                 @yield('partTwo')
-            </div>
+            </span>
         </h1>
 
         <div class="md:flex w-4/5 mx-auto mt-2 sm:mt-8 mb-12">
