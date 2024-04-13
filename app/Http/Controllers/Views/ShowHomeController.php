@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Views;
 
 use Illuminate\View\View;
-use Codinglabs\Roles\Role;
 use App\Http\EnvironmentEnum;
 use App\Http\Controllers\Controller;
-use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class ShowHomeController extends Controller
