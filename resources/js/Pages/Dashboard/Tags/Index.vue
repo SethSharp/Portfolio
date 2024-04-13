@@ -52,7 +52,7 @@ const openModal = (tag = null) => {
                 </h3>
 
                 <div v-if="currentStatus === 'Active'" class="mt-4">
-                    <PrimaryButton @click.prevent="openModal"> Create Tag</PrimaryButton>
+                    <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
                 </div>
             </div>
         </div>
