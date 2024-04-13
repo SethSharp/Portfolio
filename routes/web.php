@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\Views\Beth\ShowContactController;
-use App\Http\Controllers\Views\Beth\ShowEducationController;
-use App\Http\Controllers\Views\Blogs\IndexBlogsController;
-use App\Http\Controllers\Views\Blogs\ShowBlogController;
-use App\Http\Controllers\Views\Seth\ShowExperienceController;
-use App\Http\Controllers\Views\Seth\ShowProjectsController;
-use App\Http\Controllers\Views\ShowCollectionController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Views\ShowHomeController;
 use App\Http\Controllers\Views\ShowSitemapController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Views\Blogs\ShowBlogController;
+use App\Http\Controllers\Views\ShowCollectionController;
+use App\Http\Controllers\Views\Beth\ShowContactController;
+use App\Http\Controllers\Views\Blogs\IndexBlogsController;
+use App\Http\Controllers\Views\Seth\ShowProjectsController;
+use App\Http\Controllers\Views\Beth\ShowEducationController;
+use App\Http\Controllers\Views\Seth\ShowExperienceController;
 
 /*
 |--------------------------------------------------------------------------
