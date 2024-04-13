@@ -53,7 +53,7 @@ watch(search, (newSearch) => {
         <div v-else class="flex justify-center align-middle">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">
-                    There are currently no blogs in the {{ status }} state.
+                    There are currently no blogs in this state.
                 </h3>
 
                 <div v-if="status === 'published'" class="mt-4">

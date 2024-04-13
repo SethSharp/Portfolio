@@ -48,7 +48,7 @@ const openModal = (tag = null) => {
         <div v-else class="flex justify-center align-middle">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">
-                    There are currently no blogs in the {{ currentStatus }} state.
+                    There are currently no tags in the {{ currentStatus }} state.
                 </h3>
 
                 <div v-if="currentStatus === 'Active'" class="mt-4">
