@@ -21,11 +21,17 @@
                 </div>
             @endif
 
-            <div class="grid lg:grid-cols-2 gap-6 mt-6">
-                @foreach($blogs as $blog)
-                    <x-blogs.card :blog="$blog"/>
-                @endforeach
-            </div>
+            @if (count($blogs))
+                <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                    @foreach($blogs as $blog)
+                        <x-blogs.card :blog="$blog"/>
+                    @endforeach
+                </div>
+            @else
+                <div>
+                    No blogs available
+                </div>
+            @endif
         </x-body.enter-wrapper>
     </div>
 @stop
