@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Views\Blogs;
 
-use Codinglabs\Roles\Role;
 use Illuminate\View\View;
+use Codinglabs\Roles\Role;
 use App\Http\EnvironmentEnum;
 use App\Http\Controllers\Controller;
 use SethSharp\BlogCrud\Models\Iam\User;
