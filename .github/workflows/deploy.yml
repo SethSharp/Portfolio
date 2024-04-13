@@ -164,6 +164,10 @@ jobs:
       - name: Echo information to .env
         if: github.ref == 'refs/heads/main'
         run: |
+          echo "DB_HOST=${{ secrets.DB_HOST}}" >> .env
+          echo "DB_DATABASE=${{ secrets.DB_DATABASE}}" >> .env
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME}}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD}}" >> .env
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}" >> .env
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
           echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
