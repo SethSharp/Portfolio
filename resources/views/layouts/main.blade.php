@@ -9,8 +9,9 @@
     @vite('resources/css/app.css')
     @vite('resources/js/main.js')
 
+    @stack('links')
+
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
 
     @routes
     @livewireStyles

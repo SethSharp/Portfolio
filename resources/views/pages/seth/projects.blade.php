@@ -1,3 +1,4 @@
+@php use App\Http\EnvironmentEnum; @endphp
 @extends("layouts.main")
 
 @section('title', 'Projects - ' . config('app.name'))
@@ -6,9 +7,13 @@
     <meta name="description"
           content="Here I reflect on my most impressive projects which I am proud to say, 'I did that'!">
 
-    @if (config('environment.current') !== \App\Http\EnvironmentEnum::SETH->value)
+    @if (config('environment.current') !== EnvironmentEnum::SETH->value)
         <meta name="robots" content="noindex, nofollow"/>
     @endif
+@endpush
+
+@push('links')
+    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
 @endpush
 
 @section('partOne', 'My')

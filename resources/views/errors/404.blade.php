@@ -1,4 +1,13 @@
+@php use App\Http\EnvironmentEnum; @endphp
 @extends("layouts.main")
+
+@push('links')
+    @if (config('environment.current') === EnvironmentEnum::SETH->value)
+        <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
+    @else
+        <link rel="icon" href="{{ asset('/beth/favicon.ico') }}" type="image/x-icon">
+    @endif
+@endpush
 
 @section("content")
     <div>
