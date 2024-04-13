@@ -80,7 +80,7 @@ return [
             [
                 'href' => '/blogs',
                 'active' => 'blogs',
-                'name' => 'Blogs'
+                'name' => 'My Blogs'
             ],
         ],
 
