@@ -13,12 +13,6 @@ class ShowHomeController extends Controller
 {
     public function __invoke(): View
     {
-        if (auth()->check()) {
-            auth()->user()->roles()->sync([
-                Role::whereName(User::ROLE_ADMIN)->first()->id
-            ]);
-        }
-
         if (config('environment.current') === EnvironmentEnum::SETH->value) {
             return view('pages.seth.home', [
                 'blog' => Blog::published()->orderByDesc('published_at')->first()
