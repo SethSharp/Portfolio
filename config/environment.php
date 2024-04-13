@@ -77,6 +77,11 @@ return [
                 'active' => 'contact',
                 'name' => 'Contact Me'
             ],
+            [
+                'href' => '/blogs',
+                'active' => 'blogs',
+                'name' => 'Blogs'
+            ],
         ],
 
         'social_links' => [

@@ -22,7 +22,6 @@ abstract class TestCase extends BaseTestCase
 
         $this->seedRoles();
 
-
         Carbon::setTestNow(now());
 
         Storage::fake('s3');
