@@ -51,7 +51,13 @@ const shiftBlog = (from, to) => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.title" autofocus label="Title" :error="form.errors.title" />
+            <TextInput
+                autofocus
+                v-model="form.title"
+                label="Title"
+                :error="form.errors.title"
+                description="Something that will catch the users attention"
+            />
         </FormElement>
 
         <FormElement>
@@ -59,6 +65,7 @@ const shiftBlog = (from, to) => {
                 v-model="form.description"
                 label="Description"
                 :error="form.errors.description"
+                description="Medium sized overview of the collection to help users understand what is included."
             />
         </FormElement>
 

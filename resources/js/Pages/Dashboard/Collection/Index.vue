@@ -12,7 +12,7 @@ defineProps({
 const open = ref(false)
 const currentCollection = ref(null)
 
-const openModal = (collection) => {
+const manageCollection = (collection) => {
     currentCollection.value = collection
     open.value = true
 }
@@ -21,17 +21,33 @@ const openModal = (collection) => {
 <template>
     <AuthenticatedLayout title="Groups">
         <div class="flex justify-end">
-            <PrimaryButton @click.prevent="openModal()"> Create Collection</PrimaryButton>
+            <PrimaryButton @click.prevent="manageCollection(null)">
+                Create Collection</PrimaryButton
+            >
         </div>
 
-        <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6">
+        <div
+            v-if="allCollections.length > 0"
+            class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6"
+        >
             <div
                 v-for="collection in allCollections"
                 :key="collection.id"
-                @click="openModal(collection)"
+                @click="manageCollection(collection)"
                 class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4"
             >
                 {{ collection.title }}
+            </div>
+        </div>
+        <div v-else class="flex justify-center align-middle">
+            <div class="text-center">
+                <h3 class="text-gray-400 text-md sm:text-xl">There are currently no collections</h3>
+
+                <div class="mt-4">
+                    <PrimaryButton @click="manageCollection(null)">
+                        Create a Collection</PrimaryButton
+                    >
+                </div>
             </div>
         </div>
 
