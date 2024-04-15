@@ -53,7 +53,13 @@ const restoreTag = () => {
 <template>
     <Form>
         <FormElement>
-            <TextInput v-model="form.name" autofocus label="Name" :error="form.errors.name" />
+            <TextInput
+                v-model="form.name"
+                autofocus
+                label="Name"
+                :error="form.errors.name"
+                :disabled="tag?.deleted_at"
+            />
         </FormElement>
 
         <div class="gap-x-2 flex">
@@ -65,7 +71,9 @@ const restoreTag = () => {
                 Restore
             </PrimaryButton>
 
-            <PrimaryButton v-if="!tag?.deleted_at" @click.prevent="submit"> Save</PrimaryButton>
+            <PrimaryButton v-if="!tag?.deleted_at" @click.prevent="submit">
+                {{ tag ? 'Save' : 'Create' }}
+            </PrimaryButton>
         </div>
     </Form>
 </template>

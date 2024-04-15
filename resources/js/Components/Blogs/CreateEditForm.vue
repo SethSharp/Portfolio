@@ -95,38 +95,30 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <div>
-                <TextInput
-                    v-model="form.title"
-                    autofocus
-                    label="Title"
-                    :error="form.errors.title"
-                />
-            </div>
+            <TextInput autofocus v-model="form.title" :error="form.errors.title" label="Title" />
 
-            <div>
-                <Select
-                    v-model="form.collection_id"
-                    :options="collectionOptions"
-                    label="Collection"
-                    :error="form.errors.collection_id"
-                />
-            </div>
+            <Select
+                v-model="form.collection_id"
+                :options="collectionOptions"
+                label="Collection"
+                :error="form.errors.collection_id"
+            />
         </FormGrid>
 
         <FormGrid>
-            <div>
-                <TextInput v-model="form.slug" label="Slug" :error="form.errors.slug" />
-            </div>
+            <TextInput
+                v-model="form.slug"
+                label="Slug"
+                :error="form.errors.slug"
+                description="When viewing the blog in the web it will appear as blogs/slug"
+            />
 
-            <div>
-                <MultiSelect
-                    v-model="form.tags"
-                    :options="tagOptions"
-                    label="Tags"
-                    :error="form.errors.tags"
-                />
-            </div>
+            <MultiSelect
+                v-model="form.tags"
+                :options="tagOptions"
+                label="Tags"
+                :error="form.errors.tags"
+            />
         </FormGrid>
 
         <FormElement>
