@@ -131,7 +131,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'title',
-                'slug' => 'slug',
+                'slug' => 'some-slug-here',
                 'content' => 'test',
                 'meta_title' => null,
                 'meta_tags' => null,
@@ -145,13 +145,13 @@ class UpdateBlogTest extends TestCase
     {
         Blog::factory()->create([
             'title' => 'Some Title',
-            'slug' => 'some-slug'
+            'slug' => 'some-slug-here'
         ]);
 
         $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'content' => 'test'
             ])
             ->assertStatus(422)
@@ -219,7 +219,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [
                     [
                         'id' => $tag->id,
@@ -237,7 +237,7 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'Some title',
             'meta_description' => 'Some description',
             'meta_tags' => 'some tags',
@@ -254,7 +254,7 @@ class UpdateBlogTest extends TestCase
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'collection_id' => $collection->id,
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [],
                 'meta_title' => 'some title',
                 'meta_tags' => 'some tag',
@@ -269,7 +269,7 @@ class UpdateBlogTest extends TestCase
             'collection_id' => $collection->id,
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'some title',
             'meta_tags' => 'some tag',
             'meta_description' => 'some description',
@@ -279,7 +279,7 @@ class UpdateBlogTest extends TestCase
         $blog = Blog::where([
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
         ])->first();
 
         $this->assertDatabaseHas('blog_collection', [
@@ -307,7 +307,7 @@ class UpdateBlogTest extends TestCase
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'collection_id' => $collection->id,
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [],
                 'meta_title' => 'some title',
                 'meta_tags' => 'some tag',
@@ -322,7 +322,7 @@ class UpdateBlogTest extends TestCase
             'collection_id' => $collection->id,
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'some title',
             'meta_tags' => 'some tag',
             'meta_description' => 'some description',
@@ -332,7 +332,7 @@ class UpdateBlogTest extends TestCase
         $blog = Blog::where([
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
         ])->first();
 
         // assert that entry is not duplicated
@@ -361,7 +361,7 @@ class UpdateBlogTest extends TestCase
             ->putJson(route('dashboard.blogs.update', $blog2->id), [
                 'title' => 'Some Title',
                 'collection_id' => $collection->id,
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [],
                 'meta_title' => 'some title',
                 'meta_tags' => 'some tag',
@@ -376,7 +376,7 @@ class UpdateBlogTest extends TestCase
             'collection_id' => $collection->id,
             'author_id' => $blog2->author->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'some title',
             'meta_tags' => 'some tag',
             'meta_description' => 'some description',
@@ -404,7 +404,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($user = User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [
                     [
                         'id' => $tag->id,
@@ -422,7 +422,7 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'Some title',
             'meta_description' => 'Some description',
             'meta_tags' => 'Some tags',
@@ -438,7 +438,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [
                     [
                         'id' => $tag->id,
@@ -456,7 +456,7 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'Some title',
             'meta_description' => 'Some description',
             'meta_tags' => 'Some tags',
@@ -475,7 +475,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'meta_title' => 'Some title',
                 'meta_description' => 'Some description',
                 'meta_tags' => 'Some tags',
@@ -487,7 +487,7 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'Some title',
             'meta_description' => 'Some description',
             'meta_tags' => 'Some tags',
@@ -509,7 +509,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($user)
             ->putJson(route('dashboard.blogs.update', $blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'meta_title' => 'Some title',
                 'meta_description' => 'Some description',
                 'meta_tags' => 'Some tags',
@@ -521,7 +521,7 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('blogs', [
             'author_id' => $user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'Some title',
             'meta_description' => 'Some description',
             'meta_tags' => 'Some tags',
@@ -538,7 +538,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs(User::factory()->admin()->create())
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [
                     [
                         'id' => $tag->id,
@@ -556,7 +556,7 @@ class UpdateBlogTest extends TestCase
         $this->assertDatabaseHas('blogs', [
             'author_id' => $this->user->id,
             'title' => 'Some Title',
-            'slug' => 'some-slug',
+            'slug' => 'some-slug-here',
             'meta_title' => 'Some title',
             'meta_description' => 'Some description',
             'meta_tags' => 'Some tags',
@@ -589,7 +589,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [
                     [
                         'id' => $tag->id,
@@ -629,7 +629,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'tags' => [
                     [
                         'id' => $tag->id,
@@ -659,7 +659,7 @@ class UpdateBlogTest extends TestCase
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
-                'slug' => 'some-slug',
+                'slug' => 'some-slug-here',
                 'cover_image' => null,
                 'meta_title' => 'Some title',
                 'meta_description' => 'Some description',
