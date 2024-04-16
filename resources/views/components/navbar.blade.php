@@ -7,17 +7,14 @@
                     {{ $link['name'] }}
                 </x-navigation.link>
             @endforeach
-        </div>
-
-        <div class="my-auto space-x-1">
             @auth
-                <a class="font-medium text-xl text-gray-500 hover:underline my-auto" href="{{ route('profile.edit') }}">
+                <a class="text-lg text-gray-500" href="{{ route('profile.edit') }}">
                     Profile
                 </a>
             @endauth
 
             @role('admin')
-            <a class="font-medium text-xl text-gray-500 my-auto hover:underline"
+            <a class="text-lg text-gray-500"
                href="{{ route('dashboard.blogs.index') }}">
                 Dashboard
             </a>
