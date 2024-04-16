@@ -35,22 +35,22 @@
                                 <input
                                     type="text"
                                     class="p-2 w-full rounded-xl text-gray-500 border-none"
-                                    placeholder="Email"
-                                    wire:model.lazy="email"
+                                    placeholder="Name"
+                                    wire:model.lazy="name"
                                     wire:ignore
                                 >
-                                @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
+                                @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
                                 <input
                                     type="text"
                                     class="p-2 w-full rounded-xl text-gray-500 border-none"
-                                    placeholder="Name"
-                                    wire:model.lazy="name"
+                                    placeholder="Email"
+                                    wire:model.lazy="email"
                                     wire:ignore
                                 >
-                                @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
+                                @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
