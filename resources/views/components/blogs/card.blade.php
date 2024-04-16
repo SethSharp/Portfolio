@@ -22,7 +22,7 @@
                 {{ $blog->title }}
             </h3>
 
-            <div class="line-clamp-6 mt-2 text-md text-gray-400">
+            <div class="line-clamp-6 mt-2 text-sm text-gray-400">
                 {{ $blog?->meta_description }}
             </div>
         </div>

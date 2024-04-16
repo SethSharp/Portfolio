@@ -46,7 +46,7 @@ watch(search, (newSearch) => {
             </div>
         </div>
 
-        <div v-if="blogs.data.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        <div v-if="blogs.data.length > 0" class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
             <Blog v-for="blog in blogs.data" :blog="blog" />
         </div>
 

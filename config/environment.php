@@ -20,7 +20,7 @@ return [
             [
                 'href' => '/',
                 'active' => 'home',
-                'name' => 'About'
+                'name' => 'Home'
             ],
             [
                 'href' => '/experience',

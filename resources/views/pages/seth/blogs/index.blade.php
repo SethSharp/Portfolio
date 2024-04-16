@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+            <div class="grid xl:grid-cols-2 gap-6 mt-6">
                 @foreach($blogs as $blog)
                     <x-blogs.card :blog="$blog"/>
                 @endforeach
