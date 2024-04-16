@@ -99,6 +99,9 @@ const links = [
                                         <DropdownLink :href="route('profile.edit')">
                                             Profile
                                         </DropdownLink>
+                                        <DropdownLink external :href="route('home')">
+                                            Portfolio
+                                        </DropdownLink>
                                         <DropdownLink
                                             :href="route('logout')"
                                             method="post"
