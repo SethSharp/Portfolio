@@ -1,10 +1,8 @@
 <script setup>
-import StarterKit from '@tiptap/starter-kit'
-import { useEditor, EditorContent } from '@tiptap/vue-3'
-import OrderedList from '@tiptap/extension-ordered-list'
+import {useEditor, EditorContent} from '@tiptap/vue-3'
 import Toolbar from '@/Components/Editor/Toolbar.vue'
-import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
 import Extensions from '@/Components/Editor/extensions.js'
+import BubbleMenu from '@/Components/Editor/BubbleMenu.vue'
 
 const props = defineProps({
     modelValue: String,
@@ -15,21 +13,13 @@ const emits = defineEmits(['update:modelValue'])
 
 const editor = useEditor({
     content: props.modelValue,
-    extensions: [
-        StarterKit,
-        Extensions,
-        OrderedList.configure({
-            HTMLAttributes: {
-                class: 'list-decimal ml-6',
-            },
-        }),
-    ],
+    extensions: [Extensions],
     editorProps: {
         attributes: {
             class: 'bg-white p-4 max-w-none w-full min-h-[500px] focus:outline-none border border-gray-200 rounded-md max-h-[85vh] overflow-y-scroll overflow-hidden prose prose-img:m-0 ',
         },
     },
-    onUpdate: ({ editor }) => {
+    onUpdate: ({editor}) => {
         emits('update:modelValue', editor.getHTML())
     },
 })
@@ -38,17 +28,17 @@ const editor = useEditor({
 <template>
     <div>
         <div class="w-full bg-red-500">
-            <BubbleMenu :editor="editor" />
+            <BubbleMenu :editor="editor"/>
         </div>
 
-        <Toolbar :editor="editor" :blog="blog" />
+        <Toolbar :editor="editor" :blog="blog"/>
 
         <div class="mt-4">
             <div class="text-gray-500">
                 To add a hard break: `Ctr` + `Enter` on windows or `Cmd` + `Enter` on mac
             </div>
 
-            <EditorContent :editor="editor" />
+            <EditorContent :editor="editor"/>
         </div>
     </div>
 </template>
