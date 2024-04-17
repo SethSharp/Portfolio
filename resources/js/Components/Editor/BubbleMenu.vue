@@ -8,6 +8,7 @@ import {
     Bars3CenterLeftIcon,
     Bars4Icon,
     CodeBracketIcon,
+    ChatBubbleOvalLeftIcon,
 } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
@@ -73,6 +74,13 @@ const setLink = () => {
                     Link
                 </BubbleButton>
 
+                <BubbleButton
+                    @click="editor.chain().focus().toggleBlockquote().run()"
+                    :active="editor.isActive('blockquote')"
+                >
+                    <ChatBubbleOvalLeftIcon class="size-4" />
+                </BubbleButton>
+
                 <BubbleButton>
                     <button
                         @click="editor.chain().focus().setTextAlign('left').run()"
@@ -112,7 +120,7 @@ const setLink = () => {
                     :active="editor.isActive('strike')"
                     class="line-through"
                 >
-                    strike
+                    s
                 </BubbleButton>
 
                 <BubbleButton

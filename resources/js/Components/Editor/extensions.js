@@ -19,6 +19,8 @@ import Paragraph from '@tiptap/extension-paragraph'
 import Underline from '@tiptap/extension-underline'
 import HardBreak from '@tiptap/extension-hard-break'
 import TextAlign from '@tiptap/extension-text-align'
+import Blockquote from '@tiptap/extension-blockquote'
+import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import Image from '@/Components/Editor/Nodes/Image/Image.js'
 import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
@@ -55,6 +57,8 @@ const Extensions = Extension.create({
             Underline,
             Image,
             HardBreak,
+            HorizontalRule,
+            Blockquote,
         ]
     },
 })
