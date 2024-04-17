@@ -15,6 +15,11 @@
 @endpush
 
 <div class="md:w-4/5 lg:w-3/4 mx-auto">
+    @role('admin', 'author')
+    <a href="{{ route('dashboard.blogs.edit', $blog) }}">
+        <x-icons.pencil-square class="size-8 text-gray-500 hover:text-gray-700"/>
+    </a>
+    @endrole
     <div class="flex-wrap">
         @if($collection)
             <div class="text-gray-400 font-medium text-md">
