@@ -18,7 +18,9 @@ class IndexBlogsController extends Controller
     {
         $this->authorize('view', Blog::class);
 
-        $currentStatus = BlogStatus::from(request()->input('filter.status', BlogStatus::PUBLISHED->value));
+        $currentStatus = request()->input('filter.status')
+            ? BlogStatus::from(request()->input('filter.status'))
+            : BlogStatus::PUBLISHED;
 
         $blogs = QueryBuilder::for(Blog::class)
             ->with(['tags', 'author', 'likes'])

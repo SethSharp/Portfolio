@@ -25,7 +25,7 @@ const create = () => {
 const visitSearch = () => {
     router.visit(
         route('dashboard.blogs.index', {
-            filter: { q: search.value, status: routeStatus },
+            filter: {q: search.value, status: routeStatus ?? null},
         })
     )
 }
