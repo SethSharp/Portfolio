@@ -8,8 +8,8 @@ if (process.env.EB_ENVIRONMENT === 'seth') {
     primary = buildPrimaryColour(colors.yellow)
     secondary = buildPrimaryColour(colors.blue)
 } else {
-    primary = buildPrimaryColour(colors.purple)
-    secondary = buildPrimaryColour(colors.gray)
+    primary = buildPrimaryColour(colors.rose)
+    secondary = buildPrimaryColour(colors.purple)
 }
 
 module.exports = {
