@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\View\View;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Comment;
+use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogComments extends Component
@@ -56,7 +57,8 @@ class BlogComments extends Component
 
         $this->blog->comments()->attach($comment);
 
-        auth()->user()->notify(new NotifySlackOfCommentNotification($comment, $this->blog));
+        Notification::route('slack', config('services.slack.webhook'))
+            ->notify(new NotifySlackOfCommentNotification(auth()->user(), $comment, $this->blog));
 
         $this->comments->push($comment);
 
