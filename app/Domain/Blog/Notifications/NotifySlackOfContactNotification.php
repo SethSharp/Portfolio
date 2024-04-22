@@ -22,7 +22,6 @@ class NotifySlackOfContactNotification extends Notification
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage())
-            ->content('Name: ' . $this->name . '. Email: ' . $this->email . '. Message: ' . $this->message)
-            ->to(config('services.slack.notifications.channel'));
+            ->content('Name: ' . $this->name . '. Email: ' . $this->email . '. Message: ' . $this->message);
     }
 }

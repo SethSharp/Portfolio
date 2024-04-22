@@ -37,7 +37,6 @@ class NotifySlackOfCommentNotification extends Notification
             ->dividerBlock()
             ->sectionBlock(function (SectionBlock $block) use ($notifiable) {
                 $block->text($this->comment['comment']);
-            })
-            ->to(config('services.slack.notifications.channel'));
+            });
     }
 }
