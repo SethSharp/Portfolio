@@ -108,6 +108,6 @@ class BlogCommentsComponentTest extends TestCase
             'comment' => 'Some comment'
         ]);
 
-        Notification::assertSentTo($user, NotifySlackOfCommentNotification::class);
+        Notification::assertSentOnDemand(NotifySlackOfCommentNotification::class);
     }
 }
