@@ -5,6 +5,7 @@ namespace Domain\Blog\Actions;
 use Exception;
 use Tests\TestCase;
 use SethSharp\BlogCrud\Models\Blog\Blog;
+use Illuminate\Support\Facades\Exceptions;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 use SethSharp\BlogCrud\Actions\Blogs\AddBlogToCollectionAction;
 use SethSharp\BlogCrud\Actions\Blogs\RemoveBlogFromCollectionAction;
@@ -18,9 +19,12 @@ class RemoveBlogFromGroupActionTest extends TestCase
         $blog = Blog::factory()->create();
 
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Blog " . $blog->title . " does not exist in collection " . $collection->title);
 
         app(RemoveBlogFromCollectionAction::class)($blog, $collection);
+
+        Exceptions::expects(function (Exception $e) use ($blog, $collection): bool {
+            return $e->getMessage() === "Blog " . $blog->title . " does not exist in collection " . $collection->title;
+        });
     }
 
     /** @test */

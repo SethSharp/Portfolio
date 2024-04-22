@@ -26,7 +26,7 @@ class Footer extends Component
     {
         $this->validate();
 
-        Notification::route('slack', config('services.slack.notifications.webhook'))
+        Notification::route('slack', config('services.slack.webhook'))
             ->notify(new NotifySlackOfContactNotification($this->email, $this->name, $this->message));
 
         $this->email = '';

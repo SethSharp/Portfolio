@@ -74,7 +74,7 @@ jobs:
       - name: Install composer dependencies
         run: composer install --no-cache --no-ansi --no-interaction --no-progress
 
-      - name: Copy standard .env
+      - name: Copy production .env
         run: php -r "file_exists('.env') || copy('.env.seth.production', '.env');"
 
       - name: Generate key
@@ -102,7 +102,6 @@ jobs:
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}" >> .env
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
           echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
-          echo "SLACK_CHANNEL='#product-portfolio'" >> .env
           echo "SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }}" >> .env
 
       - name: Build ZIP Deployment Package
@@ -143,7 +142,7 @@ jobs:
       - name: Install composer dependencies
         run: composer install --no-cache --no-ansi --no-interaction --no-progress
 
-      - name: Copy standard .env
+      - name: Copy production .env
         run: php -r "file_exists('.env') || copy('.env.beth.production', '.env');"
 
       - name: Generate key
@@ -171,7 +170,6 @@ jobs:
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}" >> .env
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}}" >> .env
           echo "SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_BOT_USER_OAUTH_TOKEN }}" >> .env
-          echo "SLACK_CHANNEL='#bethany-portfolio'" >> .env
           echo "SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }}" >> .env
 
       - name: Build ZIP Deployment Package

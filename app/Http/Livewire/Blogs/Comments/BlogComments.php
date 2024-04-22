@@ -30,7 +30,6 @@ class BlogComments extends Component
             ->with('user')
             ->get()
             ->each(function (Comment $comment) {
-
                 $comment->posted = $comment->created_at->diffForHumans();
 
                 return $comment;
