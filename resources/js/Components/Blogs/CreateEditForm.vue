@@ -108,9 +108,10 @@ window.addEventListener('beforeunload', confirmLeave)
         <FormGrid>
             <TextInput
                 v-model="form.slug"
-                label="Slug"
+                label="Slug (must be lowercase separated by '-')"
                 :error="form.errors.slug"
-                description="When viewing the blog in the web it will appear as blogs/slug"
+                placeholder="a-new-blog-of-mine"
+                description="Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/a-new-blog-of-mine"
             />
 
             <MultiSelect

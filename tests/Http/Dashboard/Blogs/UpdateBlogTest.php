@@ -3,6 +3,7 @@
 namespace Dashboard\Blogs;
 
 use Tests\TestCase;
+use Illuminate\Support\Str;
 use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
@@ -186,12 +187,34 @@ class UpdateBlogTest extends TestCase
     }
 
     /** @test */
+    public function fields_must_be_within_max()
+    {
+        $this->actingAs(User::factory()->admin()->create())
+            ->putJson(route('dashboard.blogs.update', $this->blog), [
+                'title' => Str::random(255),
+                'slug' => Str::random(255),
+                'meta_title' => Str::random(255),
+                'meta_description' => Str::random(255),
+                'meta_tags' => Str::random(255),
+            ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'title' => 'The title must not be greater than 254 characters.',
+                'slug' => 'The slug must not be greater than 254 characters.',
+                'meta_title' => 'The meta title must not be greater than 254 characters.',
+                'meta_description' => 'The meta description must not be greater than 254 characters.',
+                'meta_tags' => 'The meta tags must not be greater than 254 characters.',
+            ]);
+    }
+
+    /** @test */
     public function if_slug_is_not_provided_title_is_slugified()
     {
         $this->actingAs($this->user)
             ->putJson(route('dashboard.blogs.update', $this->blog), [
                 'title' => 'Some Title',
                 'tags' => [],
+                'slug' => '',
                 'meta_title' => 'some title',
                 'meta_tags' => 'some tag',
                 'meta_description' => 'some description',

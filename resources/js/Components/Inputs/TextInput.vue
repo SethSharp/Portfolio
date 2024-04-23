@@ -19,6 +19,10 @@ defineProps({
         type: Boolean,
         default: false,
     },
+    placeholder: {
+        type: String,
+        default: '',
+    },
 })
 
 const model = defineModel({
@@ -47,6 +51,7 @@ defineExpose({ focus: () => input.value.focus() })
             :type="type"
             :disabled="disabled"
             v-model="model"
+            :placeholder="placeholder"
             class="w-full !border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
         />
 
