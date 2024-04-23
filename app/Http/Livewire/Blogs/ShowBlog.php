@@ -22,7 +22,7 @@ class ShowBlog extends Component
     public function mount(Blog $blog): void
     {
         $this->blog = $blog;
-        $this->recentBlog = Blog::whereNot('id', $this->blog->id)->published()?->latest()?->first();
+        $this->recentBlog = Blog::whereNot('id', $this->blog->id)->published()->latest()?->first();
         $this->blogLikes = $this->blog->likes()->count();
 
         if (auth()->check()) {
@@ -34,18 +34,17 @@ class ShowBlog extends Component
 
     public function getSeries(): void
     {
-        $blogCollection = $this->blog->collection()->first();
+        $this->collection = $this->blog->collection()->first();
 
-        if ($order = $blogCollection?->getBlogOrder($this->blog)) {
-            $this->collection = $blogCollection;
-            $this->prev = $blogCollection->blogs()->where('order', $order - 1)->first();
-            $this->next = $blogCollection->blogs()->where('order', $order + 1)->first();
+        if ($order = $this->collection?->getBlogOrder($this->blog)) {
+            $this->prev = $this->collection->blogs()->where('order', $order - 1)->published()->first();
+            $this->next = $this->collection->blogs()->where('order', $order + 1)->published()->first();
         }
     }
 
     public function like(): void
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             // sets the intended url so when the user registers or logs in - redirects to here
             session(['url.intended' => route('blogs.show', $this->blog)]);
 
