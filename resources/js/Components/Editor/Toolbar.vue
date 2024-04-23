@@ -1,6 +1,6 @@
 <script setup>
+import { PhotoIcon, MinusIcon, ListBulletIcon } from '@heroicons/vue/16/solid/index.js'
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
-import { ListBulletIcon, PhotoIcon, MinusIcon } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
     editor: Object,
@@ -23,19 +23,11 @@ const insertImage = () => {
         </BubbleButton>
 
         <BubbleButton
-            @click="editor.chain().focus().toggleBulletList().run()"
-            :active="editor.isActive('bulletList')"
-            class="rounded-md"
-        >
-            <ListBulletIcon class="size-6 text-black" />
-        </BubbleButton>
-
-        <BubbleButton
             @click="editor.chain().focus().toggleOrderedList().run()"
             :active="editor.isActive('orderedList')"
             class="rounded-md"
         >
-            1.
+            <ListBulletIcon class="size-6 text-black" />
         </BubbleButton>
 
         <BubbleButton @click.prevent="insertImage" class="rounded-md">

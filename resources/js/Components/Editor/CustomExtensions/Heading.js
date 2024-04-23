@@ -13,6 +13,7 @@ export const Heading = BaseHeading.extend({
             2: 'text-xl',
             3: 'text-lg',
         }
+
         return [
             `h${level}`,
             mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {

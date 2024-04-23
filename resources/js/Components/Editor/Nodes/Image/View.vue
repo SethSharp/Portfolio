@@ -50,7 +50,7 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
                             </div>
 
                             <div v-else class="flex flex-col justify-center items-center mt-2">
-                                <PhotoIcon class="w-12 h-12 text-gray-300" />
+                                <PhotoIcon class="size-12 text-gray-300" />
                                 <p class="mt-1 text-sm text-gray-300">Select or upload an image</p>
                             </div>
                         </div>

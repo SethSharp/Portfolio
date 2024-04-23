@@ -14,8 +14,7 @@ class NotifySlackOfCommentNotification extends Notification
         public User    $user,
         public Comment $comment,
         public Blog    $blog
-    ) {
-    }
+    ) {}
 
     public function via($notifiable): array
     {
@@ -25,21 +24,6 @@ class NotifySlackOfCommentNotification extends Notification
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage())
-            ->content($this->comment['comment']);
-
-        return (new SlackMessage())
-            ->text('New comment on your blog!')
-            ->headerBlock('New comment on your blog - ' . $this->blog->title)
-            ->sectionBlock(function (SectionBlock $block) {
-                $block->field("Name: " . $this->user->name)->markdown();
-                $block->field("Email: " . $this->user->email)->markdown();
-            })
-            ->actionsBlock(function (ActionsBlock $block) use ($notifiable) {
-                $block->button('View Here')->url(route('blogs.show', $this->blog));
-            })
-            ->dividerBlock()
-            ->sectionBlock(function (SectionBlock $block) use ($notifiable) {
-                $block->text($this->comment['comment']);
-            });
+            ->content("Blog: <" . route('blogs.show', $this->blog) . "|$this->blog->title>. $this->comment['comment']");
     }
 }
