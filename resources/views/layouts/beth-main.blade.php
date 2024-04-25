@@ -30,7 +30,7 @@
     </section>
 </main>
 
-<x-footer/>
+<x-layouts.beth.footer/>
 
 @livewireScriptConfig
 </body>
