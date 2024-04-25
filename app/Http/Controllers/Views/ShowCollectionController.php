@@ -10,10 +10,11 @@ class ShowCollectionController extends Controller
 {
     public function __invoke(Collection $collection): View
     {
-        $collection->blogs()->orderBy('order');
+        $blogs = $collection->blogs()->published()->orderBy('order')->get();
 
         return view('collection.show', [
-            'collection' => $collection
+            'collection' => $collection,
+            'blogs' => $blogs
         ]);
     }
 }
