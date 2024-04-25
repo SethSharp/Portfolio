@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Views\Blogs;
 
-use App\Http\EnvironmentEnum;
 use Illuminate\View\View;
+use App\Http\EnvironmentEnum;
 use App\Http\Controllers\Controller;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 
