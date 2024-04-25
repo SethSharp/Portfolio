@@ -5,7 +5,7 @@
                 Bethany Frankis
             </div>
             <span class="text-sm md:text-md text-black">
-                Resilient. Intuitive. Perservant
+                Resilient. Intuitive. Perseverant
             </span>
         </div>
 
