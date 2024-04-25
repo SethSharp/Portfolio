@@ -14,68 +14,70 @@
 @section("content")
     <div class="z-10">
         <x-body.enter-wrapper>
-            <div>
-                @if($blog)
-                    <div class="w-full">
-                        <a href="{{ route('blogs.show', $blog)  }}" class="w-3/4 mx-auto">
-                            <div
-                                class="w-fit p-4 border-2 border-blue-400 bg-blue-100 rounded-xl text-blue-600"
+            <div class="w-full md:flex ">
+                <div class="w-full md:w-1/2 z-20 justify-center">
+                    <h1 class="text-6xl font-bold text-gray-800"> G'day! </h1>
+
+                    <div class="pt-2">
+                        <h1 class="text-6xl font-bold inline-block pr-2 text-gray-800"> I'm </h1>
+                        <h1 class="text-6xl font-bold text-primary-400 inline-block text-opacity-19.5"> Seth
+                            Sharp </h1>
+                    </div>
+
+                    <div class="pt-6 sm:pt-14">
+                        <h1 class="text-gray-400 text-2xl"> Developer and outdoor enthusiast... </h1>
+                        <h1 class="text-gray-400 text-2xl"> Weird match, right? </h1>
+                    </div>
+
+                    <div class="pt-4 pb-5">
+                        <a class="pr-2" href="https://github.com/SethSharp">
+                            <img
+                                class="w-16 h-16 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 duration-50"
+                                src="{{ asset('images/github.png') }}"
+                                alt="GitHub Image"
                             >
-                                Check out the latest blog
-                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
+                            <img
+                                class="w-11 h-11 inline-block
+                                transition ease-in-out delay-0
+                                hover:-translate-y-1 duration-50"
+                                src="{{ asset('images/linkedIn.png') }}"
+                                alt="LinkedIn Image"
+                            >
                         </a>
                     </div>
-                @endif
+                </div>
 
-                <div class="w-full md:flex mt-12">
-                    <div class="w-full md:w-1/2 z-20 justify-center">
-                        <h1 class="text-6xl font-bold text-gray-800"> G'day! </h1>
-
-                        <div class="pt-2">
-                            <h1 class="text-6xl font-bold inline-block pr-2 text-gray-800"> I'm </h1>
-                            <h1 class="text-6xl font-bold text-primary-400 inline-block text-opacity-19.5"> Seth
-                                Sharp </h1>
-                        </div>
-
-                        <div class="pt-6 sm:pt-14">
-                            <h1 class="text-gray-400 text-2xl"> Developer and outdoor enthusiast... </h1>
-                            <h1 class="text-gray-400 text-2xl"> Weird match, right? </h1>
-                        </div>
-
-                        <div class="pt-4 pb-5">
-                            <a class="pr-2" href="https://github.com/SethSharp">
-                                <img
-                                    class="w-16 h-16 inline-block
-                                    transition ease-in-out delay-0
-                                    hover:-translate-y-1 duration-50"
-                                    src="{{ asset('images/github.png') }}"
-                                    alt="GitHub Image"
-                                >
-                            </a>
-                            <a href="https://www.linkedin.com/in/seth-sharp-213bb3211/">
-                                <img
-                                    class="w-11 h-11 inline-block
-                                    transition ease-in-out delay-0
-                                    hover:-translate-y-1 duration-50"
-                                    src="{{ asset('images/linkedIn.png') }}"
-                                    alt="LinkedIn Image"
-                                >
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-1/2 z-20 flex justify-center">
-                        <img
-                            class="h-3/4"
-                            src="{{ asset('images/about/sydney.png') }}"
-                            alt="Main Profile Picture - Infront of the Sydney Opera House"
-                        />
-                    </div>
+                <div class="w-full md:w-1/2 z-20 flex justify-center">
+                    <img
+                        class="max-h-96"
+                        src="{{ asset('images/about/sydney.png') }}"
+                        alt="Main Profile Picture - Infront of the Sydney Opera House"
+                    />
                 </div>
             </div>
         </x-body.enter-wrapper>
 
-        <div class="mt-16 md:mt-0">
+        <div class="mt-6">
+            @if ($blogs->isNotEmpty())
+                <x-body.wrapper>
+                    <h3 class="text-xl text-center">
+                        My Most Recent Blogs
+                    </h3>
+
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:w-3/4 mx-auto gap-4 mt-6">
+                        @foreach($blogs as $blog)
+                            <x-arch :blog="$blog"/>
+                        @endforeach
+                    </div>
+                </x-body.wrapper>
+            @endif
+        </div>
+
+        <div class="mt-16">
             <div class="flex flex-wrap space-y-12">
                 <x-content.left
                     title="About Me Currently"

@@ -11,14 +11,14 @@ class ShowHomeController extends Controller
 {
     public function __invoke(): View
     {
-        if (config('environment.current') === EnvironmentEnum::SETH->value) {
-            return view('pages.seth.home', [
-                'blog' => Blog::published()->orderByDesc('published_at')->first()
-            ]);
-        } else {
-            return view('pages.beth.home', [
-                'blogs' => Blog::published()->orderByDesc('published_at')->take(3)->get()
-            ]);
+        $path = 'pages.seth.home';
+
+        if (config('environment.current') === EnvironmentEnum::BETH->value) {
+            $path = 'pages.beth.home';
         }
+
+        return view($path, [
+            'blogs' => Blog::published()->orderByDesc('published_at')->take(3)->get()
+        ]);
     }
 }
