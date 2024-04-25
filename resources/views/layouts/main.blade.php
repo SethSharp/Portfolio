@@ -40,7 +40,7 @@
     </section>
 </main>
 
-<x-layours.seth.footer/>
+<x-layouts.seth.footer/>
 
 @livewireScriptConfig
 </body>
