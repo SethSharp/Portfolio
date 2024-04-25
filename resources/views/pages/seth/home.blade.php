@@ -61,7 +61,7 @@
             </div>
         </x-body.enter-wrapper>
 
-        <div class="mt-6">
+        <div class="mt-20">
             @if ($blogs->isNotEmpty())
                 <x-body.wrapper>
                     <h3 class="text-xl text-center">
