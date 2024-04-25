@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\EnvironmentEnum;
 use Illuminate\Support\Facades\URL;
 
 use Illuminate\Support\Facades\Gate;
