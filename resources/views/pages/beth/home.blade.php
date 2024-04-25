@@ -74,4 +74,20 @@
             </div>
         </div>
     </x-body.wrapper>
+
+    @if ($blogs->isNotEmpty())
+        <div class="mt-6">
+            <x-body.wrapper>
+                <x-headings.h1>
+                    My Most Recent Blogs
+                </x-headings.h1>
+
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:w-3/4 mx-auto gap-4 mt-6">
+                    @foreach($blogs as $blog)
+                        <x-arch :blog="$blog"/>
+                    @endforeach
+                </div>
+            </x-body.wrapper>
+        </div>
+    @endif
 @stop

@@ -16,7 +16,9 @@ class ShowHomeController extends Controller
                 'blog' => Blog::published()->orderByDesc('published_at')->first()
             ]);
         } else {
-            return view('pages.beth.home');
+            return view('pages.beth.home', [
+                'blogs' => Blog::published()->orderByDesc('published_at')->take(3)->get()
+            ]);
         }
     }
 }
