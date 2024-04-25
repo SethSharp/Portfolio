@@ -34,9 +34,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (app()->environment('production')) {
-            if (config('environment.current') === EnvironmentEnum::SETH->value) {
-                Url::forceScheme('https');
-            }
+            Url::forceScheme('https');
         }
 
         Gate::policy(Blog::class, BlogPolicy::class);
