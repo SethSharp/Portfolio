@@ -12,13 +12,10 @@
         <div class="lg:flex gap-6">
             <div class="lg:w-1/2 leading-loose">
                 <x-headings.h1>
-                    Home
+                    Welcome!
                 </x-headings.h1>
 
                 <div class="mt-4 tracking-wider">
-                    <x-headings.h2>
-                        Welcome!
-                    </x-headings.h2>
 
                     <div class="text-gray-600 text-md">
                         <p>

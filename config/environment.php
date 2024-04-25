@@ -70,7 +70,7 @@ return [
             [
                 'href' => '/',
                 'active' => '/',
-                'name' => 'About'
+                'name' => 'Home'
             ],
             [
                 'href' => '/education-course-work',
