@@ -48,7 +48,7 @@
                                     class="w-16 h-16 inline-block
                                     transition ease-in-out delay-0
                                     hover:-translate-y-1 duration-50"
-                                    src="/images/github.png"
+                                    src="{{ asset('images/github.png') }}"
                                     alt="GitHub Image"
                                 >
                             </a>
@@ -57,7 +57,7 @@
                                     class="w-11 h-11 inline-block
                                     transition ease-in-out delay-0
                                     hover:-translate-y-1 duration-50"
-                                    src="/images/linkedIn.png"
+                                    src="{{ asset('images/linkedIn.png') }}"
                                     alt="LinkedIn Image"
                                 >
                             </a>
@@ -67,7 +67,7 @@
                     <div class="w-full md:w-1/2 z-20 flex justify-center">
                         <img
                             class="h-3/4"
-                            src="/images/about/sydney.png"
+                            src="{{ asset('images/about/sydney.png') }}"
                             alt="Main Profile Picture - Infront of the Sydney Opera House"
                         />
                     </div>

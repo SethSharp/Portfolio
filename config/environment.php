@@ -70,7 +70,7 @@ return [
             [
                 'href' => '/education-course-work',
                 'active' => 'education-course-work',
-                'name' => 'Education & Course Work'
+                'name' => 'Education | Course Work'
             ],
             [
                 'href' => '/contact',

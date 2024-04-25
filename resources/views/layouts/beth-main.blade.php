@@ -16,15 +16,15 @@
     @livewireStyles
 </head>
 
-<body class="mg-0 pd-0">
+<body class="mg-0 pd-0 font-serif">
 
 <header>
-    <x-nav-bar/>
+    <x-navigation.beth.nav-bar/>
 </header>
 
 <main>
     <section class="min-h-screen">
-        <div class="md:flex w-4/5 mx-auto mt-2 sm:mt-8 mb-12">
+        <div class="w-4/5 mx-auto my-10">
             @yield("content")
         </div>
     </section>
