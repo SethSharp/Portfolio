@@ -17,6 +17,23 @@
                     </x-navigation.beth.link>
                 @endforeach
             </div>
+
+            @auth
+                <div class="mt-4 gap-6 md:grid-cols-2">
+                    <x-navigation.beth.link class="font-medium text-gray-500 hover:underline"
+                                            href="{{ route('profile.edit') }}" active="{{false}}">
+                        Profile
+                    </x-navigation.beth.link>
+
+                    @role('admin')
+                    <x-navigation.beth.link class="font-medium text-gray-500 hover:underline"
+                                            href="{{ route('dashboard.blogs.index') }}" active="{{ false }}">
+                        Dashboard
+                    </x-navigation.beth.link>
+                    @endrole
+                </div>
+
+            @endauth
         </div>
     </div>
 </header>
