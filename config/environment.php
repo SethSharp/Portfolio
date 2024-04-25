@@ -49,6 +49,11 @@ return [
                 'link' => 'https://www.linkedin.com/in/seth-sharp/',
                 'image' => 'linkedIn.png',
                 'alt' => 'LinkedIn Image'
+            ],
+            [
+                'link' => 'mailto:sesharp@outlook.com',
+                'image' => 'email.png',
+                'alt' => 'Email Image'
             ]
         ]
     ],
@@ -73,14 +78,14 @@ return [
                 'name' => 'Education | Course Work'
             ],
             [
-                'href' => '/contact',
-                'active' => 'contact',
-                'name' => 'Contact Me'
-            ],
-            [
                 'href' => '/blogs',
                 'active' => 'blogs',
                 'name' => 'My Blogs'
+            ],
+            [
+                'href' => '/contact',
+                'active' => 'contact',
+                'name' => 'Contact Me'
             ],
         ],
 
@@ -89,6 +94,11 @@ return [
                 'link' => 'https://www.linkedin.com/in/bethanyfrankis/',
                 'image' => 'linkedIn.png',
                 'alt' => 'LinkedIn Image'
+            ],
+            [
+                'link' => 'mailto:b.frankis@outlook.com',
+                'image' => 'email.png',
+                'alt' => 'Email Image'
             ]
         ]
     ]

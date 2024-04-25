@@ -3,11 +3,10 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfContactNotification;
 
-class Footer extends Component
+class ContactComponent extends Component
 {
     public $email = '';
     public $name = '';
@@ -36,8 +35,8 @@ class Footer extends Component
         session()->flash('success', 'Message sent successfully.');
     }
 
-    public function render(): View
+    public function render()
     {
-        return view('livewire.footer');
+        return view('livewire.contact-component');
     }
 }

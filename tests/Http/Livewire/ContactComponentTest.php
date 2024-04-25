@@ -3,16 +3,16 @@
 namespace Livewire;
 
 use Tests\TestCase;
-use App\Http\Livewire\Footer;
+use App\Http\Livewire\ContactComponent;
 use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfContactNotification;
 
-class FooterTest extends TestCase
+class ContactComponentTest extends TestCase
 {
     /** @test */
     public function email_field_must_be_email()
     {
-        Livewire::test(Footer::class)
+        Livewire::test(ContactComponent::class)
             ->set('email', 'not an email')
             ->set('name', 'a name')
             ->set('message', 'some message')
@@ -28,7 +28,7 @@ class FooterTest extends TestCase
     {
         Notification::fake();
 
-        Livewire::test(Footer::class)
+        Livewire::test(ContactComponent::class)
             ->set('email', 'someone@test.com')
             ->set('name', 'a name')
             ->set('message', 'some message')

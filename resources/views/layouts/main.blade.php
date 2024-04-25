@@ -40,7 +40,7 @@
     </section>
 </main>
 
-<livewire:footer/>
+<x-footer/>
 
 @livewireScriptConfig
 </body>

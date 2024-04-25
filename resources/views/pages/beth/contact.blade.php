@@ -14,6 +14,17 @@
 
 @section("content")
     <x-body.enter-wrapper>
-        This is where you can contact me
+        <div>
+            <x-headings.h1>
+                Contact Me!
+            </x-headings.h1>
+
+            <p class="text-gray-500 my-6">
+                Please feel free to contact me via the options below, or fill out the online form to the right. I look
+                forward to hearing from you!
+            </p>
+
+            <livewire:contact-component/>
+        </div>
     </x-body.enter-wrapper>
 @stop
