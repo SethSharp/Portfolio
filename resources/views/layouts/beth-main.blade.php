@@ -24,7 +24,7 @@
 
 <main>
     <section class="min-h-screen">
-        <div class="w-4/5 mx-auto my-10">
+        <div class="w-4/5 mx-auto my-8">
             @yield("content")
         </div>
     </section>
