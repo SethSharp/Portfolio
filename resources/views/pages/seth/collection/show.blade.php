@@ -1,6 +1,6 @@
 @section('title', 'Collection - ' . config('app.name'))
 
-@extends("layouts.beth-main")
+@extends("layouts.main")
 
 @section('partOne', $collection->title)
 

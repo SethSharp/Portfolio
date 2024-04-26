@@ -61,22 +61,6 @@
             </div>
         </x-body.enter-wrapper>
 
-        <div class="mt-20">
-            @if ($blogs->isNotEmpty())
-                <x-body.wrapper>
-                    <h3 class="text-xl text-center">
-                        My Most Recent Blogs
-                    </h3>
-
-                    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:w-3/4 mx-auto gap-4 mt-6">
-                        @foreach($blogs as $blog)
-                            <x-arch :blog="$blog"/>
-                        @endforeach
-                    </div>
-                </x-body.wrapper>
-            @endif
-        </div>
-
         <div class="mt-16">
             <div class="flex flex-wrap space-y-12">
                 <x-content.left
@@ -128,5 +112,22 @@
 
             </div>
         </div>
+
+        <div class="mt-20">
+            @if ($blogs->isNotEmpty())
+                <x-body.wrapper>
+                    <h3 class="text-xl text-center">
+                        My Most Recent Blogs
+                    </h3>
+
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:w-3/4 mx-auto gap-4 mt-6">
+                        @foreach($blogs as $blog)
+                            <x-arch :blog="$blog"/>
+                        @endforeach
+                    </div>
+                </x-body.wrapper>
+            @endif
+        </div>
+
     </div>
 @stop
