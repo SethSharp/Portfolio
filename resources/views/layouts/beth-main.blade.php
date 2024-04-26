@@ -19,7 +19,7 @@
 <body class="mg-0 pd-0 font-serif">
 
 <header>
-    <x-navigation.beth.nav-bar/>
+    <x-navigation.beth.navbar/>
 </header>
 
 <main>

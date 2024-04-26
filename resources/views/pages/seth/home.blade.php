@@ -14,7 +14,7 @@
 @section("content")
     <div class="z-10">
         <x-body.enter-wrapper>
-            <div class="w-full md:flex ">
+            <div class="w-full md:flex mb-32">
                 <div class="w-full md:w-1/2 z-20 justify-center">
                     <h1 class="text-6xl font-bold text-gray-800"> G'day! </h1>
 
@@ -61,7 +61,7 @@
             </div>
         </x-body.enter-wrapper>
 
-        <div class="mt-16">
+        <div>
             <div class="flex flex-wrap space-y-12">
                 <x-content.left
                     title="About Me Currently"

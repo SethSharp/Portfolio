@@ -19,7 +19,7 @@ return [
         'nav_links' => [
             [
                 'href' => '/',
-                'active' => 'home',
+                'active' => '/',
                 'name' => 'Home'
             ],
             [
