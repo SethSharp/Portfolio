@@ -22,14 +22,14 @@
     @endrole
     <div class="flex-wrap">
         @if($collection)
-            <div class="text-gray-400 font-medium text-md">
+            <a href="{{ route('collections.show', $collection) }}" class="text-gray-400 font-medium text-md">
                 {{ $collection->title }}
-            </div>
+            </a>
         @endif
 
         <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
 
-        <h6 class="text-gray-400 font-medium text-sm">
+        <h6 class="text-gray-400 font-medium text-sm mt-1">
             @if($blog->published_at)
                 {{ $blog->author->name  }} {{ $blog->published_at_for_humans }}
             @else
