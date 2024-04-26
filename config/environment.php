@@ -91,11 +91,13 @@ return [
 
         'social_links' => [
             [
+                'name' => 'LinkedIn',
                 'link' => 'https://www.linkedin.com/in/bethanyfrankis/',
                 'image' => 'linkedIn.png',
                 'alt' => 'LinkedIn Image'
             ],
             [
+                'name' => 'Email',
                 'link' => 'mailto:b.frankis@outlook.com',
                 'image' => 'email.png',
                 'alt' => 'Email Image'
