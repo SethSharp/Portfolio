@@ -13,16 +13,5 @@ class FixThings extends Command
 
     public function handle(): void
     {
-        if (config('environment.current') === EnvironmentEnum::BETH->value) {
-            User::factory()->admin()->create([
-                'name' => 'Bethany Frankis',
-                'email' => 'b.frankis@outlook.com',
-            ]);
-
-            User::factory()->author()->create([
-                'name' => 'Seth Sharp',
-                'email' => 'sesharp@outlook.com',
-            ]);
-        }
     }
 }
