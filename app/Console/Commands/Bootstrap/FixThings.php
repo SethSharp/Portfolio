@@ -2,9 +2,7 @@
 
 namespace App\Console\Commands\Bootstrap;
 
-use App\Http\EnvironmentEnum;
 use Illuminate\Console\Command;
-use SethSharp\BlogCrud\Models\Iam\User;
 
 class FixThings extends Command
 {
