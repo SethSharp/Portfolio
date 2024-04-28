@@ -64,7 +64,7 @@ return [
     EnvironmentEnum::BETH->value => [
         'in_app_name' => 'Bethany Frankis',
 
-        'copyright' => '&copy; 2024 Bethany Frankis. All rights reserved.',
+        'copyright' => '&copy; 2023-2024 Bethany Frankis. All rights reserved.',
 
         'nav_links' => [
             [
