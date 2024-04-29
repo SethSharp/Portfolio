@@ -95,7 +95,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <TextInput autofocus v-model="form.title" :error="form.errors.title" label="Title" />
+            <TextInput id="title" autofocus v-model="form.title" :error="form.errors.title" label="Title" />
 
             <Select
                 v-model="form.collection_id"
@@ -107,6 +107,7 @@ window.addEventListener('beforeunload', confirmLeave)
 
         <FormGrid>
             <TextInput
+                id="slug"
                 v-model="form.slug"
                 label="Slug (must be lowercase separated by '-')"
                 :error="form.errors.slug"
@@ -124,6 +125,7 @@ window.addEventListener('beforeunload', confirmLeave)
 
         <FormElement>
             <TextInput
+                id="meta-title"
                 v-model="form.meta_title"
                 label="Meta Title"
                 :error="form.errors.meta_title"
@@ -132,6 +134,7 @@ window.addEventListener('beforeunload', confirmLeave)
 
         <FormElement>
             <TextInput
+                id="meta-description"
                 v-model="form.meta_description"
                 label="Meta Description"
                 description="Serves as a small blurb on the blog, used both in Google previews and within the portfolio site itself."
@@ -141,6 +144,7 @@ window.addEventListener('beforeunload', confirmLeave)
 
         <FormElement>
             <TextInput
+                id="meta-tags"
                 v-model="form.meta_tags"
                 label="Meta Tags"
                 description="Helps Google understand the content of the page - similar to how hashtags work on Instagram"

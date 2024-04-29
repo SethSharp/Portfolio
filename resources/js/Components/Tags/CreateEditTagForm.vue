@@ -1,5 +1,5 @@
 <script setup>
-import { useForm, router } from '@inertiajs/vue3'
+import {useForm, router} from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
@@ -54,6 +54,7 @@ const restoreTag = () => {
     <Form>
         <FormElement>
             <TextInput
+                id="name"
                 v-model="form.name"
                 autofocus
                 label="Name"

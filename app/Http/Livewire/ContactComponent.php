@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfContactNotification;
@@ -35,7 +36,7 @@ class ContactComponent extends Component
         session()->flash('success', 'Message sent successfully.');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.contact-component');
     }

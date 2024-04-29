@@ -1,5 +1,5 @@
 <script setup>
-import { useForm, router } from '@inertiajs/vue3'
+import {useForm, router} from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import TextArea from '@/Components/Inputs/TextArea.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
@@ -7,7 +7,7 @@ import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
+import {ArrowLongUpIcon, ArrowLongDownIcon} from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
     collection: {
@@ -81,7 +81,7 @@ const shiftBlog = (from, to) => {
                             {{ blog.title }}
                         </div>
 
-                        <span class="text-black font-medium"> delete </span>
+                        <span class="text-black text-xs font-medium"> {{ blog.published_at ?? 'draft' }} </span>
                     </div>
                     <div class="flex ml-auto my-auto">
                         <ArrowLongDownIcon
@@ -99,7 +99,7 @@ const shiftBlog = (from, to) => {
             </div>
         </FormElement>
 
-        <div class="gap-x-2 flex">
+        <div class="flex gap-4">
             <DangerButton @click.prevent="destroyCollection"> Delete</DangerButton>
             <PrimaryButton @click.prevent="submit"> Save</PrimaryButton>
         </div>
