@@ -1,6 +1,6 @@
 <script setup>
-import {BubbleMenu} from '@tiptap/vue-3'
-import {CodeBracketIcon} from '@heroicons/vue/16/solid/index.js'
+import { BubbleMenu } from '@tiptap/vue-3'
+import { CodeBracketIcon } from '@heroicons/vue/16/solid/index.js'
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
 
 const props = defineProps({
@@ -21,7 +21,7 @@ const setLink = () => {
         props.editor.chain().focus().extendMarkRange('link').unsetLink().run()
     }
 
-    props.editor.chain().focus().extendMarkRange('link').setLink({href: url}).run()
+    props.editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
 }
 </script>
 
@@ -100,7 +100,7 @@ const setLink = () => {
                     :active="editor.isActive('code')"
                     class="rounded-r-xl"
                 >
-                    <CodeBracketIcon class="size-6"/>
+                    <CodeBracketIcon class="size-6" />
                 </BubbleButton>
             </div>
         </BubbleMenu>

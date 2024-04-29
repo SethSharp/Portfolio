@@ -9,5 +9,7 @@ class FixThings extends Command
     protected $signature = 'fix:things';
     protected $description = 'does something...';
 
-    public function handle(): void {}
+    public function handle(): void
+    {
+    }
 }

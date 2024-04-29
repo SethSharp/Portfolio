@@ -95,7 +95,13 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <TextInput id="title" autofocus v-model="form.title" :error="form.errors.title" label="Title" />
+            <TextInput
+                id="title"
+                autofocus
+                v-model="form.title"
+                :error="form.errors.title"
+                label="Title"
+            />
 
             <Select
                 v-model="form.collection_id"
