@@ -1,13 +1,12 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
+import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
 import Form from '@/Components/Form/Form.vue'
 import TextArea from '@/Components/Inputs/TextArea.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
-import InputError from '@/Components/Inputs/InputError.vue'
 import DangerButton from '@/Components/Buttons/DangerButton.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
     collection: {
@@ -65,7 +64,7 @@ const shiftBlog = (from, to) => {
                 v-model="form.description"
                 label="Description"
                 :error="form.errors.description"
-                description="Medium sized overview of the collection to help users understand what is included."
+                description="Rough overview of the collection to help users understand what is included."
             />
         </FormElement>
 
@@ -77,9 +76,7 @@ const shiftBlog = (from, to) => {
                     class="bg-gray-100 p-2 rounded-lg my-2 flex transition"
                 >
                     <div>
-                        <div>
-                            {{ blog.title }}
-                        </div>
+                        {{ blog.title }}
 
                         <span class="text-black text-xs font-medium">
                             {{ blog.published_at_for_humans ?? 'draft' }}

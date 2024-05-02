@@ -9,7 +9,7 @@ defineProps({
     },
 })
 
-const emits = defineEmits('close')
+const emits = defineEmits(['close'])
 </script>
 
 <template>
