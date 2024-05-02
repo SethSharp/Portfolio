@@ -82,7 +82,7 @@ const shiftBlog = (from, to) => {
                         </div>
 
                         <span class="text-black text-xs font-medium">
-                            {{ blog.published_at ?? 'draft' }}
+                            {{ blog.published_at_for_humans ?? 'draft' }}
                         </span>
                     </div>
                     <div class="flex ml-auto my-auto">
