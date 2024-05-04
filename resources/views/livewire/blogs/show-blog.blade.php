@@ -1,22 +1,22 @@
-@section('title', $blog?->meta_title ? $blog->meta_title : $blog->title)
+@section('title', $this->blog?->meta_title ? $this->blog->meta_title : $this->blog->title)
 
 @push('meta')
-    @if($blog->meta_description)
-        <meta name="description" content="{{ $blog->meta_description }}">
+    @if($this->blog->meta_description)
+        <meta name="description" content="{{ $this->blog->meta_description }}">
     @endif
 
-    @if($blog->meta_tags)
-        <meta name="keywords" content="{{ $blog?->meta_tags ? $blog->meta_tags : '' }}">
+    @if($this->blog->meta_tags)
+        <meta name="keywords" content="{{ $this->blog?->meta_tags ? $this->blog->meta_tags : '' }}">
     @endif
 
-    @if (! $blog->is_published)
+    @if (! $this->blog->is_published)
         <meta name="robots" content="noindex, nofollow"/>
     @endif
 @endpush
 
 <div class="md:w-4/5 lg:w-3/4 mx-auto">
     @role('admin', 'author')
-    <a href="{{ route('dashboard.blogs.edit', $blog) }}">
+    <a href="{{ route('dashboard.blogs.edit', $this->blog) }}">
         <x-icons.pencil-square class="size-8 text-gray-500 hover:text-gray-700"/>
     </a>
     @endrole
@@ -27,11 +27,11 @@
             </a>
         @endif
 
-        <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $blog->title }}</h1>
+        <h1 class="text-2xl sm:text-4xl font-extrabold"> {{ $this->blog->title }}</h1>
 
         <h6 class="text-gray-400 font-medium text-sm mt-1">
-            @if($blog->published_at)
-                {{ $blog->author->name  }} {{ $blog->published_at_for_humans }}
+            @if($this->blog->published_at)
+                {{ $this->blog->author->name  }} {{ $this->blog->published_at_for_humans }}
             @else
                 This blog is in a draft status
             @endif
@@ -39,7 +39,7 @@
     </div>
 
     <div class="mt-8 prose min-h-[400px] leading-loose">
-        {!! $content !!}
+        {!! $this->blog->getContent() !!}
     </div>
 
     <div class="mt-12">
@@ -47,11 +47,11 @@
             <button type="button" wire:click="like"
                     class="flex my-auto mx-4 {{ $isLiked ? 'text-red-500 hover:text-red-300' : 'text-gray-400 hover:text-red-500' }}">
                 <x-icons.heart/>
-                <span class="text-gray-600 font-medium"> {{ $blogLikes }}</span>
+                <span class="text-gray-600 font-medium"> {{ $this->blogLikes }}</span>
             </button>
 
             <div class="gap-4 mt-4 flex py-5 sm:py-0 sm:flex sm:mt-0 overflow-x-auto">
-                @foreach($blog->tags as $tag)
+                @foreach($this->blog->tags as $tag)
                     <span
                         class="rounded-lg text-gray-700 h-fit border-[1px] bg-gray-100 text-sm px-2 py-1 whitespace-nowrap">
                         {{ $tag->name }}
@@ -61,7 +61,7 @@
         </div>
 
         <div class="mt-8">
-            <livewire:blogs.comments.blog-comments :blog="$blog"/>
+            <livewire:blogs.comments.blog-comments :blog="$this->blog"/>
         </div>
     </div>
 
@@ -89,7 +89,7 @@
                         <span class="text-primary-600">Next blog </span>
                     </div>
 
-                    <div class="flex justify-end text-right text-gray-700">{{ $blog->title }}</div>
+                    <div class="flex justify-end text-right text-gray-700">{{ $this->blog->title }}</div>
                 </a>
             </div>
         @endif

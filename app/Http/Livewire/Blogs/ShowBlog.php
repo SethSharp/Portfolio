@@ -68,9 +68,6 @@ class ShowBlog extends Component
 
     public function render(): View
     {
-        return view('livewire.blogs.show-blog', [
-            'blog' => $this->blog,
-            'content' => $this->blog->getContent()
-        ]);
+        return view('livewire.blogs.show-blog');
     }
 }
