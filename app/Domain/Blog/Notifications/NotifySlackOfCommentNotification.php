@@ -14,8 +14,7 @@ class NotifySlackOfCommentNotification extends Notification
         public User    $user,
         public Comment $comment,
         public Blog    $blog
-    ) {
-    }
+    ) {}
 
     public function via($notifiable): array
     {
@@ -25,6 +24,6 @@ class NotifySlackOfCommentNotification extends Notification
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage())
-            ->content("Blog: <" . route('blogs.show', $this->blog) . "|$this->blog->title>. $this->comment['comment']");
+            ->content("Blog: <" . route('blogs.show', $this->blog) . "|{$this->blog->title}>: {$this->comment['comment']}");
     }
 }
