@@ -14,7 +14,8 @@ class NotifySlackOfCommentNotification extends Notification
         public User    $user,
         public Comment $comment,
         public Blog    $blog
-    ) {}
+    ) {
+    }
 
     public function via($notifiable): array
     {
