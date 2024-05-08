@@ -3,6 +3,7 @@
 namespace Livewire;
 
 use Tests\TestCase;
+use Illuminate\Support\Str;
 use App\Http\Livewire\ContactComponent;
 use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfContactNotification;
@@ -24,6 +25,24 @@ class ContactComponentTest extends TestCase
     }
 
     /** @test */
+    public function message_must_be_50_characters()
+    {
+        Notification::fake();
+
+        Livewire::test(ContactComponent::class)
+            ->set('email', 'someone@test.com')
+            ->set('name', 'a name')
+            ->set('message', Str::random(10))
+            ->call('send')
+            ->assertHasErrors([
+                'message' => 'The message must be at least 50 characters.'
+            ])
+            ->assertSee('The message must be at least 50 characters.');
+
+        Notification::assertNothingSent();
+    }
+
+    /** @test */
     public function can_send_notification()
     {
         Notification::fake();
@@ -31,7 +50,7 @@ class ContactComponentTest extends TestCase
         Livewire::test(ContactComponent::class)
             ->set('email', 'someone@test.com')
             ->set('name', 'a name')
-            ->set('message', 'some message')
+            ->set('message', Str::random(50))
             ->call('send')
             ->assertOk();
 

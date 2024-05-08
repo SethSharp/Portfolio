@@ -9,16 +9,16 @@ use App\Domain\Blog\Notifications\NotifySlackOfContactNotification;
 
 class ContactComponent extends Component
 {
-    public $email = '';
-    public $name = '';
-    public $message = '';
+    public string $email = '';
+    public string $name = '';
+    public string $message = '';
 
     protected function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email', 'max:999'],
-            'name' => ['required', 'string', 'max:999'],
-            'message' => ['required', 'string', 'max:999'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email'],
+            'message' => ['required', 'string', 'min:50', 'max:500'],
         ];
     }
 
