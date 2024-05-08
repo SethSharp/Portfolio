@@ -1,8 +1,9 @@
 <?php
 
-namespace Livewire;
+namespace Tests\Http\Livewire;
 
 use Tests\TestCase;
+use Livewire\Livewire;
 use Illuminate\Support\Str;
 use App\Http\Livewire\ContactComponent;
 use Illuminate\Support\Facades\Notification;
