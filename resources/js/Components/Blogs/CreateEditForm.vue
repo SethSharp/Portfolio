@@ -118,7 +118,10 @@ window.addEventListener('beforeunload', confirmLeave)
                 label="Slug (must be lowercase separated by '-')"
                 :error="form.errors.slug"
                 placeholder="a-new-blog-of-mine"
-                description="Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/a-new-blog-of-mine"
+                :description="
+                    'Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/' +
+                    (form.slug ? form.slug : 'a-new-blog-of-mine')
+                "
             />
 
             <MultiSelect
