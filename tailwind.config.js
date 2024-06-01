@@ -50,6 +50,21 @@ module.exports = {
                 primary: primary,
                 secondary: secondary,
             },
+            keyframes: {
+                typing: {
+                    '0%': { width: '0%' },
+                    '100%': { width: '100%' },
+                },
+                blinking: {
+                    '0%': { borderRightColor: 'transparent' },
+                    '50%': { borderRightColor: 'white' },
+                    '100%': { borderRightColor: 'transparent' },
+                },
+            },
+            animation: {
+                typing: 'typing 1s steps(10, end) forwards, blinking 1s step-end 3',
+                reveal: 'typing 1s steps(30, end) forwards',
+            },
         },
     },
 

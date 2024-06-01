@@ -18,13 +18,15 @@
 
 @section("content")
     <div>
-        <div class="text-6xl mt-16 text-white flex">
-            <h1 class="font-semibold font-mono track-wide">
-                My
-            </h1>
-            <h2 class="pl-4 font-light font-mono">
-                Projects
-            </h2>
+        <div class="text-6xl mt-16 text-white max-w-fit">
+            <x-headings.typed>
+                <h1 class="font-semibold font-mono track-wide">
+                    My
+                </h1>
+                <h2 class="pl-4 font-light font-mono">
+                    Projects
+                </h2>
+            </x-headings.typed>
         </div>
         <div>
             <x-body.enter-wrapper>

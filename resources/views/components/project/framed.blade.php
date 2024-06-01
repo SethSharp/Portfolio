@@ -1,7 +1,8 @@
 <div>
     <div class="mb-8">
         <h1 class="text-4xl font-medium mt-2 text-gray-400">
-            <a href="https://www.framedjustforyou.com.au" class="hover:underline"> Framed Just For You</a>
+            <a href="https://www.framedjustforyou.com.au" class="transition hover:text-primary-500"> Framed Just For
+                You</a>
         </h1>
     </div>
     <article class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-300 leading-loose">

@@ -21,15 +21,17 @@
     <div class="w-full divide-y">
         <div class="md:flex mt-14 pb-24">
             <div class="md:w-1/2 text-6xl font-mono mt-16 ml-12 text-white">
-                <h1 class="font-semibold track-wide">
-                    Seth Sharp
-                </h1>
-                <h2 class="pt-2 font-light">
-                    Software
-                </h2>
-                <h2 class="pt-2 font-light">
-                    Developer
-                </h2>
+                <div class="whitespace-nowrap overflow-hidden animate-reveal w-0 border-r-2">
+                    <h1>
+                        Seth Sharp
+                    </h1>
+                    <h2 class="pt-2 font-light">
+                        Software
+                    </h2>
+                    <h2 class="pt-2 font-light">
+                        Developer
+                    </h2>
+                </div>
             </div>
             <div class="md:w-1/2 p-2">
                 <img

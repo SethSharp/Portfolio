@@ -16,6 +16,17 @@
 @section("content")
     <div class="text-center w-full">
         <x-body.enter-wrapper>
+            <div class="text-6xl mt-16 text-white max-w-fit">
+                <x-headings.typed>
+                    <h1 class="font-semibold font-mono track-wide">
+                        My
+                    </h1>
+                    <h2 class="pl-4 font-light font-mono">
+                        Blogs
+                    </h2>
+                </x-headings.typed>
+            </div>
+
             @if ($collection)
                 <div class="!flex !text-left">
                     <h2 class="text-xl">

@@ -41,13 +41,13 @@
            [
                 'content' => 'Offered',
                 'target' => 'employment!',
-                'description' => 'Employment was offered on a 2 day basis, which soon become 4 day employment throughout 2023',
+                'description' => 'Employment was offered on a 2 day basis, which soon become 4 day employment throughout 2023.',
                 'date' => 'Nov 22',
                 'icon' => 'NewsPaperIcon',
                 'iconBackground' => 'bg-gray-50',
            ],
            [
-                'content' => 'Full time hours & project owner',
+                'content' => 'Full time hours & owner',
                 'target' => 'of a internal project during Q4 2023',
                 'description' => 'This was a big point, where I was moved to 5 days of work and entrusted on a project as its owner for Q4.',
                 'date' => 'Oct 23',
@@ -66,10 +66,21 @@
     @endphp
 
     <x-body.enter-wrapper>
-        <div class="leading-loose pr-4">
-            <h1 class="text-2xl font-medium"> Coding Labs</h1>
+        <div class="text-6xl mt-16 text-white max-w-fit">
+            <x-headings.typed>
+                <h1 class="font-semibold font-mono track-wide">
+                    My
+                </h1>
+                <h2 class="pl-4 font-light font-mono">
+                    Experiences
+                </h2>
+            </x-headings.typed>
+        </div>
 
-            <p class="mt-3 text-gray-500">
+        <div class="leading-loose mt-12">
+            <h1 class="text-2xl font-medium text-gray-400"> Coding Labs</h1>
+
+            <p class="mt-3 text-gray-300">
                 Coding Labs is a Software Development studio based on the Gold Coast, working on bringing
                 the
                 best products to market.
@@ -79,7 +90,7 @@
 
             <br>
 
-            <p class=" text-gray-500">
+            <p class="text-gray-300">
                 In terms of technology I have learned so many new frameworks to help build some awesome
                 products. Those frameworks being;
                 Laravel, Vue, Tailwind, Inertia, Alpine and Livewire. My Current focus here is working on a
@@ -91,7 +102,7 @@
             </p
             >
         </div>
-        <div class="flow-root mt-6">
+        <div class="flow-root mt-6 text-gray-300">
             <ul role="list" class="-mb-8">
                 @foreach($timeline as $event)
                     <li>
@@ -119,19 +130,19 @@
                                 </span>
                                 </div>
 
-                                <div class="flex min-w-0 flex-1 justify-between sm:space-x-4 pt-1.5">
+                                <div class="flex min-w-0 flex-1 justify-between sm:space-x-4 pl-2 pt-1.5">
                                     <div>
-                                        <p class="text-sm text-gray-500">
+                                        <p class="text-sm text-gray-200">
                                             {{ $event['content'] }}
                                             <span
-                                                class="font-medium text-gray-900">{{ $event['target'] }}</span>
+                                                class="font-medium text-primary-400">{{ $event['target'] }}</span>
                                         </p>
                                         @if(isset($event['description']))
-                                            <p class="text-sm mt-4 text-gray-500">{{ $event['description'] }}</p>
+                                            <p class="text-sm mt-4 text-gray-400">{{ $event['description'] }}</p>
                                         @endif
                                     </div>
 
-                                    <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                    <div class="whitespace-nowrap text-right text-sm text-primary-600">
                                         {{ $event['date'] }}
                                     </div>
                                 </div>
