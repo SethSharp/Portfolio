@@ -1,6 +1,6 @@
 <div>
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2 text-gray-400">
+        <h1 class="text-4xl font-mono mt-2 text-gray-400">
             <a href="https://www.framedjustforyou.com.au" class="transition hover:text-primary-500"> Framed Just For
                 You</a>
         </h1>

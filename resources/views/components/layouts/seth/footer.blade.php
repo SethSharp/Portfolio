@@ -24,7 +24,7 @@
     </div>
 
     <div class="p-4 flex justify-start">
-        <p class="text-sm my-auto leading-5 text-gray-500">
+        <p class="text-sm my-auto leading-5 text-gray-400">
             {!! getCurrentEBEnvironmentConfig()['copyright'] !!}
         </p>
     </div>

@@ -95,17 +95,16 @@
                     <p>
                         I am a big fan of outdoor adventures. Whether it's exploring the scenic views of Fraser Island
                         or
-                        tackling challenging 4WD tracks or catching nothing when I go fishing.
+                        tackling challenging 4WD tracks or fishing and not catching anything (but hey, its all part of
+                        it).
                     </p>
 
                     <br>
 
                     <p>
-                        I also have a passion for gaming. Whenever I get some free time, I love diving into immersive
-                        games
-                        that offer a great escape and entertainment. It's a fun and relaxing way to unwind and enjoy
-                        some
-                        downtime.
+                        I also enjoy a bit of gaming when I get some free time. Outside of work and other things that
+                        pop
+                        up, it offers a nice break from it all.
                     </p>
 
                     <div class="flex justify-center mt-12 gap-6 w-1/2 mx-auto">
