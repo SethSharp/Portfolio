@@ -9,7 +9,7 @@
 
 @section("content")
     <div class="text-center w-full">
-        <x-body.enter-wrapper>
+        <x-body.wrapper>
             @if ($collection)
                 <div class="!flex !text-left">
                     <h2 class="text-xl">
@@ -32,6 +32,6 @@
                     No blogs available
                 </div>
             @endif
-        </x-body.enter-wrapper>
+        </x-body.wrapper>
     </div>
 @stop

@@ -13,7 +13,7 @@
 @endpush
 
 @section("content")
-    <x-body.enter-wrapper>
+    <x-body.wrapper>
         <div class="leading-loose text-gray-600">
             <x-headings.beth.central>
                 Academic Curricula
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-    </x-body.enter-wrapper>
+    </x-body.wrapper>
 
     <x-body.wrapper>
         <x-headings.beth.central>

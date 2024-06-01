@@ -13,7 +13,7 @@
 @endpush
 
 @section("content")
-    <x-body.enter-wrapper>
+    <x-body.wrapper>
         <div>
             <div class="md:flex gap-6 mt-10">
                 <div class="md:w-1/2">
@@ -48,5 +48,5 @@
                 </div>
             </div>
         </div>
-    </x-body.enter-wrapper>
+    </x-body.wrapper>
 @stop

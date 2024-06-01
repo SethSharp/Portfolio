@@ -8,7 +8,7 @@
 @endpush
 
 @section("content")
-    <x-body.enter-wrapper>
+    <x-body.wrapper>
         <div class="lg:flex gap-6">
             <div class="lg:w-1/2 leading-loose">
                 <x-headings.h1>
@@ -56,7 +56,7 @@
                 <img src="{{ asset('beth/bethany-profile-pic.webp') }}" class="my-auto"/>
             </div>
         </div>
-    </x-body.enter-wrapper>
+    </x-body.wrapper>
 
     <x-body.wrapper>
         <div class="w-3/4 mx-auto my-12">

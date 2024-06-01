@@ -22,7 +22,7 @@
             </x-headings.typed>
         </div>
 
-        <x-body.enter-wrapper>
+        <x-body.wrapper>
             <div class="md:flex gap-6 mt-6">
                 <div class="md:w-1/2">
                     <p class="text-gray-300 my-6">
@@ -49,6 +49,6 @@
                     </div>
                 </div>
             </div>
-        </x-body.enter-wrapper>
+        </x-body.wrapper>
     </div>
 @stop

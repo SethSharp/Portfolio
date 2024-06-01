@@ -34,17 +34,17 @@
                 </x-headings.seth.main>
             </div>
             <div class="md:w-1/2 p-2">
-                <x-body.enter-wrapper>
+                <x-body.wrapper>
                     <img
                         class="object-cover mx-auto w-96"
                         src="{{ asset('/seth/profile-picture.jpg') }}"
                         alt="Profile Picture for Seth Sharp"
                     />
-                </x-body.enter-wrapper>
+                </x-body.wrapper>
             </div>
         </div>
 
-        <x-body.enter-wrapper>
+        <x-body.wrapper>
             <div class="py-12 md:py-24 text-center">
                 <x-headings.seth.h2>
                     My Specialisations
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-        </x-body.enter-wrapper>
+        </x-body.wrapper>
 
 
         <x-body.wrapper>

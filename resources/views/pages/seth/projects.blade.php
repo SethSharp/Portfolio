@@ -29,17 +29,17 @@
             </x-headings.typed>
         </div>
         <div>
-            <x-body.enter-wrapper>
+            <x-body.wrapper>
                 <x-project.habit-tracker/>
-            </x-body.enter-wrapper>
+            </x-body.wrapper>
 
-            <x-body.enter-wrapper>
+            <x-body.wrapper>
                 <x-project.framed/>
-            </x-body.enter-wrapper>
+            </x-body.wrapper>
 
-            <x-body.enter-wrapper>
+            <x-body.wrapper>
                 <x-project.portfolio-package/>
-            </x-body.enter-wrapper>
+            </x-body.wrapper>
         </div>
     </div>
 

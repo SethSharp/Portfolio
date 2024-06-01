@@ -77,7 +77,7 @@
             </x-headings.typed>
         </div>
 
-        <x-body.enter-wrapper>
+        <x-body.wrapper>
             <div class="leading-loose mt-12">
                 <h1 class="text-2xl font-medium text-gray-400"> Coding Labs (2022-Present) </h1>
 
@@ -137,6 +137,6 @@
                     @endforeach
                 </ul>
             </div>
-        </x-body.enter-wrapper>
+        </x-body.wrapper>
     </div>
 @stop
