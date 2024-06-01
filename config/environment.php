@@ -23,14 +23,14 @@ return [
                 'name' => 'Home'
             ],
             [
-                'href' => '/experience',
-                'active' => 'experience',
-                'name' => 'Experience'
-            ],
-            [
                 'href' => '/projects',
                 'active' => 'projects',
                 'name' => 'Projects'
+            ],
+            [
+                'href' => '/experience',
+                'active' => 'experience',
+                'name' => 'Experience'
             ],
             [
                 'href' => '/blogs',

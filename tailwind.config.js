@@ -5,8 +5,8 @@ require('dotenv').config()
 
 let primary, secondary
 if (process.env.EB_ENVIRONMENT === 'seth') {
-    primary = buildPrimaryColour(colors.yellow)
-    secondary = buildPrimaryColour(colors.blue)
+    primary = buildPrimaryColour(colors.teal)
+    secondary = buildPrimaryColour(colors.purple)
 } else {
     primary = buildPrimaryColour(colors.rose)
     secondary = buildPrimaryColour(colors.purple)
