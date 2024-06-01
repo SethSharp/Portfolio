@@ -15,7 +15,7 @@
 
 @section("content")
     <div>
-        <div class="text-6xl mt-16 text-white max-w-fit">
+        <div class="md:mt-16 text-white max-w-fit">
             <x-headings.typed>
                 <h1 class="font-semibold font-mono track-wide">
                     My

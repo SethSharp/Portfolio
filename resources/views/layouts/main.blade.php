@@ -25,9 +25,7 @@
     <x-navigation.seth.navbar/>
 </header>
 
-<div class="animate-pulse duration-1000 -z-10 absolute w-full">
-    <x-patterns.circuit-board fill="#292929"/>
-</div>
+<x-patterns.circuit-board fill="#292929"/>
 
 <main>
     <section class="min-h-screen relative">

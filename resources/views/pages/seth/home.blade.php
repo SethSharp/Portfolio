@@ -19,8 +19,8 @@
 
 @section("content")
     <div class="w-full divide-y">
-        <div class="md:flex md:mt-14 pb-24 gap-y-12">
-            <div class="md:w-1/2 md:mt-16 ml-12 z-10">
+        <div class="md:flex md:mt-14 pb-12 md:pb-24 gap-y-12">
+            <div class="md:w-1/2 md:mt-16 md:ml-12 z-10">
                 <x-headings.seth.main>
                     <h1>
                         Seth Sharp
