@@ -46,7 +46,7 @@
             </h2>
 
             <div>
-                <p class="leading-loose p-4 w-2/3 mx-auto font-mono font-light text-gray-300">
+                <p class="leading-loose p-4 w-2/3 mx-auto text-gray-300">
                     I currently reside in SE QLD on the Gold Coast. I have been a Software Developer over the last
                     couple of years and have developed skills in multiple libraries and frameworks to push my best work
                     - both personally and professionally.
@@ -68,7 +68,7 @@
             </h2>
 
             <div>
-                <p class="leading-loose p-4 w-2/3 mx-auto font-mono font-light text-gray-300">
+                <p class="leading-loose p-4 w-2/3 mx-auto text-gray-300">
                     One of my major aspirations is to start my own business. I am eager to leverage my skills and
                     experience to create innovative solutions and build a successful venture
                 </p>
@@ -80,7 +80,7 @@
                 More about me
             </h2>
 
-            <div class="leading-loose p-4 w-2/3 mx-auto font-mono font-light text-gray-300">
+            <div class="leading-loose p-4 w-2/3 mx-auto text-gray-300">
                 <p>
                     I am a big fan of outdoor adventures. Whether it's exploring the scenic views of Fraser Island or
                     tackling challenging 4WD tracks or catching nothing when I go fishing.

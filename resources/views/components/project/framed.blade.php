@@ -1,10 +1,10 @@
 <div>
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2">
+        <h1 class="text-4xl font-medium mt-2 text-gray-400">
             <a href="https://www.framedjustforyou.com.au" class="hover:underline"> Framed Just For You</a>
         </h1>
     </div>
-    <article class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-500 leading-loose">
+    <article class="grid lg:grid-cols-2 gap-x-4 text-md text-gray-300 leading-loose">
         <div>
             <div>
                 <div>
@@ -14,7 +14,7 @@
                     2023 and I was appointed the responsibility to create and manage the next one.
                 </div>
 
-                <div class="mt-14">
+                <div class="mt-6">
                     <div>
                         The process involved a step-by-step approach to conceptualize the vision for the site — a more
                         modern
@@ -35,39 +35,14 @@
                 </div>
 
             </div>
-            <div class="mt-6 mx-auto">
-                <x-image.card alt="Home Page" image="/projects/framed/contact.png"/>
-            </div>
         </div>
 
         <div>
-            <div class="mx-auto mt-6">
-                <x-image.card alt="Contact page" image="/projects/framed/home-page.png"/>
-            </div>
-            <div class="h-8"></div>
-            <div class="mx-auto space-y-4 w-3/4">
-                <div class="flex">
-                    <x-icons.paint-brush/>
-                    <span class="my-auto ml-4 font-semi"> Design </span>
-                </div>
-                <div class="flex">
-                    <x-icons.building/>
-                    <span class="my-auto ml-4 font-semi"> AWS </span>
-                </div>
-                <div class="flex">
-                    <x-icons.cloud-up/>
-                    <span class="my-auto ml-4 font-semi"> Push to Deploy </span>
-                </div>
-            </div>
-            <div class="mt-6">
-                Down the road we will be embarking on the development of an online store, this is a significant step and
-                will
-                provide a rich
-                learning experience in areas such as secure payment management, integration with stripe, and the
-                implementation of webhooks for real-time updates, crafting an intuitive user
-                experience, from product exploration to-checkout, efficient categorization,
-                search functionality, and streamlined cart management.
-            </div>
+            <img
+                class="object-cover rounded-xl shadow mx-auto shadow-gray-400"
+                src="{{ asset('/seth/projects/framed/home.png') }}"
+                alt="Framed Just For You Home Page"
+            />
         </div>
     </article>
 </div>

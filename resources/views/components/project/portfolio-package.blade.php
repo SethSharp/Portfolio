@@ -1,10 +1,10 @@
 <div class="my-12">
     <div class="mb-8">
-        <h1 class="text-4xl font-medium mt-2">
+        <h1 class="text-4xl font-medium mt-2 text-gray-400">
             Blog Package + Integration into Portfolio site
         </h1>
     </div>
-    <article class="text-md text-gray-500 leading-loose">
+    <article class="text-md text-gray-300 leading-loose">
         <div>
             This site started out pretty basic, with a couple pages and not much to show. Over the past year it has
             really come to life with improved UI,

@@ -16,21 +16,29 @@
     <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
 @endpush
 
-@section('partOne', 'My')
-@section('partTwo', 'Projects')
-
 @section("content")
     <div>
-        <x-body.enter-wrapper>
-            <x-project.habit-tracker/>
-        </x-body.enter-wrapper>
+        <div class="text-6xl mt-16 text-white flex">
+            <h1 class="font-semibold font-mono track-wide">
+                My
+            </h1>
+            <h2 class="pl-4 font-light font-mono">
+                Projects
+            </h2>
+        </div>
+        <div>
+            <x-body.enter-wrapper>
+                <x-project.habit-tracker/>
+            </x-body.enter-wrapper>
 
-        <x-body.wrapper>
-            <x-project.framed/>
-        </x-body.wrapper>
+            <x-body.wrapper>
+                <x-project.framed/>
+            </x-body.wrapper>
 
-        <x-body.wrapper>
-            <x-project.portfolio-package/>
-        </x-body.wrapper>
+            <x-body.wrapper>
+                <x-project.portfolio-package/>
+            </x-body.wrapper>
+        </div>
     </div>
+
 @stop
