@@ -27,9 +27,9 @@
         </div>
 
         <x-body.enter-wrapper>
-            <div class="grid xl:grid-cols-2 gap-6 mt-12">
+            <div class="grid xl:grid-cols-2 gap-6 mt-12 bg-white rounded-md p-6">
                 @foreach($blogs as $blog)
-                    <x-blogs.seth.card :blog="$blog"/>
+                    <x-blogs.card :blog="$blog"/>
                 @endforeach
             </div>
         </x-body.enter-wrapper>

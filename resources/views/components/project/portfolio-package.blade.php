@@ -1,8 +1,8 @@
 <div class="my-12">
     <div class="mb-8">
-        <h1 class="text-4xl font-mono mt-2 text-gray-400">
+        <x-headings.seth.h2>
             Blog Package + Integration
-        </h1>
+        </x-headings.seth.h2>
     </div>
     <article class="text-md text-gray-300 leading-loose">
         <div>

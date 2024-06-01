@@ -1,8 +1,8 @@
 <div class="my-12 ">
     <div class="mb-8">
-        <h2 class="text-4xl font-medium mt-2 font-mono text-gray-400">
+        <x-headings.seth.h2 class="text-gray-400">
             Habit Tracker
-        </h2>
+        </x-headings.seth.h2>
     </div>
     <article class="grid lg:grid-cols-2 gap-x-4 text-md font-sans text-gray-300 leading-loose">
         <div>

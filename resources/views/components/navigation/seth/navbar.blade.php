@@ -1,4 +1,4 @@
-<nav class="h-20 w-full">
+<nav class="h-20 z-10 w-full">
     <div class="h-full gap-6 justify-center hidden sm:flex">
         <div class="my-auto space-x-4">
             @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
@@ -27,9 +27,6 @@
                 <div x-on:click="open = ! open" class="hover:bg-gray-200 rounded transition cursor-pointer">
                     <x-icons.burger class="!size-10"/>
                 </div>
-                <a href="{{route('home')}}" class="my-auto text-3xl text-gray-600">
-                    {{ getCurrentEBEnvironmentConfig()['in_app_name'] }}
-                </a>
             </div>
             <div x-show="open" @click.outside="open = false" x-transition class="flex justify-start mt-4 z-50">
                 <div

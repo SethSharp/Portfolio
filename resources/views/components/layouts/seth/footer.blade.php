@@ -1,4 +1,4 @@
-<footer class="h-fit border-t-2 border-primary-500 bg-[#3E3D3D]">
+<footer class="h-fit border-t-2 border-primary-500 bg-[#3E3D3D] z-20">
     <div class="p-8">
         <div class="sm:flex space-y-4">
             <div class="sm:w-1/2 font-mono text-xl">
@@ -21,12 +21,12 @@
         </div>
     </div>
 
-    <div class="p-4 flex justify-between">
+    <div class="p-4 md:flex justify-between">
         <p class="text-sm my-auto leading-5 text-gray-400">
             {!! getCurrentEBEnvironmentConfig()['copyright'] !!}
         </p>
 
-        <div class="flex gap-4">
+        <div class="flex gap-4 justify-center">
             @foreach(getCurrentEBEnvironmentConfig()['social_links'] as $link)
                 <a href="{{ $link['link'] }}" class="flex text-gray-400 gap-4 my-2 hover:text-gray-900">
                     <img

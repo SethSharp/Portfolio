@@ -19,9 +19,9 @@
 
 @section("content")
     <div class="w-full divide-y">
-        <div class="md:flex mt-14 pb-24">
-            <div class="md:w-1/2 text-6xl font-mono mt-16 ml-12 text-white">
-                <div class="whitespace-nowrap overflow-hidden animate-reveal w-0 border-r-2">
+        <div class="md:flex md:mt-14 pb-24 gap-y-12">
+            <div class="md:w-1/2 md:mt-16 ml-12 z-10">
+                <x-headings.seth.main>
                     <h1>
                         Seth Sharp
                     </h1>
@@ -31,7 +31,7 @@
                     <h2 class="pt-2 font-light">
                         Developer
                     </h2>
-                </div>
+                </x-headings.seth.main>
             </div>
             <div class="md:w-1/2 p-2">
                 <x-body.enter-wrapper>
@@ -45,13 +45,13 @@
         </div>
 
         <x-body.enter-wrapper>
-            <div class="py-24 text-center">
-                <h2 class="text-4xl font-mono text-gr text-white">
+            <div class="py-12 md:py-24 text-center">
+                <x-headings.seth.h2>
                     My Specialisations
-                </h2>
+                </x-headings.seth.h2>
 
                 <div>
-                    <p class="leading-loose p-4 w-2/3 mx-auto text-gray-300">
+                    <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300">
                         I currently reside in SE QLD on the Gold Coast. I have been a Software Developer over the last
                         couple of years and have developed skills in multiple libraries and frameworks to push my best
                         work
@@ -71,13 +71,13 @@
 
 
         <x-body.wrapper>
-            <div class="py-24 text-center">
-                <h2 class="text-4xl font-mono text-gr text-white">
+            <div class="py-12 md:py-24 text-center">
+                <x-headings.seth.h2>
                     Aspiration
-                </h2>
+                </x-headings.seth.h2>
 
                 <div>
-                    <p class="leading-loose p-4 w-2/3 mx-auto text-gray-300">
+                    <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300">
                         One of my major aspirations is to start my own business. I am eager to leverage my skills and
                         experience to create innovative solutions and build a successful venture
                     </p>
@@ -86,12 +86,12 @@
         </x-body.wrapper>
 
         <x-body.wrapper>
-            <div class="py-24 text-center">
-                <h2 class="text-4xl font-mono text-gr text-white">
+            <div class="py-12 md:py-24 text-center">
+                <x-headings.seth.h2>
                     More about me
-                </h2>
+                </x-headings.seth.h2>
 
-                <div class="leading-loose p-4 w-2/3 mx-auto text-gray-300">
+                <div class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300">
                     <p>
                         I am a big fan of outdoor adventures. Whether it's exploring the scenic views of Fraser Island
                         or
@@ -107,10 +107,11 @@
                         up, it offers a nice break from it all.
                     </p>
 
-                    <div class="flex justify-center mt-12 gap-6 w-1/2 mx-auto">
-                        <img src="{{ asset('/seth/about/4wd.png') }}" alt="" class="size-52 object-cover rounded-md"/>
+                    <div class="md:flex justify-center mt-12 gap-6 md:w-1/2 mx-auto">
+                        <img src="{{ asset('/seth/about/4wd.png') }}" alt=""
+                             class="size-52 object-cover mx-auto rounded-md p-4"/>
                         <img src="{{ asset('/seth/about/lookout.png') }}" alt=""
-                             class="size-52 object-right object-cover rounded-md"/>
+                             class="size-52 object-right object-cover mx-auto rounded-md p-4"/>
                     </div>
                 </div>
             </div>
