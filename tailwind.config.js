@@ -44,6 +44,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                mono: ['Roboto Mono', ...defaultTheme.fontFamily.mono],
             },
             colors: {
                 primary: primary,
