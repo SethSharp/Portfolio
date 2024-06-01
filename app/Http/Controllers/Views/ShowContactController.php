@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Views;
 
-use App\Http\Controllers\Controller;
-use App\Http\EnvironmentEnum;
 use Illuminate\View\View;
+use App\Http\EnvironmentEnum;
+use App\Http\Controllers\Controller;
 
 class ShowContactController extends Controller
 {
