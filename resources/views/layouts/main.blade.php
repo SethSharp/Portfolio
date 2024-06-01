@@ -25,7 +25,7 @@
     <x-navigation.seth.navbar/>
 </header>
 
-<x-patterns.circuit-board fill="#292929"/>
+<x-patterns.circuit-board fill="#313030"/>
 
 <main>
     <section class="min-h-screen relative">
