@@ -47,19 +47,19 @@ return [
         'social_links' => [
             [
                 'link' => 'https://github.com/SethSharp',
-                'image' => 'github.png',
+                'image' => 'github-icon.png',
                 'alt' => 'GitHub Image',
                 'name' => 'GitHub'
             ],
             [
                 'link' => 'https://www.linkedin.com/in/seth-sharp/',
-                'image' => 'linkedIn.png',
+                'image' => 'linkedin-icon.png',
                 'alt' => 'LinkedIn Image',
                 'name' => 'LinkedIn'
             ],
             [
                 'link' => 'mailto:sesharp@outlook.com',
-                'image' => 'email.png',
+                'image' => 'email-icon.png',
                 'alt' => 'Email Image',
                 'name' => 'Email'
             ],

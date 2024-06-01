@@ -21,6 +21,10 @@
 
 <body class="bg-[#272626]">
 
+<div class="w-full">
+    <x-patterns.circuit-board fill="#292929"/>
+</div>
+
 <header>
     <x-nav-bar/>
 </header>
