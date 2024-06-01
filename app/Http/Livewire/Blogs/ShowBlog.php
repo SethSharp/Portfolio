@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Blogs;
 
-use App\Http\EnvironmentEnum;
 use Livewire\Component;
 use Illuminate\View\View;
+use App\Http\EnvironmentEnum;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 
