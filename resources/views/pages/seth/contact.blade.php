@@ -1,13 +1,13 @@
 @php use App\Http\EnvironmentEnum; @endphp
-@extends("layouts.beth-main")
+@extends("layouts.main")
 
-@section('title', 'Contact Me')
+@section('title', 'Contact')
 
 @push('meta')
     <meta name="description"
           content="Contact Me">
 
-    @if (config('environment.current') !== EnvironmentEnum::BETH->value)
+    @if (config('environment.current') !== EnvironmentEnum::SETH->value)
         <meta name="robots" content="noindex, nofollow"/>
     @endif
 @endpush

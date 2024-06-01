@@ -62,7 +62,7 @@ module.exports = {
                 },
             },
             animation: {
-                typing: 'typing 1s steps(10, end) forwards, blinking 1s step-end 3',
+                typing: 'typing 1s steps(10, end) forwards, blinking 1s infinite',
                 reveal: 'typing 1s steps(30, end) forwards',
             },
         },

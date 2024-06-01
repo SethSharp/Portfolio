@@ -33,13 +33,13 @@
                 <x-project.habit-tracker/>
             </x-body.enter-wrapper>
 
-            <x-body.wrapper>
+            <x-body.enter-wrapper>
                 <x-project.framed/>
-            </x-body.wrapper>
+            </x-body.enter-wrapper>
 
-            <x-body.wrapper>
+            <x-body.enter-wrapper>
                 <x-project.portfolio-package/>
-            </x-body.wrapper>
+            </x-body.enter-wrapper>
         </div>
     </div>
 
