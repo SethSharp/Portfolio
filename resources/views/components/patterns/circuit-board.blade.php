@@ -1,6 +1,6 @@
 @props(['fill' => '#bbbbbb'])
 
-<div class="absolute w-full -z-10 [mask-image:radial-gradient(75rem_75rem_at_center,white,transparent)]">
+<div class="absolute w-full -z-10 [mask-image:radial-gradient(55rem_55rem_at_center,white,transparent)]">
     <svg
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
         <path fill="{{ $fill }}"

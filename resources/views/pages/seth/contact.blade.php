@@ -17,7 +17,7 @@
         <div class="md:mt-16 text-white max-w-fit">
             <x-headings.typed>
                 <h1 class="font-semibold font-mono track-wide">
-                    Contact Me
+                    Contact Me!
                 </h1>
             </x-headings.typed>
         </div>

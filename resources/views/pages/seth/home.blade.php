@@ -37,7 +37,7 @@
                 <x-body.wrapper>
                     <img
                         class="object-cover mx-auto w-96"
-                        src="{{ asset('/seth/profile-picture.jpg') }}"
+                        src="{{ asset('/seth/profile-picture.png') }}"
                         alt="Profile Picture for Seth Sharp"
                     />
                 </x-body.wrapper>
