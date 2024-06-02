@@ -13,11 +13,11 @@
 @endpush
 
 @section("content")
-    <x-body.enter-wrapper>
+    <x-body.wrapper>
         <div class="leading-loose text-gray-600">
-            <x-headings.central>
+            <x-headings.beth.central>
                 Academic Curricula
-            </x-headings.central>
+            </x-headings.beth.central>
 
             <div>
                 <x-headings.h2>
@@ -50,12 +50,12 @@
                 </div>
             </div>
         </div>
-    </x-body.enter-wrapper>
+    </x-body.wrapper>
 
     <x-body.wrapper>
-        <x-headings.central>
+        <x-headings.beth.central>
             Other Academic Experiences / Achievements
-        </x-headings.central>
+        </x-headings.beth.central>
 
         <div class="leading-loose text-gray-600">
             <p>

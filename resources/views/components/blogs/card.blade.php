@@ -1,5 +1,5 @@
 <a href="{{ route('blogs.show', $blog)  }}">
-    <div class="sm:flex h-full gap-2 hover:bg-gray-50 transition">
+    <div class="sm:flex h-full gap-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
         <div class="sm:w-1/2 p-4">
             <img
                 src="{{ $blog->cover }}"

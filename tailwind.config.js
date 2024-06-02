@@ -5,8 +5,8 @@ require('dotenv').config()
 
 let primary, secondary
 if (process.env.EB_ENVIRONMENT === 'seth') {
-    primary = buildPrimaryColour(colors.yellow)
-    secondary = buildPrimaryColour(colors.blue)
+    primary = buildPrimaryColour(colors.teal)
+    secondary = buildPrimaryColour(colors.purple)
 } else {
     primary = buildPrimaryColour(colors.rose)
     secondary = buildPrimaryColour(colors.purple)
@@ -44,10 +44,26 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                mono: ['Roboto Mono', ...defaultTheme.fontFamily.mono],
             },
             colors: {
                 primary: primary,
                 secondary: secondary,
+            },
+            keyframes: {
+                typing: {
+                    '0%': { width: '0%' },
+                    '100%': { width: '100%' },
+                },
+                blinking: {
+                    '0%': { borderRightColor: 'transparent' },
+                    '50%': { borderRightColor: 'white' },
+                    '100%': { borderRightColor: 'transparent' },
+                },
+            },
+            animation: {
+                typing: 'typing 1s steps(30, end) forwards, blinking 1s infinite',
+                reveal: 'typing 0.7s steps(50, end) forwards',
             },
         },
     },

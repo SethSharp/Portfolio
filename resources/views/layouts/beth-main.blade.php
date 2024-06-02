@@ -16,7 +16,7 @@
     @livewireStyles
 </head>
 
-<body class="mg-0 pd-0 font-serif">
+<body class="font-serif">
 
 <header>
     <x-navigation.beth.navbar/>

@@ -23,37 +23,51 @@ return [
                 'name' => 'Home'
             ],
             [
-                'href' => '/experience',
-                'active' => 'experience',
-                'name' => 'Experience'
-            ],
-            [
                 'href' => '/projects',
                 'active' => 'projects',
                 'name' => 'Projects'
+            ],
+            [
+                'href' => '/experience',
+                'active' => 'experience',
+                'name' => 'Experience'
             ],
             [
                 'href' => '/blogs',
                 'active' => 'blogs',
                 'name' => 'Blogs'
             ],
+            [
+                'href' => '/contact',
+                'active' => 'contact',
+                'name' => 'Contact'
+            ]
         ],
 
         'social_links' => [
             [
                 'link' => 'https://github.com/SethSharp',
-                'image' => 'github.png',
-                'alt' => 'GitHub Image'
+                'image' => 'github-icon.png',
+                'alt' => 'GitHub Image',
+                'name' => 'GitHub'
             ],
             [
                 'link' => 'https://www.linkedin.com/in/seth-sharp/',
-                'image' => 'linkedIn.png',
-                'alt' => 'LinkedIn Image'
+                'image' => 'linkedin-icon.png',
+                'alt' => 'LinkedIn Image',
+                'name' => 'LinkedIn'
             ],
             [
                 'link' => 'mailto:sesharp@outlook.com',
-                'image' => 'email.png',
-                'alt' => 'Email Image'
+                'image' => 'email-icon.png',
+                'alt' => 'Email Image',
+                'name' => 'Email'
+            ],
+            [
+                'link' => 'https://x.com/seth_sharp_01',
+                'image' => 'x-icon.png',
+                'alt' => 'X Image',
+                'name' => 'Twitter'
             ]
         ]
     ],

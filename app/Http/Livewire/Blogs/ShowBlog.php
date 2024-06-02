@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Blogs;
 
 use Livewire\Component;
 use Illuminate\View\View;
+use App\Http\EnvironmentEnum;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 
@@ -44,7 +45,7 @@ class ShowBlog extends Component
 
     public function like(): void
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             // sets the intended url so when the user registers or logs in - redirects to here
             session(['url.intended' => route('blogs.show', $this->blog)]);
 
@@ -68,6 +69,12 @@ class ShowBlog extends Component
 
     public function render(): View
     {
-        return view('livewire.blogs.show-blog');
+        $path = 'livewire.blogs.show-blog';
+
+        if (config('environment.current') === EnvironmentEnum::SETH->value) {
+            $path = 'livewire.blogs.seth.show-blog';
+        }
+
+        return view($path);
     }
 }

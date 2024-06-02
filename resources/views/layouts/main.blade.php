@@ -11,29 +11,24 @@
 
     @stack('links')
 
+    @stack('styles')
+
     <link rel="preconnect" href="https://fonts.bunny.net">
 
     @routes
     @livewireStyles
 </head>
 
-<body class="mg-0 pd-0">
+<body class="bg-[#272626]">
 
 <header>
-    <x-nav-bar/>
+    <x-navigation.seth.navbar/>
 </header>
 
-<main>
-    <section class="min-h-screen">
-        <h1 class="ml-8 sm:ml-16 text-3xl font-bold ">
-            <span class="text-black inline-block pr-2">
-                @yield('partOne')
-            </span>
-            <span class="text-primary-400 inline-block">
-                @yield('partTwo')
-            </span>
-        </h1>
+<x-patterns.circuit-board fill="#313030"/>
 
+<main>
+    <section class="min-h-screen relative">
         <div class="md:flex w-4/5 mx-auto mt-2 sm:mt-8 mb-12">
             @yield("content")
         </div>

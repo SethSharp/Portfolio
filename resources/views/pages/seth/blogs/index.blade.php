@@ -14,24 +14,24 @@
 @section('partTwo', 'Blogs')
 
 @section("content")
-    <div class="text-center w-full">
-        <x-body.enter-wrapper>
-            @if ($collection)
-                <div class="!flex !text-left">
-                    <h2 class="text-xl">
-                        Latest Series: <a href="{{ route('collections.show', $collection) }}"
-                                          class="font-medium underline hover:text-gray-800">
-                            {{ $collection->title }}
-                        </a>
-                    </h2>
-                </div>
-            @endif
+    <div>
+        <div class="md:mt-16 text-white max-w-fit">
+            <x-headings.typed>
+                <h1 class="font-semibold font-mono track-wide">
+                    My
+                </h1>
+                <h2 class="pl-4 font-light font-mono">
+                    Blogs
+                </h2>
+            </x-headings.typed>
+        </div>
 
-            <div class="grid xl:grid-cols-2 gap-6 mt-6">
+        <x-body.wrapper>
+            <div class="grid xl:grid-cols-2 gap-6 mt-12 bg-white shadow-lg shadow-primary-500 rounded-lg p-6">
                 @foreach($blogs as $blog)
                     <x-blogs.card :blog="$blog"/>
                 @endforeach
             </div>
-        </x-body.enter-wrapper>
+        </x-body.wrapper>
     </div>
 @stop

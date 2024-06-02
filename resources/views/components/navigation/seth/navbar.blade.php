@@ -1,11 +1,10 @@
-<nav class="h-20 w-full bg-white sm:pr-10">
-    <div class="h-full gap-6 float-right hidden sm:flex">
-
+<nav class="h-20 z-10 w-full">
+    <div class="h-full gap-6 justify-center hidden sm:flex">
         <div class="my-auto space-x-4">
             @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
-                <x-navigation.link href="{{ $link['href'] }}" active="{{ $link['active'] }}">
+                <x-navigation.seth.link href="{{ $link['href'] }}" active="{{ $link['active'] }}">
                     {{ $link['name'] }}
-                </x-navigation.link>
+                </x-navigation.seth.link>
             @endforeach
             @auth
                 <a class="text-lg text-gray-500" href="{{ route('profile.edit') }}">
@@ -28,17 +27,14 @@
                 <div x-on:click="open = ! open" class="hover:bg-gray-200 rounded transition cursor-pointer">
                     <x-icons.burger class="!size-10"/>
                 </div>
-                <a href="{{route('home')}}" class="my-auto text-3xl text-gray-600">
-                    {{ getCurrentEBEnvironmentConfig()['in_app_name'] }}
-                </a>
             </div>
             <div x-show="open" @click.outside="open = false" x-transition class="flex justify-start mt-4 z-50">
                 <div
                     class="bg-gray-100 w-full sm:w-1/2 z-50 absolute text-left shadow-2xl px-6 py-6 space-y-2 grid">
                     @foreach(getCurrentEBEnvironmentConfig()['nav_links'] as $link)
-                        <x-navigation.link href="{{ $link['href'] }}" active="{{ $link['active'] }}">
+                        <x-navigation.seth.link href="{{ $link['href'] }}" active="{{ $link['active'] }}">
                             {{ $link['name'] }}
-                        </x-navigation.link>
+                        </x-navigation.seth.link>
                     @endforeach
 
                     @auth

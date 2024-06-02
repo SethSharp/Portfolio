@@ -5,7 +5,7 @@
         @if (count($comments))
             @foreach($comments as $comment)
                 <div class="bg-gray-100 p-4 my-4 rounded-lg">
-                    <span class="font-bold"> {{ $comment->user?->name }}</span>
+                    <span class="font-bold"> {{ $comment->user->name }}</span>
 
                     <div class="">
                         {{ $comment->comment }}
@@ -21,7 +21,7 @@
 
     <div class="w-full mt-6">
         <form wire:submit.prevent="save">
-            <div class="sm:flex gap-x-4 gap-y-2 space-y-2">
+            <div class="sm:flex gap-x-4 gap-y-2">
                 <input
                     type="text"
                     class="p-2 w-full rounded-xl text-gray-500"
