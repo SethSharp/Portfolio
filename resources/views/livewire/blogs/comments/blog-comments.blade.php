@@ -1,4 +1,6 @@
 <div>
+    <x-modals.register/>
+    
     <h3 class="text-gray-500 text-xl"> Comments ({{ count($comments) }})</h3>
 
     <div class=" mt-4 px-2 sm:px-4 py-0.5 rounded-lg">
@@ -38,6 +40,4 @@
             @error('comment') <p class="text-red-500">{{ $message }}</p> @enderror
         </form>
     </div>
-
-    <x-modals.register/>
 </div>
