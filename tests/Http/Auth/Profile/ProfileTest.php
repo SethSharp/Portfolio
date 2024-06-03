@@ -3,11 +3,12 @@
 namespace Tests\Http\Auth\Profile;
 
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use SethSharp\BlogCrud\Models\Iam\User;
 
 class ProfileTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function profile_page_is_displayed(): void
     {
         $this->actingAs(User::factory()->create())
@@ -15,7 +16,7 @@ class ProfileTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    #[Test]
     public function profile_information_can_be_updated(): void
     {
         $user = User::factory()->create();
@@ -38,7 +39,7 @@ class ProfileTest extends TestCase
         $this->assertNull($user->email_verified_at);
     }
 
-    /** @test */
+    #[Test]
     public function email_verification_status_is_unchanged_when_the_email_address_is_unchanged(): void
     {
         $user = User::factory()->create();
@@ -57,7 +58,7 @@ class ProfileTest extends TestCase
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
 
-    /** @test */
+    #[Test]
     public function user_can_soft_delete_their_account(): void
     {
         $user = User::factory()->create();
@@ -74,7 +75,7 @@ class ProfileTest extends TestCase
         $this->assertSoftDeleted($user);
     }
 
-    /** @test */
+    #[Test]
     public function correct_password_must_be_provided_to_delete_account(): void
     {
         $user = User::factory()->create();
