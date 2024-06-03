@@ -28,8 +28,8 @@
 <x-patterns.circuit-board fill="#313030"/>
 
 <main>
-    <section class="min-h-screen relative">
-        <div class="md:flex w-4/5 mx-auto mt-2 sm:mt-8 mb-12">
+    <section class="min-h-screen relative mt-4">
+        <div class="md:flex md:w-4/5 mx-4 md:mx-auto mt-2 sm:mt-8 mb-12">
             @yield("content")
         </div>
     </section>

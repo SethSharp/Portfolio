@@ -49,7 +49,7 @@
             <div class="mt-12">
                 <div class="sm:flex">
                     <button type="button" wire:click="like"
-                            class="flex my-auto mx-4 {{ $isLiked ? 'text-red-500 hover:text-red-300' : 'text-gray-400 hover:text-red-500' }}">
+                            class="flex my-auto {{ $isLiked ? 'text-red-500 hover:text-red-300' : 'text-gray-400 hover:text-red-500' }}">
                         <x-icons.heart/>
                         <span class="text-gray-600 font-medium"> {{ $this->blogLikes }}</span>
                     </button>

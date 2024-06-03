@@ -1,9 +1,9 @@
 <div>
     <x-modals.register/>
-    
+
     <h3 class="text-gray-500 text-xl"> Comments ({{ count($comments) }})</h3>
 
-    <div class=" mt-4 px-2 sm:px-4 py-0.5 rounded-lg">
+    <div class="mt-4 px-2 sm:px-4 py-0.5 rounded-lg">
         @if (count($comments))
             @foreach($comments as $comment)
                 <div class="bg-gray-100 p-4 my-4 rounded-lg">
@@ -32,7 +32,7 @@
                     wire:ignore
                 >
 
-                <x-button.primary type="submit">
+                <x-button.primary type="submit" class="mt-4 sm:mt-0">
                     Comment
                 </x-button.primary>
             </div>

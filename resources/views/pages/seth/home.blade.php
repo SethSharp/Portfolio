@@ -36,7 +36,7 @@
             <div class="md:w-1/2 p-2">
                 <x-body.wrapper>
                     <img
-                        class="object-cover mx-auto w-96"
+                        class="object-cover mx-auto w-96 mt-8 sm:mt-0"
                         src="{{ asset('/seth/profile-picture.png') }}"
                         alt="Profile Picture for Seth Sharp"
                     />
@@ -107,11 +107,11 @@
                         up, it offers a nice break from it all.
                     </p>
 
-                    <div class="md:flex justify-center mt-12 gap-6 md:w-1/2 mx-auto">
-                        <img src="{{ asset('/seth/about/4wd.png') }}" alt=""
-                             class="size-52 object-cover mx-auto rounded-md p-4"/>
-                        <img src="{{ asset('/seth/about/lookout.png') }}" alt=""
-                             class="size-52 object-right object-cover mx-auto rounded-md p-4"/>
+                    <div class="md:flex justify-center mt-12 space-y-4 md:space-y-0 gap-4 md:w-1/2 mx-auto">
+                        <img src="{{ asset('/seth/about/4wd.png') }}" alt="4WD track in Ormeau"
+                             class="size-52 object-cover mx-auto rounded-md"/>
+                        <img src="{{ asset('/seth/about/lookout.png') }}" alt="Fraser Island Sand Dune on the West Side"
+                             class="size-52 object-right object-cover mx-auto rounded-md"/>
                     </div>
                 </div>
             </div>

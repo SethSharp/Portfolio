@@ -27,7 +27,7 @@
         </div>
 
         <x-body.wrapper>
-            <div class="grid xl:grid-cols-2 gap-6 mt-12 bg-white shadow-lg shadow-primary-500 rounded-lg p-6">
+            <div class="grid xl:grid-cols-2 gap-6 mt-12 bg-white shadow-lg shadow-primary-500 rounded-lg p-2 md:p-6">
                 @foreach($blogs as $blog)
                     <x-blogs.card :blog="$blog"/>
                 @endforeach
