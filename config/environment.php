@@ -107,13 +107,13 @@ return [
             [
                 'name' => 'LinkedIn',
                 'link' => 'https://www.linkedin.com/in/bethanyfrankis/',
-                'image' => 'linkedIn.png',
+                'image' => 'linkedin-icon.png',
                 'alt' => 'LinkedIn Image'
             ],
             [
                 'name' => 'Email',
                 'link' => 'mailto:b.frankis@outlook.com',
-                'image' => 'email.png',
+                'image' => 'email-icon.png',
                 'alt' => 'Email Image'
             ]
         ]
