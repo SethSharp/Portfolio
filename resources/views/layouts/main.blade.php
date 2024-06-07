@@ -4,16 +4,15 @@
 
     <title> @yield('title', config('app.name')) </title>
 
-    @stack('meta')
-
     @vite('resources/css/app.css')
     @vite('resources/js/main.js')
 
-    @stack('links')
-
-    @stack('styles')
-
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
+
+    @stack('meta')
+    @stack('links')
+    @stack('styles')
 
     @routes
     @livewireStyles

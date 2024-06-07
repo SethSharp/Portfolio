@@ -7,10 +7,6 @@
           content="Hey I am Seth Sharp, a Junior Software developer at Coding Labs on the Gold Coast. I love to build ambitious projects and love the art of programming.">
 @endpush
 
-@push('links')
-    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
-@endpush
-
 @push('styles')
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');

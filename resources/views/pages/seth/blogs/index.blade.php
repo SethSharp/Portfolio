@@ -5,10 +5,6 @@
           content="Hey I am Seth Sharp, this is where you can find all my blogs!">
 @endpush
 
-@push('links')
-    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
-@endpush
-
 @extends("layouts.main")
 @section('partOne', 'My')
 @section('partTwo', 'Blogs')
