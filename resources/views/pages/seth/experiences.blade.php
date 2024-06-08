@@ -12,9 +12,6 @@
     @endif
 @endpush
 
-@section('partOne', 'My')
-@section('partTwo', 'Experiences')
-
 @section("content")
     @php
         $timeline = [

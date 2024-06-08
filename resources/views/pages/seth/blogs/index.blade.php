@@ -6,8 +6,6 @@
 @endpush
 
 @extends("layouts.main")
-@section('partOne', 'My')
-@section('partTwo', 'Blogs')
 
 @section("content")
     <div>
