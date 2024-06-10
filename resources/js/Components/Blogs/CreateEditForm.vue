@@ -1,11 +1,12 @@
 <script setup>
-import { ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
+import {ref} from 'vue'
+import {useForm} from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Editor from '@/Components/Editor/Editor.vue'
 import Select from '@/Components/Inputs/Select.vue'
 import FormGrid from '@/Components/Form/FormGrid.vue'
 import Checkbox from '@/Components/Inputs/Checkbox.vue'
+import TextArea from '@/Components/Inputs/TextArea.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
@@ -87,11 +88,11 @@ window.addEventListener('beforeunload', confirmLeave)
                 :current-image="blog.cover"
                 label="Cover Image"
             />
-            <InputError :message="form.errors.cover_image" />
+            <InputError :message="form.errors.cover_image"/>
         </FormElement>
 
         <FormElement>
-            <Checkbox v-model="form.is_draft" label="Is Draft" :error="form.errors.is_draft" />
+            <Checkbox v-model="form.is_draft" label="Is Draft" :error="form.errors.is_draft"/>
         </FormElement>
 
         <FormGrid>
@@ -137,12 +138,13 @@ window.addEventListener('beforeunload', confirmLeave)
                 id="meta-title"
                 v-model="form.meta_title"
                 label="Meta Title"
+                description="Serves as a SEO title for Google to read (can be the same as your regular title)"
                 :error="form.errors.meta_title"
             />
         </FormElement>
 
         <FormElement>
-            <TextInput
+            <TextArea
                 id="meta-description"
                 v-model="form.meta_description"
                 label="Meta Description"
@@ -162,8 +164,8 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <Editor v-model="form.content" :blog="blog" />
-            <InputError :message="form.errors.content" />
+            <Editor v-model="form.content" :blog="blog"/>
+            <InputError :message="form.errors.content"/>
         </FormElement>
 
         <PrimaryButton as="submit" @click.prevent="submit">

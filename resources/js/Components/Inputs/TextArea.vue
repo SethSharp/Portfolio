@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import {onMounted, ref} from 'vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import InputError from '@/Components/Inputs/InputError.vue'
 
@@ -13,6 +13,10 @@ defineProps({
         type: String,
         default: null,
     },
+    showCharacterCount: {
+        type: Boolean,
+        default: true
+    }
 })
 
 const model = defineModel({
@@ -28,12 +32,12 @@ onMounted(() => {
     }
 })
 
-defineExpose({ focus: () => input.value.focus() })
+defineExpose({focus: () => input.value.focus()})
 </script>
 
 <template>
     <div>
-        <InputLabel :value="label" />
+        <InputLabel :value="label"/>
 
         <textarea
             type="text"
@@ -42,8 +46,9 @@ defineExpose({ focus: () => input.value.focus() })
             ref="input"
         />
 
-        <span class="text-gray-400 text-sm"> {{ description }} </span>
+        <div v-if="showCharacterCount" class="text-gray-400 text-xs"> Characters: {{ model.length }}</div>
+        <div class="text-gray-500 text-sm"> {{ description }}</div>
 
-        <InputError :message="error" />
+        <InputError :message="error"/>
     </div>
 </template>

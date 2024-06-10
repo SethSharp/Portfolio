@@ -5,7 +5,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
-import { Head, Link, useForm } from '@inertiajs/vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 import FormElement from '@/Components/Form/FormElement.vue'
 
 defineProps({
@@ -32,7 +32,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Log in" />
+        <Head title="Log in"/>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -49,6 +49,7 @@ const submit = () => {
                     autocomplete="username"
                     label="Email"
                     :error="form.errors.email"
+                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -60,11 +61,12 @@ const submit = () => {
                     required
                     label="Password"
                     :error="form.errors.password"
+                    :show-character-count="false"
                 />
             </FormElement>
 
             <FormElement>
-                <Checkbox label="Remember Me" v-model="form.remember" />
+                <Checkbox label="Remember Me" v-model="form.remember"/>
             </FormElement>
 
             <div class="flex items-center justify-end mt-4">
