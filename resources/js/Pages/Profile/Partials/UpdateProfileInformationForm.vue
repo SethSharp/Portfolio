@@ -1,5 +1,6 @@
+:show-character-count="false"
 <script setup>
-import { Link, useForm, usePage } from '@inertiajs/vue3'
+import {Link, useForm, usePage} from '@inertiajs/vue3'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
@@ -43,6 +44,7 @@ const form = useForm({
                     autocomplete="name"
                     label="Name"
                     :error="form.errors.name"
+                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -56,6 +58,7 @@ const form = useForm({
                     autocomplete="username"
                     label="Email"
                     :error="form.errors.email"
+                    :show-character-count="false"
                 />
             </FormElement>
 

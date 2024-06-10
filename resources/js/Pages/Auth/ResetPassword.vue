@@ -4,7 +4,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
-import { Head, useForm } from '@inertiajs/vue3'
+import {Head, useForm} from '@inertiajs/vue3'
 import FormElement from '@/Components/Form/FormElement.vue'
 
 const props = defineProps({
@@ -34,7 +34,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Reset Password" />
+        <Head title="Reset Password"/>
 
         <form @submit.prevent="submit">
             <FormElement>
@@ -48,6 +48,7 @@ const submit = () => {
                     autocomplete="username"
                     label="Email"
                     :error="form.errors.email"
+                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -61,6 +62,7 @@ const submit = () => {
                     autocomplete="new-password"
                     :error="form.errors.password"
                     label="Password"
+                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -74,6 +76,7 @@ const submit = () => {
                     autocomplete="new-password"
                     label="Confirm Password"
                     :error="form.errors.password_confirmation"
+                    :show-character-count="false"
                 />
             </FormElement>
 

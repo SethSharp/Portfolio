@@ -4,7 +4,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
-import { Head, useForm } from '@inertiajs/vue3'
+import {Head, useForm} from '@inertiajs/vue3'
 
 defineProps({
     status: {
@@ -23,7 +23,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Forgot Password" />
+        <Head title="Forgot Password"/>
 
         <div class="mb-4 text-sm text-gray-600">
             Forgot your password? No problem. Just let us know your email address and we will email
@@ -45,6 +45,7 @@ const submit = () => {
                 autocomplete="username"
                 :error="form.errors.email"
                 label="Email"
+                :show-character-count="false"
             />
 
             <div class="flex items-center justify-end mt-4">

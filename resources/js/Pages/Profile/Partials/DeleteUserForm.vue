@@ -1,6 +1,6 @@
 <script setup>
-import { nextTick, ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
+import {nextTick, ref} from 'vue'
+import {useForm} from '@inertiajs/vue3'
 import Modal from '@/Components/Modal.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
@@ -73,6 +73,7 @@ const closeModal = () => {
                         @keyup.enter="deleteUser"
                         label="Password"
                         :error="form.errors.password"
+                        :show-character-count="false"
                     />
                 </FormElement>
 

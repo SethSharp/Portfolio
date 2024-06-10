@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
+import {ref} from 'vue'
+import {useForm} from '@inertiajs/vue3'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
@@ -53,6 +53,7 @@ const updatePassword = () => {
                     autocomplete="current-password"
                     label="Current Password"
                     :error="form.errors.current_password"
+                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -66,6 +67,7 @@ const updatePassword = () => {
                     autocomplete="new-password"
                     label="New Password"
                     :error="form.errors.password"
+                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -78,6 +80,7 @@ const updatePassword = () => {
                     autocomplete="new-password"
                     label="Confirm Password"
                     :error="form.errors.password_confirmation"
+                    :show-character-count="false"
                 />
             </FormElement>
 
