@@ -11,4 +11,5 @@ echo "yes" | php artisan migrate --force || { echo "Failed to run migrations"; e
 
 echo "yes" | php artisan bootstrap || { echo "Failed to run bootstrap commands"; exit 1; }
 
-echo "yes" | php artisan fix:things || { echo "Failed to run fix:things commands"; exit 1; }
+echo "yes" | php artisan fix:things --slug=grass-roots-contextually-based-ability --time=2024-03-05 || { echo "Failed to run fix:things commands for blog 1"; exit 1; }
+echo "yes" | php artisan fix:things --slug=a-day-in-the-life-peer-mentoring-at-griffith-university --time=2024-02-26 || { echo "Failed to run fix:things commands for blog 1"; exit 1; }
