@@ -16,23 +16,25 @@
 @section("content")
     <div class="w-full divide-y">
         <div class="md:flex md:mt-14 pb-12 md:pb-24 gap-y-12">
-            <div class="md:w-1/2 md:mt-16 md:ml-12 z-10">
-                <x-headings.seth.main>
-                    <h1>
-                        Seth Sharp
-                    </h1>
-                    <h2 class="pt-2 font-light">
-                        Software
-                    </h2>
-                    <h2 class="pt-2 font-light">
-                        Developer
-                    </h2>
-                </x-headings.seth.main>
+            <div class="md:w-1/2 md:mt-16 mx-auto md:ml-12 z-10">
+                <div class="sm:mt-8 mx-auto w-fit">
+                    <x-headings.seth.main>
+                        <h1>
+                            Seth Sharp
+                        </h1>
+                        <h2 class="pt-2 font-light">
+                            Software
+                        </h2>
+                        <h2 class="pt-2 font-light">
+                            Developer
+                        </h2>
+                    </x-headings.seth.main>
+                </div>
             </div>
             <div class="md:w-1/2 p-2">
                 <x-body.wrapper>
                     <img
-                        class="object-cover mx-auto w-96 mt-8 sm:mt-0"
+                        class="object-cover mx-auto w-52 sm:w-96 mt-8 sm:mt-0"
                         src="{{ asset('/seth/profile-picture.png') }}"
                         alt="Profile Picture for Seth Sharp"
                     />
@@ -47,7 +49,7 @@
                 </x-headings.seth.h2>
 
                 <div>
-                    <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300">
+                    <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300 text-lg">
                         I currently reside in SE QLD on the Gold Coast. I have been a Software Developer over the last
                         couple of years and have developed skills in multiple libraries and frameworks to push my best
                         work
@@ -73,7 +75,7 @@
                 </x-headings.seth.h2>
 
                 <div>
-                    <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300">
+                    <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300 text-lg">
                         One of my major aspirations is to start my own business. I am eager to leverage my skills and
                         experience to create innovative solutions and build a successful venture
                     </p>
@@ -87,7 +89,7 @@
                     More about me
                 </x-headings.seth.h2>
 
-                <div class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300">
+                <div class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300 text-lg">
                     <p>
                         I am a big fan of outdoor adventures. Whether it's exploring the scenic views of Fraser Island
                         or
