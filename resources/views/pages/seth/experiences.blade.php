@@ -72,6 +72,21 @@
 
         <x-body.wrapper>
             <div class="leading-loose mt-12">
+                <h1 class="text-2xl font-medium text-gray-400"> Bachelor of Computer Science (2020-2023) </h1>
+
+                <p class="mt-3 text-gray-300">
+                    Straight after high school I went to Griffith University to study Computer Science, majoring in
+                    Software Development.
+                    Here is where I learnt a lot about algorithms, data structures and project structures. I dipped my
+                    toes in plenty
+                    of different areas such as AI, web development and general programming best practises and skills.
+                    GPA: 5.44
+                </p>
+            </div>
+        </x-body.wrapper>
+
+        <x-body.wrapper>
+            <div class="leading-loose mt-12">
                 <h1 class="text-2xl font-medium text-gray-400"> Coding Labs (2022-Present) </h1>
 
                 <p class="mt-3 text-gray-300">
