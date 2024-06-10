@@ -1,12 +1,9 @@
-<header class="w-full h-fit bg-primary-50 flex justify-center">
+<header class="w-full h-fit bg-red-50 flex justify-center">
     <div class="mt-12 mb-6 text-center">
         <div class="tracking-widest">
             <div class="text-3xl md:text-5xl text-primary-800 mb-2">
                 Bethany Frankis
             </div>
-            <span class="text-sm md:text-md text-black">
-                Resilient. Intuitive. Perseverant
-            </span>
         </div>
 
         <div class="px-4 mx-auto">

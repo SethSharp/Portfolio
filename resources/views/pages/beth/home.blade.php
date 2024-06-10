@@ -19,34 +19,22 @@
 
                     <div class="text-gray-600 text-md">
                         <p>
-                            My name is Bethany Frankis and I am an undergraduate student at Griffith University. I am
-                            currently
-                            studying a Bachelor of Science full-time, majoring in Chemistry and Biochemistry and
-                            Molecular
-                            Biology. I intend to complete my degree in 2025 and enter into a graduate chemist position.
-                            Having
-                            studied QCAA Chemistry and QCAA Biology in grade 11 and 12, I have developed a strong
-                            connection
-                            with these fields of knowledge and look forward to learning more about the physical world
-                            around
-                            us.
+                            I am currently an undergraduate student at Griffith University, studying a Bachelor of
+                            Advanced Science full-time, majoring in Chemistry. I intend to complete my degree in 2025
+                            and enter into a graduate chemist position. Having studied QCAA Chemistry and QCAA Biology
+                            in grade 11 and 12, I have developed a strong connection with these fields of knowledge and
+                            look forward to learning more about the physical world around us.
                         </p>
 
                         <br/>
 
                         <p>
                             I have always felt strongly about morality and doing the right thing in regard to people and
-                            the
-                            world we live in, and want to help create a sustainable future - of which sustainable
-                            chemistry
-                            is
-                            imperative. As per the words of Barry Commoner; "The proper use of science is not to conquer
-                            it,
-                            but
-                            to live in it." I intend to take this approach in my future endeavours: to understand the
-                            world
-                            at a
-                            molecular level, and use what we know to sustain it to its fullest potential.
+                            the world we live in and want to help contribute to an increasingly sustainable future - of
+                            which sustainable chemistry is imperative. As per the words of Barry Commoner, "The proper
+                            use of science is not to conquer it, but to live in it." I intend to take this approach in
+                            my future endeavours: to understand the world at a molecular level and use what we know to
+                            sustain it to its fullest potential.
                         </p>
                     </div>
                 </div>

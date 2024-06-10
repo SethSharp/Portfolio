@@ -10,6 +10,9 @@
 @section("content")
     <div class="text-center w-full">
         <x-body.wrapper>
+            <div class="max-w-fit">
+                <x-headings.h1>Welcome to my blog!</x-headings.h1>
+            </div>
             @if ($collection)
                 <div class="!flex !text-left">
                     <h2 class="text-xl">
