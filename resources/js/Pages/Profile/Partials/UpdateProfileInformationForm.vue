@@ -1,6 +1,6 @@
 :show-character-count="false"
 <script setup>
-import {Link, useForm, usePage} from '@inertiajs/vue3'
+import { Link, useForm, usePage } from '@inertiajs/vue3'
 import TextInput from '@/Components/Inputs/TextInput.vue'
 import FormElement from '@/Components/Form/FormElement.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'

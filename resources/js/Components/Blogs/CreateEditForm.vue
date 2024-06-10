@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-import {useForm} from '@inertiajs/vue3'
+import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 import Form from '@/Components/Form/Form.vue'
 import Editor from '@/Components/Editor/Editor.vue'
 import Select from '@/Components/Inputs/Select.vue'
@@ -88,11 +88,11 @@ window.addEventListener('beforeunload', confirmLeave)
                 :current-image="blog.cover"
                 label="Cover Image"
             />
-            <InputError :message="form.errors.cover_image"/>
+            <InputError :message="form.errors.cover_image" />
         </FormElement>
 
         <FormElement>
-            <Checkbox v-model="form.is_draft" label="Is Draft" :error="form.errors.is_draft"/>
+            <Checkbox v-model="form.is_draft" label="Is Draft" :error="form.errors.is_draft" />
         </FormElement>
 
         <FormGrid>
@@ -164,8 +164,8 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <Editor v-model="form.content" :blog="blog"/>
-            <InputError :message="form.errors.content"/>
+            <Editor v-model="form.content" :blog="blog" />
+            <InputError :message="form.errors.content" />
         </FormElement>
 
         <PrimaryButton as="submit" @click.prevent="submit">
