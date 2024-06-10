@@ -12,10 +12,6 @@
     @endif
 @endpush
 
-@push('links')
-    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
-@endpush
-
 @section("content")
     <div>
         <div class="md:mt-14 max-w-fit">

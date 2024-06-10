@@ -2,8 +2,6 @@
 
 @extends("layouts.main")
 
-@section('partOne', $collection->title)
-
 @section("content")
     <div class="text-center w-full">
         <x-body.wrapper>

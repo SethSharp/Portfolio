@@ -12,13 +12,6 @@
     @endif
 @endpush
 
-@push('links')
-    <link rel="icon" href="{{ asset('/seth/favicon.ico') }}" type="image/x-icon">
-@endpush
-
-@section('partOne', 'My')
-@section('partTwo', 'Experiences')
-
 @section("content")
     @php
         $timeline = [

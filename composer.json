@@ -15,7 +15,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.7",
         "inertiajs/inertia-laravel": "^1.0",
-        "tightenco/ziggy": "^1.0",
+        "tightenco/ziggy": "^2.0",
         "livewire/livewire": "^3.3",
         "league/flysystem-aws-s3-v3": "^3.0",
         "spatie/laravel-query-builder": "^6.0",
