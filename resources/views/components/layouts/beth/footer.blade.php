@@ -1,4 +1,4 @@
-<footer class="bg-primary-50 h-fit border-t-2 border-primary-700">
+<footer class="bg-red-50 h-fit border-t-2 border-primary-700">
     <div class="p-8">
         <div class="sm:flex space-y-4">
             <div class="sm:w-1/2 font-bold text-xl">
