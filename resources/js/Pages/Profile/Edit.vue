@@ -1,5 +1,5 @@
 <script setup>
-import {Head, Link} from '@inertiajs/vue3'
+import { Head, Link } from '@inertiajs/vue3'
 import ProfileLayout from '@/Layouts/ProfileLayout.vue'
 import DeleteUserForm from './Partials/DeleteUserForm.vue'
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue'
@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Profile"/>
+    <Head title="Profile" />
 
     <ProfileLayout>
         <div class="py-12">
@@ -30,11 +30,11 @@ defineProps({
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdatePasswordForm class="max-w-xl"/>
+                    <UpdatePasswordForm class="max-w-xl" />
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <DeleteUserForm class="max-w-xl"/>
+                    <DeleteUserForm class="max-w-xl" />
                 </div>
 
                 <Link

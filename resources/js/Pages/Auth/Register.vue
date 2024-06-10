@@ -4,7 +4,7 @@ import InputError from '@/Components/Inputs/InputError.vue'
 import InputLabel from '@/Components/Inputs/InputLabel.vue'
 import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import TextInput from '@/Components/Inputs/TextInput.vue'
-import {Head, Link, useForm} from '@inertiajs/vue3'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 import FormElement from '@/Components/Form/FormElement.vue'
 
 const form = useForm({
@@ -23,7 +23,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register"/>
+        <Head title="Register" />
 
         <form @submit.prevent="submit">
             <FormElement>
