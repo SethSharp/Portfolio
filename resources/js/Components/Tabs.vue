@@ -19,7 +19,7 @@ defineProps({
     <div>
         <div class="w-full bg-white rounded-t-lg">
             <div class="flex gap-4 border-b p-1.5">
-                <div v-for="tab in tabs" class="">
+                <div v-for="tab in tabs">
                     <Link
                         :href="tab.href"
                         class="hover:text-indigo-500 text-gray-600 transition p-2 border-b-2 border-b-gray-300"

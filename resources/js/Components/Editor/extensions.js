@@ -20,6 +20,8 @@ import HardBreak from '@tiptap/extension-hard-break'
 import TextAlign from '@tiptap/extension-text-align'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+
+// Custom imports
 import Image from '@/Components/Editor/Nodes/Image/Image.js'
 import { Heading } from '@/Components/Editor/CustomExtensions/Heading.js'
 
