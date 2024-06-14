@@ -4,8 +4,8 @@ namespace Tests\Domain\File\Actions;
 
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
-use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Storage;
+use SethSharp\BlogCrud\Models\Blog\File;
 use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
 
 class DestroyFileActionTest extends TestCase

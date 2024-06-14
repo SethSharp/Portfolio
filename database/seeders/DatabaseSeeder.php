@@ -7,6 +7,7 @@ use App\Console\Commands\Bootstrap;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Artisan;
+use SethSharp\BlogCrud\Models\Blog\Comment;
 use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
@@ -23,9 +24,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        Blog::factory()->count(10)->create([
+        Blog::factory()->withComments()->count(10)->create([
             'author_id' => $admin->id
         ]);
+
+        Comment::factory()->create();
 
         Tag::factory()->create([
             'name' => 'Laravel'
