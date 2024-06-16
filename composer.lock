@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c21e2b4a5697b4cde3fd44c0052e1a79",
+    "content-hash": "c6218cc1d5b5544f6b4eae2f8ecbe0a4",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -5054,11 +5054,11 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "dev-sharpie/dev-364-change-how-comments-work",
+            "version": "dev-sharpie/dev-367-change-how-likes-work",
             "dist": {
                 "type": "path",
                 "url": "../blog-crud",
-                "reference": "99cf17de2a014e9ac27772b3f564e982155026d8"
+                "reference": "fc99ab105e533159ef3240cc42fe7604d8e2ab65"
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",

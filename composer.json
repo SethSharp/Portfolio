@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "sethsharp/blog-crud": "dev-sharpie/dev-364-change-how-comments-work",
+        "sethsharp/blog-crud": "dev-sharpie/dev-367-change-how-likes-work",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
