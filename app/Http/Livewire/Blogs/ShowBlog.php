@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use App\Http\EnvironmentEnum;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
+use SethSharp\BlogCrud\Models\Iam\User;
 
 class ShowBlog extends Component
 {
@@ -27,7 +28,7 @@ class ShowBlog extends Component
         $this->blogLikes = $this->blog->likes()->count();
 
         if (auth()->check()) {
-            $this->isLiked = auth()->user()->likes->contains('id', $this->blog->id);
+            $this->isLiked = auth()->user()->hasLikedBlog($this->blog);
         }
 
         $this->getSeries();
