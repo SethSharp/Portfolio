@@ -5,9 +5,9 @@ namespace App\Http\Livewire\Blogs;
 use Livewire\Component;
 use Illuminate\View\View;
 use App\Http\EnvironmentEnum;
+use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
-use SethSharp\BlogCrud\Models\Iam\User;
 
 class ShowBlog extends Component
 {

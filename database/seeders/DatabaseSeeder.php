@@ -7,10 +7,10 @@ use App\Console\Commands\Bootstrap;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Artisan;
-use SethSharp\BlogCrud\Models\Blog\Comment;
 use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\Comment;
 
 class DatabaseSeeder extends Seeder
 {

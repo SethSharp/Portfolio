@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Blogs\Comments;
 use Livewire\Component;
 use Illuminate\View\View;
 use SethSharp\BlogCrud\Models\Blog\Blog;
-use SethSharp\BlogCrud\Models\Blog\Comment;
 use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
