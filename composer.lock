@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "566decf25f436b437478785b39de2b8a",
+    "content-hash": "f4443dd62ca627b09c79e55b76445153",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -5054,11 +5054,17 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "2.x-dev",
-            "dist": {
-                "type": "path",
-                "url": "../blog-crud",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SethSharp/BlogCrud.git",
                 "reference": "a6f2d68bb30d4b7958198e06c398b75bf45aa8ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/a6f2d68bb30d4b7958198e06c398b75bf45aa8ea",
+                "reference": "a6f2d68bb30d4b7958198e06c398b75bf45aa8ea",
+                "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.298",
@@ -5082,6 +5088,7 @@
                     "SethSharp\\BlogCrud\\Database\\Factories\\": "src/Database/Factories"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5095,13 +5102,14 @@
             "description": "A blog CRUD package",
             "homepage": "https://github.com/SethSharp/Blog",
             "keywords": [
-                "Blog",
-                "Laravel"
+                "blog",
+                "laravel"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/SethSharp/BlogCrud/issues",
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v2.0"
+            },
+            "time": "2024-06-16T01:08:15+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
