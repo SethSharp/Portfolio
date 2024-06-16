@@ -112,8 +112,8 @@ class ShowBlogComponentTest extends TestCase
     {
         $user = User::factory()->create();
         $blog = Blog::factory()->create();
-        $blog->likes()->attach([
-            $user->id
+        $blog->likes()->create([
+            'user_id' => $user->id
         ]);
 
         Livewire::actingAs($user)
@@ -135,7 +135,7 @@ class ShowBlogComponentTest extends TestCase
             ->assertSet('isLiked', true)
             ->assertSet('blogLikes', 1);
 
-        $this->assertDatabaseHas('blog_likes', [
+        $this->assertDatabaseHas('likes', [
             'blog_id' => $blog->id,
             'user_id' => $user->id
         ]);
@@ -146,8 +146,8 @@ class ShowBlogComponentTest extends TestCase
     {
         $user = User::factory()->create();
         $blog = Blog::factory()->create();
-        $blog->likes()->attach([
-            $user->id
+        $blog->likes()->create([
+            'user_id' => $user->id
         ]);
 
         Livewire::actingAs($user)
@@ -159,7 +159,7 @@ class ShowBlogComponentTest extends TestCase
             ->assertSet('isLiked', false)
             ->assertSet('blogLikes', 0);
 
-        $this->assertDatabaseMissing('blog_likes', [
+        $this->assertDatabaseMissing('likes', [
             'blog_id' => $blog->id,
             'user_id' => $user->id
         ]);

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Blogs;
 use Livewire\Component;
 use Illuminate\View\View;
 use App\Http\EnvironmentEnum;
+use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use SethSharp\BlogCrud\Models\Blog\Collection;
 
@@ -27,7 +28,7 @@ class ShowBlog extends Component
         $this->blogLikes = $this->blog->likes()->count();
 
         if (auth()->check()) {
-            $this->isLiked = auth()->user()->likedBlogs->contains('id', $this->blog->id);
+            $this->isLiked = auth()->user()->hasLikedBlog($this->blog);
         }
 
         $this->getSeries();
@@ -55,12 +56,14 @@ class ShowBlog extends Component
         }
 
         if ($this->isLiked) {
-            $this->blog->likes()->detach(auth()->user()->id);
+            $this->blog->likes()->where('user_id', auth()->user()->id)->delete();
 
             $this->isLiked = false;
             $this->blogLikes = $this->blogLikes - 1;
         } else {
-            $this->blog->likes()->attach(auth()->user()->id);
+            $this->blog->likes()->create([
+                'user_id' => auth()->user()->id
+            ]);
 
             $this->isLiked = true;
             $this->blogLikes = $this->blogLikes + 1;

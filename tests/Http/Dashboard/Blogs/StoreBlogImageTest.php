@@ -5,10 +5,10 @@ namespace Dashboard\Blogs;
 use Tests\TestCase;
 use Mockery\MockInterface;
 use Illuminate\Http\UploadedFile;
-use SethSharp\BlogCrud\Models\File;
 use Illuminate\Support\Facades\Storage;
 use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
+use SethSharp\BlogCrud\Models\Blog\File;
 use SethSharp\BlogCrud\Actions\Files\StoreFileAction;
 use SethSharp\BlogCrud\Actions\Files\DestroyFileAction;
 

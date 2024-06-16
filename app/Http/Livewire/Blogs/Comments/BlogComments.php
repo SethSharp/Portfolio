@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Blogs\Comments;
 use Livewire\Component;
 use Illuminate\View\View;
 use SethSharp\BlogCrud\Models\Blog\Blog;
-use SethSharp\BlogCrud\Models\Blog\Comment;
 use Illuminate\Support\Facades\Notification;
 use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
@@ -29,12 +28,7 @@ class BlogComments extends Component
         $this->blog = $blog;
         $this->comments = $blog->comments()
             ->with('user')
-            ->get()
-            ->each(function (Comment $comment) {
-                $comment->posted = $comment->created_at->diffForHumans();
-
-                return $comment;
-            });
+            ->get();
     }
 
     public function save(): void
@@ -50,12 +44,10 @@ class BlogComments extends Component
 
         $this->validate();
 
-        $comment = Comment::create([
+        $comment = $this->blog->comments()->create([
             'user_id' => auth()->user()->id,
             'comment' => $this->comment
         ]);
-
-        $this->blog->comments()->attach($comment);
 
         Notification::route('slack', config('services.slack.webhook'))
             ->notify(new NotifySlackOfCommentNotification(auth()->user(), $comment, $this->blog));
