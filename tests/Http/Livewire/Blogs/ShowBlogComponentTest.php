@@ -7,7 +7,9 @@ use Livewire\Livewire;
 use App\Http\Livewire\Blogs\ShowBlog;
 use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
+use Illuminate\Support\Facades\Notification;
 use SethSharp\BlogCrud\Models\Blog\Collection;
+use App\Domain\Blog\Notifications\NotifySlackOfLikeNotification;
 
 class ShowBlogComponentTest extends TestCase
 {
@@ -110,6 +112,8 @@ class ShowBlogComponentTest extends TestCase
     /** @test */
     public function can_see_blog_likes()
     {
+        Notification::fake();
+
         $user = User::factory()->create();
         $blog = Blog::factory()->create();
         $blog->likes()->create([
@@ -125,6 +129,8 @@ class ShowBlogComponentTest extends TestCase
     /** @test */
     public function can_like_blog()
     {
+        Notification::fake();
+
         $user = User::factory()->create();
         $blog = Blog::factory()->create();
 
@@ -144,6 +150,8 @@ class ShowBlogComponentTest extends TestCase
     /** @test */
     public function can_unlike_post()
     {
+        Notification::fake();
+
         $user = User::factory()->create();
         $blog = Blog::factory()->create();
         $blog->likes()->create([
@@ -212,5 +220,28 @@ class ShowBlogComponentTest extends TestCase
             ->test(ShowBlog::class, ['blog' => $first])
             ->assertOk()
             ->assertSet('recentBlog.id', $new->id);
+    }
+
+    /** @test */
+    public function sends_notification_of_like()
+    {
+        Notification::fake();
+
+        $user = User::factory()->create();
+        $blog = Blog::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(ShowBlog::class, ['blog' => $blog])
+            ->assertOk()
+            ->call('like')
+            ->assertSet('isLiked', true)
+            ->assertSet('blogLikes', 1);
+
+        $this->assertDatabaseHas('likes', [
+            'blog_id' => $blog->id,
+            'user_id' => $user->id
+        ]);
+
+        Notification::assertSentOnDemand(NotifySlackOfLikeNotification::class);
     }
 }

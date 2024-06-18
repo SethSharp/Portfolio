@@ -5054,16 +5054,16 @@
         },
         {
             "name": "sethsharp/blog-crud",
-            "version": "v2.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SethSharp/BlogCrud.git",
-                "reference": "a6f2d68bb30d4b7958198e06c398b75bf45aa8ea"
+                "reference": "1454b162722bd204ea7e2552f259b592f1be494b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/a6f2d68bb30d4b7958198e06c398b75bf45aa8ea",
-                "reference": "a6f2d68bb30d4b7958198e06c398b75bf45aa8ea",
+                "url": "https://api.github.com/repos/SethSharp/BlogCrud/zipball/1454b162722bd204ea7e2552f259b592f1be494b",
+                "reference": "1454b162722bd204ea7e2552f259b592f1be494b",
                 "shasum": ""
             },
             "require": {
@@ -5107,9 +5107,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SethSharp/BlogCrud/issues",
-                "source": "https://github.com/SethSharp/BlogCrud/tree/v2.0"
+                "source": "https://github.com/SethSharp/BlogCrud/tree/v2.0.1"
             },
-            "time": "2024-06-16T01:08:15+00:00"
+            "time": "2024-06-18T02:44:01+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",

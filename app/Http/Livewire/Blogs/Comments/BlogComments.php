@@ -5,8 +5,6 @@ namespace App\Http\Livewire\Blogs\Comments;
 use Livewire\Component;
 use Illuminate\View\View;
 use SethSharp\BlogCrud\Models\Blog\Blog;
-use Illuminate\Support\Facades\Notification;
-use App\Domain\Blog\Notifications\NotifySlackOfCommentNotification;
 
 class BlogComments extends Component
 {
@@ -33,7 +31,7 @@ class BlogComments extends Component
 
     public function save(): void
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             // sets the intended url so when the user registers or logs in - redirects to here
             session(['url.intended' => route('blogs.show', $this->blog)]);
 
@@ -48,9 +46,6 @@ class BlogComments extends Component
             'user_id' => auth()->user()->id,
             'comment' => $this->comment
         ]);
-
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new NotifySlackOfCommentNotification(auth()->user(), $comment, $this->blog));
 
         $this->comments->push($comment);
 
