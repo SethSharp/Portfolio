@@ -5,15 +5,13 @@ namespace App\Domain\Blog\Notifications;
 use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
 use Illuminate\Notifications\Notification;
-use SethSharp\BlogCrud\Models\Blog\Comment;
 use Illuminate\Notifications\Messages\SlackMessage;
 
-class NotifySlackOfCommentNotification extends Notification
+class NotifySlackOfLikeNotification extends Notification
 {
     public function __construct(
-        public User    $user,
-        public Comment $comment,
-        public Blog    $blog
+        public User $user,
+        public Blog $blog
     ) {
     }
 
@@ -25,6 +23,6 @@ class NotifySlackOfCommentNotification extends Notification
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage())
-            ->content("{$this->user->name} commented on blog: <" . route('blogs.show', $this->blog) . "|{$this->blog->title}> - {$this->comment['comment']}");
+            ->content("{$this->user->name} liked blog: <" . route('blogs.show', $this->blog) . "|{$this->blog->title}>");
     }
 }

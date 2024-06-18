@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Artisan;
 use SethSharp\BlogCrud\Models\Blog\Tag;
 use SethSharp\BlogCrud\Models\Iam\User;
 use SethSharp\BlogCrud\Models\Blog\Blog;
-use SethSharp\BlogCrud\Models\Blog\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,11 +23,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        Blog::factory()->withComments()->count(10)->create([
-            'author_id' => $admin->id
-        ]);
-
-        Comment::factory()->create();
+        Blog::withoutEvents(function () use ($admin) {
+            Blog::factory()->withComments()->count(10)->create([
+                'author_id' => $admin->id
+            ]);
+        });
 
         Tag::factory()->create([
             'name' => 'Laravel'
