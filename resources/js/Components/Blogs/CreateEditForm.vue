@@ -1,18 +1,20 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import Form from '@/Components/Form/Form.vue'
 import Editor from '@/Components/Editor/Editor.vue'
-import Select from '@/Components/Inputs/Select.vue'
-import FormGrid from '@/Components/Form/FormGrid.vue'
-import Checkbox from '@/Components/Inputs/Checkbox.vue'
-import TextArea from '@/Components/Inputs/TextArea.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import InputError from '@/Components/Inputs/InputError.vue'
-import MultiSelect from '@/Components/Inputs/MultiSelect.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import BlogCoverUpload from '@/Components/Inputs/BlogCoverUpload.vue'
+import {
+    PrimaryButton,
+    TextInput,
+    Checkbox,
+    TextArea,
+    FormElement,
+    InputError,
+    MultiSelect,
+    FormGrid,
+    Select,
+    Form,
+} from '@sethsharp/ui'
 
 const props = defineProps({
     blog: {
@@ -92,7 +94,12 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <Checkbox v-model="form.is_draft" label="Is Draft" :error="form.errors.is_draft" />
+            <Checkbox
+                v-model="form.is_draft"
+                label="Is Draft"
+                :error="form.errors.is_draft"
+                :show-label="false"
+            />
         </FormElement>
 
         <FormGrid>
@@ -168,7 +175,7 @@ window.addEventListener('beforeunload', confirmLeave)
             <InputError :message="form.errors.content" />
         </FormElement>
 
-        <PrimaryButton as="submit" @click.prevent="submit">
+        <PrimaryButton as="button" @click.prevent="submit">
             {{ blog ? 'Update' : 'Save' }}
         </PrimaryButton>
     </Form>

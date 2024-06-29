@@ -56,7 +56,11 @@ defineExpose({ focus: () => input.value.focus() })
             :disabled="disabled"
             v-model="model"
             :placeholder="placeholder"
-            class="w-full !border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+            class="w-full rounded-md border border-gray-500 px-2 py-1 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            :class="{
+                'border-gray-300': !error,
+                'border-red-300': error,
+            }"
         />
 
         <div v-if="showCharacterCount" class="text-gray-400 text-xs">

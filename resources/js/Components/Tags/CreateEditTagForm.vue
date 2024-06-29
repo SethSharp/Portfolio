@@ -1,10 +1,6 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
-import Form from '@/Components/Form/Form.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import DangerButton from '@/Components/Buttons/DangerButton.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { PrimaryButton, DangerButton, FormElement, TextInput, Form } from '@sethsharp/ui'
 
 const props = defineProps({
     tag: {

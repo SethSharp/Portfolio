@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import Tabs from '@/Components/Tabs.vue'
 import { router } from '@inertiajs/vue3'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { PrimaryButton } from '@sethsharp/ui'
 
 defineProps({
     status: String,
@@ -28,7 +28,7 @@ const create = () => {
                     {{ status }} Blogs ({{ count }})
                 </h1>
                 <div class="flex ml-auto">
-                    <PrimaryButton @click="create"> Create Blog </PrimaryButton>
+                    <PrimaryButton @click="create" as="button"> Create Blog</PrimaryButton>
                 </div>
             </div>
 

@@ -1,11 +1,9 @@
 <script setup>
-import { router } from '@inertiajs/vue3'
 import { ref, watch } from 'vue'
+import { router } from '@inertiajs/vue3'
 import Blog from '@/Components/Cards/Blog.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
 import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+import { SecondaryButton, PrimaryButton, TextInput } from '@sethsharp/ui'
 
 const props = defineProps({
     blogs: Object,
@@ -41,8 +39,8 @@ watch(search, (newSearch) => {
     <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
         <div class="flex">
             <div class="ml-auto flex gap-2">
-                <TextInput type="search" @reset="reset()" v-model="search" />
-                <SecondaryButton @click="visitSearch"> search</SecondaryButton>
+                <TextInput type="search" v-model="search" placeholder="Search for Blogs" />
+                <SecondaryButton @click="visitSearch" as="button"> search</SecondaryButton>
             </div>
         </div>
 
