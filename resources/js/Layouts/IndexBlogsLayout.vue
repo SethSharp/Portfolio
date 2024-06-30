@@ -14,8 +14,6 @@ const props = defineProps({
     },
 })
 
-console.log(props.tabs)
-
 const create = () => router.post(route('dashboard.blogs.create'))
 </script>
 
