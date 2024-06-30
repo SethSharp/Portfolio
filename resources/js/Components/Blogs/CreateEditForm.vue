@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import Editor from '@/Components/Editor/Editor.vue'
-import BlogCoverUpload from '@/Components/Inputs/BlogCoverUpload.vue'
 import {
     PrimaryButton,
     TextInput,
@@ -14,7 +12,10 @@ import {
     FormGrid,
     Select,
     Form,
+    ImageUpload,
 } from '@sethsharp/ui'
+import Editor from '@/Components/Editor/Editor.vue'
+import { getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
     blog: {
@@ -85,10 +86,11 @@ window.addEventListener('beforeunload', confirmLeave)
 <template>
     <Form>
         <FormElement>
-            <BlogCoverUpload
+            <ImageUpload
                 v-model="form.cover_image"
                 :current-image="blog.cover"
                 label="Cover Image"
+                :default-image="getBlogCoverImage(null)"
             />
             <InputError :message="form.errors.cover_image" />
         </FormElement>
@@ -128,7 +130,7 @@ window.addEventListener('beforeunload', confirmLeave)
                 placeholder="a-new-blog-of-mine"
                 :description="
                     'Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/' +
-                    (form.slug ? form.slug : 'a-new-blog-of-mine')
+                    (form.slug ? form.slug : form.title ? form.title : 'some-value')
                 "
             />
 

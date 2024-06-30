@@ -1,9 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { router, Link } from '@inertiajs/vue3'
+import { SecondaryButton, PrimaryButton, TextInput } from '@sethsharp/ui'
 import Blog from '@/Components/Cards/Blog.vue'
 import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
-import { SecondaryButton, PrimaryButton, TextInput } from '@sethsharp/ui'
 
 const props = defineProps({
     blogs: Object,
@@ -55,7 +55,7 @@ watch(search, (newSearch) => {
                 </h3>
 
                 <div v-if="status === 'published'" class="mt-4">
-                    <PrimaryButton @click="create"> Create a Blog</PrimaryButton>
+                    <PrimaryButton :as="Link" @click="create"> Create a Blog</PrimaryButton>
                 </div>
             </div>
         </div>
