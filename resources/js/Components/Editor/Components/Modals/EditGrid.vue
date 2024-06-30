@@ -1,11 +1,6 @@
 <script setup>
 import { useVModels } from '@vueuse/core'
-import Modal from '@/Components/Modal.vue'
-import Form from '@/Components/Form/Form.vue'
-import Select from '@/Components/Inputs/Select.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { Modal, Form, Select, TextInput, FormElement, PrimaryButton } from '@sethsharp/ui'
 
 const props = defineProps({
     open: Boolean,
@@ -55,25 +50,27 @@ const options = [
 
 <template>
     <Modal :open="open" @close="emits('close')">
-        <Form>
-            <FormElement>
-                <TextInput id="columns" type="number" v-model="computedCols" label="Columns" />
-            </FormElement>
+        <template #content>
+            <Form>
+                <FormElement>
+                    <TextInput id="columns" type="number" v-model="computedCols" label="Columns" />
+                </FormElement>
 
-            <FormElement>
-                <TextInput
-                    id="mobile-columns"
-                    type="number"
-                    v-model="computedMobile"
-                    label="Mobile Columns"
-                />
-            </FormElement>
+                <FormElement>
+                    <TextInput
+                        id="mobile-columns"
+                        type="number"
+                        v-model="computedMobile"
+                        label="Mobile Columns"
+                    />
+                </FormElement>
 
-            <FormElement>
-                <Select v-model="computedGap" :options="options" label="Gap" />
-            </FormElement>
-        </Form>
+                <FormElement>
+                    <Select v-model="computedGap" :options="options" label="Gap" />
+                </FormElement>
+            </Form>
 
-        <PrimaryButton @click.prevent="emits('close')"> Save</PrimaryButton>
+            <PrimaryButton @click.prevent="emits('close')"> Save</PrimaryButton>
+        </template>
     </Modal>
 </template>
