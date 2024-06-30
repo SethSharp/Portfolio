@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import Modal from '@/Components/Modal.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { Modal, PrimaryButton } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditCollectionForm from '@/Components/Collection/CreateEditCollectionForm.vue'
 
@@ -22,8 +21,8 @@ const manageCollection = (collection) => {
     <AuthenticatedLayout title="Groups">
         <div class="flex justify-end">
             <PrimaryButton @click.prevent="manageCollection(null)">
-                Create Collection</PrimaryButton
-            >
+                Create Collection
+            </PrimaryButton>
         </div>
 
         <div
@@ -45,14 +44,17 @@ const manageCollection = (collection) => {
 
                 <div class="mt-4">
                     <PrimaryButton @click="manageCollection(null)">
-                        Create a Collection</PrimaryButton
-                    >
+                        Create a Collection
+                    </PrimaryButton>
                 </div>
             </div>
         </div>
 
         <Modal :open="open" @close="open = false" size="xl">
-            <CreateEditCollectionForm :collection="currentCollection" @close="open = false" />
+            <template #header> Create a Collection</template>
+            <template #content>
+                <CreateEditCollectionForm :collection="currentCollection" @close="open = false" />
+            </template>
         </Modal>
     </AuthenticatedLayout>
 </template>
