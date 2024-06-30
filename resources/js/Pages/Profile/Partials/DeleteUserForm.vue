@@ -1,11 +1,7 @@
 <script setup>
 import { nextTick, ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
-import Modal from '@/Components/Modal.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import DangerButton from '@/Components/Buttons/DangerButton.vue'
-import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+import { useForm, Link } from '@inertiajs/vue3'
+import { TextInput, FormElement, SecondaryButton, Modal, DangerButton } from '@sethsharp/ui'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
@@ -16,15 +12,12 @@ const form = useForm({
 
 const confirmUserDeletion = () => {
     confirmingUserDeletion.value = true
-
-    nextTick(() => passwordInput.value.focus())
 }
 
 const deleteUser = () => {
     form.delete(route('profile.destroy'), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
-        onError: () => passwordInput.value.focus(),
         onFinish: () => form.reset(),
     })
 }
@@ -50,12 +43,9 @@ const closeModal = () => {
 
         <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
 
-        <Modal :open="confirmingUserDeletion" @close="closeModal">
-            <div class="p-6">
-                <h2 class="text-lg font-medium text-gray-900">
-                    Are you sure you want to delete your account?
-                </h2>
-
+        <Modal :open="confirmingUserDeletion" @close="closeModal" size="lg">
+            <template #header> Are you sure you want to delete your account?</template>
+            <template #content>
                 <p class="mt-1 text-sm text-gray-600">
                     Once your account is deleted, all of its resources and data will be permanently
                     deleted. Please enter your password to confirm you would like to permanently
@@ -68,7 +58,6 @@ const closeModal = () => {
                         ref="passwordInput"
                         v-model="form.password"
                         type="password"
-                        class="mt-1 block w-3/4"
                         placeholder="Password"
                         @keyup.enter="deleteUser"
                         label="Password"
@@ -77,11 +66,10 @@ const closeModal = () => {
                     />
                 </FormElement>
 
-                <div class="mt-6 flex justify-end">
+                <div class="mt-6 flex gap-2 justify-end">
                     <SecondaryButton @click="closeModal"> Cancel</SecondaryButton>
 
                     <DangerButton
-                        class="ms-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteUser"
@@ -89,7 +77,7 @@ const closeModal = () => {
                         Delete Account
                     </DangerButton>
                 </div>
-            </div>
+            </template>
         </Modal>
     </section>
 </template>
