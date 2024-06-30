@@ -1,10 +1,10 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3'
+import { SecondaryButton } from '@sethsharp/ui'
 import ProfileLayout from '@/Layouts/ProfileLayout.vue'
 import DeleteUserForm from './Partials/DeleteUserForm.vue'
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue'
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue'
-import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
 
 defineProps({
     mustVerifyEmail: {
@@ -41,7 +41,7 @@ defineProps({
                 <SecondaryButton
                     :href="route('logout')"
                     method="post"
-                    as="button"
+                    :as="Link"
                     class="bg-gray-200 hover:bg-gray-300 border-gray-400 border-1 p-2 rounded font-medium"
                 >
                     Log Out

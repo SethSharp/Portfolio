@@ -77,14 +77,12 @@ const links = [
                                         <DropdownLink :as="Link" :href="route('profile.edit')">
                                             Profile
                                         </DropdownLink>
-                                        <DropdownLink as="a" :href="route('home')">
+
+                                        <DropdownLink :href="route('home')">
                                             Portfolio
                                         </DropdownLink>
-                                        <DropdownLink
-                                            :href="route('logout')"
-                                            method="post"
-                                            as="button"
-                                        >
+
+                                        <DropdownLink :href="route('logout')" :as="Link">
                                             Log Out
                                         </DropdownLink>
                                     </template>
