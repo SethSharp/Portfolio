@@ -51,7 +51,7 @@ const manageCollection = (collection) => {
         </div>
 
         <Modal :open="open" @close="open = false" size="xl">
-            <template #header> Create a Collection</template>
+            <template #header> Manage Collection</template>
             <template #content>
                 <CreateEditCollectionForm :collection="currentCollection" @close="open = false" />
             </template>
