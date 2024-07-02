@@ -70,19 +70,21 @@ const links = [
                             <div class="ms-3 relative">
                                 <Dropdown>
                                     <template #trigger>
-                                        {{ $page.props.auth.user.name }}
+                                        <button class="cursor-pointer">
+                                            {{ $page.props.auth.user.name }}
+                                        </button>
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink :as="Link" :href="route('profile.edit')">
+                                        <DropdownLink :is="Link" :href="route('profile.edit')">
                                             Profile
                                         </DropdownLink>
 
-                                        <DropdownLink :href="route('home')">
+                                        <DropdownLink is="a" :href="route('home')">
                                             Portfolio
                                         </DropdownLink>
 
-                                        <DropdownLink :href="route('logout')" :as="Link">
+                                        <DropdownLink :is="Link" :href="route('logout')">
                                             Log Out
                                         </DropdownLink>
                                     </template>
