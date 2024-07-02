@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import Modal from '@/Components/Modal.vue'
+import { Modal, PrimaryButton } from '@sethsharp/ui'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'
 
 defineProps({
@@ -58,7 +57,10 @@ const openModal = (tag = null) => {
         </div>
 
         <Modal :open="open" @close="open = false" size="sm">
-            <CreateEditTagForm :tag="currentTag" @close="open = false" />
+            <template #header>Manage Tag</template>
+            <template #content>
+                <CreateEditTagForm :tag="currentTag" @close="open = false" />
+            </template>
         </Modal>
     </IndexTagsLayout>
 </template>

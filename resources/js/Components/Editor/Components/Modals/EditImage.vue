@@ -2,11 +2,7 @@
 import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
-import Modal from '@/Components/Modal.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import ImageUpload from '@/Components/Inputs/ImageUpload.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { Modal, TextInput, FormElement, ImageUpload, PrimaryButton } from '@sethsharp/ui'
 
 const props = defineProps({
     open: Boolean,
@@ -67,25 +63,28 @@ watch(file, (_) => {
 
 <template>
     <Modal :open="open" @close="emits('close')" size="2xl">
-        <div class="mb-4">
-            <FormElement>
-                <ImageUpload
-                    v-model="file"
-                    :current-image="path"
-                    label="Image Upload"
-                    :error="errors['file']"
-                />
-            </FormElement>
+        <template #header> Manage Image</template>
+        <template #content>
+            <div class="mb-4">
+                <FormElement>
+                    <ImageUpload
+                        v-model="file"
+                        :current-image="path"
+                        label="Image Upload"
+                        :error="errors['file']"
+                    />
+                </FormElement>
 
-            <FormElement>
-                <TextInput id="alt" type="text" v-model="computedAlt" label="Alt" />
-            </FormElement>
+                <FormElement>
+                    <TextInput id="alt" type="text" v-model="computedAlt" label="Alt" />
+                </FormElement>
 
-            <FormElement>
-                <TextInput id="height" v-model="computedHeight" type="number" label="Height" />
-            </FormElement>
-        </div>
+                <FormElement>
+                    <TextInput id="height" v-model="computedHeight" type="number" label="Height" />
+                </FormElement>
+            </div>
 
-        <PrimaryButton as="button" @click.prevent="emits('close')"> Save</PrimaryButton>
+            <PrimaryButton as="button" @click.prevent="emits('close')"> Save</PrimaryButton>
+        </template>
     </Modal>
 </template>

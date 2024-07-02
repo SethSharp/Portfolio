@@ -1,12 +1,7 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
-import Form from '@/Components/Form/Form.vue'
-import TextArea from '@/Components/Inputs/TextArea.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import DangerButton from '@/Components/Buttons/DangerButton.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { Form, TextArea, TextInput, FormElement, DangerButton, PrimaryButton } from '@sethsharp/ui'
 
 const props = defineProps({
     collection: {
@@ -99,8 +94,12 @@ const shiftBlog = (from, to) => {
         </FormElement>
 
         <div class="flex gap-4">
-            <DangerButton @click.prevent="destroyCollection"> Delete</DangerButton>
-            <PrimaryButton @click.prevent="submit"> Save</PrimaryButton>
+            <DangerButton v-if="collection" @click.prevent="destroyCollection">
+                Delete
+            </DangerButton>
+            <PrimaryButton @click.prevent="submit">
+                {{ collection ? 'Update' : 'Create' }}
+            </PrimaryButton>
         </div>
     </Form>
 </template>
