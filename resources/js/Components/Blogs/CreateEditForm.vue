@@ -92,9 +92,10 @@ window.addEventListener('beforeunload', confirmLeave)
                 label="Cover Image"
                 :default-image="getBlogCoverImage(null)"
             >
-                <template #image="{ newImage, curImg }">
+                <template #image="{ newImage, curImage }">
                     <img
-                        :src="newImage ?? curImg"
+                        :src="newImage ? newImage : curImage"
+                        alt="Image cannot be loaded"
                         class="max-w-lg max-h-40 sm:max-h-64 object-cover object-center"
                     />
                 </template>
