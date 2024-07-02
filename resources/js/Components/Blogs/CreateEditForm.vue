@@ -92,7 +92,7 @@ window.addEventListener('beforeunload', confirmLeave)
                 label="Cover Image"
                 :default-image="getBlogCoverImage(null)"
             >
-                <template #image :newImage="{ newImage }" :curImage="{ curImg }">
+                <template #image="{ newImage, curImg }">
                     <img
                         :src="newImage ?? curImg"
                         class="max-w-lg max-h-40 sm:max-h-64 object-cover object-center"
@@ -112,13 +112,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <TextInput
-                id="title"
-                autofocus
-                v-model="form.title"
-                :error="form.errors.title"
-                label="Title"
-            />
+            <TextInput id="title" v-model="form.title" :error="form.errors.title" label="Title" />
 
             <Select
                 v-model="form.collection_id"
