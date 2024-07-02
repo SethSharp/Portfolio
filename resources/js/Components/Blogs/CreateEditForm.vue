@@ -91,7 +91,14 @@ window.addEventListener('beforeunload', confirmLeave)
                 :current-image="blog.cover"
                 label="Cover Image"
                 :default-image="getBlogCoverImage(null)"
-            />
+            >
+                <template #image :newImage="{ newImage }" :curImage="{ curImg }">
+                    <img
+                        :src="newImage ?? curImg"
+                        class="max-w-lg max-h-40 sm:max-h-64 object-cover object-center"
+                    />
+                </template>
+            </ImageUpload>
             <InputError :message="form.errors.cover_image" />
         </FormElement>
 
