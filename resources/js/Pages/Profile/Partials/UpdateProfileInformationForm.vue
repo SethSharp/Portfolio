@@ -39,7 +39,6 @@ const form = useForm({
                     autocomplete="name"
                     label="Name"
                     :error="form.errors.name"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -52,7 +51,6 @@ const form = useForm({
                     autocomplete="username"
                     label="Email"
                     :error="form.errors.email"
-                    :show-character-count="false"
                 />
             </FormElement>
 

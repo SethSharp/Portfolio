@@ -48,7 +48,7 @@ watch(search, (newSearch) => {
             <Blog v-for="blog in blogs.data" :blog="blog" />
         </div>
 
-        <div v-else class="flex justify-center align-middle">
+        <div v-else class="mt-6 flex justify-center align-middle">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">
                     There are currently no blogs in this state.

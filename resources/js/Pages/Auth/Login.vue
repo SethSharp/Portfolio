@@ -43,7 +43,6 @@ const submit = () => {
                     autocomplete="username"
                     label="Email"
                     :error="form.errors.email"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -53,8 +52,8 @@ const submit = () => {
                     v-model="form.password"
                     required
                     label="Password"
+                    autocomplete="password"
                     :error="form.errors.password"
-                    :show-character-count="false"
                 />
             </FormElement>
 

@@ -62,7 +62,6 @@ const closeModal = () => {
                         @keyup.enter="deleteUser"
                         label="Password"
                         :error="form.errors.password"
-                        :show-character-count="false"
                     />
                 </FormElement>
 

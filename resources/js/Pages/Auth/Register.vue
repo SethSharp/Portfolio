@@ -30,7 +30,6 @@ const submit = () => {
                     required
                     label="Name"
                     :error="form.errors.name"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -42,7 +41,6 @@ const submit = () => {
                     required
                     label="Email"
                     :error="form.errors.email"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -54,7 +52,6 @@ const submit = () => {
                     required
                     label="New Password"
                     :error="form.errors.password"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -66,7 +63,6 @@ const submit = () => {
                     required
                     label="Confirm Password"
                     :error="form.errors.password_confirmation"
-                    :show-character-count="false"
                 />
             </FormElement>
 

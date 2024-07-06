@@ -66,30 +66,32 @@ const links = [
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
-                            <!-- Settings Dropdown -->
-                            <div class="ms-3 relative">
-                                <Dropdown>
-                                    <template #trigger>
-                                        <button class="cursor-pointer">
-                                            {{ $page.props.auth.user.name }}
-                                        </button>
-                                    </template>
+                            <Dropdown>
+                                <template #trigger>
+                                    <button class="cursor-pointer">
+                                        {{ $page.props.auth.user.name }}
+                                    </button>
+                                </template>
 
-                                    <template #content>
-                                        <DropdownLink :is="Link" :href="route('profile.edit')">
-                                            Profile
-                                        </DropdownLink>
+                                <template #content>
+                                    <DropdownLink :is="Link" :href="route('profile.edit')">
+                                        Profile
+                                    </DropdownLink>
 
-                                        <DropdownLink is="a" :href="route('home')">
-                                            Portfolio
-                                        </DropdownLink>
+                                    <DropdownLink is="a" :href="route('home')">
+                                        Portfolio
+                                    </DropdownLink>
 
-                                        <DropdownLink :is="Link" :href="route('logout')">
-                                            Log Out
-                                        </DropdownLink>
-                                    </template>
-                                </Dropdown>
-                            </div>
+                                    <DropdownLink
+                                        method="post"
+                                        :is="Link"
+                                        as="button"
+                                        :href="route('logout')"
+                                    >
+                                        Log Out
+                                    </DropdownLink>
+                                </template>
+                            </Dropdown>
                         </div>
 
                         <!-- Hamburger -->

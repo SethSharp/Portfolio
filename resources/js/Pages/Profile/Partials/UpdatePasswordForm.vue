@@ -51,7 +51,6 @@ const updatePassword = () => {
                     autocomplete="current-password"
                     label="Current Password"
                     :error="form.errors.current_password"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -65,7 +64,6 @@ const updatePassword = () => {
                     autocomplete="new-password"
                     label="New Password"
                     :error="form.errors.password"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -78,7 +76,6 @@ const updatePassword = () => {
                     autocomplete="new-password"
                     label="Confirm Password"
                     :error="form.errors.password_confirmation"
-                    :show-character-count="false"
                 />
             </FormElement>
 
