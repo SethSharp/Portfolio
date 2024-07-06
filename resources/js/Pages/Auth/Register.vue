@@ -1,11 +1,7 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue'
-import InputError from '@/Components/Inputs/InputError.vue'
-import InputLabel from '@/Components/Inputs/InputLabel.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import FormElement from '@/Components/Form/FormElement.vue'
+import { PrimaryButton, FormElement, TextInput } from '@sethsharp/ui'
+import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const form = useForm({
     name: '',
@@ -30,14 +26,10 @@ const submit = () => {
                 <TextInput
                     id="name"
                     type="text"
-                    class="mt-1 block w-full"
                     v-model="form.name"
                     required
-                    autofocus
-                    autocomplete="name"
                     label="Name"
                     :error="form.errors.name"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -45,13 +37,10 @@ const submit = () => {
                 <TextInput
                     id="email"
                     type="email"
-                    class="mt-1 block w-full"
                     v-model="form.email"
                     required
-                    autocomplete="username"
                     label="Email"
                     :error="form.errors.email"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -59,13 +48,10 @@ const submit = () => {
                 <TextInput
                     id="password"
                     type="password"
-                    class="mt-1 block w-full"
                     v-model="form.password"
                     required
-                    autocomplete="new-password"
                     label="New Password"
                     :error="form.errors.password"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -73,13 +59,10 @@ const submit = () => {
                 <TextInput
                     id="password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
                     v-model="form.password_confirmation"
                     required
-                    autocomplete="new-password"
                     label="Confirm Password"
                     :error="form.errors.password_confirmation"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -95,6 +78,7 @@ const submit = () => {
                     class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
+                    type="submit"
                 >
                     Register
                 </PrimaryButton>

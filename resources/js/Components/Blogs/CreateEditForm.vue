@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import Editor from '@/Components/Editor/Editor.vue'
-import BlogCoverUpload from '@/Components/Inputs/BlogCoverUpload.vue'
 import {
     PrimaryButton,
     TextInput,
@@ -14,7 +12,10 @@ import {
     FormGrid,
     Select,
     Form,
+    ImageUpload,
 } from '@sethsharp/ui'
+import Editor from '@/Components/Editor/Editor.vue'
+import { getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
     blog: {
@@ -85,11 +86,20 @@ window.addEventListener('beforeunload', confirmLeave)
 <template>
     <Form>
         <FormElement>
-            <BlogCoverUpload
+            <ImageUpload
                 v-model="form.cover_image"
                 :current-image="blog.cover"
                 label="Cover Image"
-            />
+                :default-image="getBlogCoverImage(null)"
+            >
+                <template #image="{ newImage, curImage }">
+                    <img
+                        :src="newImage ? newImage : curImage"
+                        alt="Image cannot be loaded"
+                        class="max-w-lg max-h-40 sm:max-h-64 object-cover object-center"
+                    />
+                </template>
+            </ImageUpload>
             <InputError :message="form.errors.cover_image" />
         </FormElement>
 
@@ -103,13 +113,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <TextInput
-                id="title"
-                autofocus
-                v-model="form.title"
-                :error="form.errors.title"
-                label="Title"
-            />
+            <TextInput id="title" v-model="form.title" :error="form.errors.title" label="Title" />
 
             <Select
                 v-model="form.collection_id"
@@ -128,7 +132,7 @@ window.addEventListener('beforeunload', confirmLeave)
                 placeholder="a-new-blog-of-mine"
                 :description="
                     'Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/' +
-                    (form.slug ? form.slug : 'a-new-blog-of-mine')
+                    (form.slug ? form.slug : form.title ? form.title : 'some-value')
                 "
             />
 

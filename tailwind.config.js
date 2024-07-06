@@ -14,6 +14,7 @@ if (process.env.EB_ENVIRONMENT === 'seth') {
 
 module.exports = {
     content: [
+        './node_modules/@sethsharp/ui/src/**/*.{js,vue}',
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',

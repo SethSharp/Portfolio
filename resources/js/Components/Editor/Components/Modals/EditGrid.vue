@@ -1,11 +1,6 @@
 <script setup>
 import { useVModels } from '@vueuse/core'
-import Modal from '@/Components/Modal.vue'
-import Form from '@/Components/Form/Form.vue'
-import Select from '@/Components/Inputs/Select.vue'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { PrimaryButton, FormElement, TextInput, Select, Form, Modal } from '@sethsharp/ui'
 
 const props = defineProps({
     open: Boolean,

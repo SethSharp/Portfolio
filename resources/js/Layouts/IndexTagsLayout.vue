@@ -1,5 +1,5 @@
 <script setup>
-import Tabs from '@/Components/Tabs.vue'
+import { Tabs } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 defineProps({

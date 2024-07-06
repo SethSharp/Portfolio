@@ -1,9 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { router, Link } from '@inertiajs/vue3'
+import { SecondaryButton, PrimaryButton, TextInput } from '@sethsharp/ui'
 import Blog from '@/Components/Cards/Blog.vue'
 import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
-import { SecondaryButton, PrimaryButton, TextInput } from '@sethsharp/ui'
 
 const props = defineProps({
     blogs: Object,
@@ -48,14 +48,14 @@ watch(search, (newSearch) => {
             <Blog v-for="blog in blogs.data" :blog="blog" />
         </div>
 
-        <div v-else class="flex justify-center align-middle">
+        <div v-else class="mt-6 flex justify-center align-middle">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">
                     There are currently no blogs in this state.
                 </h3>
 
                 <div v-if="status === 'published'" class="mt-4">
-                    <PrimaryButton @click="create"> Create a Blog</PrimaryButton>
+                    <PrimaryButton :as="Link" @click="create"> Create a Blog</PrimaryButton>
                 </div>
             </div>
         </div>

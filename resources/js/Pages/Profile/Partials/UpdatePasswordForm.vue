@@ -1,9 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import TextInput from '@/Components/Inputs/TextInput.vue'
-import FormElement from '@/Components/Form/FormElement.vue'
-import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue'
+import { TextInput, FormElement, PrimaryButton } from '@sethsharp/ui'
 
 const passwordInput = ref(null)
 const currentPasswordInput = ref(null)
@@ -21,13 +19,13 @@ const updatePassword = () => {
         onError: () => {
             if (form.errors.password) {
                 form.reset('password', 'password_confirmation')
-                passwordInput.value.focus()
             }
+
             if (form.errors.current_password) {
                 form.reset('current_password')
-                currentPasswordInput.value.focus()
             }
         },
+        onFinish: () => form.reset(),
     })
 }
 </script>
@@ -53,7 +51,6 @@ const updatePassword = () => {
                     autocomplete="current-password"
                     label="Current Password"
                     :error="form.errors.current_password"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -67,7 +64,6 @@ const updatePassword = () => {
                     autocomplete="new-password"
                     label="New Password"
                     :error="form.errors.password"
-                    :show-character-count="false"
                 />
             </FormElement>
 
@@ -80,7 +76,6 @@ const updatePassword = () => {
                     autocomplete="new-password"
                     label="Confirm Password"
                     :error="form.errors.password_confirmation"
-                    :show-character-count="false"
                 />
             </FormElement>
 

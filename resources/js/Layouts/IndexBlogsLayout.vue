@@ -1,10 +1,9 @@
 <script setup>
+import { router, Link } from '@inertiajs/vue3'
+import { PrimaryButton, Tabs } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import Tabs from '@/Components/Tabs.vue'
-import { router } from '@inertiajs/vue3'
-import { PrimaryButton } from '@sethsharp/ui'
 
-defineProps({
+const props = defineProps({
     status: String,
     tabs: Object,
     count: Number,
@@ -15,9 +14,7 @@ defineProps({
     },
 })
 
-const create = () => {
-    router.post(route('dashboard.blogs.create'))
-}
+const create = () => router.post(route('dashboard.blogs.create'))
 </script>
 
 <template>
@@ -28,11 +25,11 @@ const create = () => {
                     {{ status }} Blogs ({{ count }})
                 </h1>
                 <div class="flex ml-auto">
-                    <PrimaryButton @click="create" as="button"> Create Blog</PrimaryButton>
+                    <PrimaryButton @click="create"> Create Blog</PrimaryButton>
                 </div>
             </div>
 
-            <Tabs :tabs="tabs" :data="data">
+            <Tabs :as="Link" :tabs="tabs" :data="data">
                 <slot />
             </Tabs>
         </div>
