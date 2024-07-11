@@ -1,6 +1,16 @@
 <script setup>
 import { BubbleMenu } from '@tiptap/vue-3'
-import { CodeBracketIcon } from '@heroicons/vue/16/solid/index.js'
+import {
+    CodeBracketIcon,
+    H1Icon,
+    H2Icon,
+    H3Icon,
+    StrikethroughIcon,
+    ItalicIcon,
+    UnderlineIcon,
+    LinkIcon,
+    BoldIcon,
+} from '@heroicons/vue/16/solid/index.js'
 import BubbleButton from '@/Components/Editor/Components/BubbleButton.vue'
 
 const props = defineProps({
@@ -32,25 +42,23 @@ const setLink = () => {
                 <BubbleButton
                     @click="editor.chain().focus().toggleBold().run()"
                     :active="editor.isActive('bold')"
-                    class="font-bold rounded-l-xl"
+                    class="rounded-l-xl"
                 >
-                    bold
+                    <BoldIcon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().toggleItalic().run()"
                     :active="editor.isActive('italic')"
-                    class="italic"
                 >
-                    italic
+                    <ItalicIcon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().toggleUnderline().run()"
                     :active="editor.isActive('underline')"
-                    class="underline"
                 >
-                    Underline
+                    <UnderlineIcon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
@@ -61,38 +69,36 @@ const setLink = () => {
                             : editor.chain().focus().unsetLink().run()
                     "
                     :active="editor.isActive('link')"
-                    class="underline"
                 >
-                    Link
+                    <LinkIcon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().toggleStrike().run()"
                     :active="editor.isActive('strike')"
-                    class="line-through"
                 >
-                    s
+                    <StrikethroughIcon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
                     :active="editor.isActive('heading', { level: 1 })"
                 >
-                    H1
+                    <H1Icon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
                     :active="editor.isActive('heading', { level: 2 })"
                 >
-                    H2
+                    <H2Icon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
                     @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
                     :active="editor.isActive('heading', { level: 3 })"
                 >
-                    H3
+                    <H3Icon class="size-5" />
                 </BubbleButton>
 
                 <BubbleButton
