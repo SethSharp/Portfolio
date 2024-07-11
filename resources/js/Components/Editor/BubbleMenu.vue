@@ -36,7 +36,7 @@ const setLink = () => {
 </script>
 
 <template>
-    <div class="w-full bg-red-50">
+    <div class="w-full">
         <BubbleMenu v-if="editor" :editor="editor">
             <div class="isolate inline-flex rounded-md shadow-sm">
                 <BubbleButton
