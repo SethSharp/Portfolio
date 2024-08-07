@@ -1,7 +1,7 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
-import { Form, TextArea, TextInput, FormElement, DangerButton, PrimaryButton } from '@sethsharp/ui'
+import { Form, TextArea, Text, FormElement, DangerButton, PrimaryButton } from '@sethsharp/ui'
 
 const props = defineProps({
     collection: {
@@ -45,7 +45,7 @@ const shiftBlog = (from, to) => {
 <template>
     <Form>
         <FormElement>
-            <TextInput
+            <Text
                 autofocus
                 v-model="form.title"
                 label="Title"

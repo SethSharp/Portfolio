@@ -2,7 +2,8 @@
 import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
-import { Modal, TextInput, FormElement, ImageUpload, PrimaryButton } from '@sethsharp/ui'
+import { Modal, Text, FormElement, ImageUpload, PrimaryButton } from '@sethsharp/ui'
+import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
 
 const props = defineProps({
     open: Boolean,
@@ -62,8 +63,10 @@ watch(file, (_) => {
 </script>
 
 <template>
-    <Modal :open="open" @close="emits('close')" size="2xl">
-        <template #header> Manage Image</template>
+    <Modal :header-data="{ title: 'Manage Image' }" size="2xl">
+        <template #trigger>
+            <PencilSquareIcon class="size-4" />
+        </template>
         <template #content>
             <div class="mb-4">
                 <FormElement>
@@ -76,11 +79,11 @@ watch(file, (_) => {
                 </FormElement>
 
                 <FormElement>
-                    <TextInput id="alt" type="text" v-model="computedAlt" label="Alt" />
+                    <Text id="alt" type="text" v-model="computedAlt" label="Alt" />
                 </FormElement>
 
                 <FormElement>
-                    <TextInput id="height" v-model="computedHeight" type="number" label="Height" />
+                    <Text id="height" v-model="computedHeight" type="number" label="Height" />
                 </FormElement>
             </div>
 

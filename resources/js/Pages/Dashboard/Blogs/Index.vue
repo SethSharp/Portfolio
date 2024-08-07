@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
-import { SecondaryButton, PrimaryButton, TextInput } from '@sethsharp/ui'
+import { SecondaryButton, PrimaryButton, Text } from '@sethsharp/ui'
 import Blog from '@/Components/Cards/Blog.vue'
 import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
 
@@ -39,7 +39,7 @@ watch(search, (newSearch) => {
     <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
         <div class="flex">
             <div class="ml-auto flex gap-2">
-                <TextInput type="search" v-model="search" placeholder="Search for Blogs" />
+                <Text type="search" v-model="search" placeholder="Search for Blogs" />
                 <SecondaryButton @click="visitSearch" as="button"> search</SecondaryButton>
             </div>
         </div>

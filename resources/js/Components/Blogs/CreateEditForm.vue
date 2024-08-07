@@ -3,12 +3,12 @@ import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import {
     PrimaryButton,
-    TextInput,
+    Text,
     Checkbox,
     TextArea,
     FormElement,
-    InputError,
-    MultiSelect,
+    Error,
+    Combobox,
     FormGrid,
     Select,
     Form,
@@ -100,7 +100,7 @@ window.addEventListener('beforeunload', confirmLeave)
                     />
                 </template>
             </ImageUpload>
-            <InputError :message="form.errors.cover_image" />
+            <Error :message="form.errors.cover_image" />
         </FormElement>
 
         <FormElement>
@@ -113,7 +113,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <TextInput id="title" v-model="form.title" :error="form.errors.title" label="Title" />
+            <Text id="title" v-model="form.title" :error="form.errors.title" label="Title" />
 
             <Select
                 v-model="form.collection_id"
@@ -124,7 +124,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormGrid>
 
         <FormGrid>
-            <TextInput
+            <Text
                 id="slug"
                 v-model="form.slug"
                 label="Slug (must be lowercase separated by '-')"
@@ -136,7 +136,7 @@ window.addEventListener('beforeunload', confirmLeave)
                 "
             />
 
-            <MultiSelect
+            <Combobox
                 v-model="form.tags"
                 :options="tagOptions"
                 label="Tags"
@@ -145,7 +145,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormGrid>
 
         <FormElement>
-            <TextInput
+            <Text
                 id="meta-title"
                 v-model="form.meta_title"
                 label="Meta Title"
@@ -165,7 +165,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <TextInput
+            <Text
                 id="meta-tags"
                 v-model="form.meta_tags"
                 label="Meta Tags"
@@ -176,7 +176,7 @@ window.addEventListener('beforeunload', confirmLeave)
 
         <FormElement>
             <Editor v-model="form.content" :blog="blog" />
-            <InputError :message="form.errors.content" />
+            <Error :message="form.errors.content" />
         </FormElement>
 
         <PrimaryButton as="button" @click.prevent="submit">

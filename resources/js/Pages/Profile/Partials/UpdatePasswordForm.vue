@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { TextInput, FormElement, PrimaryButton } from '@sethsharp/ui'
+import { Text, FormElement, PrimaryButton } from '@sethsharp/ui'
 
 const passwordInput = ref(null)
 const currentPasswordInput = ref(null)
@@ -42,7 +42,7 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <FormElement>
-                <TextInput
+                <Text
                     id="current_password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
@@ -55,7 +55,7 @@ const updatePassword = () => {
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     id="password"
                     ref="passwordInput"
                     v-model="form.password"
@@ -68,7 +68,7 @@ const updatePassword = () => {
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"

@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, FormElement, TextInput } from '@sethsharp/ui'
+import { PrimaryButton, FormElement, Text } from '@sethsharp/ui'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const form = useForm({
@@ -23,7 +23,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <FormElement>
-                <TextInput
+                <Text
                     id="name"
                     type="text"
                     v-model="form.name"
@@ -34,7 +34,7 @@ const submit = () => {
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     id="email"
                     type="email"
                     v-model="form.email"
@@ -45,7 +45,7 @@ const submit = () => {
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     id="password"
                     type="password"
                     v-model="form.password"
@@ -56,7 +56,7 @@ const submit = () => {
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     id="password_confirmation"
                     type="password"
                     v-model="form.password_confirmation"

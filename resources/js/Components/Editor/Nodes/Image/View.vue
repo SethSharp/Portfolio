@@ -26,10 +26,6 @@ let { fileId, blogId, src, alt, height } = breakdownNodeViewProps(props)
     <NodeViewWrapper>
         <EditableNode v-bind="props">
             <template #tools>
-                <button @click="open = true">
-                    <PencilSquareIcon class="size-4" />
-                </button>
-
                 <EditImage
                     @close="open = false"
                     :open="open"

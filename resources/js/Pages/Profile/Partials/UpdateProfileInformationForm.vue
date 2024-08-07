@@ -1,6 +1,6 @@
 <script setup>
-import { Link, useForm, usePage } from '@inertiajs/vue3'
-import { TextInput, FormElement, PrimaryButton } from '@sethsharp/ui'
+import { useForm, usePage } from '@inertiajs/vue3'
+import { Text, FormElement, PrimaryButton } from '@sethsharp/ui'
 
 defineProps({
     mustVerifyEmail: {
@@ -31,7 +31,7 @@ const form = useForm({
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
             <FormElement>
-                <TextInput
+                <Text
                     id="name"
                     type="text"
                     v-model="form.name"
@@ -43,7 +43,7 @@ const form = useForm({
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     id="email"
                     type="email"
                     v-model="form.email"
