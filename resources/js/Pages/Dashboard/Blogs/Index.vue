@@ -40,7 +40,7 @@ watch(search, (newSearch) => {
         <div class="flex">
             <div class="ml-auto flex gap-2">
                 <Text type="search" v-model="search" placeholder="Search for Blogs" />
-                <SecondaryButton @click="visitSearch" as="button"> search</SecondaryButton>
+                <SecondaryButton @click="visitSearch"> search </SecondaryButton>
             </div>
         </div>
 

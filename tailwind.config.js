@@ -13,7 +13,6 @@ if (process.env.EB_ENVIRONMENT === 'seth') {
 }
 
 module.exports = {
-    darkMode: 'class', // or 'media'
     content: [
         './node_modules/@sethsharp/ui/src/**/*.{js,vue}',
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
