@@ -115,10 +115,11 @@ window.addEventListener('beforeunload', confirmLeave)
         <FormGrid>
             <Text id="title" v-model="form.title" :error="form.errors.title" label="Title" />
 
-            <Select
+            <Combobox
                 v-model="form.collection_id"
                 :options="collectionOptions"
                 label="Collection"
+                allow-search
                 :error="form.errors.collection_id"
             />
         </FormGrid>
@@ -140,6 +141,8 @@ window.addEventListener('beforeunload', confirmLeave)
                 v-model="form.tags"
                 :options="tagOptions"
                 label="Tags"
+                multiple
+                allow-search
                 :error="form.errors.tags"
             />
         </FormGrid>
