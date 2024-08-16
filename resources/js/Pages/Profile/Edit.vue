@@ -41,7 +41,7 @@ defineProps({
                 <SecondaryButton
                     :href="route('logout')"
                     method="post"
-                    :as="Link"
+                    :is="Link"
                     class="bg-gray-200 hover:bg-gray-300 border-gray-400 border-1 p-2 rounded font-medium"
                 >
                     Log Out

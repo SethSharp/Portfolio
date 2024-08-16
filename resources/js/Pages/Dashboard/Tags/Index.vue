@@ -56,11 +56,9 @@ const openModal = (tag = null) => {
             </div>
         </div>
 
-        <Modal size="sm">
+        <Modal :open="open" @close="open = false" size="sm">
             <template #header>Manage Tag</template>
-            <template #content>
-                <CreateEditTagForm :tag="currentTag" @close="open = false" />
-            </template>
+            <CreateEditTagForm :tag="currentTag" @close="open = false" />
         </Modal>
     </IndexTagsLayout>
 </template>

@@ -10,7 +10,6 @@ import {
     Error,
     Combobox,
     FormGrid,
-    Select,
     Form,
     ImageUpload,
 } from '@sethsharp/ui'

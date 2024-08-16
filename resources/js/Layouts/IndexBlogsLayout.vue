@@ -1,6 +1,6 @@
 <script setup>
 import { router, Link } from '@inertiajs/vue3'
-import { PrimaryButton, Tabs } from '@sethsharp/ui'
+import { PrimaryButton, Tabs, Pagination } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 const props = defineProps({
@@ -32,6 +32,8 @@ const create = () => router.post(route('dashboard.blogs.create'))
             <Tabs :as="Link" :tabs="tabs" :data="data">
                 <slot />
             </Tabs>
+
+            <Pagination :data="data" />
         </div>
     </AuthenticatedLayout>
 </template>
