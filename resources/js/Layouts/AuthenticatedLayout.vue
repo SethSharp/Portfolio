@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Head, Link } from '@inertiajs/vue3'
-import { Notifications, Dropdown, DropdownLink } from '@sethsharp/ui'
+import { Notifications, Dropdown, DropdownMenuLink } from '@sethsharp/ui'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
@@ -38,8 +38,8 @@ const links = [
     <Head :title="title" />
 
     <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            <nav class="bg-white border-b border-gray-300 dark:bg-gray-800 dark:border-transparent">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -48,7 +48,7 @@ const links = [
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard.blogs.index')">
                                     <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
+                                        class="block h-9 w-auto fill-current text-primary-800 dark:text-primary-500"
                                     />
                                 </Link>
                             </div>
@@ -74,22 +74,22 @@ const links = [
                                 </template>
 
                                 <template #content>
-                                    <DropdownLink :is="Link" :href="route('profile.edit')">
+                                    <DropdownMenuLink :is="Link" :href="route('profile.edit')">
                                         Profile
-                                    </DropdownLink>
+                                    </DropdownMenuLink>
 
-                                    <DropdownLink is="a" :href="route('home')">
+                                    <DropdownMenuLink is="a" :href="route('home')">
                                         Portfolio
-                                    </DropdownLink>
+                                    </DropdownMenuLink>
 
-                                    <DropdownLink
+                                    <DropdownMenuLink
                                         method="post"
                                         :is="Link"
                                         as="button"
                                         :href="route('logout')"
                                     >
                                         Log Out
-                                    </DropdownLink>
+                                    </DropdownMenuLink>
                                 </template>
                             </Dropdown>
                         </div>
@@ -185,7 +185,7 @@ const links = [
 
             <!-- Page Content -->
             <main>
-                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12">
+                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12 dark:bg-gray-950">
                     <slot />
                 </div>
             </main>

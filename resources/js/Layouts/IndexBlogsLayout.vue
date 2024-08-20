@@ -1,6 +1,6 @@
 <script setup>
 import { router, Link } from '@inertiajs/vue3'
-import { PrimaryButton, Tabs, Pagination } from '@sethsharp/ui'
+import { PrimaryButton, Tabs, Pagination, Heading } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 const props = defineProps({
@@ -21,9 +21,9 @@ const create = () => router.post(route('dashboard.blogs.create'))
     <AuthenticatedLayout title="Blogs">
         <div class="p-3 sm:p-6">
             <div class="sm:flex mb-4">
-                <h1 class="text-lg sm:text-xl md:text-2xl font-medium">
+                <div class="rounded py-2 text-3xl text-black dark:text-gray-300">
                     {{ status }} Blogs ({{ count }})
-                </h1>
+                </div>
                 <div class="flex ml-auto">
                     <PrimaryButton @click="create"> Create Blog</PrimaryButton>
                 </div>

@@ -22,9 +22,9 @@ const openModal = (tag = null) => {
 <template>
     <IndexTagsLayout :status="currentStatus" :tabs="tabs" :count="tags.data.length" :data="tags">
         <template #header>
-            <h1 class="text-lg sm:text-xl md:text-2xl font-medium">
+            <div class="rounded py-2 text-3xl text-black dark:text-gray-300">
                 {{ currentStatus }} Tags ({{ tags.data.length }})
-            </h1>
+            </div>
             <div class="flex ml-auto">
                 <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
             </div>
@@ -38,7 +38,7 @@ const openModal = (tag = null) => {
                 v-for="tag in tags.data"
                 :key="tag.id"
                 @click="openModal(tag)"
-                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4"
+                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4 dark:bg-gray-600 dark:hover:bg-gray-800 transition dark:text-white"
             >
                 {{ tag.name }}
             </div>
@@ -56,8 +56,12 @@ const openModal = (tag = null) => {
             </div>
         </div>
 
-        <Modal :open="open" @close="open = false" size="sm">
-            <template #header>Manage Tag</template>
+        <Modal
+            :open="open"
+            @close="open = false"
+            size="sm"
+            :headerData="{ title: 'Manage Tag', description: 'some desc' }"
+        >
             <CreateEditTagForm :tag="currentTag" @close="open = false" />
         </Modal>
     </IndexTagsLayout>

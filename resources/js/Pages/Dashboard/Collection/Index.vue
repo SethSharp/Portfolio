@@ -33,7 +33,7 @@ const manageCollection = (collection) => {
                 @click="manageCollection(collection)"
                 v-for="collection in allCollections"
                 :key="collection.id"
-                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4"
+                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4 dark:bg-gray-600 dark:hover:bg-gray-800 transition"
             >
                 {{ collection.title }}
             </button>
