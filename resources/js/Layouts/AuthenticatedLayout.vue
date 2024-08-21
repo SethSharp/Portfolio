@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Head, Link } from '@inertiajs/vue3'
-import { Notifications, Dropdown, DropdownMenuLink } from '@sethsharp/ui'
+import { Notifications, Dropdown, DropdownMenuLink, SecondaryButton } from '@sethsharp/ui'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
@@ -38,8 +38,8 @@ const links = [
     <Head :title="title" />
 
     <div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            <nav class="bg-white border-b border-gray-300 dark:bg-gray-800 dark:border-transparent">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
+            <nav class="bg-white border-b border-gray-300 dark:bg-gray-900 dark:border-transparent">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -68,9 +68,9 @@ const links = [
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
                             <Dropdown>
                                 <template #trigger>
-                                    <button class="cursor-pointer">
+                                    <SecondaryButton>
                                         {{ $page.props.auth.user.name }}
-                                    </button>
+                                    </SecondaryButton>
                                 </template>
 
                                 <template #content>
@@ -185,7 +185,7 @@ const links = [
 
             <!-- Page Content -->
             <main>
-                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12 dark:bg-gray-950">
+                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12 dark:bg-gray-900">
                     <slot />
                 </div>
             </main>

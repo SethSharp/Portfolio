@@ -27,7 +27,7 @@ const editor = useEditor({
     ],
     editorProps: {
         attributes: {
-            class: 'bg-white p-4 max-w-none w-full min-h-[500px] focus:outline-none border border-gray-200 rounded-md max-h-[85vh] overflow-y-scroll overflow-hidden prose prose-img:m-0 ',
+            class: 'bg-white p-4 max-w-none w-full min-h-[500px] focus:outline-none border border-gray-200 rounded-md max-h-[85vh] overflow-y-scroll overflow-hidden prose prose-img:m-0 dark:bg-slate-950',
         },
     },
     onUpdate: ({ editor }) => {

@@ -22,6 +22,8 @@ module.exports = {
     ],
 
     safelist: [
+        'dark',
+
         'grid-cols-1',
         'grid-cols-2',
         'grid-cols-3',
