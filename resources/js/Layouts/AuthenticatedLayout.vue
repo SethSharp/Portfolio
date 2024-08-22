@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useDark } from '@vueuse/core'
 import { Head, Link } from '@inertiajs/vue3'
-import { Notifications, Dropdown, DropdownMenuLink, SecondaryButton } from '@sethsharp/ui'
+import { Notifications, Dropdown, DropdownMenuLink, SecondaryButton, Toggle } from '@sethsharp/ui'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
@@ -32,14 +33,20 @@ const links = [
         active: route().current('dashboard.collection.*'),
     },
 ]
+
+const isDark = useDark({
+    selector: 'html',
+})
 </script>
 
 <template>
     <Head :title="title" />
 
     <div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
-            <nav class="bg-white border-b border-gray-300 dark:bg-gray-900 dark:border-transparent">
+        <div class="min-h-screen bg-slate-100 dark:bg-slate-800">
+            <nav
+                class="bg-white border-b border-slate-300 dark:bg-slate-900 dark:border-transparent"
+            >
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -81,6 +88,10 @@ const links = [
                                     <DropdownMenuLink is="a" :href="route('home')">
                                         Portfolio
                                     </DropdownMenuLink>
+
+                                    <div class="flex justify-start px-2">
+                                        Dark Mode: <Toggle v-model="isDark" />
+                                    </div>
 
                                     <DropdownMenuLink
                                         method="post"
@@ -185,7 +196,7 @@ const links = [
 
             <!-- Page Content -->
             <main>
-                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12 dark:bg-gray-900">
+                <div class="bg-white rounded-xl m-2 sm:m-6 p-4 sm:p-12 dark:bg-slate-900">
                     <slot />
                 </div>
             </main>

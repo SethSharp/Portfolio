@@ -80,12 +80,12 @@ const shiftBlog = (from, to) => {
                     <div class="flex ml-auto my-auto">
                         <ArrowLongDownIcon
                             v-if="key !== collection.blogs.length - 1"
-                            class="size-5 hover:text-gray-500 transition"
+                            class="size-5 hover:text-slate-500 transition"
                             @click="shiftBlog(key, key + 1)"
                         />
                         <ArrowLongUpIcon
                             v-if="key !== 0"
-                            class="size-5 hover:text-gray-500 transition"
+                            class="size-5 hover:text-slate-500 transition"
                             @click="shiftBlog(key, key - 1)"
                         />
                     </div>
