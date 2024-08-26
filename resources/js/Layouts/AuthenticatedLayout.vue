@@ -2,7 +2,14 @@
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { Head, Link } from '@inertiajs/vue3'
-import { Notifications, Dropdown, DropdownMenuLink, SecondaryButton, Toggle } from '@sethsharp/ui'
+import {
+    Notifications,
+    Dropdown,
+    DropdownMenuLink,
+    BaseDropdownMenuItem,
+    SecondaryButton,
+    Toggle,
+} from '@sethsharp/ui'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
@@ -89,9 +96,12 @@ const isDark = useDark({
                                         Portfolio
                                     </DropdownMenuLink>
 
-                                    <div class="flex justify-start px-2">
-                                        Dark Mode: <Toggle v-model="isDark" />
-                                    </div>
+                                    <BaseDropdownMenuItem>
+                                        <div class="flex gap-2">
+                                            <span class="my-auto">Dark Mode: </span>
+                                            <Toggle v-model="isDark" />
+                                        </div>
+                                    </BaseDropdownMenuItem>
 
                                     <DropdownMenuLink
                                         method="post"

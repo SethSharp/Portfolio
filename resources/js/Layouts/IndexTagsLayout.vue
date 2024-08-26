@@ -1,8 +1,9 @@
 <script setup>
-import { Tabs } from '@sethsharp/ui'
+import { onMounted } from 'vue'
+import { Pagination, Tabs } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
-defineProps({
+const props = defineProps({
     status: String,
     tabs: Object,
     count: Number,
@@ -11,6 +12,11 @@ defineProps({
         default: null,
         required: false,
     },
+})
+
+onMounted(() => {
+    props.data.links.shift()
+    props.data.links.pop()
 })
 </script>
 
@@ -21,8 +27,10 @@ defineProps({
                 <slot name="header" />
             </div>
 
-            <Tabs :tabs="tabs" :data="data">
+            <Tabs :tabs="tabs">
                 <slot />
+
+                <Pagination :data="data" />
             </Tabs>
         </div>
     </AuthenticatedLayout>

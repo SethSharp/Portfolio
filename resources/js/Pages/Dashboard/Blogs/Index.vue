@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
 import { SecondaryButton, PrimaryButton, Text } from '@sethsharp/ui'
 import Blog from '@/Components/Cards/Blog.vue'
@@ -32,6 +32,11 @@ watch(search, (newSearch) => {
     if (!newSearch) {
         visitSearch()
     }
+})
+
+onMounted(() => {
+    props.blogs.links.shift()
+    props.blogs.links.pop()
 })
 </script>
 
