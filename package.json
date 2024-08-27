@@ -27,7 +27,7 @@
         "@alpinejs/intersect": "^3.13.7",
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
-        "@sethsharp/ui": "1.0.0-alpha.2.0.40",
+        "@sethsharp/ui": "1.0.0-alpha.2.0.43",
         "@tiptap/extension-bubble-menu": "^2.2.1",
         "@tiptap/extension-code-block-lowlight": "^2.2.4",
         "@tiptap/extension-document": "^2.2.1",

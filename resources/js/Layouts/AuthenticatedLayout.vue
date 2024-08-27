@@ -107,6 +107,7 @@ const isDark = useDark({
                                         method="post"
                                         :is="Link"
                                         as="button"
+                                        class="justify-start"
                                         :href="route('logout')"
                                     >
                                         Log Out
