@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
-import { Modal, PrimaryButton } from '@sethsharp/ui'
+import { computed, ref } from 'vue'
+import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/ui'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'
 
-defineProps({
+const props = defineProps({
     tags: Object,
     currentStatus: String,
     tabs: Object,
@@ -17,6 +17,20 @@ const openModal = (tag = null) => {
     currentTag.value = tag
     open.value = true
 }
+
+const dataTableConfig = computed(() => ({
+    headers: [
+        {
+            value: 'name',
+            name: 'Name',
+        },
+        {
+            value: 'created_at',
+            name: 'Created At',
+        },
+    ],
+    rows: props.tags.data,
+}))
 </script>
 
 <template>
@@ -30,21 +44,21 @@ const openModal = (tag = null) => {
             </div>
         </template>
 
-        <div
-            v-if="tags.data.length > 0"
-            class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6"
-        >
-            <div
-                v-for="tag in tags.data"
-                :key="tag.id"
-                @click="openModal(tag)"
-                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4 dark:bg-gray-600 dark:hover:bg-gray-800 transition dark:text-white"
-            >
-                {{ tag.name }}
-            </div>
-        </div>
+        <Datatable v-if="tags.data.length" v-bind="dataTableConfig" row-actions>
+            <template #cell-created_at="{ item }">
+                {{ new Date(item).toDateString() }}
+            </template>
 
-        <div v-else class="flex justify-center align-middle">
+            <template #cell-name="{ item }">
+                {{ item }}
+            </template>
+
+            <template #row-actions="{ item }">
+                <SecondaryButton @click="openModal(item)"> Edit </SecondaryButton>
+            </template>
+        </Datatable>
+
+        <div v-else class="flex justify-center align-middle w-full">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">
                     There are currently no tags in the {{ currentStatus }} state.

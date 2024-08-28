@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, onUpdated } from 'vue'
 import { Pagination, Tabs } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
@@ -12,6 +12,11 @@ const props = defineProps({
         default: null,
         required: false,
     },
+})
+
+onUpdated(() => {
+    props.data.links.shift()
+    props.data.links.pop()
 })
 
 onMounted(() => {
