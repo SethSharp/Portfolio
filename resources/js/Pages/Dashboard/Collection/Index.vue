@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
-import { Modal, PrimaryButton } from '@sethsharp/ui'
+import { computed, ref } from 'vue'
+import { Datatable, Modal, PrimaryButton, SecondaryButton } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditCollectionForm from '@/Components/Collection/CreateEditCollectionForm.vue'
 
-defineProps({
+const props = defineProps({
     allCollections: Array,
 })
 
@@ -15,6 +15,24 @@ const manageCollection = (collection) => {
     currentCollection.value = collection
     open.value = true
 }
+
+const dataTableConfig = computed(() => ({
+    headers: [
+        {
+            value: 'title',
+            name: 'Title',
+        },
+        {
+            value: 'description',
+            name: 'Description',
+        },
+        {
+            value: 'created_at',
+            name: 'Created At',
+        },
+    ],
+    rows: props.allCollections,
+}))
 </script>
 
 <template>
@@ -25,19 +43,16 @@ const manageCollection = (collection) => {
             </PrimaryButton>
         </div>
 
-        <div
-            v-if="allCollections.length > 0"
-            class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6"
-        >
-            <button
-                @click="manageCollection(collection)"
-                v-for="collection in allCollections"
-                :key="collection.id"
-                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4 dark:bg-gray-600 dark:hover:bg-gray-800 transition"
-            >
-                {{ collection.title }}
-            </button>
-        </div>
+        <Datatable v-if="allCollections.length" v-bind="dataTableConfig">
+            <template #cell-created_at="{ item }">
+                {{ new Date(item).toDateString() }}
+            </template>
+
+            <template #row-actions="{ item }">
+                <SecondaryButton @click="manageCollection(item)"> Edit </SecondaryButton>
+            </template>
+        </Datatable>
+
         <div v-else class="flex justify-center align-middle">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">There are currently no collections</h3>

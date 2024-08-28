@@ -44,13 +44,13 @@ const dataTableConfig = computed(() => ({
             </div>
         </template>
 
-        <Datatable v-if="tags.data.length" v-bind="dataTableConfig" row-actions>
-            <template #cell-created_at="{ item }">
-                {{ new Date(item).toDateString() }}
-            </template>
-
+        <Datatable v-if="tags.data.length" v-bind="dataTableConfig">
             <template #cell-name="{ item }">
                 {{ item }}
+            </template>
+
+            <template #cell-created_at="{ item }">
+                {{ new Date(item).toDateString() }}
             </template>
 
             <template #row-actions="{ item }">
