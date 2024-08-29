@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/ui'
+import { formatDate } from '@/Helpers/helpers.js'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'
 
@@ -45,12 +46,12 @@ const dataTableConfig = computed(() => ({
         </template>
 
         <Datatable v-if="tags.data.length" v-bind="dataTableConfig">
-            <template #cell-name="{ item }">
+            <template #cell_name="{ item }">
                 {{ item }}
             </template>
 
-            <template #cell-created_at="{ item }">
-                {{ new Date(item).toDateString() }}
+            <template #cell_created_at="{ item }">
+                {{ formatDate(item) }}
             </template>
 
             <template #row-actions="{ item }">

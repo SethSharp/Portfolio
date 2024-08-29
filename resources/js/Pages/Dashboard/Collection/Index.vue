@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { Datatable, Modal, PrimaryButton, SecondaryButton } from '@sethsharp/ui'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import { formatDate, getBlogCoverImage } from '@/Helpers/helpers.js'
 import CreateEditCollectionForm from '@/Components/Collection/CreateEditCollectionForm.vue'
 
 const props = defineProps({
@@ -44,8 +45,8 @@ const dataTableConfig = computed(() => ({
         </div>
 
         <Datatable v-if="allCollections.length" v-bind="dataTableConfig">
-            <template #cell-created_at="{ item }">
-                {{ new Date(item).toDateString() }}
+            <template #cell_created_at="{ item }">
+                {{ formatDate(item) }}
             </template>
 
             <template #row-actions="{ item }">

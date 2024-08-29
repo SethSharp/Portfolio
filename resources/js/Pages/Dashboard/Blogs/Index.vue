@@ -1,8 +1,14 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
-import { SecondaryButton, PrimaryButton, Text, Datatable, Dropdown } from '@sethsharp/ui'
-import Blog from '@/Components/Cards/Blog.vue'
+import {
+    SecondaryButton,
+    PrimaryButton,
+    Text,
+    Datatable,
+    Dropdown,
+    BaseDropdownMenuItem,
+} from '@sethsharp/ui'
 import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
 import {
     ArrowLeftStartOnRectangleIcon,
@@ -10,7 +16,7 @@ import {
     PencilSquareIcon,
     TrashIcon,
 } from '@heroicons/vue/16/solid/index.js'
-import { getBlogCoverImage } from '@/Helpers/helpers.js'
+import { formatDate, getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
     blogs: Object,
@@ -62,7 +68,7 @@ const dataTableConfig = computed(() => ({
             name: 'Deleted At',
         },
     ],
-    rows: props.allCollections,
+    rows: props.blogs.data,
 }))
 
 const deleteBlog = (blog) => {
@@ -104,24 +110,28 @@ onMounted(() => {
             </div>
         </div>
 
-        <div v-if="blogs.data.length > 0" class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
-            <Blog v-for="blog in blogs.data" :blog="blog" />
-        </div>
-
-        <Datatable v-bind="dataTableConfig">
+        <Datatable v-if="blogs.data.length" v-bind="dataTableConfig">
             <template #cell_cover="{ item }">
                 <div class="sm:w-1/2 p-4">
                     <img
-                        :src="getBlogCoverImage(item.cover)"
+                        :src="getBlogCoverImage(item)"
                         alt="Blog cover image"
                         class="rounded-lg h-full object-cover object-left max-h-64 mx-auto aspect-square"
                     />
                 </div>
             </template>
 
+            <template #cell_created_at="{ item }">
+                {{ formatDate(item) }}
+            </template>
+
+            <template #cell_updated_at="{ item }">
+                {{ formatDate(item) }}
+            </template>
+
             <template #cell_deleted_at="{ item }">
                 <div v-if="item">
-                    {{ item }}
+                    {{ formatDate(item) }}
                 </div>
             </template>
 
@@ -131,48 +141,60 @@ onMounted(() => {
                         <SecondaryButton> Actions </SecondaryButton>
                     </template>
 
-                    <template #trigger>
-                        <div
-                            v-if="!item.deleted_at"
-                            class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
-                        >
-                            <Link :href="route('dashboard.blogs.edit', item)" class="size-full">
+                    <template #content>
+                        <BaseDropdownMenuItem v-if="!item.deleted_at">
+                            <Link
+                                :href="route('dashboard.blogs.edit', item)"
+                                class="justify-center flex size-full"
+                            >
                                 <PencilSquareIcon
-                                    class="text-gray-500 hover:text-gray-700 transition p-1"
+                                    class="text-gray-500 dark:text-slate-300 transition size-7"
                                 />
+                                <span class="my-auto text-gray-600 dark:text-slate-300"> Edit</span>
                             </Link>
-                        </div>
+                        </BaseDropdownMenuItem>
 
-                        <div
-                            v-if="!item.deleted_at"
-                            class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
-                        >
-                            <a :href="route('blogs.show', item)" class="size-full">
-                                <EyeIcon class="text-gray-500 hover:text-gray-700 transition p-1" />
+                        <BaseDropdownMenuItem v-if="!item.deleted_at">
+                            <a
+                                :href="route('blogs.show', item)"
+                                class="justify-center flex size-full"
+                            >
+                                <EyeIcon
+                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                />
+                                <span class="my-auto text-gray-600 dark:text-slate-300">
+                                    View
+                                </span>
                             </a>
-                        </div>
+                        </BaseDropdownMenuItem>
 
-                        <div
-                            v-if="!item.deleted_at"
-                            class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
-                        >
-                            <button @click.prevent="deleteBlog(item)" class="size-full">
+                        <BaseDropdownMenuItem v-if="!item.deleted_at">
+                            <button
+                                @click.prevent="deleteBlog(item)"
+                                class="justify-center flex size-full"
+                            >
                                 <TrashIcon
-                                    class="text-gray-500 hover:text-gray-700 transition p-1"
+                                    class="text-gray-500 dark:text-slate-300 transition size-7"
                                 />
+                                <span class="my-auto text-gray-600 dark:text-slate-300">
+                                    Delete
+                                </span>
                             </button>
-                        </div>
+                        </BaseDropdownMenuItem>
 
-                        <div
-                            v-else
-                            class="text-center bg-white hover:bg-gray-100 transition size-10 rounded-lg"
-                        >
-                            <button @click.prevent="restoreBlog(item)" class="size-full">
+                        <BaseDropdownMenuItem v-else>
+                            <button
+                                @click.prevent="restoreBlog(item)"
+                                class="justify-center flex size-full"
+                            >
                                 <ArrowLeftStartOnRectangleIcon
-                                    class="text-gray-500 hover:text-gray-700 transition p-1"
+                                    class="text-gray-500 dark:text-slate-300 transition size-7"
                                 />
+                                <span class="my-auto text-gray-600 dark:text-slate-300">
+                                    Restore
+                                </span>
                             </button>
-                        </div>
+                        </BaseDropdownMenuItem>
                     </template>
                 </Dropdown>
             </template>
