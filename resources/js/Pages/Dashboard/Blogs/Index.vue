@@ -9,13 +9,14 @@ import {
     Dropdown,
     BaseDropdownMenuItem,
 } from '@sethsharp/ui'
-import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
 import {
     ArrowLeftStartOnRectangleIcon,
     EyeIcon,
     PencilSquareIcon,
     TrashIcon,
+    EllipsisVerticalIcon,
 } from '@heroicons/vue/16/solid/index.js'
+import IndexBlogsLayout from '@/Layouts/IndexBlogsLayout.vue'
 import { formatDate, getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
@@ -71,13 +72,12 @@ const dataTableConfig = computed(() => ({
     rows: props.blogs.data,
 }))
 
-const deleteBlog = (blog) => {
+const deleteBlog = (blog) =>
     router.delete(route('dashboard.blogs.delete', blog), {
         onBefore: () => confirm('Are you sure you want to delete this blog?'),
     })
-}
 
-const restoreBlog = (blog) => {
+const restoreBlog = (blog) =>
     router.put(
         route('dashboard.blogs.restore'),
         {
@@ -87,7 +87,6 @@ const restoreBlog = (blog) => {
             onBefore: () => confirm('Are you sure you want to restore this blog?'),
         }
     )
-}
 
 watch(search, (newSearch) => {
     if (!newSearch) {
@@ -103,7 +102,7 @@ onMounted(() => {
 
 <template>
     <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
-        <div class="flex">
+        <div class="flex my-4">
             <div class="ml-auto flex gap-2">
                 <Text type="search" v-model="search" placeholder="Search for Blogs" />
                 <SecondaryButton @click="visitSearch"> search </SecondaryButton>
@@ -114,7 +113,7 @@ onMounted(() => {
             <template #cell_cover="{ item }">
                 <div class="sm:w-1/2 p-4">
                     <img
-                        :src="getBlogCoverImage(item)"
+                        :src="getBlogCoverImage(item.cover)"
                         alt="Blog cover image"
                         class="rounded-lg h-full object-cover object-left max-h-64 mx-auto aspect-square"
                     />
@@ -122,23 +121,25 @@ onMounted(() => {
             </template>
 
             <template #cell_created_at="{ item }">
-                {{ formatDate(item) }}
+                {{ formatDate(item.created_at) }}
             </template>
 
             <template #cell_updated_at="{ item }">
-                {{ formatDate(item) }}
+                {{ formatDate(item.updated_at) }}
             </template>
 
             <template #cell_deleted_at="{ item }">
                 <div v-if="item">
-                    {{ formatDate(item) }}
+                    {{ formatDate(item.deleted_at) }}
                 </div>
             </template>
 
-            <template #row-actions="{ item }">
+            <template #row_actions="{ item }">
                 <Dropdown>
                     <template #trigger>
-                        <SecondaryButton> Actions </SecondaryButton>
+                        <SecondaryButton>
+                            <EllipsisVerticalIcon class="size-5" />
+                        </SecondaryButton>
                     </template>
 
                     <template #content>

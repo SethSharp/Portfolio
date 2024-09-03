@@ -47,14 +47,14 @@ const dataTableConfig = computed(() => ({
 
         <Datatable v-if="tags.data.length" v-bind="dataTableConfig">
             <template #cell_name="{ item }">
-                {{ item }}
+                {{ item.name }}
             </template>
 
             <template #cell_created_at="{ item }">
-                {{ formatDate(item) }}
+                {{ formatDate(item.created_at) }}
             </template>
 
-            <template #row-actions="{ item }">
+            <template #row_actions="{ item }">
                 <SecondaryButton @click="openModal(item)"> Edit </SecondaryButton>
             </template>
         </Datatable>

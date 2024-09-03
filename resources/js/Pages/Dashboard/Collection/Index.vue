@@ -46,10 +46,10 @@ const dataTableConfig = computed(() => ({
 
         <Datatable v-if="allCollections.length" v-bind="dataTableConfig">
             <template #cell_created_at="{ item }">
-                {{ formatDate(item) }}
+                {{ formatDate(item.created_at) }}
             </template>
 
-            <template #row-actions="{ item }">
+            <template #row_actions="{ item }">
                 <SecondaryButton @click="manageCollection(item)"> Edit </SecondaryButton>
             </template>
         </Datatable>

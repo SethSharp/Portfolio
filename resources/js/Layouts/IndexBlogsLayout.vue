@@ -29,11 +29,11 @@ const create = () => router.post(route('dashboard.blogs.create'))
                 </div>
             </div>
 
-            <Tabs :as="Link" :tabs="tabs" :data="data">
+            <Tabs :is="Link" :tabs="tabs" :data="data">
                 <slot />
-            </Tabs>
 
-            <Pagination :data="data" />
+                <Pagination :data="data" />
+            </Tabs>
         </div>
     </AuthenticatedLayout>
 </template>
