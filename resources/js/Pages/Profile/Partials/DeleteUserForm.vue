@@ -1,7 +1,7 @@
 <script setup>
-import { nextTick, ref } from 'vue'
-import { useForm, Link } from '@inertiajs/vue3'
-import { TextInput, FormElement, SecondaryButton, Modal, DangerButton } from '@sethsharp/ui'
+import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
+import { Text, FormElement, SecondaryButton, Modal, DangerButton } from '@sethsharp/ui'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
@@ -53,7 +53,7 @@ const closeModal = () => {
                 </p>
 
                 <FormElement>
-                    <TextInput
+                    <Text
                         id="password"
                         ref="passwordInput"
                         v-model="form.password"

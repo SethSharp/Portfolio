@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue'
-import { Modal, PrimaryButton } from '@sethsharp/ui'
+import { computed, ref } from 'vue'
+import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/ui'
+import { formatDate } from '@/Helpers/helpers.js'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'
 
-defineProps({
+const props = defineProps({
     tags: Object,
     currentStatus: String,
     tabs: Object,
@@ -17,34 +18,48 @@ const openModal = (tag = null) => {
     currentTag.value = tag
     open.value = true
 }
+
+const dataTableConfig = computed(() => ({
+    headers: [
+        {
+            value: 'name',
+            name: 'Name',
+        },
+        {
+            value: 'created_at',
+            name: 'Created At',
+        },
+    ],
+    rows: props.tags.data,
+}))
 </script>
 
 <template>
     <IndexTagsLayout :status="currentStatus" :tabs="tabs" :count="tags.data.length" :data="tags">
         <template #header>
-            <h1 class="text-lg sm:text-xl md:text-2xl font-medium">
+            <div class="rounded py-2 text-3xl text-black dark:text-gray-300">
                 {{ currentStatus }} Tags ({{ tags.data.length }})
-            </h1>
+            </div>
             <div class="flex ml-auto">
                 <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
             </div>
         </template>
 
-        <div
-            v-if="tags.data.length > 0"
-            class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-4 gap-x-4 mt-6"
-        >
-            <div
-                v-for="tag in tags.data"
-                :key="tag.id"
-                @click="openModal(tag)"
-                class="rounded-2xl bg-white hover:bg-gray-50 shadow-md p-4"
-            >
-                {{ tag.name }}
-            </div>
-        </div>
+        <Datatable v-if="tags.data.length" v-bind="dataTableConfig">
+            <template #cell_name="{ item }">
+                {{ item.name }}
+            </template>
 
-        <div v-else class="flex justify-center align-middle">
+            <template #cell_created_at="{ item }">
+                {{ formatDate(item.created_at) }}
+            </template>
+
+            <template #row_actions="{ item }">
+                <SecondaryButton @click="openModal(item)"> Edit </SecondaryButton>
+            </template>
+        </Datatable>
+
+        <div v-else class="flex justify-center align-middle w-full">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">
                     There are currently no tags in the {{ currentStatus }} state.
@@ -56,11 +71,13 @@ const openModal = (tag = null) => {
             </div>
         </div>
 
-        <Modal :open="open" @close="open = false" size="sm">
-            <template #header>Manage Tag</template>
-            <template #content>
-                <CreateEditTagForm :tag="currentTag" @close="open = false" />
-            </template>
+        <Modal
+            :open="open"
+            @close="open = false"
+            size="sm"
+            :headerData="{ title: 'Manage Tag', description: 'some desc' }"
+        >
+            <CreateEditTagForm :tag="currentTag" @close="open = false" />
         </Modal>
     </IndexTagsLayout>
 </template>

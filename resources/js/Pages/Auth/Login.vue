@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, TextInput, FormElement, Checkbox } from '@sethsharp/ui'
+import { PrimaryButton, Text, FormElement, Checkbox } from '@sethsharp/ui'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 defineProps({
@@ -35,7 +35,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <FormElement>
-                <TextInput
+                <Text
                     type="email"
                     v-model="form.email"
                     required
@@ -47,7 +47,7 @@ const submit = () => {
             </FormElement>
 
             <FormElement>
-                <TextInput
+                <Text
                     type="password"
                     v-model="form.password"
                     required
@@ -63,7 +63,6 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <PrimaryButton
-                    class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >

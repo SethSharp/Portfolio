@@ -8,4 +8,14 @@ const getBlogCoverImage = (cover) => {
     return placeholderCover
 }
 
-export { getBlogCoverImage }
+const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    })
+}
+
+export { getBlogCoverImage, formatDate }

@@ -1,7 +1,7 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
-import { Form, TextArea, TextInput, FormElement, DangerButton, PrimaryButton } from '@sethsharp/ui'
+import { Form, TextArea, Text, FormElement, DangerButton, PrimaryButton } from '@sethsharp/ui'
 
 const props = defineProps({
     collection: {
@@ -45,7 +45,7 @@ const shiftBlog = (from, to) => {
 <template>
     <Form>
         <FormElement>
-            <TextInput
+            <Text
                 autofocus
                 v-model="form.title"
                 label="Title"
@@ -80,12 +80,12 @@ const shiftBlog = (from, to) => {
                     <div class="flex ml-auto my-auto">
                         <ArrowLongDownIcon
                             v-if="key !== collection.blogs.length - 1"
-                            class="size-5 hover:text-gray-500 transition"
+                            class="size-5 hover:text-slate-500 transition"
                             @click="shiftBlog(key, key + 1)"
                         />
                         <ArrowLongUpIcon
                             v-if="key !== 0"
-                            class="size-5 hover:text-gray-500 transition"
+                            class="size-5 hover:text-slate-500 transition"
                             @click="shiftBlog(key, key - 1)"
                         />
                     </div>

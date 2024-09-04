@@ -21,6 +21,8 @@ module.exports = {
         './resources/js/**/*.vue',
     ],
 
+    darkMode: 'class',
+
     safelist: [
         'grid-cols-1',
         'grid-cols-2',

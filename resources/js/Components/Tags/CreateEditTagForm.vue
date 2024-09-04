@@ -1,6 +1,6 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
-import { PrimaryButton, DangerButton, FormElement, TextInput, Form } from '@sethsharp/ui'
+import { PrimaryButton, DangerButton, FormElement, Text, Form } from '@sethsharp/ui'
 
 const props = defineProps({
     tag: {
@@ -49,7 +49,7 @@ const restoreTag = () => {
 <template>
     <Form>
         <FormElement>
-            <TextInput
+            <Text
                 id="name"
                 v-model="form.name"
                 autofocus

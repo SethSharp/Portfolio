@@ -1,16 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import {
     PrimaryButton,
-    TextInput,
+    Text,
     Checkbox,
     TextArea,
     FormElement,
-    InputError,
-    MultiSelect,
+    Error,
+    Combobox,
     FormGrid,
-    Select,
     Form,
     ImageUpload,
 } from '@sethsharp/ui'
@@ -46,6 +45,17 @@ const tagOptions = props.tags.map((tag) => {
     }
 })
 
+const blogTags = computed(() =>
+    props.blog?.tags
+        ? props.blog.tags.map((tag) => {
+              return {
+                  id: tag.id,
+                  name: tag.name,
+              }
+          })
+        : []
+)
+
 const content = ref('')
 
 const form = useForm({
@@ -53,7 +63,7 @@ const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
     collection_id: props.blog?.collection_id ? props.blog.collection_id : null,
-    tags: props.blog?.tags ? props.blog.tags : [],
+    tags: blogTags.value,
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
     meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
@@ -100,7 +110,7 @@ window.addEventListener('beforeunload', confirmLeave)
                     />
                 </template>
             </ImageUpload>
-            <InputError :message="form.errors.cover_image" />
+            <Error :message="form.errors.cover_image" />
         </FormElement>
 
         <FormElement>
@@ -113,18 +123,20 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormGrid>
-            <TextInput id="title" v-model="form.title" :error="form.errors.title" label="Title" />
+            <Text id="title" v-model="form.title" :error="form.errors.title" label="Title" />
 
-            <Select
+            <Combobox
                 v-model="form.collection_id"
                 :options="collectionOptions"
                 label="Collection"
+                allow-search
+                width-class="w-full md:w-96"
                 :error="form.errors.collection_id"
             />
         </FormGrid>
 
         <FormGrid>
-            <TextInput
+            <Text
                 id="slug"
                 v-model="form.slug"
                 label="Slug (must be lowercase separated by '-')"
@@ -136,16 +148,19 @@ window.addEventListener('beforeunload', confirmLeave)
                 "
             />
 
-            <MultiSelect
+            <Combobox
                 v-model="form.tags"
                 :options="tagOptions"
                 label="Tags"
+                width-class="w-full md:w-96"
+                multiple
+                allow-search
                 :error="form.errors.tags"
             />
         </FormGrid>
 
         <FormElement>
-            <TextInput
+            <Text
                 id="meta-title"
                 v-model="form.meta_title"
                 label="Meta Title"
@@ -165,7 +180,7 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <TextInput
+            <Text
                 id="meta-tags"
                 v-model="form.meta_tags"
                 label="Meta Tags"
@@ -176,7 +191,7 @@ window.addEventListener('beforeunload', confirmLeave)
 
         <FormElement>
             <Editor v-model="form.content" :blog="blog" />
-            <InputError :message="form.errors.content" />
+            <Error :message="form.errors.content" />
         </FormElement>
 
         <PrimaryButton as="button" @click.prevent="submit">

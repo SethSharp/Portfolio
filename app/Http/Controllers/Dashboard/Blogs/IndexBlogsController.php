@@ -27,8 +27,7 @@ class IndexBlogsController extends Controller
                 AllowedFilter::custom('q', new BlogSearchFilter()),
             ])
             ->when($currentStatus->value === BlogStatus::PUBLISHED->value, fn ($query) => $query->orderByDesc('published_at'))
-            ->paginate(9)
-            ->withQueryString();
+            ->paginate(10);
 
         return Inertia::render('Dashboard/Blogs/Index', [
             'blogs' => $blogs,
