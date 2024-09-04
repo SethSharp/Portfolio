@@ -61,10 +61,6 @@ const dataTableConfig = computed(() => ({
             name: 'Created At',
         },
         {
-            value: 'updated_at',
-            name: 'Updated At',
-        },
-        {
             value: 'deleted_at',
             name: 'Deleted At',
         },
@@ -111,7 +107,7 @@ onMounted(() => {
 
         <Datatable v-if="blogs.data.length" v-bind="dataTableConfig">
             <template #cell_cover="{ item }">
-                <div class="sm:w-1/2 p-4">
+                <div class="">
                     <img
                         :src="getBlogCoverImage(item.cover)"
                         alt="Blog cover image"
@@ -129,9 +125,10 @@ onMounted(() => {
             </template>
 
             <template #cell_deleted_at="{ item }">
-                <div v-if="item">
+                <div v-if="item.deleted_at">
                     {{ formatDate(item.deleted_at) }}
                 </div>
+                <div v-else>-</div>
             </template>
 
             <template #row_actions="{ item }">

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import {
     PrimaryButton,
@@ -45,6 +45,17 @@ const tagOptions = props.tags.map((tag) => {
     }
 })
 
+const blogTags = computed(() =>
+    props.blog?.tags
+        ? props.blog.tags.map((tag) => {
+              return {
+                  id: tag.id,
+                  name: tag.name,
+              }
+          })
+        : []
+)
+
 const content = ref('')
 
 const form = useForm({
@@ -52,7 +63,7 @@ const form = useForm({
     title: props.blog?.title ? props.blog.title : '',
     slug: props.blog?.slug ? props.blog.slug : '',
     collection_id: props.blog?.collection_id ? props.blog.collection_id : null,
-    tags: props.blog?.tags ? props.blog.tags : [],
+    tags: blogTags.value,
     meta_title: props.blog?.meta_title ? props.blog.meta_title : '',
     meta_description: props.blog?.meta_description ? props.blog.meta_description : '',
     meta_tags: props.blog?.meta_tags ? props.blog.meta_tags : '',
@@ -119,6 +130,7 @@ window.addEventListener('beforeunload', confirmLeave)
                 :options="collectionOptions"
                 label="Collection"
                 allow-search
+                width-class="w-full md:w-96"
                 :error="form.errors.collection_id"
             />
         </FormGrid>
@@ -140,6 +152,7 @@ window.addEventListener('beforeunload', confirmLeave)
                 v-model="form.tags"
                 :options="tagOptions"
                 label="Tags"
+                width-class="w-full md:w-96"
                 multiple
                 allow-search
                 :error="form.errors.tags"
