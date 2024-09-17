@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, onUpdated } from 'vue'
-import { Pagination, Tabs } from '@sethsharp/ui'
+import { Pagination, Tabs } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 const props = defineProps({

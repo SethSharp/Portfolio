@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/ui'
+import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/lumuix'
 import { formatDate } from '@/Helpers/helpers.js'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'

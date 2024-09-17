@@ -12,7 +12,7 @@ import {
     FormGrid,
     Form,
     ImageUpload,
-} from '@sethsharp/ui'
+} from '@sethsharp/lumuix'
 import Editor from '@/Components/Editor/Editor.vue'
 import { getBlogCoverImage } from '@/Helpers/helpers.js'
 

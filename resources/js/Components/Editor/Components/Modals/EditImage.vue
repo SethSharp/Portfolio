@@ -2,8 +2,8 @@
 import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
-import { Modal, Text, FormElement, ImageUpload, PrimaryButton } from '@sethsharp/ui'
 import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
+import { Modal, Text, FormElement, ImageUpload, PrimaryButton } from '@sethsharp/lumuix'
 
 const props = defineProps({
     open: Boolean,

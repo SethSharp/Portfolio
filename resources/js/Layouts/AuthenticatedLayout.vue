@@ -9,7 +9,7 @@ import {
     BaseDropdownMenuItem,
     SecondaryButton,
     Toggle,
-} from '@sethsharp/ui'
+} from '@sethsharp/lumuix'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'

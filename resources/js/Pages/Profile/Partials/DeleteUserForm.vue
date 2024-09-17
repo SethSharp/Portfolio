@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { Text, FormElement, SecondaryButton, Modal, DangerButton } from '@sethsharp/ui'
+import { Text, FormElement, SecondaryButton, Modal, DangerButton } from '@sethsharp/lumuix'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)

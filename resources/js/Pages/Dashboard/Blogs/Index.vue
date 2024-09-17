@@ -8,7 +8,7 @@ import {
     Datatable,
     Dropdown,
     BaseDropdownMenuItem,
-} from '@sethsharp/ui'
+} from '@sethsharp/lumuix'
 import {
     ArrowLeftStartOnRectangleIcon,
     EyeIcon,
@@ -132,7 +132,7 @@ onMounted(() => {
             </template>
 
             <template #row_actions="{ item }">
-                <Dropdown>
+                <Dropdown width-class="w-fit">
                     <template #trigger>
                         <SecondaryButton>
                             <EllipsisVerticalIcon class="size-5" />

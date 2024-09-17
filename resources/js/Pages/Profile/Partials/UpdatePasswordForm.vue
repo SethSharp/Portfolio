@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { Text, FormElement, PrimaryButton } from '@sethsharp/ui'
+import { Text, FormElement, PrimaryButton } from '@sethsharp/lumuix'
 
 const passwordInput = ref(null)
 const currentPasswordInput = ref(null)

@@ -1,8 +1,8 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Datatable, Modal, PrimaryButton, SecondaryButton } from '@sethsharp/ui'
+import { Datatable, Modal, PrimaryButton, SecondaryButton } from '@sethsharp/lumuix'
+import { formatDate } from '@/Helpers/helpers.js'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import { formatDate, getBlogCoverImage } from '@/Helpers/helpers.js'
 import CreateEditCollectionForm from '@/Components/Collection/CreateEditCollectionForm.vue'
 
 const props = defineProps({

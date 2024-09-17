@@ -1,6 +1,6 @@
 <script setup>
 import { useForm, usePage } from '@inertiajs/vue3'
-import { Text, FormElement, PrimaryButton } from '@sethsharp/ui'
+import { Text, FormElement, PrimaryButton } from '@sethsharp/lumuix'
 
 defineProps({
     mustVerifyEmail: {

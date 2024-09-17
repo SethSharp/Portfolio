@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3'
-import { SecondaryButton } from '@sethsharp/ui'
+import { SecondaryButton } from '@sethsharp/lumuix'
 import ProfileLayout from '@/Layouts/ProfileLayout.vue'
 import DeleteUserForm from './Partials/DeleteUserForm.vue'
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue'

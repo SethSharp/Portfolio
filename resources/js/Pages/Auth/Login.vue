@@ -1,6 +1,6 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, Text, FormElement, Checkbox } from '@sethsharp/ui'
+import { Head, useForm } from '@inertiajs/vue3'
+import { PrimaryButton, Text, FormElement, Checkbox } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 defineProps({

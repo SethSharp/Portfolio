@@ -1,7 +1,7 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
-import { Form, TextArea, Text, FormElement, DangerButton, PrimaryButton } from '@sethsharp/ui'
+import { Form, TextArea, Text, FormElement, DangerButton, PrimaryButton } from '@sethsharp/lumuix'
 
 const props = defineProps({
     collection: {

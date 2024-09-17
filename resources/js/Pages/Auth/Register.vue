@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, FormElement, Text } from '@sethsharp/ui'
+import { PrimaryButton, FormElement, Text } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const form = useForm({
