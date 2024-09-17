@@ -143,7 +143,7 @@ onMounted(() => {
                         <BaseDropdownMenuItem v-if="!item.deleted_at">
                             <Link
                                 :href="route('dashboard.blogs.edit', item)"
-                                class="justify-center flex size-full"
+                                class="justify-center flex size-full gap-2"
                             >
                                 <PencilSquareIcon
                                     class="text-gray-500 dark:text-slate-300 transition size-7"
@@ -155,7 +155,7 @@ onMounted(() => {
                         <BaseDropdownMenuItem v-if="!item.deleted_at">
                             <a
                                 :href="route('blogs.show', item)"
-                                class="justify-center flex size-full"
+                                class="justify-center flex size-full gap-2"
                             >
                                 <EyeIcon
                                     class="text-gray-500 dark:text-slate-300 transition size-7"
@@ -169,7 +169,7 @@ onMounted(() => {
                         <BaseDropdownMenuItem v-if="!item.deleted_at">
                             <button
                                 @click.prevent="deleteBlog(item)"
-                                class="justify-center flex size-full"
+                                class="justify-center flex size-full gap-2"
                             >
                                 <TrashIcon
                                     class="text-gray-500 dark:text-slate-300 transition size-7"
