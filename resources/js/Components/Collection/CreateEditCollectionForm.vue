@@ -1,7 +1,17 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
-import { Form, TextArea, Text, FormElement, DangerButton, PrimaryButton } from '@sethsharp/lumuix'
+import {
+    Form,
+    TextArea,
+    Text,
+    FormElement,
+    DangerButton,
+    PrimaryButton,
+    Error,
+    Label,
+    Description,
+} from '@sethsharp/lumuix'
 
 const props = defineProps({
     collection: {
@@ -45,22 +55,16 @@ const shiftBlog = (from, to) => {
 <template>
     <Form>
         <FormElement>
-            <Text
-                autofocus
-                v-model="form.title"
-                label="Title"
-                :error="form.errors.title"
-                description="Something that will catch the users attention"
-            />
+            <Label id="title"> Title </Label>
+            <Text id="title" autofocus v-model="form.title" />
+            <Description> Something that will catch the users attention </Description>
+            <Error :message="form.errors.title" />
         </FormElement>
 
         <FormElement>
-            <TextArea
-                v-model="form.description"
-                label="Description"
-                :error="form.errors.description"
-                description="Rough overview of the collection to help users understand what is included."
-            />
+            <Label id="description"> Description </Label>
+            <TextArea v-model="form.description" id="Description" />
+            <Error :message="form.errors.description" />
         </FormElement>
 
         <FormElement>
