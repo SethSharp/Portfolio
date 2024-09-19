@@ -1,6 +1,6 @@
 <script setup>
 import { useForm, usePage } from '@inertiajs/vue3'
-import { Text, FormElement, PrimaryButton } from '@sethsharp/lumuix'
+import { Text, FormElement, PrimaryButton, Label, Error } from '@sethsharp/lumuix'
 
 defineProps({
     mustVerifyEmail: {
@@ -31,18 +31,13 @@ const form = useForm({
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
             <FormElement>
-                <Text
-                    id="name"
-                    type="text"
-                    v-model="form.name"
-                    required
-                    autocomplete="name"
-                    label="Name"
-                    :error="form.errors.name"
-                />
+                <Label id="name"> Name </Label>
+                <Text id="name" type="text" v-model="form.name" required autocomplete="name" />
+                <Error :message="form.errors.name" />
             </FormElement>
 
             <FormElement>
+                <Label id="email"> Email</Label>
                 <Text
                     id="email"
                     type="email"
@@ -52,6 +47,7 @@ const form = useForm({
                     label="Email"
                     :error="form.errors.email"
                 />
+                <Error :message="form.errors.name" />
             </FormElement>
 
             <div class="flex items-center gap-4">

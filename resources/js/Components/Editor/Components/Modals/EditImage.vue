@@ -3,7 +3,15 @@ import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
 import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
-import { Modal, Text, FormElement, ImageUpload, PrimaryButton } from '@sethsharp/lumuix'
+import {
+    Modal,
+    Text,
+    FormElement,
+    ImageUpload,
+    PrimaryButton,
+    Label,
+    Error,
+} from '@sethsharp/lumuix'
 
 const props = defineProps({
     open: Boolean,
@@ -70,20 +78,19 @@ watch(file, (_) => {
         <template #content>
             <div class="mb-4">
                 <FormElement>
-                    <ImageUpload
-                        v-model="file"
-                        :current-image="path"
-                        label="Image Upload"
-                        :error="errors['file']"
-                    />
+                    <Label id="image_upload"> Image Upload</Label>
+                    <ImageUpload v-model="file" :current-image="path" />
+                    <Error :message="errors['file']" />
                 </FormElement>
 
                 <FormElement>
-                    <Text id="alt" type="text" v-model="computedAlt" label="Alt" />
+                    <Label id="alt">Alt</Label>
+                    <Text id="alt" type="text" v-model="computedAlt" />
                 </FormElement>
 
                 <FormElement>
-                    <Text id="height" v-model="computedHeight" type="number" label="Height" />
+                    <Label id="heigh"> Height </Label>
+                    <Text id="height" v-model="computedHeight" type="number" />
                 </FormElement>
             </div>
 

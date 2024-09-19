@@ -3,7 +3,7 @@ import { router, Link } from '@inertiajs/vue3'
 import { PrimaryButton, Tabs, Pagination } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
-const props = defineProps({
+defineProps({
     status: String,
     tabs: Object,
     count: Number,

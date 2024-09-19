@@ -1,7 +1,15 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { Text, FormElement, SecondaryButton, Modal, DangerButton } from '@sethsharp/lumuix'
+import {
+    Text,
+    FormElement,
+    SecondaryButton,
+    Modal,
+    DangerButton,
+    Label,
+    Error,
+} from '@sethsharp/lumuix'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
@@ -53,6 +61,7 @@ const closeModal = () => {
                 </p>
 
                 <FormElement>
+                    <Label id="password"> Password </Label>
                     <Text
                         id="password"
                         ref="passwordInput"
@@ -60,9 +69,8 @@ const closeModal = () => {
                         type="password"
                         placeholder="Password"
                         @keyup.enter="deleteUser"
-                        label="Password"
-                        :error="form.errors.password"
                     />
+                    <Error :message="form.errors.password" />
                 </FormElement>
 
                 <div class="mt-6 flex gap-2 justify-end">

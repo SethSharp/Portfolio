@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { Text, FormElement, PrimaryButton } from '@sethsharp/lumuix'
+import { Text, FormElement, PrimaryButton, Label, Error } from '@sethsharp/lumuix'
 
 const passwordInput = ref(null)
 const currentPasswordInput = ref(null)
@@ -42,6 +42,7 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <FormElement>
+                <Label id="current_password"> Current Password </Label>
                 <Text
                     id="current_password"
                     ref="currentPasswordInput"
@@ -49,12 +50,12 @@ const updatePassword = () => {
                     type="password"
                     class="mt-1 block w-full"
                     autocomplete="current-password"
-                    label="Current Password"
-                    :error="form.errors.current_password"
                 />
+                <Error :message="form.errors.current_password" />
             </FormElement>
 
             <FormElement>
+                <Label id="password"> Password </Label>
                 <Text
                     id="password"
                     ref="passwordInput"
@@ -62,21 +63,20 @@ const updatePassword = () => {
                     type="password"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
-                    label="New Password"
-                    :error="form.errors.password"
                 />
+                <Error :message="form.errors.password" />
             </FormElement>
 
             <FormElement>
+                <Label id="password_confirmation"> Password Confirmation </Label>
                 <Text
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
-                    label="Confirm Password"
-                    :error="form.errors.password_confirmation"
                 />
+                <Error :message="form.errors.password_confirmation" />
             </FormElement>
 
             <div class="flex items-center gap-4">

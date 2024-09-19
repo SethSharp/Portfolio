@@ -1,6 +1,6 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, Text, FormElement } from '@sethsharp/lumuix'
+import { PrimaryButton, Text, FormElement, Label, Description } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const props = defineProps({
@@ -34,6 +34,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <FormElement>
+                <Label> Email </Label>
                 <Text
                     id="email"
                     type="email"
@@ -42,28 +43,24 @@ const submit = () => {
                     label="Email"
                     :error="form.errors.email"
                 />
+                <Error :message="form.errors.email" />
             </FormElement>
 
             <FormElement>
-                <Text
-                    id="password"
-                    type="password"
-                    v-model="form.password"
-                    required
-                    :error="form.errors.password"
-                    label="Password"
-                />
+                <Label> Password </Label>
+                <Text id="password" type="password" v-model="form.password" required />
+                <Error :message="form.errors.password" />
             </FormElement>
 
             <FormElement>
+                <Label> Confirm Password </Label>
                 <Text
                     id="password_confirmation"
                     type="password"
                     v-model="form.password_confirmation"
                     required
-                    label="Confirm Password"
-                    :error="form.errors.password_confirmation"
                 />
+                <Error :message="form.errors.password_confirmation" />
             </FormElement>
 
             <div class="flex items-center justify-end mt-4">

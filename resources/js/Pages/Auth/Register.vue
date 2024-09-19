@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, FormElement, Text } from '@sethsharp/lumuix'
+import { PrimaryButton, FormElement, Text, Label, Error } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const form = useForm({
@@ -23,25 +23,15 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <FormElement>
-                <Text
-                    id="name"
-                    type="text"
-                    v-model="form.name"
-                    required
-                    label="Name"
-                    :error="form.errors.name"
-                />
+                <Label> Name </Label>
+                <Text id="name" type="text" v-model="form.name" required />
+                <Error :message="form.errors.name" />
             </FormElement>
 
             <FormElement>
-                <Text
-                    id="email"
-                    type="email"
-                    v-model="form.email"
-                    required
-                    label="Email"
-                    :error="form.errors.email"
-                />
+                <Label> Email </Label>
+                <Text id="email" type="email" v-model="form.email" required />
+                <Error :message="form.errors.email" />
             </FormElement>
 
             <FormElement>
