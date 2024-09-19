@@ -1,6 +1,15 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
-import { PrimaryButton, DangerButton, FormElement, Text, Form } from '@sethsharp/lumuix'
+import {
+    PrimaryButton,
+    DangerButton,
+    FormElement,
+    Text,
+    Form,
+    Label,
+    Error,
+    Description,
+} from '@sethsharp/lumuix'
 
 const props = defineProps({
     tag: {
@@ -49,14 +58,9 @@ const restoreTag = () => {
 <template>
     <Form>
         <FormElement>
-            <Text
-                id="name"
-                v-model="form.name"
-                autofocus
-                label="Name"
-                :error="form.errors.name"
-                :disabled="tag?.deleted_at"
-            />
+            <Label id="name"> Name </Label>
+            <Text v-model="form.name" autofocus :disabled="tag?.deleted_at" />
+            <Error :message="form.errors.name" />
         </FormElement>
 
         <div class="gap-x-2 flex">

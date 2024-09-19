@@ -12,6 +12,8 @@ import {
     FormGrid,
     Form,
     ImageUpload,
+    Label,
+    Description,
 } from '@sethsharp/lumuix'
 import Editor from '@/Components/Editor/Editor.vue'
 import { getBlogCoverImage } from '@/Helpers/helpers.js'
@@ -114,79 +116,86 @@ window.addEventListener('beforeunload', confirmLeave)
         </FormElement>
 
         <FormElement>
-            <Checkbox
-                v-model="form.is_draft"
-                label="Is Draft"
-                :error="form.errors.is_draft"
-                :show-label="false"
-            />
+            <Checkbox id="is_draft" v-model="form.is_draft" label="Is Draft" />
+            <Error :message="form.errors.is_draft" />
         </FormElement>
 
         <FormGrid>
-            <Text id="title" v-model="form.title" :error="form.errors.title" label="Title" />
+            <FormElement>
+                <Label id="title"> Title </Label>
+                <Text id="title" v-model="form.title" :error="form.errors.title" label="Title" />
+            </FormElement>
 
-            <Combobox
-                v-model="form.collection_id"
-                :options="collectionOptions"
-                label="Collection"
-                allow-search
-                width-class="w-full md:w-96"
-                :error="form.errors.collection_id"
-            />
+            <FormElement class="flex flex-col space-y-2">
+                <Label id="collection"> Collection </Label>
+                <Combobox
+                    v-model="form.collection_id"
+                    :options="collectionOptions"
+                    allow-search
+                    width-class="w-full md:w-96"
+                />
+                <Error :message="form.errors.collection_id" />
+            </FormElement>
         </FormGrid>
 
         <FormGrid>
-            <Text
-                id="slug"
-                v-model="form.slug"
-                label="Slug (must be lowercase separated by '-')"
-                :error="form.errors.slug"
-                placeholder="a-new-blog-of-mine"
-                :description="
-                    'Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/' +
-                    (form.slug ? form.slug : form.title ? form.title : 'some-value')
-                "
-            />
+            <FormElement>
+                <Label id="slug"> (must be lowercase separated by '-') </Label>
+                <Text id="slug" v-model="form.slug" placeholder="a-new-blog-of-mine" />
+                <Description>
+                    {{
+                        'Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/' +
+                        (form.slug ? form.slug : form.title ? form.title : 'some-value')
+                    }}
+                </Description>
+                <Error :message="form.errors.slug" />
+            </FormElement>
 
-            <Combobox
-                v-model="form.tags"
-                :options="tagOptions"
-                label="Tags"
-                width-class="w-full md:w-96"
-                multiple
-                allow-search
-                :error="form.errors.tags"
-            />
+            <FormElement class="flex flex-col space-y-2">
+                <Label> Tags </Label>
+                <Combobox
+                    v-model="form.tags"
+                    :options="tagOptions"
+                    width-class="w-full md:w-96"
+                    multiple
+                    allow-search
+                />
+                <Error :message="form.errors.tags" />
+            </FormElement>
         </FormGrid>
 
         <FormElement>
+            <Label> Meta Title </Label>
             <Text
                 id="meta-title"
                 v-model="form.meta_title"
                 label="Meta Title"
-                description="Serves as a SEO title for Google to read (can be the same as your regular title)"
                 :error="form.errors.meta_title"
             />
+            <Description>
+                Serves as a SEO title for Google to read (can be the same as your regular title)
+            </Description>
+            <Error :message="form.errors.meta_title" />
         </FormElement>
 
         <FormElement>
-            <TextArea
-                id="meta-description"
-                v-model="form.meta_description"
-                label="Meta Description"
-                description="Serves as a small blurb on the blog, used both in Google previews and within the portfolio site itself."
-                :error="form.errors.meta_description"
-            />
+            <Label> Meta Description </Label>
+            <TextArea id="meta-description" v-model="form.meta_description" />
+            <Description>
+                Serves as a small blurb on the blog, used both in Google previews and within the
+                portfolio site itself.</Description
+            >
+            <Error :message="form.errors.meta_description" />
         </FormElement>
 
         <FormElement>
-            <Text
-                id="meta-tags"
-                v-model="form.meta_tags"
-                label="Meta Tags"
-                description="Helps Google understand the content of the page - similar to how hashtags work on Instagram"
-                :error="form.errors.meta_tags"
-            />
+            <Label> Meta Tags</Label>
+            <Text id="meta-tags" v-model="form.meta_tags" />
+            <Description>
+                description="Helps Google understand the content of the page - similar to how
+                hashtags work on Instagram"
+            </Description>
+            <Error :message="form.errors.meta_tags" />
         </FormElement>
 
         <FormElement>

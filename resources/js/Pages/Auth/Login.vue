@@ -1,6 +1,6 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, Text, FormElement, Checkbox } from '@sethsharp/lumuix'
+import { PrimaryButton, Text, FormElement, Checkbox, Label, Error } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 defineProps({
@@ -35,26 +35,21 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <FormElement>
+                <Label> Email </Label>
                 <Text
                     type="email"
                     v-model="form.email"
                     required
                     autofocus
                     autocomplete="username"
-                    label="Email"
-                    :error="form.errors.email"
                 />
+                <Error :message="form.errors.email" />
             </FormElement>
 
             <FormElement>
-                <Text
-                    type="password"
-                    v-model="form.password"
-                    required
-                    label="Password"
-                    autocomplete="password"
-                    :error="form.errors.password"
-                />
+                <Label> Password</Label>
+                <Text type="password" v-model="form.password" required autocomplete="password" />
+                <Error :message="form.errors.password" />
             </FormElement>
 
             <FormElement>
