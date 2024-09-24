@@ -2,14 +2,8 @@
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { Head, Link } from '@inertiajs/vue3'
-import {
-    Notifications,
-    Dropdown,
-    DropdownMenuLink,
-    BaseDropdownMenuItem,
-    SecondaryButton,
-    Toggle,
-} from '@sethsharp/lumuix'
+import { Notifications, SecondaryButton, Toggle } from '@sethsharp/lumuix'
+import { Dropdown, DropdownMenuLink, BaseDropdownMenuItem } from '@sethsharp/lumuix/dropdown-menu'
 import NavLink from '@/Components/Links/NavLink.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
