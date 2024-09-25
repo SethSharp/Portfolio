@@ -1,6 +1,6 @@
 <script setup>
 import { router, Link } from '@inertiajs/vue3'
-import { PrimaryButton, Tabs, Pagination } from '@sethsharp/lumuix'
+import { Button, Tabs, Pagination } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 defineProps({
@@ -25,7 +25,7 @@ const create = () => router.post(route('dashboard.blogs.create'))
                     {{ status }} Blogs ({{ count }})
                 </div>
                 <div class="flex ml-auto">
-                    <PrimaryButton @click="create"> Create Blog</PrimaryButton>
+                    <Button variant="primary" @click="create"> Create Blog</Button>
                 </div>
             </div>
 

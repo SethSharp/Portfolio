@@ -1,14 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
-import {
-    SecondaryButton,
-    PrimaryButton,
-    Text,
-    Datatable,
-    Dropdown,
-    BaseDropdownMenuItem,
-} from '@sethsharp/lumuix'
+import { Button, Text, Datatable, Dropdown, BaseDropdownMenuItem } from '@sethsharp/lumuix'
 import {
     ArrowLeftStartOnRectangleIcon,
     EyeIcon,
@@ -101,7 +94,7 @@ onMounted(() => {
         <div class="flex my-4">
             <div class="ml-auto flex gap-2">
                 <Text type="search" v-model="search" placeholder="Search for Blogs" />
-                <SecondaryButton @click="visitSearch"> search </SecondaryButton>
+                <Button variant="primary" @click="visitSearch"> search</Button>
             </div>
         </div>
 
@@ -134,9 +127,9 @@ onMounted(() => {
             <template #row_actions="{ item }">
                 <Dropdown width-class="w-fit">
                     <template #trigger>
-                        <SecondaryButton>
+                        <Button variant="secondary">
                             <EllipsisVerticalIcon class="size-5" />
-                        </SecondaryButton>
+                        </Button>
                     </template>
 
                     <template #content>
@@ -205,7 +198,7 @@ onMounted(() => {
                 </h3>
 
                 <div v-if="status === 'published'" class="mt-4">
-                    <PrimaryButton :as="Link" @click="create"> Create a Blog</PrimaryButton>
+                    <Button variant="primary" :as="Link" @click="create"> Create a Blog</Button>
                 </div>
             </div>
         </div>

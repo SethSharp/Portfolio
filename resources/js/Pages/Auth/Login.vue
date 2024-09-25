@@ -1,6 +1,6 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, Text, FormElement, Checkbox, Label, Error } from '@sethsharp/lumuix'
+import { Button, Text, FormElement, Checkbox, Label, Error } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 defineProps({
@@ -57,12 +57,13 @@ const submit = () => {
             </FormElement>
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton
+                <Button
+                    variant="primary"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </GuestLayout>

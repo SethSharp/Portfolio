@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 import colors from 'tailwindcss/colors.js'
+import { preset } from '@sethsharp/lumuix'
 
 require('dotenv').config()
 
@@ -13,15 +14,15 @@ if (process.env.EB_ENVIRONMENT === 'seth') {
 }
 
 module.exports = {
+    presets: [preset],
+
     content: [
-        './node_modules/@sethsharp/lumuix/src/**/*.{js,vue}',
+        './node_modules/@sethsharp/lumuix/dist/*.js',
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
     ],
-
-    darkMode: 'class',
 
     safelist: [
         'grid-cols-1',
@@ -48,10 +49,6 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 mono: ['Roboto Mono', ...defaultTheme.fontFamily.mono],
-            },
-            colors: {
-                primary: primary,
-                secondary: secondary,
             },
             keyframes: {
                 typing: {
