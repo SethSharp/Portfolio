@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/lumuix'
+import { Modal, Button, Datatable } from '@sethsharp/lumuix'
 import { formatDate } from '@/Helpers/helpers.js'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'
@@ -41,7 +41,7 @@ const dataTableConfig = computed(() => ({
                 {{ currentStatus }} Tags ({{ tags.data.length }})
             </div>
             <div class="flex ml-auto">
-                <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
+                <Button variant="primary" @click.prevent="openModal(null)"> Create Tag</Button>
             </div>
         </template>
 
@@ -55,7 +55,7 @@ const dataTableConfig = computed(() => ({
             </template>
 
             <template #row_actions="{ item }">
-                <SecondaryButton @click="openModal(item)"> Edit </SecondaryButton>
+                <Button variant="secondary" @click="openModal(item)"> Edit </Button>
             </template>
         </Datatable>
 
@@ -66,7 +66,7 @@ const dataTableConfig = computed(() => ({
                 </h3>
 
                 <div v-if="currentStatus === 'Active'" class="mt-4">
-                    <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
+                    <Button variant="primary" @click.prevent="openModal(null)"> Create Tag</Button>
                 </div>
             </div>
         </div>

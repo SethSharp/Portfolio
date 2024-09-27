@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, FormElement, Text, Label, Error } from '@sethsharp/lumuix'
+import { Button, FormElement, Input, Label, Error } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const form = useForm({
@@ -24,36 +24,31 @@ const submit = () => {
         <form @submit.prevent="submit">
             <FormElement>
                 <Label> Name </Label>
-                <Text id="name" type="text" v-model="form.name" required />
-                <Error :message="form.errors.name" />
+                <Input id="name" type="text" v-model="form.name" required />
+                <Error :error="form.errors.name" />
             </FormElement>
 
             <FormElement>
                 <Label> Email </Label>
-                <Text id="email" type="email" v-model="form.email" required />
-                <Error :message="form.errors.email" />
+                <Input id="email" type="email" v-model="form.email" required />
+                <Error :error="form.errors.email" />
             </FormElement>
 
             <FormElement>
-                <Text
-                    id="password"
-                    type="password"
-                    v-model="form.password"
-                    required
-                    label="New Password"
-                    :error="form.errors.password"
-                />
+                <Label> Password</Label>
+                <Input id="password" type="password" v-model="form.password" required />
+                <Error :error="form.errors.password" />
             </FormElement>
 
             <FormElement>
-                <Text
+                <Label> Confirm Password</Label>
+                <Input
                     id="password_confirmation"
                     type="password"
                     v-model="form.password_confirmation"
                     required
-                    label="Confirm Password"
-                    :error="form.errors.password_confirmation"
                 />
+                <Error :error="form.errors.password_confirmation" />
             </FormElement>
 
             <div class="flex items-center justify-end mt-4">
@@ -64,14 +59,15 @@ const submit = () => {
                     Already registered?
                 </Link>
 
-                <PrimaryButton
+                <Button
+                    variant="primary"
                     class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                     type="submit"
                 >
                     Register
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </GuestLayout>

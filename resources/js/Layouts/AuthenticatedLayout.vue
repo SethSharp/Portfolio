@@ -7,7 +7,7 @@ import {
     Dropdown,
     DropdownMenuLink,
     BaseDropdownMenuItem,
-    SecondaryButton,
+    Button,
     Toggle,
 } from '@sethsharp/lumuix'
 import NavLink from '@/Components/Links/NavLink.vue'
@@ -82,9 +82,9 @@ const isDark = useDark({
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
                             <Dropdown>
                                 <template #trigger>
-                                    <SecondaryButton>
+                                    <Button variant="secondary">
                                         {{ $page.props.auth.user.name }}
-                                    </SecondaryButton>
+                                    </Button>
                                 </template>
 
                                 <template #content>
