@@ -39,6 +39,7 @@ defineProps({
                 </div>
 
                 <Button
+                    as-child
                     variant="secondary"
                     class="bg-gray-200 hover:bg-gray-300 border-gray-400 border-1 p-2 rounded font-medium"
                 >
