@@ -3,11 +3,10 @@ import { useForm, router } from '@inertiajs/vue3'
 import { ArrowLongUpIcon, ArrowLongDownIcon } from '@heroicons/vue/16/solid/index.js'
 import {
     Form,
+    Input,
     TextArea,
-    Text,
     FormElement,
-    DangerButton,
-    PrimaryButton,
+    Button,
     Error,
     Label,
     Description,
@@ -56,15 +55,15 @@ const shiftBlog = (from, to) => {
     <Form>
         <FormElement>
             <Label id="title"> Title </Label>
-            <Text id="title" autofocus v-model="form.title" />
+            <Input id="title" autofocus v-model="form.title" />
             <Description> Something that will catch the users attention </Description>
-            <Error :message="form.errors.title" />
+            <Error :error="form.errors.title" />
         </FormElement>
 
         <FormElement>
             <Label id="description"> Description </Label>
             <TextArea v-model="form.description" id="Description" />
-            <Error :message="form.errors.description" />
+            <Error :error="form.errors.description" />
         </FormElement>
 
         <FormElement>
@@ -98,12 +97,12 @@ const shiftBlog = (from, to) => {
         </FormElement>
 
         <div class="flex gap-4">
-            <DangerButton v-if="collection" @click.prevent="destroyCollection">
+            <Button variant="destructive" v-if="collection" @click.prevent="destroyCollection">
                 Delete
-            </DangerButton>
-            <PrimaryButton @click.prevent="submit">
+            </Button>
+            <Button variant="primary" @click.prevent="submit">
                 {{ collection ? 'Update' : 'Create' }}
-            </PrimaryButton>
+            </Button>
         </div>
     </Form>
 </template>

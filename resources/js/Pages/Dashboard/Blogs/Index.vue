@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
-import { Button, Text, Datatable, Dropdown, BaseDropdownMenuItem } from '@sethsharp/lumuix'
+import { Button, Input, Datatable, Dropdown, BaseDropdownMenuItem } from '@sethsharp/lumuix'
 import {
     ArrowLeftStartOnRectangleIcon,
     EyeIcon,
@@ -93,7 +93,7 @@ onMounted(() => {
     <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
         <div class="flex my-4">
             <div class="ml-auto flex gap-2">
-                <Text type="search" v-model="search" placeholder="Search for Blogs" />
+                <Input type="search" v-model="search" placeholder="Search for Blogs" />
                 <Button variant="primary" @click="visitSearch"> search</Button>
             </div>
         </div>

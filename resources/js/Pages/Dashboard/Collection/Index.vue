@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Datatable, Modal, PrimaryButton, SecondaryButton } from '@sethsharp/lumuix'
+import { Datatable, Modal, Button } from '@sethsharp/lumuix'
 import { formatDate } from '@/Helpers/helpers.js'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditCollectionForm from '@/Components/Collection/CreateEditCollectionForm.vue'
@@ -39,9 +39,9 @@ const dataTableConfig = computed(() => ({
 <template>
     <AuthenticatedLayout title="Groups">
         <div class="flex justify-end">
-            <PrimaryButton @click.prevent="manageCollection(null)">
+            <Button variant="primary" @click.prevent="manageCollection(null)">
                 Create Collection
-            </PrimaryButton>
+            </Button>
         </div>
 
         <Datatable v-if="allCollections.length" v-bind="dataTableConfig">
@@ -50,7 +50,7 @@ const dataTableConfig = computed(() => ({
             </template>
 
             <template #row_actions="{ item }">
-                <SecondaryButton @click="manageCollection(item)"> Edit </SecondaryButton>
+                <Button variant="secondary" @click="manageCollection(item)"> Edit </Button>
             </template>
         </Datatable>
 
@@ -59,9 +59,9 @@ const dataTableConfig = computed(() => ({
                 <h3 class="text-gray-400 text-md sm:text-xl">There are currently no collections</h3>
 
                 <div class="mt-4">
-                    <PrimaryButton @click="manageCollection(null)">
+                    <Buttonv variant="primary" @click="manageCollection(null)">
                         Create a Collection
-                    </PrimaryButton>
+                    </Buttonv>
                 </div>
             </div>
         </div>
