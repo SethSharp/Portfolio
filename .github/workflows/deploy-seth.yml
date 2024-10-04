@@ -1,0 +1,84 @@
+name: Deploy to Seth environment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+
+    env:
+      DB_DATABASE: testing
+      DB_USER: root
+      DB_PASSWORD: root
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: zip, sqlite3
+          coverage: none
+
+      - name: Install composer dependencies
+        run: composer install --no-cache --no-ansi --no-interaction --no-progress
+
+      - name: Install node dependencies
+        run: npm ci
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Copy standard .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Build frontend
+        run: |
+          npm run build
+
+      - name: Execute tests
+        env:
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: ./vendor/bin/phpunit
+
+      - name: Package the application into a tar.gz file
+        run: |
+          tar -czf app.tar.gz ./*
+
+      - name: Transfer the tar.gz file to Lightsail instance
+        run: |
+          scp -i ${{ secrets.LIGHTSAIL_SSH_KEY }} app.tar.gz ubuntu@${{ secrets.LIGHTSAIL_IP }}:/home/ubuntu/app.tar.gz
+
+      - name: SSH into Lightsail and finalise deployment
+        run: |
+          ssh -i ${{ secrets.LIGHTSAIL_SSH_KEY }} ubuntu@${{ secrets.LIGHTSAIL_IP }} << 'EOF'
+          cd /var/www/portfolio
+
+          tar -czf /home/ubuntu/backup.tar.gz ./*
+
+          sudo rm -rf ./*
+
+          sudo tar -xzf /home/ubuntu/app.tar.gz -C /var/www/portfolio
+
+          cd /var/www/portfolio
+          composer install --no-dev --optimize-autoloader
+          php artisan migrate --force
+          php artisan cache:clear
+          php artisan config:cache
+          sudo service nginx restart
+          EOF
