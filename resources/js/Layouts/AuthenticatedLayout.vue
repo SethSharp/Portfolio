@@ -76,7 +76,7 @@ const isDark = useDark({
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
                             <Dropdown>
                                 <template #trigger>
-                                    <Button variant="secondary">
+                                    <Button variant="outline">
                                         {{ $page.props.auth.user.name }}
                                     </Button>
                                 </template>

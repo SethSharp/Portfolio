@@ -127,7 +127,7 @@ onMounted(() => {
             <template #row_actions="{ item }">
                 <Dropdown width-class="w-fit">
                     <template #trigger>
-                        <Button variant="secondary">
+                        <Button variant="outline">
                             <EllipsisVerticalIcon class="size-5" />
                         </Button>
                     </template>
@@ -139,7 +139,7 @@ onMounted(() => {
                                 class="justify-center flex size-full gap-2"
                             >
                                 <PencilSquareIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300"> Edit</span>
                             </Link>
@@ -151,7 +151,7 @@ onMounted(() => {
                                 class="justify-center flex size-full gap-2"
                             >
                                 <EyeIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300">
                                     View
@@ -165,7 +165,7 @@ onMounted(() => {
                                 class="justify-center flex size-full gap-2"
                             >
                                 <TrashIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300">
                                     Delete
@@ -179,7 +179,7 @@ onMounted(() => {
                                 class="justify-center flex size-full"
                             >
                                 <ArrowLeftStartOnRectangleIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300">
                                     Restore
