@@ -18,8 +18,10 @@ class IndexBlogsController extends Controller
     {
         $this->authorize('view', Blog::class);
 
-        $currentStatus = BlogStatus::from(request()->input('filter.status',
-            BlogStatus::PUBLISHED->value) ?? BlogStatus::PUBLISHED->value);
+        $currentStatus = BlogStatus::from(request()->input(
+            'filter.status',
+            BlogStatus::PUBLISHED->value
+        ) ?? BlogStatus::PUBLISHED->value);
 
         return Inertia::render('Dashboard/Blogs/Index', [
             'blogs' => QueryBuilder::for(Blog::class)
@@ -28,8 +30,10 @@ class IndexBlogsController extends Controller
                     AllowedFilter::custom('status', new BlogStatusFilter())->default(BlogStatus::PUBLISHED->value),
                     AllowedFilter::custom('q', new BlogSearchFilter()),
                 ])
-                ->when($currentStatus->value === BlogStatus::PUBLISHED->value,
-                    fn ($query) => $query->orderByDesc('published_at'))
+                ->when(
+                    $currentStatus->value === BlogStatus::PUBLISHED->value,
+                    fn ($query) => $query->orderByDesc('published_at')
+                )
                 ->paginate(10),
             'status' => $currentStatus->label(),
         ]);
