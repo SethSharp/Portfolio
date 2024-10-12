@@ -6,7 +6,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue'
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <a href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
+                <ApplicationLogo class="size-20 fill-current text-gray-500" />
             </a>
         </div>
 

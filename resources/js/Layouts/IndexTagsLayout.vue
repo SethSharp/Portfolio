@@ -1,11 +1,10 @@
 <script setup>
-import { onMounted, onUpdated } from 'vue'
-import { Pagination, Tabs } from '@sethsharp/lumuix'
+import { computed, onMounted, onUpdated } from 'vue'
+import { LumuixPagination, LumuixTabs } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
-    status: String,
-    tabs: Object,
     count: Number,
     data: {
         type: Object,
@@ -13,6 +12,22 @@ const props = defineProps({
         required: false,
     },
 })
+
+const statuses = ['active', 'deleted']
+const computedStatus = computed(() =>
+    route().params.filter && route().params.filter.status ? route().params.filter.status : 'active'
+)
+
+const computedTabs = computed(() => [
+    ...statuses.map((status) => {
+        return {
+            name: status.charAt(0).toUpperCase() + status.slice(1).toLowerCase(),
+            active: status === computedStatus.value,
+            href: route('dashboard.tags.index', { filter: { status: status } }),
+            is: Link,
+        }
+    }),
+])
 
 onUpdated(() => {
     props.data.links.shift()
@@ -32,11 +47,11 @@ onMounted(() => {
                 <slot name="header" />
             </div>
 
-            <Tabs :tabs="tabs">
+            <LumuixTabs :tabs="computedTabs">
                 <slot />
 
-                <Pagination :data="data" />
-            </Tabs>
+                <LumuixPagination :data="data" />
+            </LumuixTabs>
         </div>
     </AuthenticatedLayout>
 </template>

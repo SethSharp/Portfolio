@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { Input, FormElement, Modal, Button, Label, Error } from '@sethsharp/lumuix'
+import { Input, FormElement, LumuixModal, Button } from '@sethsharp/lumuix'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
@@ -43,7 +43,7 @@ const closeModal = () => {
 
         <Button variant="destructive" @click="confirmUserDeletion">Delete Account</Button>
 
-        <Modal :open="confirmingUserDeletion" @close="closeModal" size="lg">
+        <LumuixModal :open="confirmingUserDeletion" @close="closeModal" size="lg">
             <template #header> Are you sure you want to delete your account?</template>
             <template #content>
                 <p class="mt-1 text-sm text-gray-600">
@@ -53,16 +53,16 @@ const closeModal = () => {
                 </p>
 
                 <FormElement>
-                    <Label id="password"> Password </Label>
                     <Input
                         id="password"
+                        label="Password"
                         ref="passwordInput"
                         v-model="form.password"
                         type="password"
                         placeholder="Password"
                         @keyup.enter="deleteUser"
+                        :error="form.errors.password"
                     />
-                    <Error :error="form.errors.password" />
                 </FormElement>
 
                 <div class="mt-6 flex gap-2 justify-end">
@@ -78,6 +78,6 @@ const closeModal = () => {
                     </Button>
                 </div>
             </template>
-        </Modal>
+        </LumuixModal>
     </section>
 </template>

@@ -3,7 +3,15 @@ import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
 import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
-import { Modal, Input, FormElement, ImageUpload, Button, Label, Error } from '@sethsharp/lumuix'
+import {
+    LumuixModal,
+    Input,
+    FormElement,
+    ImageUpload,
+    Button,
+    Label,
+    Error,
+} from '@sethsharp/lumuix'
 
 const props = defineProps({
     open: Boolean,
@@ -63,7 +71,7 @@ watch(file, (_) => {
 </script>
 
 <template>
-    <Modal :header-data="{ title: 'Manage Image' }" size="2xl">
+    <LumuixModal :header-data="{ title: 'Manage Image' }" size="2xl">
         <template #trigger>
             <PencilSquareIcon class="size-4" />
         </template>
@@ -88,5 +96,5 @@ watch(file, (_) => {
 
             <Button variant="primary" @click.prevent="emits('close')"> Save</Button>
         </template>
-    </Modal>
+    </LumuixModal>
 </template>

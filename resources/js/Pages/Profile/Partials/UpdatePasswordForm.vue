@@ -42,41 +42,41 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <FormElement>
-                <Label id="current_password"> Current Password </Label>
                 <Input
                     id="current_password"
+                    label="Current Password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1"
                     autocomplete="current-password"
+                    :error="form.errors.current_password"
                 />
-                <Error :error="form.errors.current_password" />
             </FormElement>
 
             <FormElement>
-                <Label id="password"> Password </Label>
                 <Input
                     id="password"
+                    label="Password"
                     ref="passwordInput"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1"
                     autocomplete="new-password"
+                    :error="form.errors.password"
                 />
-                <Error :error="form.errors.password" />
             </FormElement>
 
             <FormElement>
-                <Label id="password_confirmation"> Password Confirmation </Label>
                 <Input
                     id="password_confirmation"
+                    label="Password Confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1"
                     autocomplete="new-password"
+                    :error="form.errors.password_confirmation"
                 />
-                <Error :error="form.errors.password_confirmation" />
             </FormElement>
 
             <div class="flex items-center gap-4">
