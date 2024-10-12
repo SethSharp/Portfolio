@@ -38,7 +38,7 @@ defineProps({
                     <DeleteUserForm class="max-w-xl" />
                 </div>
 
-                <Button as-child variant="secondary">
+                <Button as-child variant="outline">
                     <Link :href="route('logout')" method="post"> Log Out</Link>
                 </Button>
             </div>
