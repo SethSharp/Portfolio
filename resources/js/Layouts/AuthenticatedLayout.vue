@@ -2,7 +2,15 @@
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { Head, Link } from '@inertiajs/vue3'
-import { Dropdown, DropdownMenuLink, BaseDropdownMenuItem, Button, Toggle } from '@sethsharp/lumuix'
+import {
+    DropdownMenu,
+    DropdownMenuLink,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
+    BaseDropdownMenuItem,
+    Button,
+    Toggle,
+} from '@sethsharp/lumuix'
 import NavLink from '@/Components/Links/NavLink.vue'
 import Notifications from '@/Components/Notifications.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
@@ -74,14 +82,14 @@ const isDark = useDark({
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
-                            <Dropdown>
-                                <template #trigger>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger as-child>
                                     <Button variant="outline">
                                         {{ $page.props.auth.user.name }}
                                     </Button>
-                                </template>
+                                </DropdownMenuTrigger>
 
-                                <template #content>
+                                <DropdownMenuContent>
                                     <DropdownMenuLink :is="Link" :href="route('profile.edit')">
                                         Profile
                                     </DropdownMenuLink>
@@ -97,15 +105,11 @@ const isDark = useDark({
                                         </div>
                                     </BaseDropdownMenuItem>
 
-                                    <DropdownMenuLink
-                                        method="post"
-                                        :as="Link"
-                                        :href="route('logout')"
-                                    >
-                                        Log Out
+                                    <DropdownMenuLink as-child>
+                                        <Link method="post" :href="route('logout')"> Logout </Link>
                                     </DropdownMenuLink>
-                                </template>
-                            </Dropdown>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         </div>
 
                         <!-- Hamburger -->

@@ -53,7 +53,7 @@ const submit = () => {
             </FormElement>
 
             <FormElement>
-                <Checkbox label="Remember Me" v-model="form.remember" :show-label="false" />
+                <Checkbox v-model="form.remember" text="Remember Me" />
             </FormElement>
 
             <div class="flex items-center justify-end mt-4">

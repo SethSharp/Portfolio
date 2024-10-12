@@ -18,26 +18,20 @@ class IndexBlogsController extends Controller
     {
         $this->authorize('view', Blog::class);
 
-        $currentStatus = BlogStatus::from(request()->input('filter.status', BlogStatus::PUBLISHED->value) ?? BlogStatus::PUBLISHED->value);
-
-        $blogs = QueryBuilder::for(Blog::class)
-            ->with(['tags', 'author', 'likes'])
-            ->allowedFilters([
-                AllowedFilter::custom('status', new BlogStatusFilter())->default(BlogStatus::PUBLISHED->value),
-                AllowedFilter::custom('q', new BlogSearchFilter()),
-            ])
-            ->when($currentStatus->value === BlogStatus::PUBLISHED->value, fn ($query) => $query->orderByDesc('published_at'))
-            ->paginate(10);
+        $currentStatus = BlogStatus::from(request()->input('filter.status',
+            BlogStatus::PUBLISHED->value) ?? BlogStatus::PUBLISHED->value);
 
         return Inertia::render('Dashboard/Blogs/Index', [
-            'blogs' => $blogs,
-            'status' => $currentStatus->label(),
-            'tabs' => collect(BlogStatus::cases())
-                ->map(fn (BlogStatus $status) => [
-                    'name' => $status->label(),
-                    'active' => $status->value === $currentStatus->value,
-                    'href' => route('dashboard.blogs.index', ['filter' => ['status' => $status->value]])
+            'blogs' => QueryBuilder::for(Blog::class)
+                ->with(['tags', 'author', 'likes'])
+                ->allowedFilters([
+                    AllowedFilter::custom('status', new BlogStatusFilter())->default(BlogStatus::PUBLISHED->value),
+                    AllowedFilter::custom('q', new BlogSearchFilter()),
                 ])
+                ->when($currentStatus->value === BlogStatus::PUBLISHED->value,
+                    fn ($query) => $query->orderByDesc('published_at'))
+                ->paginate(10),
+            'status' => $currentStatus->label(),
         ]);
     }
 }

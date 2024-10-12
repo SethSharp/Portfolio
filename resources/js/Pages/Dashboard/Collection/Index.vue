@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Datatable, Modal, Button } from '@sethsharp/lumuix'
+import { LumuixDatatable, LumuixModal, Button } from '@sethsharp/lumuix'
 import { formatDate } from '@/Helpers/helpers.js'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import CreateEditCollectionForm from '@/Components/Collection/CreateEditCollectionForm.vue'
@@ -44,31 +44,33 @@ const dataTableConfig = computed(() => ({
             </Button>
         </div>
 
-        <Datatable v-if="allCollections.length" v-bind="dataTableConfig">
+        <LumuixDatatable v-if="allCollections.length" v-bind="dataTableConfig">
             <template #cell_created_at="{ item }">
                 {{ formatDate(item.created_at) }}
             </template>
 
             <template #row_actions="{ item }">
-                <Button variant="secondary" @click="manageCollection(item)"> Edit </Button>
+                <Button variant="outline" @click="manageCollection(item)"> Edit</Button>
             </template>
-        </Datatable>
+        </LumuixDatatable>
 
         <div v-else class="flex justify-center align-middle">
             <div class="text-center">
                 <h3 class="text-gray-400 text-md sm:text-xl">There are currently no collections</h3>
 
                 <div class="mt-4">
-                    <Buttonv variant="primary" @click="manageCollection(null)">
+                    <Button variant="primary" @click="manageCollection(null)">
                         Create a Collection
-                    </Buttonv>
+                    </Button>
                 </div>
             </div>
         </div>
 
-        <Modal :open="open" @close="open = false" size="xl">
+        <LumuixModal :open="open" @close="open = false" size="xl">
             <template #header> Manage Collection</template>
-            <CreateEditCollectionForm :collection="currentCollection" @close="open = false" />
-        </Modal>
+            <template #content>
+                <CreateEditCollectionForm :collection="currentCollection" @close="open = false" />
+            </template>
+        </LumuixModal>
     </AuthenticatedLayout>
 </template>

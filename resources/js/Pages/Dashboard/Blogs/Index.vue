@@ -1,7 +1,16 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
-import { Button, Input, Datatable, Dropdown, BaseDropdownMenuItem } from '@sethsharp/lumuix'
+import {
+    Button,
+    Input,
+    LumuixDatatable,
+    DropdownMenu,
+    DropdownMenuLink,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
+    BaseDropdownMenuItem,
+} from '@sethsharp/lumuix'
 import {
     ArrowLeftStartOnRectangleIcon,
     EyeIcon,
@@ -14,7 +23,6 @@ import { formatDate, getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
     blogs: Object,
-    tabs: Object,
     status: String,
 })
 
@@ -90,7 +98,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
+    <IndexBlogsLayout :status="status" :count="blogs.data.length" :data="blogs">
         <div class="flex my-4">
             <div class="ml-auto flex gap-2">
                 <Input type="search" v-model="search" placeholder="Search for Blogs" />
@@ -98,7 +106,7 @@ onMounted(() => {
             </div>
         </div>
 
-        <Datatable v-if="blogs.data.length" v-bind="dataTableConfig">
+        <LumuixDatatable v-if="blogs.data.length" v-bind="dataTableConfig">
             <template #cell_cover="{ item }">
                 <div class="">
                     <img
@@ -125,14 +133,14 @@ onMounted(() => {
             </template>
 
             <template #row_actions="{ item }">
-                <Dropdown width-class="w-fit">
-                    <template #trigger>
+                <DropdownMenu>
+                    <DropdownMenuTrigger as-child>
                         <Button variant="outline">
                             <EllipsisVerticalIcon class="size-5" />
                         </Button>
-                    </template>
+                    </DropdownMenuTrigger>
 
-                    <template #content>
+                    <DropdownMenuContent>
                         <BaseDropdownMenuItem v-if="!item.deleted_at">
                             <Link
                                 :href="route('dashboard.blogs.edit', item)"
@@ -186,10 +194,10 @@ onMounted(() => {
                                 </span>
                             </button>
                         </BaseDropdownMenuItem>
-                    </template>
-                </Dropdown>
+                    </DropdownMenuContent>
+                </DropdownMenu>
             </template>
-        </Datatable>
+        </LumuixDatatable>
 
         <div v-else class="mt-6 flex justify-center align-middle">
             <div class="text-center">
