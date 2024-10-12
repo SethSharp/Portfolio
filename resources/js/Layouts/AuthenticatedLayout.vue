@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import { useDark } from '@vueuse/core'
 import { Head, Link } from '@inertiajs/vue3'
 import {
     DropdownMenu,
@@ -9,7 +8,7 @@ import {
     DropdownMenuTrigger,
     BaseDropdownMenuItem,
     Button,
-    Toggle,
+    LumuixModeToggle,
 } from '@sethsharp/lumuix'
 import NavLink from '@/Components/Links/NavLink.vue'
 import Notifications from '@/Components/Notifications.vue'
@@ -42,10 +41,6 @@ const links = [
         active: route().current('dashboard.collection.*'),
     },
 ]
-
-const isDark = useDark({
-    selector: 'html',
-})
 </script>
 
 <template>
@@ -90,8 +85,8 @@ const isDark = useDark({
                                 </DropdownMenuTrigger>
 
                                 <DropdownMenuContent>
-                                    <DropdownMenuLink :is="Link" :href="route('profile.edit')">
-                                        Profile
+                                    <DropdownMenuLink as-child>
+                                        <Link :href="route('profile.edit')"> Profile</Link>
                                     </DropdownMenuLink>
 
                                     <DropdownMenuLink is="a" :href="route('home')">
@@ -99,14 +94,11 @@ const isDark = useDark({
                                     </DropdownMenuLink>
 
                                     <BaseDropdownMenuItem>
-                                        <div class="flex gap-2">
-                                            <span class="my-auto">Dark Mode: </span>
-                                            <Toggle v-model="isDark" />
-                                        </div>
+                                        <LumuixModeToggle />
                                     </BaseDropdownMenuItem>
 
                                     <DropdownMenuLink as-child>
-                                        <Link method="post" :href="route('logout')"> Logout </Link>
+                                        <Link method="post" :href="route('logout')"> Logout</Link>
                                     </DropdownMenuLink>
                                 </DropdownMenuContent>
                             </DropdownMenu>
@@ -208,7 +200,12 @@ const isDark = useDark({
                 </div>
             </main>
 
-            <Notifications :errors="$page.props.errors" :success="$page.props.success" />
+            <Notifications
+                :errors="$page.props.errors"
+                :success="$page.props.success"
+                :warning="$page.props.warning"
+                :info="$page.props.info"
+            />
         </div>
     </div>
 </template>
