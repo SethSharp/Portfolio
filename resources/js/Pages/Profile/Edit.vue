@@ -1,6 +1,6 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3'
 import { Button } from '@sethsharp/lumuix'
+import { Head, Link } from '@inertiajs/vue3'
 import ProfileLayout from '@/Layouts/ProfileLayout.vue'
 import DeleteUserForm from './Partials/DeleteUserForm.vue'
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue'
@@ -38,12 +38,8 @@ defineProps({
                     <DeleteUserForm class="max-w-xl" />
                 </div>
 
-                <Button
-                    as-child
-                    variant="secondary"
-                    class="bg-gray-200 hover:bg-gray-300 border-gray-400 border-1 p-2 rounded font-medium"
-                >
-                    <Link :href="route('logout')" method="post"> Log Out </Link>
+                <Button as-child variant="secondary">
+                    <Link :href="route('logout')" method="post"> Log Out</Link>
                 </Button>
             </div>
         </div>
