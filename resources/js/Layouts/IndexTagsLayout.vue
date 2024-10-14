@@ -1,8 +1,8 @@
 <script setup>
+import { Link } from '@inertiajs/vue3'
 import { computed, onMounted, onUpdated } from 'vue'
 import { LumuixPagination, LumuixTabs } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
     count: Number,
@@ -50,7 +50,7 @@ onMounted(() => {
             <LumuixTabs :tabs="computedTabs">
                 <slot />
 
-                <LumuixPagination :data="data" />
+                <LumuixPagination :as="Link" :data="data" />
             </LumuixTabs>
         </div>
     </AuthenticatedLayout>

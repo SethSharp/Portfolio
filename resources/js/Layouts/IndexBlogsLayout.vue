@@ -1,8 +1,8 @@
 <script setup>
+import { computed } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
 import { Button, LumuixTabs, LumuixPagination } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import { computed } from 'vue'
 
 defineProps({
     status: String,
@@ -50,7 +50,7 @@ const computedTabs = computed(() => [
             <LumuixTabs :tabs="computedTabs" :data="data">
                 <slot />
 
-                <LumuixPagination :data="data" />
+                <LumuixPagination :as="Link" :data="data" />
             </LumuixTabs>
         </div>
     </AuthenticatedLayout>
