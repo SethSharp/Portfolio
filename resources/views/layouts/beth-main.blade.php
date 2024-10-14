@@ -4,14 +4,14 @@
 
     <title> @yield('title', config('app.name')) </title>
 
-    @vite('resources/css/app.css')
+    @vite('resources/css/beth.css')
     @vite('resources/js/main.js')
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="icon" href="{{ asset('/beth/favicon.ico') }}" type="image/x-icon">
 
     @stack('meta')
-    
+
     @routes
     @livewireStyles
 </head>

@@ -1,17 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-import colors from 'tailwindcss/colors.js'
 import { preset } from '@sethsharp/lumuix'
-
-require('dotenv').config()
-
-let primary, secondary
-if (process.env.EB_ENVIRONMENT === 'seth') {
-    primary = buildPrimaryColour(colors.teal)
-    secondary = buildPrimaryColour(colors.purple)
-} else {
-    primary = buildPrimaryColour(colors.rose)
-    secondary = buildPrimaryColour(colors.purple)
-}
 
 module.exports = {
     presets: [preset],
@@ -69,19 +57,4 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/forms')],
-}
-
-function buildPrimaryColour(colour) {
-    return {
-        50: colour[50],
-        100: colour[100],
-        200: colour[200],
-        300: colour[300],
-        400: colour[400],
-        500: colour[500],
-        600: colour[600],
-        700: colour[700],
-        800: colour[800],
-        900: colour[900],
-    }
 }
