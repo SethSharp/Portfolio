@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Views;
 use Illuminate\View\View;
 use App\Http\EnvironmentEnum;
 use App\Http\Controllers\Controller;
-use SethSharp\BlogCrud\Models\Blog\Blog;
 
 class ShowHomeController extends Controller
 {
@@ -18,7 +17,7 @@ class ShowHomeController extends Controller
         }
 
         return view($path, [
-            'blogs' => Blog::published()->orderByDesc('published_at')->take(3)->get()
+            'blogs' => [] //Blog::published()->orderByDesc('published_at')->take(3)->get()
         ]);
     }
 }
