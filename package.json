@@ -7,7 +7,7 @@
         "prettier": "prettier --write 'resources/**/*.{css,js,vue}'"
     },
     "devDependencies": {
-        "@inertiajs/vue3": "^1.0.0",
+        "@inertiajs/vue3": "^2.0.0-beta.2",
         "@tailwindcss/forms": "^0.5.3",
         "@vitejs/plugin-vue": "^5.0.0",
         "autoprefixer": "^10.4.12",
