@@ -1,4 +1,4 @@
-name: Apply Code Style Fixes
+name: Formatting
 
 on:
   pull_request:
