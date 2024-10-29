@@ -1,15 +1,6 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3'
-import {
-    PrimaryButton,
-    DangerButton,
-    FormElement,
-    Text,
-    Form,
-    Label,
-    Error,
-    Description,
-} from '@sethsharp/lumuix'
+import { Button, FormElement, Input, Form, Label, Error, Description } from '@sethsharp/lumuix'
 
 const props = defineProps({
     tag: {
@@ -59,22 +50,22 @@ const restoreTag = () => {
     <Form>
         <FormElement>
             <Label id="name"> Name </Label>
-            <Text v-model="form.name" autofocus :disabled="tag?.deleted_at" />
-            <Error :message="form.errors.name" />
+            <Input v-model="form.name" autofocus :disabled="tag?.deleted_at" />
+            <Error :error="form.errors.name" />
         </FormElement>
 
         <div class="gap-x-2 flex">
-            <DangerButton v-if="tag && !tag?.deleted_at" @click.prevent="removeTag">
+            <Button variant="destructive" v-if="tag && !tag?.deleted_at" @click.prevent="removeTag">
                 Delete
-            </DangerButton>
+            </Button>
 
-            <PrimaryButton v-if="tag?.deleted_at" @click.prevent="restoreTag">
+            <Button variant="primary" v-if="tag?.deleted_at" @click.prevent="restoreTag">
                 Restore
-            </PrimaryButton>
+            </Button>
 
-            <PrimaryButton v-if="!tag?.deleted_at" @click.prevent="submit">
+            <Button variant="primary" v-if="!tag?.deleted_at" @click.prevent="submit">
                 {{ tag ? 'Save' : 'Create' }}
-            </PrimaryButton>
+            </Button>
         </div>
     </Form>
 </template>

@@ -45,22 +45,52 @@
         <x-body.wrapper>
             <div class="py-12 md:py-24 text-center">
                 <x-headings.seth.h2>
+                    About me
+                </x-headings.seth.h2>
+
+                <div class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300 text-lg">
+                    <p>
+                        I currently live on the Gold Coast and loving every moment. I love everything outdoors such as
+                        4WDing, camping or fishing.
+                        I also enjoy gaming from time to time to have a nice break from my busy life.
+                    </p>
+
+                    <br/>
+
+                    <p>
+                        Among work and play, I still love to build personal projects using the skills I have learnt over
+                        the years.
+                        Testing them in different applications - each setting new objectives and teaching new skills.
+                    </p>
+
+                    <div class="md:flex justify-center mt-12 space-y-4 md:space-y-0 gap-4 md:w-1/2 mx-auto">
+                        <img src="{{ asset('/seth/about/4wd.png') }}" alt="4WD track in Ormeau"
+                             class="size-52 object-cover mx-auto rounded-md"/>
+                        <img src="{{ asset('/seth/about/lookout.png') }}" alt="Fraser Island Sand Dune on the West Side"
+                             class="size-52 object-right object-cover mx-auto rounded-md"/>
+                    </div>
+                </div>
+            </div>
+        </x-body.wrapper>
+
+        <x-body.wrapper>
+            <div class="py-12 md:py-24 text-center">
+                <x-headings.seth.h2>
                     My Specialisations
                 </x-headings.seth.h2>
 
                 <div>
                     <p class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300 text-lg">
-                        I currently reside in SE QLD on the Gold Coast. I have been a Software Developer over the last
-                        couple of years and have developed skills in multiple libraries and frameworks to push my best
-                        work
-                        - both personally and professionally.
+                        I have been a Junior Software Developer over the last
+                        couple of years specialising in Laravel development.
+                        I have developed skills in multiple libraries and frameworks to build custom
+                        web applications for clients. See below, just to name a few:
                     </p>
 
                     <div id="technology-icons" class="flex gap-8 justify-center mt-12">
                         <x-icons.laravel/>
                         <x-icons.vue/>
                         <x-icons.livewire/>
-                        <x-icons.aws/>
                         <x-icons.tailwind/>
                     </div>
                 </div>
@@ -79,38 +109,6 @@
                         One of my major aspirations is to start my own business. I am eager to leverage my skills and
                         experience to create innovative solutions and build a successful venture
                     </p>
-                </div>
-            </div>
-        </x-body.wrapper>
-
-        <x-body.wrapper>
-            <div class="py-12 md:py-24 text-center">
-                <x-headings.seth.h2>
-                    More about me
-                </x-headings.seth.h2>
-
-                <div class="leading-loose p-4 md:w-2/3 mx-auto text-gray-300 text-lg">
-                    <p>
-                        I am a big fan of outdoor adventures. Whether it's exploring the scenic views of Fraser Island
-                        or
-                        tackling challenging 4WD tracks or fishing and not catching anything (but hey, its all part of
-                        it).
-                    </p>
-
-                    <br>
-
-                    <p>
-                        I also enjoy a bit of gaming when I get some free time. Outside of work and other things that
-                        pop
-                        up, it offers a nice break from it all.
-                    </p>
-
-                    <div class="md:flex justify-center mt-12 space-y-4 md:space-y-0 gap-4 md:w-1/2 mx-auto">
-                        <img src="{{ asset('/seth/about/4wd.png') }}" alt="4WD track in Ormeau"
-                             class="size-52 object-cover mx-auto rounded-md"/>
-                        <img src="{{ asset('/seth/about/lookout.png') }}" alt="Fraser Island Sand Dune on the West Side"
-                             class="size-52 object-right object-cover mx-auto rounded-md"/>
-                    </div>
                 </div>
             </div>
         </x-body.wrapper>

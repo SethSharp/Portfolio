@@ -1,10 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-import { useDark } from '@vueuse/core'
 import { Head, Link } from '@inertiajs/vue3'
-import { Notifications, SecondaryButton, Toggle } from '@sethsharp/lumuix'
-import { Dropdown, DropdownMenuLink, BaseDropdownMenuItem } from '@sethsharp/lumuix/dropdown-menu'
+import {
+    DropdownMenu,
+    DropdownMenuLink,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
+    BaseDropdownMenuItem,
+    Button,
+    LumuixModeToggle,
+} from '@sethsharp/lumuix'
 import NavLink from '@/Components/Links/NavLink.vue'
+import Notifications from '@/Components/Notifications.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import ResponsiveNavLink from '@/Components/Links/ResponsiveNavLink.vue'
 
@@ -34,10 +41,6 @@ const links = [
         active: route().current('dashboard.collection.*'),
     },
 ]
-
-const isDark = useDark({
-    selector: 'html',
-})
 </script>
 
 <template>
@@ -74,16 +77,16 @@ const isDark = useDark({
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
-                            <Dropdown>
-                                <template #trigger>
-                                    <SecondaryButton>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger as-child>
+                                    <Button variant="outline">
                                         {{ $page.props.auth.user.name }}
-                                    </SecondaryButton>
-                                </template>
+                                    </Button>
+                                </DropdownMenuTrigger>
 
-                                <template #content>
-                                    <DropdownMenuLink :is="Link" :href="route('profile.edit')">
-                                        Profile
+                                <DropdownMenuContent>
+                                    <DropdownMenuLink as-child>
+                                        <Link :href="route('profile.edit')"> Profile</Link>
                                     </DropdownMenuLink>
 
                                     <DropdownMenuLink is="a" :href="route('home')">
@@ -91,21 +94,14 @@ const isDark = useDark({
                                     </DropdownMenuLink>
 
                                     <BaseDropdownMenuItem>
-                                        <div class="flex gap-2">
-                                            <span class="my-auto">Dark Mode: </span>
-                                            <Toggle v-model="isDark" />
-                                        </div>
+                                        <LumuixModeToggle />
                                     </BaseDropdownMenuItem>
 
-                                    <DropdownMenuLink
-                                        method="post"
-                                        :as="Link"
-                                        :href="route('logout')"
-                                    >
-                                        Log Out
+                                    <DropdownMenuLink as-child>
+                                        <Link method="post" :href="route('logout')"> Logout</Link>
                                     </DropdownMenuLink>
-                                </template>
-                            </Dropdown>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         </div>
 
                         <!-- Hamburger -->
@@ -204,7 +200,12 @@ const isDark = useDark({
                 </div>
             </main>
 
-            <Notifications :errors="$page.props.errors" :success="$page.props.success" />
+            <Notifications
+                :errors="$page.props.errors"
+                :success="$page.props.success"
+                :warning="$page.props.warning"
+                :info="$page.props.info"
+            />
         </div>
     </div>
 </template>

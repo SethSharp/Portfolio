@@ -1,11 +1,11 @@
 <script setup>
+import { computed } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
-import { PrimaryButton, Tabs, Pagination } from '@sethsharp/lumuix'
+import { Button, LumuixTabs, LumuixPagination } from '@sethsharp/lumuix'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
 defineProps({
     status: String,
-    tabs: Object,
     count: Number,
     data: {
         type: Object,
@@ -15,6 +15,24 @@ defineProps({
 })
 
 const create = () => router.post(route('dashboard.blogs.create'))
+const computedStatus = computed(() =>
+    route().params.filter && route().params.filter.status
+        ? route().params.filter.status
+        : 'published'
+)
+
+const statuses = ['published', 'drafted', 'deleted']
+
+const computedTabs = computed(() => [
+    ...statuses.map((status) => {
+        return {
+            name: status.charAt(0).toUpperCase() + status.slice(1).toLowerCase(),
+            active: status === computedStatus.value,
+            href: route('dashboard.blogs.index', { filter: { status: status } }),
+            is: Link,
+        }
+    }),
+])
 </script>
 
 <template>
@@ -25,15 +43,15 @@ const create = () => router.post(route('dashboard.blogs.create'))
                     {{ status }} Blogs ({{ count }})
                 </div>
                 <div class="flex ml-auto">
-                    <PrimaryButton @click="create"> Create Blog</PrimaryButton>
+                    <Button variant="primary" @click="create"> Create Blog</Button>
                 </div>
             </div>
 
-            <Tabs :is="Link" :tabs="tabs" :data="data">
+            <LumuixTabs :tabs="computedTabs" :data="data">
                 <slot />
 
-                <Pagination :data="data" />
-            </Tabs>
+                <LumuixPagination :as="Link" :data="data" />
+            </LumuixTabs>
         </div>
     </AuthenticatedLayout>
 </template>

@@ -1,15 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import {
-    Text,
-    FormElement,
-    SecondaryButton,
-    Modal,
-    DangerButton,
-    Label,
-    Error,
-} from '@sethsharp/lumuix'
+import { Input, FormElement, LumuixModal, Button } from '@sethsharp/lumuix'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
@@ -49,9 +41,9 @@ const closeModal = () => {
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+        <Button variant="destructive" @click="confirmUserDeletion">Delete Account</Button>
 
-        <Modal :open="confirmingUserDeletion" @close="closeModal" size="lg">
+        <LumuixModal :open="confirmingUserDeletion" @close="closeModal" size="lg">
             <template #header> Are you sure you want to delete your account?</template>
             <template #content>
                 <p class="mt-1 text-sm text-gray-600">
@@ -61,30 +53,31 @@ const closeModal = () => {
                 </p>
 
                 <FormElement>
-                    <Label id="password"> Password </Label>
-                    <Text
+                    <Input
                         id="password"
+                        label="Password"
                         ref="passwordInput"
                         v-model="form.password"
                         type="password"
                         placeholder="Password"
                         @keyup.enter="deleteUser"
+                        :error="form.errors.password"
                     />
-                    <Error :message="form.errors.password" />
                 </FormElement>
 
                 <div class="mt-6 flex gap-2 justify-end">
-                    <SecondaryButton @click="closeModal"> Cancel</SecondaryButton>
+                    <Button variant="secondary" @click="closeModal"> Cancel</Button>
 
-                    <DangerButton
+                    <Button
+                        variant="destructive"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
                         Delete Account
-                    </DangerButton>
+                    </Button>
                 </div>
             </template>
-        </Modal>
+        </LumuixModal>
     </section>
 </template>

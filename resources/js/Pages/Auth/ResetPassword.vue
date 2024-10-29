@@ -1,6 +1,6 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3'
-import { PrimaryButton, Text, FormElement, Label, Description } from '@sethsharp/lumuix'
+import { Button, Input, FormElement, Label, Error } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 
 const props = defineProps({
@@ -35,41 +35,35 @@ const submit = () => {
         <form @submit.prevent="submit">
             <FormElement>
                 <Label> Email </Label>
-                <Text
-                    id="email"
-                    type="email"
-                    v-model="form.email"
-                    required
-                    label="Email"
-                    :error="form.errors.email"
-                />
-                <Error :message="form.errors.email" />
+                <Input id="email" type="email" v-model="form.email" required />
+                <Error :error="form.errors.email" />
             </FormElement>
 
             <FormElement>
                 <Label> Password </Label>
-                <Text id="password" type="password" v-model="form.password" required />
-                <Error :message="form.errors.password" />
+                <Input id="password" type="password" v-model="form.password" required />
+                <Error :error="form.errors.password" />
             </FormElement>
 
             <FormElement>
                 <Label> Confirm Password </Label>
-                <Text
+                <Input
                     id="password_confirmation"
                     type="password"
                     v-model="form.password_confirmation"
                     required
                 />
-                <Error :message="form.errors.password_confirmation" />
+                <Error :error="form.errors.password_confirmation" />
             </FormElement>
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton
+                <Button
+                    variant="primary"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Reset Password
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </GuestLayout>

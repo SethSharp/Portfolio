@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Modal, PrimaryButton, SecondaryButton, Datatable } from '@sethsharp/lumuix'
+import { LumuixModal, Button, LumuixDatatable } from '@sethsharp/lumuix'
 import { formatDate } from '@/Helpers/helpers.js'
 import IndexTagsLayout from '@/Layouts/IndexTagsLayout.vue'
 import CreateEditTagForm from '@/Components/Tags/CreateEditTagForm.vue'
@@ -35,17 +35,17 @@ const dataTableConfig = computed(() => ({
 </script>
 
 <template>
-    <IndexTagsLayout :status="currentStatus" :tabs="tabs" :count="tags.data.length" :data="tags">
+    <IndexTagsLayout :count="tags.data.length" :data="tags">
         <template #header>
             <div class="rounded py-2 text-3xl text-black dark:text-gray-300">
                 {{ currentStatus }} Tags ({{ tags.data.length }})
             </div>
             <div class="flex ml-auto">
-                <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
+                <Button variant="primary" @click.prevent="openModal(null)"> Create Tag</Button>
             </div>
         </template>
 
-        <Datatable v-if="tags.data.length" v-bind="dataTableConfig">
+        <LumuixDatatable v-if="tags.data.length" v-bind="dataTableConfig">
             <template #cell_name="{ item }">
                 {{ item.name }}
             </template>
@@ -55,9 +55,9 @@ const dataTableConfig = computed(() => ({
             </template>
 
             <template #row_actions="{ item }">
-                <SecondaryButton @click="openModal(item)"> Edit </SecondaryButton>
+                <Button variant="outline" @click="openModal(item)"> Edit</Button>
             </template>
-        </Datatable>
+        </LumuixDatatable>
 
         <div v-else class="flex justify-center align-middle w-full">
             <div class="text-center">
@@ -66,18 +66,20 @@ const dataTableConfig = computed(() => ({
                 </h3>
 
                 <div v-if="currentStatus === 'Active'" class="mt-4">
-                    <PrimaryButton @click.prevent="openModal(null)"> Create Tag</PrimaryButton>
+                    <Button variant="primary" @click.prevent="openModal(null)"> Create Tag</Button>
                 </div>
             </div>
         </div>
 
-        <Modal
+        <LumuixModal
             :open="open"
             @close="open = false"
             size="sm"
             :headerData="{ title: 'Manage Tag', description: 'some desc' }"
         >
-            <CreateEditTagForm :tag="currentTag" @close="open = false" />
-        </Modal>
+            <template #content>
+                <CreateEditTagForm :tag="currentTag" @close="open = false" />
+            </template>
+        </LumuixModal>
     </IndexTagsLayout>
 </template>

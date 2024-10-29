@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import { Text, FormElement, PrimaryButton, Label, Error } from '@sethsharp/lumuix'
+import { Input, FormElement, Button, Label, Error } from '@sethsharp/lumuix'
 
 const passwordInput = ref(null)
 const currentPasswordInput = ref(null)
@@ -42,45 +42,45 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <FormElement>
-                <Label id="current_password"> Current Password </Label>
-                <Text
+                <Input
                     id="current_password"
+                    label="Current Password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1"
                     autocomplete="current-password"
+                    :error="form.errors.current_password"
                 />
-                <Error :message="form.errors.current_password" />
             </FormElement>
 
             <FormElement>
-                <Label id="password"> Password </Label>
-                <Text
+                <Input
                     id="password"
+                    label="Password"
                     ref="passwordInput"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1"
                     autocomplete="new-password"
+                    :error="form.errors.password"
                 />
-                <Error :message="form.errors.password" />
             </FormElement>
 
             <FormElement>
-                <Label id="password_confirmation"> Password Confirmation </Label>
-                <Text
+                <Input
                     id="password_confirmation"
+                    label="Password Confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1"
                     autocomplete="new-password"
+                    :error="form.errors.password_confirmation"
                 />
-                <Error :message="form.errors.password_confirmation" />
             </FormElement>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <Button variant="primary" :disabled="form.processing">Save</Button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"

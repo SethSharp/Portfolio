@@ -4,11 +4,11 @@ import { ref, watch } from 'vue'
 import { useVModels } from '@vueuse/core'
 import { PencilSquareIcon } from '@heroicons/vue/16/solid/index.js'
 import {
-    Modal,
-    Text,
+    LumuixModal,
+    Input,
     FormElement,
     ImageUpload,
-    PrimaryButton,
+    Button,
     Label,
     Error,
 } from '@sethsharp/lumuix'
@@ -71,7 +71,7 @@ watch(file, (_) => {
 </script>
 
 <template>
-    <Modal :header-data="{ title: 'Manage Image' }" size="2xl">
+    <LumuixModal :header-data="{ title: 'Manage Image' }" size="2xl">
         <template #trigger>
             <PencilSquareIcon class="size-4" />
         </template>
@@ -85,16 +85,16 @@ watch(file, (_) => {
 
                 <FormElement>
                     <Label id="alt">Alt</Label>
-                    <Text id="alt" type="text" v-model="computedAlt" />
+                    <Input id="alt" type="text" v-model="computedAlt" />
                 </FormElement>
 
                 <FormElement>
-                    <Label id="heigh"> Height </Label>
-                    <Text id="height" v-model="computedHeight" type="number" />
+                    <Label id="height"> Height </Label>
+                    <Input id="height" v-model="computedHeight" type="number" />
                 </FormElement>
             </div>
 
-            <PrimaryButton as="button" @click.prevent="emits('close')"> Save</PrimaryButton>
+            <Button variant="primary" @click.prevent="emits('close')"> Save</Button>
         </template>
-    </Modal>
+    </LumuixModal>
 </template>

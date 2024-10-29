@@ -2,11 +2,13 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
 import {
-    SecondaryButton,
-    PrimaryButton,
-    Text,
-    Datatable,
-    Dropdown,
+    Button,
+    Input,
+    LumuixDatatable,
+    DropdownMenu,
+    DropdownMenuLink,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
     BaseDropdownMenuItem,
 } from '@sethsharp/lumuix'
 import {
@@ -21,7 +23,6 @@ import { formatDate, getBlogCoverImage } from '@/Helpers/helpers.js'
 
 const props = defineProps({
     blogs: Object,
-    tabs: Object,
     status: String,
 })
 
@@ -97,15 +98,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <IndexBlogsLayout :status="status" :count="blogs.data.length" :tabs="tabs" :data="blogs">
+    <IndexBlogsLayout :status="status" :count="blogs.data.length" :data="blogs">
         <div class="flex my-4">
             <div class="ml-auto flex gap-2">
-                <Text type="search" v-model="search" placeholder="Search for Blogs" />
-                <SecondaryButton @click="visitSearch"> search </SecondaryButton>
+                <Input type="search" v-model="search" placeholder="Search for Blogs" />
+                <Button variant="primary" @click="visitSearch"> search</Button>
             </div>
         </div>
 
-        <Datatable v-if="blogs.data.length" v-bind="dataTableConfig">
+        <LumuixDatatable v-if="blogs.data.length" v-bind="dataTableConfig">
             <template #cell_cover="{ item }">
                 <div class="">
                     <img
@@ -132,21 +133,21 @@ onMounted(() => {
             </template>
 
             <template #row_actions="{ item }">
-                <Dropdown width-class="w-fit">
-                    <template #trigger>
-                        <SecondaryButton>
+                <DropdownMenu>
+                    <DropdownMenuTrigger as-child>
+                        <Button variant="outline">
                             <EllipsisVerticalIcon class="size-5" />
-                        </SecondaryButton>
-                    </template>
+                        </Button>
+                    </DropdownMenuTrigger>
 
-                    <template #content>
+                    <DropdownMenuContent>
                         <BaseDropdownMenuItem v-if="!item.deleted_at">
                             <Link
                                 :href="route('dashboard.blogs.edit', item)"
                                 class="justify-center flex size-full gap-2"
                             >
                                 <PencilSquareIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300"> Edit</span>
                             </Link>
@@ -158,7 +159,7 @@ onMounted(() => {
                                 class="justify-center flex size-full gap-2"
                             >
                                 <EyeIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300">
                                     View
@@ -172,7 +173,7 @@ onMounted(() => {
                                 class="justify-center flex size-full gap-2"
                             >
                                 <TrashIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300">
                                     Delete
@@ -186,17 +187,17 @@ onMounted(() => {
                                 class="justify-center flex size-full"
                             >
                                 <ArrowLeftStartOnRectangleIcon
-                                    class="text-gray-500 dark:text-slate-300 transition size-7"
+                                    class="text-gray-400 dark:text-slate-300 transition size-7"
                                 />
                                 <span class="my-auto text-gray-600 dark:text-slate-300">
                                     Restore
                                 </span>
                             </button>
                         </BaseDropdownMenuItem>
-                    </template>
-                </Dropdown>
+                    </DropdownMenuContent>
+                </DropdownMenu>
             </template>
-        </Datatable>
+        </LumuixDatatable>
 
         <div v-else class="mt-6 flex justify-center align-middle">
             <div class="text-center">
@@ -205,7 +206,7 @@ onMounted(() => {
                 </h3>
 
                 <div v-if="status === 'published'" class="mt-4">
-                    <PrimaryButton :as="Link" @click="create"> Create a Blog</PrimaryButton>
+                    <Button variant="primary" :as="Link" @click="create"> Create a Blog</Button>
                 </div>
             </div>
         </div>

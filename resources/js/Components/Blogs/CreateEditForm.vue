@@ -2,8 +2,8 @@
 import { computed, ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import {
-    PrimaryButton,
-    Text,
+    Button,
+    Input,
     Checkbox,
     TextArea,
     FormElement,
@@ -84,11 +84,11 @@ const confirmLeave = (e) => {
     if (form.isDirty) {
         e.returnValue = ''
 
-        const message = 'Are you sure you want to leave? There are unsaved changes.'
+        const error = 'Are you sure you want to leave? There are unsaved changes.'
 
-        e.returnValue = message
+        e.returnValue = error
 
-        return message
+        return error
     }
 }
 
@@ -112,99 +112,102 @@ window.addEventListener('beforeunload', confirmLeave)
                     />
                 </template>
             </ImageUpload>
-            <Error :message="form.errors.cover_image" />
+            <Error :error="form.errors.cover_image" />
         </FormElement>
 
         <FormElement>
-            <Checkbox id="is_draft" v-model="form.is_draft" label="Is Draft" />
-            <Error :message="form.errors.is_draft" />
+            <Checkbox
+                id="is_draft"
+                v-model="form.is_draft"
+                text="Is Draft"
+                :error="form.errors.is_draft"
+            />
         </FormElement>
 
         <FormGrid>
             <FormElement>
-                <Label id="title"> Title </Label>
-                <Text id="title" v-model="form.title" :error="form.errors.title" label="Title" />
+                <Input id="title" v-model="form.title" :error="form.errors.title" label="Title" />
             </FormElement>
 
             <FormElement class="flex flex-col space-y-2">
-                <Label id="collection"> Collection </Label>
                 <Combobox
+                    id="collection"
+                    label="Collection"
                     v-model="form.collection_id"
                     :options="collectionOptions"
                     allow-search
                     width-class="w-full md:w-96"
+                    :error="form.errors.collection_id"
                 />
-                <Error :message="form.errors.collection_id" />
             </FormElement>
         </FormGrid>
 
         <FormGrid>
             <FormElement>
-                <Label id="slug"> (must be lowercase separated by '-') </Label>
-                <Text id="slug" v-model="form.slug" placeholder="a-new-blog-of-mine" />
+                <Input
+                    id="slug"
+                    label="Slug (must be lowercase separated by '-')"
+                    v-model="form.slug"
+                    placeholder="a-new-blog-of-mine"
+                />
                 <Description>
                     {{
                         'Can be left empty, title will be slugified and entered here. When viewing the blog in the web it will appear as blogs/' +
                         (form.slug ? form.slug : form.title ? form.title : 'some-value')
                     }}
                 </Description>
-                <Error :message="form.errors.slug" />
+                <Error :error="form.errors.slug" />
             </FormElement>
 
             <FormElement class="flex flex-col space-y-2">
-                <Label> Tags </Label>
                 <Combobox
                     v-model="form.tags"
+                    label="Tags"
                     :options="tagOptions"
                     width-class="w-full md:w-96"
                     multiple
                     allow-search
+                    :error="form.errors.tags"
                 />
-                <Error :message="form.errors.tags" />
             </FormElement>
         </FormGrid>
 
         <FormElement>
-            <Label> Meta Title </Label>
-            <Text
+            <Input
                 id="meta-title"
                 v-model="form.meta_title"
                 label="Meta Title"
+                description="Serves as a SEO title for Google to read (can be the same as your regular title)"
                 :error="form.errors.meta_title"
             />
-            <Description>
-                Serves as a SEO title for Google to read (can be the same as your regular title)
-            </Description>
-            <Error :message="form.errors.meta_title" />
         </FormElement>
 
         <FormElement>
-            <Label> Meta Description </Label>
-            <TextArea id="meta-description" v-model="form.meta_description" />
-            <Description>
-                Serves as a small blurb on the blog, used both in Google previews and within the
-                portfolio site itself.</Description
-            >
-            <Error :message="form.errors.meta_description" />
+            <TextArea
+                id="meta-description"
+                label="Meta Description"
+                description="Serves as a small blurb on the blog, used both in Google previews and within the portfolio site itself."
+                v-model="form.meta_description"
+                :error="form.errors.meta_description"
+            />
         </FormElement>
 
         <FormElement>
-            <Label> Meta Tags</Label>
-            <Text id="meta-tags" v-model="form.meta_tags" />
-            <Description>
-                description="Helps Google understand the content of the page - similar to how
-                hashtags work on Instagram"
-            </Description>
-            <Error :message="form.errors.meta_tags" />
+            <Input
+                id="meta-tags"
+                label="Meta Tags"
+                description="Helps Google understand the content of the page - similar to how hashtags work on Instagram"
+                v-model="form.meta_tags"
+                :error="form.errors.meta_tags"
+            />
         </FormElement>
 
         <FormElement>
-            <Editor v-model="form.content" :blog="blog" />
-            <Error :message="form.errors.content" />
+            <Editor v-model="form.content" :blog="blog" :error="form.errors.content" />
         </FormElement>
 
-        <PrimaryButton as="button" @click.prevent="submit">
+        <Button variant="primary" @click.prevent="submit">
             {{ blog ? 'Update' : 'Save' }}
-        </PrimaryButton>
+        </Button>
     </Form>
 </template>
