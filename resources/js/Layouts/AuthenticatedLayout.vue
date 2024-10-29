@@ -1,15 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 import { Head, Link } from '@inertiajs/vue3'
+import { Button, LumuixModeToggle } from '@sethsharp/lumuix'
 import {
     DropdownMenu,
     DropdownMenuLink,
     DropdownMenuContent,
     DropdownMenuTrigger,
     BaseDropdownMenuItem,
-    Button,
-    LumuixModeToggle,
-} from '@sethsharp/lumuix'
+} from '@sethsharp/lumuix/dropdown-menu'
 import NavLink from '@/Components/Links/NavLink.vue'
 import Notifications from '@/Components/Notifications.vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
