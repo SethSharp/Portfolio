@@ -2,8 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import '@sethsharp/lumuix/dist/types/presets/styles.css';
-
 :root {
     --primary-foreground: 168 84% 90%;
 

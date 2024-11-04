@@ -1,8 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-import { preset } from '@sethsharp/lumuix'
+// import { preset } from '@sethsharp/lumuix/presets'
 
 module.exports = {
-    presets: [preset],
+    // presets: [preset],
 
     content: [
         './node_modules/@sethsharp/lumuix/dist/*.js',

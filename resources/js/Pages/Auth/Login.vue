@@ -1,7 +1,7 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3'
-import { Button, Input, FormElement, Checkbox, Label, Error } from '@sethsharp/lumuix'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
+import { Badge } from '@sethsharp/lumuix/badge'
 
 defineProps({
     canResetPassword: {
@@ -34,36 +34,16 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <FormElement>
-                <Label> Email </Label>
-                <Input
-                    type="email"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-                <Error :error="form.errors.email" />
-            </FormElement>
-
-            <FormElement>
-                <Label> Password</Label>
-                <Input type="password" v-model="form.password" required autocomplete="password" />
-                <Error :error="form.errors.password" />
-            </FormElement>
-
-            <FormElement>
-                <Checkbox v-model="form.remember" text="Remember Me" />
-            </FormElement>
+            <Badge> This is a badge </Badge>
 
             <div class="flex items-center justify-end mt-4">
-                <Button
+                <button
                     variant="primary"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
-                </Button>
+                </button>
             </div>
         </form>
     </GuestLayout>
